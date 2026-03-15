@@ -3,48 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D4Driving | Book a Lesson</title>
+    <title>D4Driving | School of Motoring</title>
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; scroll-behavior: smooth; }
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1.5rem;
-            height: 700px;
-            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .wa-float {
+            position: fixed; width: 60px; height: 60px; bottom: 20px; right: 20px;
+            background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center;
+            font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 100;
         }
     </style>
 </head>
-<body class="flex flex-col items-center p-4 md:p-8">
+<body class="pb-20">
 
-    <header class="text-center mb-8">
-        <div class="inline-block p-3 rounded-2xl bg-blue-600 mb-4 shadow-lg shadow-blue-500/20">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <header class="w-full max-w-4xl mx-auto p-8 text-center">
+        <div class="inline-block p-4 rounded-3xl bg-blue-600 mb-6 shadow-xl shadow-blue-500/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A2 2 0 013 15.382V6c0-1.1.9-2 2-2h14a2 2 0 012 2v9.382a2 2 0 01-1.553 1.894L15 20m-6 0v-3a3 3 0 013-3h0a3 3 0 013 3v3m-6 0h6" />
             </svg>
         </div>
-        <h1 class="text-3xl font-extrabold mb-2 text-white">D4Driving School of Motoring</h1>
-        <p class="text-slate-400">Professional Driving Lessons</p>
+        <h1 class="text-4xl font-extrabold text-white mb-2 tracking-tight">D4Driving</h1>
+        <p class="text-slate-400 text-lg">Your road to success starts here.</p>
+        
+        <div class="mt-8 flex justify-center gap-4">
+            <a href="#book" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold transition">Book Now</a>
+            <a href="#prices" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-full font-bold transition">Prices</a>
+        </div>
     </header>
 
-    <main class="w-full max-w-4xl">
-        <div class="glass-card shadow-2xl">
+    <section id="prices" class="max-w-5xl mx-auto px-6 py-12">
+        <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest">Lesson Packages</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card p-8 rounded-3xl text-center">
+                <h3 class="text-xl font-bold mb-4">Single Session</h3>
+                <p class="text-4xl font-extrabold mb-4">£40<span class="text-sm text-slate-500 font-normal">/hr</span></p>
+                <ul class="text-slate-400 text-sm space-y-2 mb-8">
+                    <li>✓ 1-on-1 Tuition</li>
+                    <li>✓ Pickup/Dropoff</li>
+                    <li>✓ Pay as you go</li>
+                </ul>
+                <a href="#book" class="block w-full py-2 bg-slate-700 rounded-xl font-bold">Select</a>
+            </div>
+            <div class="glass-card p-8 rounded-3xl text-center border-blue-500/50 scale-105 shadow-blue-500/10 shadow-2xl relative">
+                <span class="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2 bg-blue-600 text-xs px-3 py-1 rounded-full font-bold uppercase">Popular</span>
+                <h3 class="text-xl font-bold mb-4">10 Lesson Block</h3>
+                <p class="text-4xl font-extrabold mb-4">£380</p>
+                <ul class="text-slate-400 text-sm space-y-2 mb-8">
+                    <li>✓ Save £20 Total</li>
+                    <li>✓ Flexible Booking</li>
+                    <li>✓ Mock Test Included</li>
+                </ul>
+                <a href="#book" class="block w-full py-2 bg-blue-600 rounded-xl font-bold hover:bg-blue-500 transition">Select</a>
+            </div>
+            <div class="glass-card p-8 rounded-3xl text-center">
+                <h3 class="text-xl font-bold mb-4">Intensive</h3>
+                <p class="text-4xl font-extrabold mb-4">£800</p>
+                <ul class="text-slate-400 text-sm space-y-2 mb-8">
+                    <li>✓ 21.5 Hours Training</li>
+                    <li>✓ Fast-Track Prep</li>
+                    <li>✓ Best Value</li>
+                </ul>
+                <a href="#book" class="block w-full py-2 bg-slate-700 rounded-xl font-bold">Select</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="book" class="max-w-4xl mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest">Reserve Your Slot</h2>
+        <div class="glass-card rounded-3xl overflow-hidden shadow-2xl" style="height: 700px;">
             <iframe 
                 src="https://cal.com/d4driving?embed=true" 
-                allowunfullsceen 
+                style="width: 100%; height: 100%; border: none;"
                 loading="lazy">
             </iframe>
         </div>
-    </main>
+    </section>
 
-    <footer class="mt-8 text-slate-500 text-xs text-center">
-        © 2026 D4Driving School of Motoring
+    <a href="https://wa.me/441234567890?text=Hi!%20I'm%20interested%20in%20driving%20lessons." class="wa-float flex items-center justify-center" target="_blank">
+        <svg viewBox="0 0 32 32" class="w-8 h-8 fill-current"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.236-.73-3.82-.888-3.96-.033-.033-.172-.03-.285-.03-.303 0-1.41.45-1.41 1.14 0 .395.213.814.303 1.11 1.32 4.39 3.732 7.429 7.329 8.798.36.135.774.243 1.148.243.716 0 1.29-1.335 1.405-1.615a.521.521 0 0 0 .045-.21c0-.337-3.412-1.686-3.688-1.686zM16 30a14 14 0 1 1 14-14 14.016 14.016 0 0 1-14 14zm0-2a12 12 0 1 0-12-12 12.014 12.014 0 0 0 12 12z"></path></svg>
+    </a>
+
+    <footer class="text-center text-slate-600 text-sm p-8">
+        © 2026 D4Driving School of Motoring. Built for Excellence.
     </footer>
 
 </body>

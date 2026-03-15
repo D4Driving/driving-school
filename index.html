@@ -11,45 +11,41 @@
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 1.5rem;
-            min-height: 650px;
+            height: 700px;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
-<body class="flex flex-col items-center p-6">
+<body class="flex flex-col items-center p-4 md:p-8">
 
     <header class="text-center mb-8">
-        <h1 class="text-3xl font-extrabold mb-2">D4Driving</h1>
-        <p class="text-slate-400">Book your driving lesson below</p>
+        <div class="inline-block p-3 rounded-2xl bg-blue-600 mb-4 shadow-lg shadow-blue-500/20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A2 2 0 013 15.382V6c0-1.1.9-2 2-2h14a2 2 0 012 2v9.382a2 2 0 01-1.553 1.894L15 20m-6 0v-3a3 3 0 013-3h0a3 3 0 013 3v3m-6 0h6" />
+            </svg>
+        </div>
+        <h1 class="text-3xl font-extrabold mb-2 text-white">D4Driving School</h1>
+        <p class="text-slate-400">Professional Motoring Lessons</p>
     </header>
 
     <main class="w-full max-w-4xl">
-        <div class="glass-card shadow-2xl overflow-hidden">
-            <div 
-              style="width:100%;height:100%;min-height:650px;" 
-              data-cal-link="d4driving" 
-              data-cal-namespace="" 
-              data-cal-config='{"layout":"month_view","theme":"dark"}'>
-            </div>
+        <div class="glass-card shadow-2xl">
+            <iframe 
+                src="https://cal.com/d4driving?embed=true" 
+                allowunfullsceen 
+                loading="lazy">
+            </iframe>
         </div>
     </main>
 
-    <script type="text/javascript">
-      (function (C, A, L) {
-        let p = function (a, ar) { a.q.push(ar); };
-        let d = C.document; C.Cal = C.Cal || function () {
-          let cal = C.Cal; let ar = arguments;
-          if (!cal.loaded) { cal.q = cal.q || []; p(cal, ar); return; }
-          p(cal, ar);
-        };
-        let js = d.createElement("script"); js.async = !0;
-        js.src = "https://app.cal.com/embed/embed.js";
-        let s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(js, s);
-        C.Cal("init", {origin:"https://app.cal.com"});
-        
-        // This tells the script to find the "data-cal-link" above
-        C.Cal("templateReinit");
-      })(window, "Cal");
-    </script>
+    <footer class="mt-8 text-slate-500 text-xs text-center">
+        © 2026 D4Driving School of Motoring
+    </footer>
 
 </body>
 </html>

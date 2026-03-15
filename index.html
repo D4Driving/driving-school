@@ -31,28 +31,28 @@
         <div class="glass-card rounded-3xl overflow-hidden shadow-2xl">
             <div id="my-cal-inline" style="width:100%;height:600px;overflow:scroll;"></div>
             <script type="text/javascript">
-            (function (C, A, L) {
-                let p = function (a, ar) { a.q.push(ar); };
-                let d = C.document; C.Cal = C.Cal || function () {
-                    let cal = C.Cal; let ar = arguments;
-                    if (!cal.loaded) { cal.q = cal.q || []; p(cal, ar); return; }
-                    p(cal, ar);
-                };
-                let js = d.createElement("script"); js.async = !0;
-                js.src = "https://app.cal.com/embed/embed.js";
-                let s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(js, s);
-                C.Cal("init", {origin:"https://app.cal.com"});
+           (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document; C.Cal = C.Cal || function () {
+      let cal = C.Cal; let ar = arguments;
+      if (!cal.loaded) { cal.q = cal.q || []; p(cal, ar); return; }
+      p(cal, ar);
+    };
+    let js = d.createElement("script"); js.async = !0;
+    js.src = "https://app.cal.com/embed/embed.js";
+    let s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(js, s);
+    C.Cal("init", {origin:"https://app.cal.com"});
 
-                // REPLACE 'YOUR_CAL_LINK' WITH YOUR ACTUAL CAL.COM SLUG
-                C.Cal("inline", {
-                    elementOrSelector: "#my-cal-inline",
-                    calLink: "d4driving", 
-                    layout: "month_view",
-                    theme: "dark"
-                });
+    // TRY THIS: Use your full username/slug here
+    // Example: "john-doe/60min"
+    C.Cal("inline", {
+      elementOrSelector: "#my-cal-inline",
+      calLink: "YOUR_USERNAME/YOUR_EVENT_SLUG", 
+      config: {"layout":"month_view", "theme":"dark"}
+    });
 
-                C.Cal("ui", {"styles":{"branding":{"brandColor":"#2563eb"}},"hideEventTypeDetails":false,"layout":"month_view"});
-            })(window, "Cal");
+    C.Cal("ui", {"theme":"dark","styles":{"branding":{"brandColor":"#2563eb"}},"hideEventTypeDetails":false,"layout":"month_view"});
+  })(window, "Cal");
             </script>
             </div>
 

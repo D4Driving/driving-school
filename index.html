@@ -29,6 +29,18 @@
             background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center;
             font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 100;
         }
+        @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 3)); } /* Adjust based on card width */
+}
+.reviews-track {
+    display: flex;
+    width: calc(250px * 6); /* Double the number of cards for infinite loop */
+    animation: scroll 30s linear infinite;
+}
+.reviews-track:hover {
+    animation-play-state: paused;
+}
     </style>
 </head>
 <body class="pb-20">
@@ -222,6 +234,52 @@
         </div>
     </section>
 
+<section class="max-w-6xl mx-auto py-12 overflow-hidden">
+        <h2 class="text-center text-blue-400 font-bold mb-8 uppercase tracking-widest text-xs">Student Success Stories</h2>
+        
+        <div class="relative">
+            <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#0f172a] to-transparent z-10"></div>
+            <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#0f172a] to-transparent z-10"></div>
+
+            <div class="reviews-track gap-6">
+                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4">"Passed first time with Robert! His YouTube videos helped so much with my nerves. Highly recommend."</p>
+                    <p class="text-white font-bold text-xs">— Sarah J., Peterborough</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4">"Mastered the Eye Roundabout thanks to the intensive course. Best instructor in the area."</p>
+                    <p class="text-white font-bold text-xs">— Michael T., Hampton</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4">"Took me to Grantham for my test. Robert knows the routes inside out. Worth every penny."</p>
+                    <p class="text-white font-bold text-xs">— David L., Werrington</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4 text-xs opacity-70">Finding what i need to work on to get me to test standard, explaining my misunderstanding of tricky rules.</p>
+                     <p class="text-white font-bold text-xs">— Jim Reeves, Peterborough</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4 text-xs opacity-70">Very friendly and talented instructor ever I met. Highly recommended</p>
+                    <p class="text-white font-bold text-xs">— Buddhika Anuradha, Peterborough</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4 text-xs opacity-70">Knowledgeable, helpful and I know I passed my test with full confidence.</p>
+                    <p class="text-white font-bold text-xs">— Chris Greenwood, Peterborough</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
     <section id="faq" class="max-w-4xl mx-auto px-4 py-12">
         <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest text-white">Common Questions</h2>
         

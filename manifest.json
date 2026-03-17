@@ -1,11 +1,19 @@
 {
   "name": "D4Driving School",
   "short_name": "D4Driving",
-  "start_url": "./index.html",
+  "description": "Professional Driving Lessons in Peterborough with Robert Szatkowski",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0f172a",
-  "theme_color": "#2563eb",
+  "theme_color": "#0f172a",
+  "orientation": "portrait",
   "icons": [
+    {
+      "src": "400dpiLogoCropped.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "400dpiLogoCropped.png",
       "sizes": "512x512",

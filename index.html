@@ -1,44 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "DrivingSchool",
-  "name": "D4Driving School of Motoring",
-  "image": "https://yourdomain.co.uk/400dpiLogoCropped.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Peterborough",
-    "addressRegion": "Cambridgeshire",
-    "addressCountry": "UK"
-  },
-  "url": "https://yourdomain.co.uk",
-  "telephone": "+447872347686",
-  "priceRange": "£40-£800",
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "52.5739",
-    "longitude": "-0.2477"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Driving Lessons",
-    "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Peterborough Driving Lessons" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Grantham Test Preparation" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kettering Test Preparation" } }
-    ]
-  }
-}
-</script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D4Driving | School of Motoring</title>
+    <title>D4Driving | School of Motoring Peterborough</title>
 
-<meta name="description" content="D4Driving School of Motoring - Expert driving instructor in Peterborough. Manual & Automatic lessons, intensive courses, and test prep for Grantham & Kettering.">
+    <meta name="description" content="D4Driving School of Motoring - Expert driving instructor in Peterborough. Manual & Automatic lessons, intensive courses, and test prep for Grantham & Kettering.">
     <meta name="keywords" content="Driving Instructor Peterborough, Driving Lessons Peterborough, Intensive Driving Course Peterborough, Grantham Test Prep, Kettering Driving Test, D4Driving Robert Szatkowski">
     <meta name="author" content="Robert Szatkowski">
     
@@ -46,6 +13,29 @@
     <meta property="og:description" content="Join 9,000+ subscribers learning to drive with Robert. Book your Peterborough driving lessons online.">
     <meta property="og:image" content="https://d4driving.co.uk/400dpiLogoCropped.png">
     <meta property="og:url" content="https://d4driving.co.uk">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DrivingSchool",
+      "name": "D4Driving School of Motoring",
+      "image": "https://d4driving.co.uk/400dpiLogoCropped.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Peterborough",
+        "addressRegion": "Cambridgeshire",
+        "addressCountry": "UK"
+      },
+      "url": "https://d4driving.co.uk",
+      "telephone": "+447872347686",
+      "priceRange": "£40-£800",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "52.5739",
+        "longitude": "-0.2477"
+      }
+    }
+    </script>
     
     <link rel="manifest" href="manifest.json">
     <script>
@@ -72,17 +62,17 @@
             font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 100;
         }
         @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-250px * 3)); } /* Adjust based on card width */
-}
-.reviews-track {
-    display: flex;
-    width: calc(250px * 6); /* Double the number of cards for infinite loop */
-    animation: scroll 30s linear infinite;
-}
-.reviews-track:hover {
-    animation-play-state: paused;
-}
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-280px * 6)); } 
+        }
+        .reviews-track {
+            display: flex;
+            width: calc(280px * 12); /* Double the cards for the infinite loop */
+            animation: scroll 40s linear infinite;
+        }
+        .reviews-track:hover {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 <body class="pb-20">

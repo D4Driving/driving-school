@@ -45,14 +45,13 @@ const Parser = require('rss-parser');
               const items = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
               
               const templateHtml = fs.readFileSync('post-template.html', 'utf8');
-              let blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
+              const blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
 
               let allCards = '';
               for (const item of items) {
                 const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
                 const fileName = slug + '.html';
                 
-                // Individual Page Generation
                 const dom = new JSDOM(templateHtml);
                 const doc = dom.window.document;
                 if (doc.getElementById('post-title')) doc.getElementById('post-title').innerHTML = item.title;
@@ -61,29 +60,29 @@ const Parser = require('rss-parser');
                 if (doc.getElementById('post-content')) doc.getElementById('post-content').innerHTML = item.fullContent || item.content || '';
                 fs.writeFileSync(fileName, dom.serialize());
 
-                // Build Card
-                allCards += `
-          <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
-              <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>${item.title}</h3>
-              <p class='text-slate-400 text-sm mt-2 line-clamp-2'>${item.contentSnippet || ''}</p>
-              <a href='${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
-          </article>`;
+                // Using standard quotes and + to avoid YAML backtick errors
+                allCards += '<article class="glass-card p-6 rounded-3xl hover:border-white/20 transition group">';
+                allCards += '<h3 class="text-lg font-bold mt-1 group-hover:text-blue-400">' + item.title + '</h3>';
+                allCards += '<p class="text-slate-400 text-sm mt-2 line-clamp-2">' + (item.contentSnippet || "") + '</p>';
+                allCards += '<a href="' + fileName + '" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>';
+                allCards += '</article>\n';
               }
 
-              // --- THE NUCLEAR FIX FOR POSITIONING ---
               const startMarker = '';
               const endMarker = '';
               
-              // We split the file into 3 pieces: Everything before, our cards, and everything after.
               const parts = blogIndexHtml.split(startMarker);
+              if (parts.length < 2) throw new Error('Could not find start marker');
+              
               const head = parts[0];
-              const tail = parts[1].split(endMarker)[1];
-
-              // Reassemble the file perfectly
+              const tailParts = parts[1].split(endMarker);
+              if (tailParts.length < 2) throw new Error('Could not find end marker');
+              
+              const tail = tailParts[1];
               const finalHtml = head + startMarker + '\n' + allCards + '\n' + endMarker + tail;
 
               fs.writeFileSync('blog.html', finalHtml, 'utf8');
-              console.log('✅ Success: Newest posts first and INSIDE the grid.');
+              console.log('Done!');
             } catch (err) {
               console.error('Error:', err.message);
               process.exit(1);

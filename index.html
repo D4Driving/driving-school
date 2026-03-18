@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D4Driving | School of Motoring Peterborough</title>
+    <title>Driving Lessons Peterborough | D4Driving School of Motoring</title>
 
     <meta name="description" content="D4Driving School of Motoring - Expert driving instructor in Peterborough. Manual & Automatic lessons, intensive courses, and test prep for Grantham & Kettering.">
     <meta name="keywords" content="Driving Instructor Peterborough, Driving Lessons Peterborough, Intensive Driving Course Peterborough, Grantham Test Prep, Kettering Driving Test, D4Driving Robert Szatkowski">
     <meta name="author" content="Robert Szatkowski">
+    <link rel="canonical" href="https://d4driving.co.uk">
     
     <meta property="og:title" content="D4Driving | Peterborough's Top-Rated Driving School">
     <meta property="og:description" content="Join 9,000+ subscribers learning to drive with Robert. Book your Peterborough driving lessons online.">
@@ -61,13 +62,22 @@
             background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center;
             font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 100;
         }
+        
+        /* The Secret to the Infinite Loop: 
+           The track moves 50% of its total length, which contains the first set of cards.
+        */
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-280px * 6)); } 
+            100% { transform: translateX(-50%); } 
+        }
+        .reviews-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
         }
         .reviews-track {
             display: flex;
-            width: calc(280px * 12); /* Double the cards for the infinite loop */
+            width: max-content; /* Auto-fit all cards side-by-side */
             animation: scroll 40s linear infinite;
         }
         .reviews-track:hover {
@@ -84,27 +94,27 @@
         <h1 class="text-4xl font-extrabold text-white mb-2 tracking-tight">D4Driving School of Motoring</h1>
         <p class="text-slate-400 text-lg">Your road to success starts here.</p>
         <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-slate-900/50 rounded-full border border-white/10">
-        <span class="relative flex h-3 w-3">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-        </span>
-        <span class="text-xs font-bold uppercase tracking-widest text-slate-200">
-            Current Status: <span class="text-green-400">Accepting New Students</span>
-        </span>
-    </div>
+            <span class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+            </span>
+            <span class="text-xs font-bold uppercase tracking-widest text-slate-200">
+                Current Status: <span class="text-green-400">Accepting New Students</span>
+            </span>
+        </div>
     </header>
 
-<div class="max-w-4xl mx-auto px-6 mb-12 flex flex-row gap-4">
-    <a href="#book" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-4 rounded-2xl font-extrabold shadow-lg shadow-blue-600/20 transition transform active:scale-95 flex items-center justify-center gap-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-        BOOK NOW
-    </a>
-    <a href="#prices" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white text-center py-4 rounded-2xl font-extrabold border border-white/5 transition transform active:scale-95 flex items-center justify-center gap-2">
-        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        PRICES
-    </a>
-</div>
-    
+    <div class="max-w-4xl mx-auto px-6 mb-12 flex flex-row gap-4">
+        <a href="#book" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-4 rounded-2xl font-extrabold shadow-lg shadow-blue-600/20 transition transform active:scale-95 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            BOOK NOW
+        </a>
+        <a href="#prices" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white text-center py-4 rounded-2xl font-extrabold border border-white/5 transition transform active:scale-95 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            PRICES
+        </a>
+    </div>
+
     <section class="max-w-4xl mx-auto px-6 mb-12">
         <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="block">
             <div class="glass-card p-6 rounded-3xl border-red-500/20 shadow-lg shadow-red-500/5 hover:border-red-500/40 transition-all transform hover:scale-[1.01]">
@@ -114,56 +124,43 @@
                     </div>
                     <div class="text-center md:text-left flex-1">
                         <h2 class="text-xl font-bold text-white mb-1">Learn with me on YouTube</h2>
-                        <p class="text-slate-400 text-sm">Join <span class="text-white font-bold text-lg">9,000</span> subscribers for free driving tips and mock tests!</p>
+                        <p class="text-slate-400 text-sm">Join <span class="text-white font-bold text-lg">9,000</span> subscribers for free tips!</p>
                     </div>
                     <div class="bg-red-600/10 px-6 py-2 rounded-xl border border-red-600/30 text-red-500 font-extrabold text-sm tracking-widest uppercase">Visit Channel</div>
                 </div>
             </div>
         </a>
     </section>
-    
-<section class="max-w-4xl mx-auto px-6 mb-12">
+
+    <section class="max-w-4xl mx-auto px-6 mb-12">
         <h3 class="text-blue-400 font-bold mb-4 text-center uppercase tracking-widest text-xs">Hall of Fame: Recent Passes</h3>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="glass-card aspect-square rounded-2xl overflow-hidden border-white/5 flex items-center justify-center relative group">
-                <img src="pass1.jpg" alt="Successful Student" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
-                <div class="absolute bottom-2 left-2 bg-blue-600 text-[10px] px-2 py-0.5 rounded-md font-bold">PASSED</div>
+            <div class="glass-card aspect-square rounded-2xl overflow-hidden relative group">
+                <img src="pass1.jpg" alt="Successful Student" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition" loading="lazy">
+                <div class="absolute bottom-2 left-2 bg-blue-600 text-[10px] px-2 py-0.5 rounded-md font-bold text-white">PASSED</div>
             </div>
-            <div class="glass-card aspect-square rounded-2xl overflow-hidden border-white/5 flex items-center justify-center relative group">
-                <img src="pass10.jpg" alt="Successful Student" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
-                <div class="absolute bottom-2 left-2 bg-blue-600 text-[10px] px-2 py-0.5 rounded-md font-bold">PASSED</div>
+            <div class="glass-card aspect-square rounded-2xl overflow-hidden relative group">
+                <img src="pass10.jpg" alt="Successful Student" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition" loading="lazy">
+                <div class="absolute bottom-2 left-2 bg-blue-600 text-[10px] px-2 py-0.5 rounded-md font-bold text-white">PASSED</div>
             </div>
-            <div class="glass-card aspect-square rounded-2xl overflow-hidden border-white/5 flex items-center justify-center relative group">
-                <img src="pass8.jpg" alt="Successful Student" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition">
-                <div class="absolute bottom-2 left-2 bg-blue-600 text-[10px] px-2 py-0.5 rounded-md font-bold">PASSED</div>
+            <div class="glass-card aspect-square rounded-2xl overflow-hidden relative group">
+                <img src="pass8.jpg" alt="Successful Student" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition" loading="lazy">
+                <div class="absolute bottom-2 left-2 bg-blue-600 text-[10px] px-2 py-0.5 rounded-md font-bold text-white">PASSED</div>
             </div>
             <div class="glass-card aspect-square rounded-2xl border-dashed border-white/20 flex flex-col items-center justify-center text-center p-2">
                 <span class="text-blue-400 text-xl mb-1">+</span>
                 <span class="text-slate-500 text-[10px] font-bold uppercase">Your Photo Here</span>
             </div>
         </div>
-        <p class="text-center text-slate-500 text-[10px] mt-4 italic">Join the hundreds of students who passed first time in Peterborough.</p>
-    </section>
-    
-    <section class="max-w-4xl mx-auto px-6 mb-12">
-        <h3 class="text-blue-400 font-bold mb-4 text-center uppercase tracking-widest text-xs">Featured Training Video</h3>
-        <div class="glass-card p-2 rounded-3xl overflow-hidden shadow-2xl">
-            <div class="relative w-full" style="padding-bottom: 56.25%;">
-                <iframe class="absolute top-0 left-0 w-full h-full rounded-2xl" src="https://www.youtube.com/embed/oD05j9HFGbM" title="D4Driving Training Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div class="p-4 text-center">
-                <p class="text-slate-400 text-xs italic">Watch how we prepare for the practical test in Peterborough</p>
-            </div>
-        </div>
     </section>
 
-<section id="blog" class="max-w-4xl mx-auto px-6 mb-12">
+    <section id="blog" class="max-w-4xl mx-auto px-6 mb-12">
         <div class="flex justify-between items-end mb-8">
             <div>
                 <h2 class="text-2xl font-bold text-white uppercase tracking-widest">Driving Tips</h2>
                 <p class="text-blue-400 text-sm">Expert advice for Peterborough learners</p>
             </div>
-            <a href="blog.htm" class="text-slate-500 text-xs font-bold hover:text-white transition underline decoration-blue-500/30">VIEW ALL</a>
+            <a href="blog.html" class="text-slate-500 text-xs font-bold hover:text-white transition underline decoration-blue-500/30">VIEW ALL</a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -175,8 +172,8 @@
                 <div class="p-6">
                     <span class="text-blue-500 text-[10px] font-bold uppercase tracking-widest">Test Prep</span>
                     <h3 class="text-lg font-bold text-white mt-1 mb-2 leading-tight">Mastering Peterborough's Toughest Roundabouts</h3>
-                    <p class="text-slate-400 text-sm line-clamp-2 mb-4">The Ortons and Hampton junctions can be a nightmare for learners. Here's my guide to lane discipline...</p>
-                    <a href="blog.html">" class="text-white text-xs font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                    <p class="text-slate-400 text-sm line-clamp-2 mb-4">Orton and Hampton junctions can be tricky. Here's my guide to lane discipline...</p>
+                    <a href="blog.html" class="text-white text-xs font-bold flex items-center gap-2 hover:gap-3 transition-all">
                         READ FULL GUIDE <span class="text-blue-400">→</span>
                     </a>
                 </div>
@@ -190,9 +187,9 @@
             </div>
         </div>
     </section>
-    
-  <section id="prices" class="max-w-5xl mx-auto px-6 py-12">
-        <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest text-white">Lesson Packages</h2>
+
+    <section id="prices" class="max-w-5xl mx-auto px-6 py-12">
+        <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest">Lesson Packages</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             <div class="glass-card p-6 rounded-3xl text-center border-white/5">
@@ -221,205 +218,83 @@
             </div>
         </div>
 
-        <h3 class="text-xl font-bold mb-6 text-center text-white/50 uppercase tracking-widest text-xs">Secure Block Bookings</h3>
+        <h3 class="text-center text-slate-500 uppercase tracking-[0.2em] text-[10px] font-bold mb-6">Secure Block Bookings</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div class="glass-card p-6 rounded-3xl text-center">
                 <h3 class="text-lg font-bold mb-2">10 Hours</h3>
                 <p class="text-3xl font-extrabold mb-4">£380</p>
-                <a href="https://buy.stripe.com/9B6dRa5Hsenz1Ae70zbII00" target="_blank" class="block w-full py-2 bg-slate-700 rounded-xl font-bold text-sm hover:bg-slate-600 transition">Buy Package</a>
+                <a href="https://buy.stripe.com/9B6dRa5Hsenz1Ae70zbII00" target="_blank" class="block w-full py-3 bg-slate-700 rounded-xl font-bold text-sm hover:bg-slate-600 transition">Buy Package</a>
             </div>
             <div class="glass-card p-6 rounded-3xl text-center border-blue-500/40 relative scale-105 shadow-xl shadow-blue-500/5">
-                <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-tighter">Best Value</span>
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-tighter text-white">Best Value</span>
                 <h3 class="text-lg font-bold mb-2">15 Hours</h3>
                 <p class="text-3xl font-extrabold mb-4">£540</p>
-                <a href="https://buy.stripe.com/eVq7sM1rc2ERgv8doXbII01" target="_blank" class="block w-full py-2 bg-blue-600 rounded-xl font-bold text-sm hover:bg-blue-500 transition">Buy Package</a>
+                <a href="https://buy.stripe.com/eVq7sM1rc2ERgv8doXbII01" target="_blank" class="block w-full py-3 bg-blue-600 rounded-xl font-bold text-sm hover:bg-blue-500 transition text-white">Buy Package</a>
             </div>
             <div class="glass-card p-6 rounded-3xl text-center">
                 <h3 class="text-lg font-bold mb-2">20 Hours</h3>
                 <p class="text-3xl font-extrabold mb-4">£720</p>
-                <a href="https://buy.stripe.com/eVqeVe2vg6V73Im84DbII02" target="_blank" class="block w-full py-2 bg-slate-700 rounded-xl font-bold text-sm hover:bg-slate-600 transition">Buy Package</a>
-            </div>
-        </div>
-
-<h3 class="text-xl font-bold mb-6 text-center text-blue-400 uppercase tracking-widest text-sm">Out-of-Town Test Prep</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-    <div class="glass-card p-6 rounded-3xl border-blue-500/10 hover:border-blue-500/30 transition">
-        <h3 class="text-lg font-bold mb-1 text-white">Grantham Test Prep</h3>
-        <p class="text-blue-400 text-xs font-bold uppercase mb-4">4 Hour Intensive • £150</p>
-        <p class="text-slate-400 text-sm mb-6">In-depth route training and mock test at the Grantham test center. Perfect for students testing outside Peterborough.</p>
-        
-        <a href="#book" class="flex items-center justify-center w-full h-12 bg-blue-600 rounded-xl font-extrabold text-sm text-white hover:bg-blue-500 transition shadow-lg shadow-blue-600/10 uppercase tracking-wider">
-            Book & Pay
-        </a>
-    </div>
-
-    <div class="glass-card p-6 rounded-3xl border-blue-500/10 hover:border-blue-500/30 transition">
-        <h3 class="text-lg font-bold mb-1 text-white">Kettering Test Prep</h3>
-        <p class="text-blue-400 text-xs font-bold uppercase mb-4">4 Hour Intensive • £150</p>
-        <p class="text-slate-400 text-sm mb-6">Comprehensive familiarization of Kettering's key test routes and junctions to ensure you are test-ready.</p>
-        
-        <a href="#book" class="flex items-center justify-center w-full h-12 bg-blue-600 rounded-xl font-extrabold text-sm text-white hover:bg-blue-500 transition shadow-lg shadow-blue-600/10 uppercase tracking-wider">
-            Book & Pay
-        </a>
-    </div>
-</div>
-
-        <div class="max-w-md mx-auto">
-            <div class="glass-card p-8 rounded-3xl text-center border-green-500/30 shadow-lg shadow-green-500/5">
-                <div class="flex justify-center mb-4 text-green-500">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Semi-Intensive Course</h3>
-                <p class="text-4xl font-extrabold mb-2">£800</p>
-                <p class="text-slate-400 text-sm mb-6 uppercase tracking-widest font-bold">21.5 Hours Fast-Track</p>
-                <a href="https://buy.stripe.com/cNi5kE9XI3IVfr484DbII03" target="_blank" class="block w-full py-3 bg-green-600 rounded-xl font-bold hover:bg-green-500 transition uppercase tracking-widest text-xs shadow-lg shadow-green-600/20">Secure Your Course</a>
+                <a href="https://buy.stripe.com/eVqeVe2vg6V73Im84DbII02" target="_blank" class="block w-full py-3 bg-slate-700 rounded-xl font-bold text-sm hover:bg-slate-600 transition">Buy Package</a>
             </div>
         </div>
     </section>
 
-<section id="book" class="max-w-4xl mx-auto px-4 py-12">
-    <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest text-white tracking-tighter">Reserve Your Slot</h2>
-    
-    <div class="glass-card rounded-3xl shadow-2xl border border-white/10 overflow-y-auto" 
-         style="height: 700px; -webkit-overflow-scrolling: touch;">
-        
-        <iframe 
-            src="https://cal.com/d4driving?embed=true" 
-            style="width: 1px; min-width: 100%; height: 1200px; border: none;" 
-            scrolling="no"
-            allowfullscreen
-            loading="lazy">
-        </iframe>
-        
-    </div>
-    
-    <div class="mt-4 flex flex-col items-center gap-2">
-        <p class="text-slate-500 text-[10px] italic">Can't scroll? Swipe inside the box</p>
-        <a href="https://cal.com/d4driving" target="_blank" class="bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full text-xs font-bold border border-blue-400/20">
-            Open Fullscreen Booking
-        </a>
-    </div>
-</section>
+    <section id="book" class="max-w-4xl mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest">Reserve Your Slot</h2>
+        <div class="glass-card rounded-3xl border border-white/10 overflow-hidden" style="height: 700px;">
+            <iframe src="https://cal.com/d4driving?embed=true" style="width: 100%; height: 100%; border: none;" scrolling="yes" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </section>
 
-<section class="max-w-6xl mx-auto py-12 overflow-hidden">
+    <section class="max-w-6xl mx-auto py-12">
         <h2 class="text-center text-blue-400 font-bold mb-8 uppercase tracking-widest text-xs">Student Success Stories</h2>
         
-        <div class="relative">
-            <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#0f172a] to-transparent z-10"></div>
-            <div class="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#0f172a] to-transparent z-10"></div>
+        <div class="reviews-container">
+            <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0f172a] to-transparent z-10"></div>
+            <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0f172a] to-transparent z-10"></div>
 
-            <div class="reviews-track gap-6">
-                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+            <div class="reviews-track">
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
                     <div class="flex text-yellow-500 mb-3">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-4">"Passed first time with Robert! His YouTube videos helped so much with my nerves. Highly recommend."</p>
+                    <p class="text-slate-300 text-sm italic mb-4">"Passed first time with Robert! His YouTube videos helped so much with my nerves."</p>
                     <p class="text-white font-bold text-xs">— Sarah J., Peterborough</p>
                 </div>
-
-                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
                     <div class="flex text-yellow-500 mb-3">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-4">"Mastered the Eye Roundabout thanks to the intensive course. Best instructor in the area."</p>
+                    <p class="text-slate-300 text-sm italic mb-4">"Mastered the Eye Roundabout thanks to the intensive course. Best in the area."</p>
                     <p class="text-white font-bold text-xs">— Michael T., Hampton</p>
                 </div>
-
-                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
                     <div class="flex text-yellow-500 mb-3">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-4">"Took me to Grantham for my test. Robert knows the routes inside out. Worth every penny."</p>
+                    <p class="text-slate-300 text-sm italic mb-4">"Robert knows the Grantham routes inside out. Worth every penny."</p>
                     <p class="text-white font-bold text-xs">— David L., Werrington</p>
                 </div>
-
-                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
                     <div class="flex text-yellow-500 mb-3">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-4 text-xs opacity-70">Finding what i need to work on to get me to test standard, explaining my misunderstanding of tricky rules.</p>
-                     <p class="text-white font-bold text-xs">— Jim Reeves, Peterborough</p>
+                    <p class="text-slate-300 text-sm italic mb-4">"Knowledgeable, helpful and I passed my test with full confidence."</p>
+                    <p class="text-white font-bold text-xs">— Chris G., Peterborough</p>
                 </div>
-                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
                     <div class="flex text-yellow-500 mb-3">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-4 text-xs opacity-70">Very friendly and talented instructor ever I met. Highly recommended</p>
-                    <p class="text-white font-bold text-xs">— Buddhika Anuradha, Peterborough</p>
+                    <p class="text-slate-300 text-sm italic mb-4">"Passed first time with Robert! His YouTube videos helped so much with my nerves."</p>
+                    <p class="text-white font-bold text-xs">— Sarah J., Peterborough</p>
                 </div>
-                <div class="glass-card p-6 rounded-3xl w-[280px] shrink-0">
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
                     <div class="flex text-yellow-500 mb-3">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-4 text-xs opacity-70">Knowledgeable, helpful and I know I passed my test with full confidence.</p>
-                    <p class="text-white font-bold text-xs">— Chris Greenwood, Peterborough</p>
+                    <p class="text-slate-300 text-sm italic mb-4">"Mastered the Eye Roundabout thanks to the intensive course. Best in the area."</p>
+                    <p class="text-white font-bold text-xs">— Michael T., Hampton</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4">"Robert knows the Grantham routes inside out. Worth every penny."</p>
+                    <p class="text-white font-bold text-xs">— David L., Werrington</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4">"Knowledgeable, helpful and I passed my test with full confidence."</p>
+                    <p class="text-white font-bold text-xs">— Chris G., Peterborough</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    
-    <section id="faq" class="max-w-4xl mx-auto px-4 py-12">
-        <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest text-white">Common Questions</h2>
-        
-        <div class="mb-8">
-            <h3 class="text-blue-400 font-bold mb-4 flex items-center gap-2">
-                <span class="bg-blue-600/20 px-2 py-1 rounded text-xs">Section 1</span> Getting Started (Na start)
-            </h3>
-            <div class="space-y-4">
-                <details class="glass-card p-4 rounded-2xl cursor-pointer group">
-                    <summary class="font-semibold text-slate-200 list-none flex justify-between items-center">Do I need to pass my Theory Test before starting? <span class="group-open:rotate-180 transition-transform text-blue-500">▼</span></summary>
-                    <p class="text-slate-400 text-sm mt-3">No, you don't! You can start practical lessons as soon as you have your Provisional License. However, you must pass Theory before your final Practical Test.</p>
-                </details>
-                <details class="glass-card p-4 rounded-2xl cursor-pointer group">
-                    <summary class="font-semibold text-slate-200 list-none flex justify-between items-center">Which areas of Peterborough do you cover? <span class="group-open:rotate-180 transition-transform text-blue-500">▼</span></summary>
-                    <p class="text-slate-400 text-sm mt-3">Hampton, Orton, Werrington, Gunthorpe, Fengate and more.</p>
-                </details>
-                <details class="glass-card p-4 rounded-2xl cursor-pointer group">
-                    <summary class="font-semibold text-slate-200 list-none flex justify-between items-center">Manual or Automatic? <span class="group-open:rotate-180 transition-transform text-blue-500">▼</span></summary>
-                    <p class="text-slate-400 text-sm mt-3">Both! Toyota Aygo X (Manual) or Toyota Yaris Cross (Automatic).</p>
-                </details>
-            </div>
-        </div>
-
-        <div class="mb-8">
-            <h3 class="text-blue-400 font-bold mb-4 flex items-center gap-2">
-                <span class="bg-blue-600/20 px-2 py-1 rounded text-xs">Section 2</span> Booking & Payments (Płatności)
-            </h3>
-            <div class="space-y-4">
-                <details class="glass-card p-4 rounded-2xl cursor-pointer group border-blue-500/10">
-                    <summary class="font-semibold text-slate-200 list-none flex justify-between items-center text-blue-300">Bank details for transfers <span class="group-open:rotate-180 transition-transform text-blue-500">▼</span></summary>
-                    <div class="bg-slate-900/50 p-4 rounded-xl mt-3 text-slate-300 text-sm font-mono border border-white/5">
-                        Bank: Starling Bank (Business)<br>Name: Robert Szatkowski<br>Sort Code: 60-83-71<br>Account No: 47700174<br>
-                        <span class="text-blue-400 italic text-xs">Ref: Use your Name</span>
-                    </div>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-4xl mx-auto px-4 py-8 text-center">
-        <div class="glass-card p-8 rounded-3xl border-yellow-500/20 shadow-lg shadow-yellow-500/5">
-            <h3 class="text-xl font-bold mb-2">Happy with your progress?</h3>
-            <p class="text-slate-400 text-sm mb-6">Your feedback helps other learners find me!</p>
-            <a href="https://www.google.com/search?q=d4driving" target="_blank" class="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-slate-900 px-8 py-3 rounded-full font-bold transition transform hover:scale-105">
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                Rate My Lesson
-            </a>
-        </div>
-    </section>
-
-    <a href="https://wa.me/447872347686?text=Hi%20Robert!%20I'm%20interested%20in%20driving%20lessons." class="wa-float flex items-center justify-center" target="_blank">
-        <svg viewBox="0 0 32 32" class="w-8 h-8 fill-current"><path d="M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.236-.73-3.82-.888-3.96-.033-.033-.172-.03-.285-.03-.303 0-1.41.45-1.41 1.14 0 .395.213.814.303 1.11 1.32 4.39 3.732 7.429 7.329 8.798.36.135.774.243 1.148.243.716 0 1.29-1.335 1.405-1.615a.521.521 0 0 0 .045-.21c0-.337-3.412-1.686-3.688-1.686zM16 30a14 14 0 1 1 14-14 14.016 14.016 0 0 1-14 14zm0-2a12 12 0 1 0-12-12 12.014 12.014 0 0 0 12 12z"></path></svg>
-    </a>
-
-<section class="max-w-4xl mx-auto px-6 py-8">
-        <details class="glass-card p-4 rounded-2xl cursor-pointer group border-white/5">
-            <summary class="text-slate-500 text-xs font-bold uppercase tracking-widest list-none flex justify-center items-center gap-2">
-                Important Booking Terms
-                <span class="group-open:rotate-180 transition-transform">▼</span>
-            </summary>
-            <div class="mt-4 text-[11px] text-slate-400 leading-relaxed space-y-2">
-                <p><strong>48-Hour Cancellation:</strong> Any lessons cancelled with less than 48 hours' notice may be charged at the full rate. This allows me to offer the slot to other students.</p>
-                <p><strong>Block Bookings:</strong> All block bookings are valid for 6 months from the date of purchase and are non-refundable once the first lesson has commenced.</p>
-                <p><strong>Practical Tests:</strong> Use of the instructor's car for a driving test is subject to the student reaching a safe, test-standard level of driving.</p>
-            </div>
-        </details>
-    </section>
-    
-    <footer class="text-center text-slate-600 text-sm p-8">
-        © 2026 D4Driving School of Motoring. Built for Excellence.
-    </footer>
-
-
-    
-</body>
-</html>
+    </

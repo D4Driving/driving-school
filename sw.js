@@ -1,4 +1,4 @@
-const CACHE_NAME = 'd4driving-v2'; // Changed to v2
+const CACHE_NAME = 'd4driving-v3'; // Changed to v3
 const assets = [
   './',
   './index.html',

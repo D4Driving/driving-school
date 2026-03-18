@@ -29,14 +29,12 @@ jobs:
           npm init -y > /dev/null
           npm install rss-parser jsdom > /dev/null
           node -e "
-          const Parser = require('rss-parser');
+const Parser = require('rss-parser');
           const fs = require('fs');
           const { JSDOM } = require('jsdom');
           
           const parser = new Parser({
-            customFields: {
-              item: [['content:encoded', 'fullContent']],
-            },
+            customFields: { item: [['content:encoded', 'fullContent']] },
             headers: {'User-Agent': 'D4Driving-Bot/4.0'},
           });
 
@@ -44,14 +42,8 @@ jobs:
             try {
               console.log('Fetching feed...');
               const feed = await parser.parseURL(process.env.RSS_URL);
-              
-              // 1. Sort items so newest is first
               const items = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
               
-              if (!fs.existsSync('post-template.html') || !fs.existsSync('blog.html')) {
-                throw new Error('Missing blog.html or post-template.html');
-              }
-
               const templateHtml = fs.readFileSync('post-template.html', 'utf8');
               let blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
 
@@ -60,37 +52,38 @@ jobs:
                 const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
                 const fileName = slug + '.html';
                 
-                // --- Generate Individual Article Page ---
+                // Individual Page Generation
                 const dom = new JSDOM(templateHtml);
                 const doc = dom.window.document;
                 if (doc.getElementById('post-title')) doc.getElementById('post-title').innerHTML = item.title;
                 const formattedDate = new Date(item.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
                 if (doc.getElementById('post-date')) doc.getElementById('post-date').innerHTML = formattedDate;
                 if (doc.getElementById('post-content')) doc.getElementById('post-content').innerHTML = item.fullContent || item.content || '';
-
                 fs.writeFileSync(fileName, dom.serialize());
 
-                // --- Build Card for Grid ---
-                allCards += \`
+                // Build Card
+                allCards += `
           <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
-              <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>\${item.title}</h3>
-              <p class='text-slate-400 text-sm mt-2 line-clamp-2'>\${item.contentSnippet || ''}</p>
-              <a href='\${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
-          </article>\`;
+              <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>${item.title}</h3>
+              <p class='text-slate-400 text-sm mt-2 line-clamp-2'>${item.contentSnippet || ''}</p>
+              <a href='${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
+          </article>`;
               }
 
-              // --- Inject into Markers ---
+              // --- THE NUCLEAR FIX FOR POSITIONING ---
               const startMarker = '';
               const endMarker = '';
               
-              if (blogIndexHtml.includes(startMarker) && blogIndexHtml.includes(endMarker)) {
-                const startIndex = blogIndexHtml.indexOf(startMarker) + startMarker.length;
-                const endIndex = blogIndexHtml.indexOf(endMarker);
-                blogIndexHtml = blogIndexHtml.substring(0, startIndex) + '\n' + allCards + '\n' + blogIndexHtml.substring(endIndex);
-              }
+              // We split the file into 3 pieces: Everything before, our cards, and everything after.
+              const parts = blogIndexHtml.split(startMarker);
+              const head = parts[0];
+              const tail = parts[1].split(endMarker)[1];
 
-              fs.writeFileSync('blog.html', blogIndexHtml);
-              console.log('Sync Successful.');
+              // Reassemble the file perfectly
+              const finalHtml = head + startMarker + '\n' + allCards + '\n' + endMarker + tail;
+
+              fs.writeFileSync('blog.html', finalHtml, 'utf8');
+              console.log('✅ Success: Newest posts first and INSIDE the grid.');
             } catch (err) {
               console.error('Error:', err.message);
               process.exit(1);

@@ -20,9 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
-
-     # ... (Keep the top part of your .yml the same) ...
+          node-version: '24'
 
       - name: Sync Soro Articles
         env:
@@ -34,10 +32,16 @@ jobs:
           const Parser = require('rss-parser');
           const fs = require('fs');
           const { JSDOM } = require('jsdom');
-          const parser = new Parser();
+          const parser = new Parser({
+            customFields: {
+              item: [['content:encoded', 'contentEncoded']],
+            },
+            headers: {'User-Agent': 'D4Driving-Bot/3.0'},
+          });
 
           (async () => {
             try {
+              console.log('Fetching feed...');
               const feed = await parser.parseURL(process.env.RSS_URL);
               const templateHtml = fs.readFileSync('post-template.html', 'utf8');
               let blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
@@ -46,53 +50,53 @@ jobs:
                 const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
                 const fileName = slug + '.html';
                 
-                // Even if file exists, we'll recreate it to fix the blank template issue
                 console.log('Processing: ' + item.title);
                 
                 const dom = new JSDOM(templateHtml);
                 const document = dom.window.document;
 
-                // 1. Inject Title
-                const titleEl = document.getElementById('post-title');
-                if (titleEl) titleEl.innerHTML = item.title;
+                // 1. Title & Meta
+                if (document.getElementById('post-title')) document.getElementById('post-title').innerHTML = item.title;
+                if (document.getElementById('meta-title')) document.getElementById('meta-title').innerHTML = item.title + ' | D4Driving Blog';
 
-                // 2. Inject Date
-                const dateEl = document.getElementById('post-date');
-                if (dateEl) dateEl.innerHTML = new Date(item.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+                // 2. Date
+                if (document.getElementById('post-date')) {
+                  document.getElementById('post-date').innerHTML = new Date(item.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+                }
 
-                // 3. Inject Content
-                const contentEl = document.getElementById('post-content');
-                if (contentEl) contentEl.innerHTML = item.content;
+                // 3. SMART CONTENT INJECTION (The Fix)
+                const fullContent = item.contentEncoded || item.content || item.description || 'Content currently unavailable.';
+                if (document.getElementById('post-content')) {
+                  document.getElementById('post-content').innerHTML = fullContent;
+                }
 
-                // 4. Update Meta Title for SEO
-                const headTitle = document.querySelector('title');
-                if (headTitle) headTitle.innerHTML = item.title + ' | D4Driving Peterborough';
-
+                // Save/Overwrite the file
                 fs.writeFileSync(fileName, dom.serialize());
 
-                // Update blog index if not already linked
+                // 4. Update Blog Index if link missing
                 if (!blogIndexHtml.includes(fileName)) {
                   const newCard = \`
-                  <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
-                      <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>\${item.title}</h3>
-                      <a href='\${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block'>Read Full Article →</a>
-                  </article>\`;
+          <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
+              <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>\${item.title}</h3>
+              <p class='text-slate-400 text-sm mt-2 line-clamp-2'>\${item.contentSnippet || ''}</p>
+              <a href='\${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
+          </article>
+          \`;
                   blogIndexHtml = blogIndexHtml.replace('', '' + newCard);
                 }
               }
               fs.writeFileSync('blog.html', blogIndexHtml);
+              console.log('Sync complete.');
             } catch (err) {
               console.error('Error:', err.message);
             }
           })();
           "
 
-# ... (Keep the Commit/Push part the same) ...
-
       - name: Commit and Push
         run: |
           git config --global user.name "D4Driving-Bot"
           git config --global user.email "bot@d4driving.co.uk"
           git add .
-          git commit -m "Automated Blog Update" || echo "Nothing to commit"
+          git commit -m "Full Content Sync - March 2026" || echo "No changes"
           git push

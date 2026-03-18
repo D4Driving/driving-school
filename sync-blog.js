@@ -2,7 +2,7 @@ const RSS_PARSER = require('rss-parser');
 const fs = require('fs');
 const parser = new RSS_PARSER();
 
-// 1. Replace with your actual Soro RSS Feed URL
+// 1. REPLACE THIS WITH YOUR REAL SORO FEED URL
 const SORO_FEED_URL = 'https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032';
 
 async function sync() {
@@ -14,9 +14,9 @@ async function sync() {
         
         feed.items.forEach(item => {
             console.log(`Processing: ${item.title}`);
+            // Creates a link-friendly version of the title
             const slug = item.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + '.html';
             
-            // This matches the exact "glass-card" design from your blog.html
             htmlContent += `
 <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
     <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>${item.title}</h3>
@@ -25,14 +25,10 @@ async function sync() {
 </article>\n`;
         });
 
-        // 2. Read your blog.html file
         let blogHtml = fs.readFileSync('blog.html', 'utf8');
-
-        // 3. Define the markers
         const startMarker = '';
         const endMarker = '';
 
-        // 4. Inject the new content between the markers
         const startIndex = blogHtml.indexOf(startMarker) + startMarker.length;
         const endIndex = blogHtml.indexOf(endMarker);
 

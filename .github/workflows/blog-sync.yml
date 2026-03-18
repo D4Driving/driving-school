@@ -1,8 +1,8 @@
 name: Soro Blog Sync
 on:
   schedule:
-    - cron: '0 * * * *' 
-  workflow_dispatch: 
+    - cron: '0 * * * *' # Runs every hour
+  workflow_dispatch: # Allows manual triggering
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -33,77 +33,42 @@ jobs:
           const fs = require('fs');
           const { JSDOM } = require('jsdom');
           
-          // Specifically mapping Soro's full content field
           const parser = new Parser({
             customFields: {
-              item: [
-                ['content:encoded', 'fullContent'],
-              ],
+              item: [['content:encoded', 'fullContent']],
             },
             headers: {'User-Agent': 'D4Driving-Bot/4.0'},
           });
 
           (async () => {
             try {
-              console.log('Fetching feed from Soro...');
+              console.log('Fetching feed...');
               const feed = await parser.parseURL(process.env.RSS_URL);
+              
+              // 1. Sort items so newest is first
+              const items = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+              
               const templateHtml = fs.readFileSync('post-template.html', 'utf8');
               let blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
 
-              for (const item of feed.items) {
+              for (const item of items) {
                 const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
                 const fileName = slug + '.html';
                 
-                // Log what we found to the GitHub console for debugging
-                console.log('Processing: ' + item.title);
-                
+                // --- Generate Individual Article Page ---
                 const dom = new JSDOM(templateHtml);
                 const document = dom.window.document;
-
-                // Inject Title & Meta
+                
                 if (document.getElementById('post-title')) document.getElementById('post-title').innerHTML = item.title;
                 if (document.getElementById('meta-title')) document.getElementById('meta-title').innerHTML = item.title + ' | D4Driving Blog';
-
-                // Inject Date
-                if (document.getElementById('post-date')) {
-                  document.getElementById('post-date').innerHTML = new Date(item.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-                }
-
-                // THE FIX: Prioritize the fullContent field Matt mentioned
-                const articleBody = item.fullContent || item.content || item.description || 'Content loading error.';
                 
-                if (document.getElementById('post-content')) {
-                  document.getElementById('post-content').innerHTML = articleBody;
-                  console.log('Successfully injected ' + articleBody.length + ' characters.');
-                }
+                const formattedDate = new Date(item.pubDate).toLocaleDateString('en-GB', { 
+                  day: 'numeric', month: 'long', year: 'numeric' 
+                });
+                if (document.getElementById('post-date')) document.getElementById('post-date').innerHTML = formattedDate;
 
-                // Save the full article page
-                fs.writeFileSync(fileName, dom.serialize());
+                // Use fullContent from Soro as Matt suggested
+                const articleBody = item.fullContent || item.content || item.description || 'Content unavailable.';
+                if (document.getElementById('post-content')) document.getElementById('post-content').innerHTML = articleBody;
 
-                // Update the Blog List (Summary only for the list)
-                if (!blogIndexHtml.includes(fileName)) {
-                  const newCard = \`
-          <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
-              <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>\${item.title}</h3>
-              <p class='text-slate-400 text-sm mt-2 line-clamp-2'>\${item.contentSnippet || ''}</p>
-              <a href='\${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
-          </article>
-          \`;
-                  blogIndexHtml = blogIndexHtml.replace('', '' + newCard);
-                }
-              }
-              fs.writeFileSync('blog.html', blogIndexHtml);
-              console.log('Sync complete. All articles updated.');
-            } catch (err) {
-              console.error('Sync Error:', err.message);
-            }
-          })();
-          "
-
-      - name: Commit and Push
-        run: |
-          git config --global user.name "D4Driving-Bot"
-          git config --global user.email "bot@d4driving.co.uk"
-          git add .
-          git commit -m "Fix: Explicitly mapped content:encoded for full articles" || echo "No changes"
-          git push
+                fs.writeFileSync(fileName

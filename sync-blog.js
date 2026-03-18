@@ -2,20 +2,29 @@ const RSS_PARSER = require('rss-parser');
 const fs = require('fs');
 const parser = new RSS_PARSER();
 
-// 1. Double check this ID is correct!
+// 1. MAKE SURE YOUR ID IS CORRECT HERE
 const SORO_FEED_URL = 'https://trysoro.com/feed/YOUR_ID_HERE';
 
 async function sync() {
     try {
-        console.log('Fetching from Soro...');
+        console.log('--- STARTING CLEAN SYNC ---');
         const feed = await parser.parseURL(SORO_FEED_URL);
         
-        // SORT: Newest First
-        const items = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+        if (!feed.items || feed.items.length === 0) {
+            console.error('❌ No items found in Soro feed.');
+            return;
+        }
+
+        // FORCE SORT: Newest First (Checking date mathematically)
+        const sortedItems = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 
         let blogCards = '';
-        items.forEach(item => {
-            const slug = item.title.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '') + '.html';
+        sortedItems.forEach(item => {
+            const slug = item.title.toLowerCase().trim()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/[\s_-]+/g, '-')
+                .replace(/^-+|-+$/g, '') + '.html';
+            
             blogCards += `
         <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
             <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>${item.title}</h3>
@@ -24,8 +33,8 @@ async function sync() {
         </article>`;
         });
 
-        // 2. THIS BUILDS THE ENTIRE HTML FILE FROM SCRATCH
-        const fullPageHtml = `<!DOCTYPE html>
+        // THE FULL TEMPLATE
+        const newHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -61,8 +70,13 @@ async function sync() {
 </body>
 </html>`;
 
-        fs.writeFileSync('blog.html', fullPageHtml);
-        console.log('✅ Success! blog.html rewritten from scratch (Newest First).');
+        // 🚨 THE CRITICAL STEP: DELETE AND REWRITE
+        if (fs.existsSync('blog.html')) {
+            fs.unlinkSync('blog.html'); 
+        }
+        fs.writeFileSync('blog.html', newHtml, { encoding: 'utf8', flag: 'w' });
+        
+        console.log('✅ CLEAN SYNC COMPLETE: Newest posts first.');
 
     } catch (error) {
         console.error('❌ Sync failed:', error);

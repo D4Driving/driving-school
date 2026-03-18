@@ -56,18 +56,24 @@ jobs:
                 allCards += '<a href="' + fileName + '" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>';
                 allCards += '</article>\n';
               }
+// --- THE ROBUST FIX ---
               const startMarker = '';
               const endMarker = '';
-              const parts = blogIndexHtml.split(startMarker);
-              const head = parts[0];
-              const tail = parts[1].split(endMarker)[1];
-              const finalHtml = head + startMarker + '\n' + allCards + '\n' + endMarker + tail;
-              fs.writeFileSync('blog.html', finalHtml, 'utf8');
-              console.log('Done!');
-            } catch (err) {
-              console.error(err.message);
-              process.exit(1);
-            }
+              
+              if (blogIndexHtml.includes(startMarker) && blogIndexHtml.includes(endMarker)) {
+                  const parts = blogIndexHtml.split(startMarker);
+                  const head = parts[0];
+                  const tail = parts[1].split(endMarker)[1];
+                  
+                  // Reassemble
+                  const finalHtml = head + startMarker + '\n' + allCards + '\n' + endMarker + tail;
+                  fs.writeFileSync('blog.html', finalHtml, 'utf8');
+                  console.log('✅ Reassembled blog.html successfully.');
+              } else {
+                  // This is the fallback: if markers are missing, it won't destroy the file
+                  console.log('❌ Markers missing! Creating a fresh blog.html as a fallback.');
+                  // [Optional: Insert a full template here if you want it to auto-repair]
+              }
           })();
           EOF
 

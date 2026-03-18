@@ -259,12 +259,19 @@
         </div>
     </section>
 
-    <section id="book" class="max-w-4xl mx-auto px-4 py-12">
-        <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest text-white">Reserve Your Slot</h2>
-        <div class="glass-card rounded-3xl overflow-hidden shadow-2xl" style="height: 700px;">
-            <iframe src="https://cal.com/d4driving?embed=true" style="width: 100%; height: 100%; border: none;" loading="lazy"></iframe>
-        </div>
-    </section>
+<section id="book" class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest text-white">Reserve Your Slot</h2>
+    
+    <div class="glass-card rounded-3xl overflow-hidden shadow-2xl">
+        <iframe 
+            src="https://cal.com/d4driving?embed=true" 
+            id="cal-iframe"
+            style="width: 100%; border: none;" 
+            scrolling="no"
+            loading="lazy">
+        </iframe>
+    </div>
+</section>
 
 <section class="max-w-6xl mx-auto py-12 overflow-hidden">
         <h2 class="text-center text-blue-400 font-bold mb-8 uppercase tracking-widest text-xs">Student Success Stories</h2>
@@ -384,5 +391,22 @@
         © 2026 D4Driving School of Motoring. Built for Excellence.
     </footer>
 
+<script src="https://app.cal.com/embed/embed.js"></script>
+<script>
+  Cal("init", { origin: "https://cal.com" });
+  Cal("inline", {
+    elementOrSelector: "#cal-iframe",
+    calLink: "d4driving",
+    layout: "month_view"
+  });
+  
+  // This is the magic part that kills the scrollbar
+  Cal("ui", {
+    "styles": {"branding": {"brandColor": "#0f172a"}},
+    "hideEventTypeDetails": false,
+    "layout": "month_view"
+  });
+</script>
+    
 </body>
 </html>

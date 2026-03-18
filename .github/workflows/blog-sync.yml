@@ -4,7 +4,6 @@ on:
     - cron: '0 * * * *' 
   workflow_dispatch: 
 
-# Force Node 24 at the top level to silence the warnings
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -17,13 +16,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22' # Using 22 as a stable bridge for 2026 runners
+          node-version: '22'
 
       - name: Sync Soro Articles
         env:
@@ -34,16 +31,20 @@ jobs:
           node -e "
           const Parser = require('rss-parser');
           const fs = require('fs');
-          const parser = new Parser();
+          const parser = new Parser({
+            headers: {'User-Agent': 'D4Driving-Bot/1.0'},
+          });
 
           (async () => {
             try {
+              console.log('Fetching feed from Soro...');
+              const feed = await parser.parseURL(process.env.RSS_URL);
+              
               if (!fs.existsSync('blog.html') || !fs.existsSync('post-template.html')) {
-                console.error('CRITICAL ERROR: blog.html or post-template.html not found in root!');
+                console.error('Error: blog.html or post-template.html is missing!');
                 process.exit(1);
               }
 
-              const feed = await parser.parseURL(process.env.RSS_URL);
               let blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
               const template = fs.readFileSync('post-template.html', 'utf8');
               let filesCreated = false;
@@ -53,8 +54,7 @@ jobs:
                 const fileName = slug + '.html';
                 
                 if (!fs.existsSync(fileName)) {
-                  console.log('Syncing: ' + item.title);
-                  
+                  console.log('Adding new post: ' + item.title);
                   let postHtml = template
                     .replace(/This is where Soro puts the Main Title/g, item.title)
                     .replace(/Post Title \| D4Driving Blog/g, item.title + ' | D4Driving')
@@ -78,15 +78,17 @@ jobs:
                 }
               }
               
-              if (filesCreated) {
-                fs.writeFileSync('blog.html', blogIndexHtml);
-                console.log('Success: Site updated with new posts.');
-              } else {
-                console.log('No new posts found to sync.');
-              }
+              if (filesCreated) fs.writeFileSync('blog.html', blogIndexHtml);
+              console.log('Sync complete.');
+
             } catch (err) {
-              console.error('Runtime Error:', err.message);
-              process.exit(1);
+              if (err.message.includes('403')) {
+                console.error('ACCESS ERROR: Soro feed is private or blocked (403). Check Soro settings!');
+              } else {
+                console.error('Error:', err.message);
+              }
+              // Don't kill the whole build if the feed is just temporarily down
+              process.exit(0); 
             }
           })();
           "

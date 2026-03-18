@@ -10,12 +10,7 @@ async function sync() {
         console.log('--- STARTING CLEAN BUILD ---');
         const feed = await parser.parseURL(SORO_FEED_URL);
         
-        if (!feed.items || feed.items.length === 0) {
-            console.log('⚠️ Feed is empty.');
-            return;
-        }
-
-        // FORCE SORT: Newest date at the top
+        // SORT: Newest date mathematically at the top
         const items = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 
         let cards = '';
@@ -29,7 +24,6 @@ async function sync() {
         </article>`;
         });
 
-        // This is the COMPLETE page code. 
         const pageContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,31 +41,32 @@ async function sync() {
     <nav class="max-w-6xl mx-auto p-6 flex justify-between items-center">
         <a href="index.html" class="flex items-center gap-3">
             <img src="400dpiLogoCropped.png" alt="Logo" class="h-10 w-auto">
-            <span class="font-bold">D4DRIVING</span>
+            <span class="font-bold uppercase">D4DRIVING</span>
         </a>
-        <a href="index.html" class="text-xs font-bold bg-slate-800 px-4 py-2 rounded-full border border-white/10">← Back Home</a>
+        <a href="index.html" class="text-xs font-bold bg-slate-800 px-4 py-2 rounded-full border border-white/10 hover:bg-slate-700 transition">← Back Home</a>
     </nav>
     <header class="max-w-4xl mx-auto px-6 pt-12 pb-16 text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold">The D4Driving Journal</h1>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">The D4Driving Journal</h1>
+        <p class="text-slate-400 text-lg">Mastering the roads of Peterborough, one tip at a time.</p>
     </header>
     <main class="max-w-6xl mx-auto px-6">
         <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             ${cards}
         </div>
     </main>
+    <footer class="max-w-4xl mx-auto mt-20 p-8 text-center border-t border-white/5">
+        <p class="text-slate-600 text-sm">© 2026 D4Driving School of Motoring. All rights reserved.</p>
+    </footer>
 </body>
 </html>`;
 
-        // THE FIX: We use writeFile without checking if the file exists first.
-        // This forces the environment to create it.
+        // WRITE THE FILE: This wipes the old and starts fresh
         fs.writeFileSync('./blog.html', pageContent, { encoding: 'utf8', flag: 'w' });
-        
-        console.log('✅ Success! blog.html rewritten from scratch (Newest First).');
+        console.log('✅ Success! blog.html rebuilt from scratch (Newest First).');
 
     } catch (error) {
         console.error('❌ Sync failed:', error);
         process.exit(1);
     }
 }
-
 sync();

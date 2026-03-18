@@ -2,50 +2,71 @@ const RSS_PARSER = require('rss-parser');
 const fs = require('fs');
 const parser = new RSS_PARSER();
 
-// 1. Replace with your actual Soro Feed URL
-const SORO_FEED_URL = 'https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032';
+// 1. Double check this ID is correct!
+const SORO_FEED_URL = 'https://trysoro.com/feed/YOUR_ID_HERE';
 
 async function sync() {
     try {
-        console.log('Fetching feed...');
+        console.log('Fetching from Soro...');
         const feed = await parser.parseURL(SORO_FEED_URL);
         
-        // FIX ORDER: Newest first
-        const items = feed.items.reverse(); 
+        // SORT: Newest First
+        const items = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 
-        let htmlContent = '';
+        let blogCards = '';
         items.forEach(item => {
-            const slug = item.title.toLowerCase().replace(/[^\w-]/g, '-') + '.html';
-            htmlContent += `
-<article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
-    <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>${item.title}</h3>
-    <p class='text-slate-400 text-sm mt-2 line-clamp-2'>${item.contentSnippet || ''}</p>
-    <a href='${slug}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
-</article>\n`;
+            const slug = item.title.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '') + '.html';
+            blogCards += `
+        <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
+            <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>${item.title}</h3>
+            <p class='text-slate-400 text-sm mt-2 line-clamp-2'>${item.contentSnippet || ''}</p>
+            <a href='${slug}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
+        </article>`;
         });
 
-        let blogHtml = fs.readFileSync('blog.html', 'utf8');
+        // 2. THIS BUILDS THE ENTIRE HTML FILE FROM SCRATCH
+        const fullPageHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driving Tips & News | D4Driving Peterborough</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
+        .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+    <nav class="max-w-6xl mx-auto p-6 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3 group">
+            <img src="400dpiLogoCropped.png" alt="Logo" class="h-10 w-auto">
+            <span class="font-bold tracking-tight group-hover:text-blue-400 transition">D4DRIVING</span>
+        </a>
+        <a href="index.html" class="text-xs font-bold uppercase tracking-widest bg-slate-800 px-4 py-2 rounded-full border border-white/10 hover:bg-slate-700 transition">← Back to Home</a>
+    </nav>
+    <header class="max-w-4xl mx-auto px-6 pt-12 pb-16 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">The D4Driving Journal</h1>
+        <p class="text-slate-400 text-lg">Mastering the roads of Peterborough, one tip at a time.</p>
+    </header>
+    <main class="max-w-6xl mx-auto px-6">
+        <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            ${blogCards}
+        </div>
+    </main>
+    <footer class="max-w-4xl mx-auto mt-20 p-8 text-center border-t border-white/5">
+        <p class="text-slate-600 text-sm">© 2026 D4Driving School of Motoring. All rights reserved.</p>
+    </footer>
+</body>
+</html>`;
 
-        // NEW LOGIC: Find the "blog-grid" div and put the content inside it
-        const gridIdentifier = 'id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">';
-        const gridIndex = blogHtml.indexOf(gridIdentifier);
-
-        if (gridIndex !== -1) {
-            const insertAt = gridIndex + gridIdentifier.length;
-            const before = blogHtml.substring(0, insertAt);
-            const after = blogHtml.substring(blogHtml.indexOf('</div>', insertAt));
-            
-            const finalHtml = before + '\n' + htmlContent + after;
-            fs.writeFileSync('blog.html', finalHtml);
-            console.log('✅ Success! Articles moved into the grid (Newest First).');
-        } else {
-            console.error('❌ Could not find the blog-grid in your HTML file.');
-        }
+        fs.writeFileSync('blog.html', fullPageHtml);
+        console.log('✅ Success! blog.html rewritten from scratch (Newest First).');
 
     } catch (error) {
         console.error('❌ Sync failed:', error);
         process.exit(1);
     }
 }
-
 sync();

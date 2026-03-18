@@ -32,16 +32,20 @@ jobs:
           const Parser = require('rss-parser');
           const fs = require('fs');
           const { JSDOM } = require('jsdom');
+          
+          // Specifically mapping Soro's full content field
           const parser = new Parser({
             customFields: {
-              item: [['content:encoded', 'contentEncoded']],
+              item: [
+                ['content:encoded', 'fullContent'],
+              ],
             },
-            headers: {'User-Agent': 'D4Driving-Bot/3.0'},
+            headers: {'User-Agent': 'D4Driving-Bot/4.0'},
           });
 
           (async () => {
             try {
-              console.log('Fetching feed...');
+              console.log('Fetching feed from Soro...');
               const feed = await parser.parseURL(process.env.RSS_URL);
               const templateHtml = fs.readFileSync('post-template.html', 'utf8');
               let blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
@@ -50,30 +54,33 @@ jobs:
                 const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
                 const fileName = slug + '.html';
                 
+                // Log what we found to the GitHub console for debugging
                 console.log('Processing: ' + item.title);
                 
                 const dom = new JSDOM(templateHtml);
                 const document = dom.window.document;
 
-                // 1. Title & Meta
+                // Inject Title & Meta
                 if (document.getElementById('post-title')) document.getElementById('post-title').innerHTML = item.title;
                 if (document.getElementById('meta-title')) document.getElementById('meta-title').innerHTML = item.title + ' | D4Driving Blog';
 
-                // 2. Date
+                // Inject Date
                 if (document.getElementById('post-date')) {
                   document.getElementById('post-date').innerHTML = new Date(item.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
                 }
 
-                // 3. SMART CONTENT INJECTION (The Fix)
-                const fullContent = item.contentEncoded || item.content || item.description || 'Content currently unavailable.';
+                // THE FIX: Prioritize the fullContent field Matt mentioned
+                const articleBody = item.fullContent || item.content || item.description || 'Content loading error.';
+                
                 if (document.getElementById('post-content')) {
-                  document.getElementById('post-content').innerHTML = fullContent;
+                  document.getElementById('post-content').innerHTML = articleBody;
+                  console.log('Successfully injected ' + articleBody.length + ' characters.');
                 }
 
-                // Save/Overwrite the file
+                // Save the full article page
                 fs.writeFileSync(fileName, dom.serialize());
 
-                // 4. Update Blog Index if link missing
+                // Update the Blog List (Summary only for the list)
                 if (!blogIndexHtml.includes(fileName)) {
                   const newCard = \`
           <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
@@ -86,9 +93,9 @@ jobs:
                 }
               }
               fs.writeFileSync('blog.html', blogIndexHtml);
-              console.log('Sync complete.');
+              console.log('Sync complete. All articles updated.');
             } catch (err) {
-              console.error('Error:', err.message);
+              console.error('Sync Error:', err.message);
             }
           })();
           "
@@ -98,5 +105,5 @@ jobs:
           git config --global user.name "D4Driving-Bot"
           git config --global user.email "bot@d4driving.co.uk"
           git add .
-          git commit -m "Full Content Sync - March 2026" || echo "No changes"
+          git commit -m "Fix: Explicitly mapped content:encoded for full articles" || echo "No changes"
           git push

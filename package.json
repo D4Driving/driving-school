@@ -20,5 +20,6 @@
   "dependencies": {
     "jsdom": "^29.0.0",
     "rss-parser": "^3.13.0"
-  }
+  },
+  "type": "commonjs"
 }

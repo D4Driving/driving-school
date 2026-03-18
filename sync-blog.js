@@ -2,32 +2,20 @@ const RSS_PARSER = require('rss-parser');
 const fs = require('fs');
 const parser = new RSS_PARSER();
 
-const SORO_FEED_URL = 'https://trysoro.com/feed/YOUR_ID_HERE';
+// 1. Replace with your actual Soro Feed URL
+const SORO_FEED_URL = 'https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032';
 
 async function sync() {
     try {
-        console.log('Fetching feed from Soro...');
+        console.log('Fetching feed...');
         const feed = await parser.parseURL(SORO_FEED_URL);
         
-        if (!feed.items || feed.items.length === 0) {
-            console.error('❌ No items found in the Soro feed.');
-            return;
-        }
-
-        // --- THE ORDER FIX ---
-        // If your feed currently shows oldest first, .reverse() will fix it.
-        // If your feed was already newest first, remove the .reverse() below.
-        const itemsToProcess = feed.items.reverse(); 
+        // FIX ORDER: Newest first
+        const items = feed.items.reverse(); 
 
         let htmlContent = '';
-        
-        itemsToProcess.forEach(item => {
-            console.log(`Processing: ${item.title}`);
-            const slug = item.title.toLowerCase().trim()
-                .replace(/[^\w\s-]/g, '')
-                .replace(/[\s_-]+/g, '-')
-                .replace(/^-+|-+$/g, '') + '.html';
-            
+        items.forEach(item => {
+            const slug = item.title.toLowerCase().replace(/[^\w-]/g, '-') + '.html';
             htmlContent += `
 <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
     <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>${item.title}</h3>
@@ -37,21 +25,21 @@ async function sync() {
         });
 
         let blogHtml = fs.readFileSync('blog.html', 'utf8');
-        const startMarker = '';
-        const endMarker = '';
 
-        const startIndex = blogHtml.indexOf(startMarker);
-        const endIndex = blogHtml.indexOf(endMarker);
+        // NEW LOGIC: Find the "blog-grid" div and put the content inside it
+        const gridIdentifier = 'id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">';
+        const gridIndex = blogHtml.indexOf(gridIdentifier);
 
-        if (startIndex !== -1 && endIndex !== -1) {
-            const newHtml = blogHtml.substring(0, startIndex + startMarker.length) + 
-                            '\n' + htmlContent + 
-                            blogHtml.substring(endIndex);
+        if (gridIndex !== -1) {
+            const insertAt = gridIndex + gridIdentifier.length;
+            const before = blogHtml.substring(0, insertAt);
+            const after = blogHtml.substring(blogHtml.indexOf('</div>', insertAt));
             
-            fs.writeFileSync('blog.html', newHtml);
-            console.log(`✅ Success! Injected ${itemsToProcess.length} articles.`);
+            const finalHtml = before + '\n' + htmlContent + after;
+            fs.writeFileSync('blog.html', finalHtml);
+            console.log('✅ Success! Articles moved into the grid (Newest First).');
         } else {
-            console.error('❌ ERROR: Could not find markers in blog.html.');
+            console.error('❌ Could not find the blog-grid in your HTML file.');
         }
 
     } catch (error) {

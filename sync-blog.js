@@ -3,7 +3,7 @@ const fs = require('fs');
 const parser = new RSS_PARSER();
 
 // 1. Replace with your actual Soro RSS Feed URL
-const SORO_FEED_URL = 'https://trysoro.com/feed/YOUR_ID_HERE';
+const SORO_FEED_URL = 'https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032';
 
 async function sync() {
     try {

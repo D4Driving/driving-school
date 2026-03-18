@@ -4,29 +4,33 @@ on:
     - cron: '0 * * * *' 
   workflow_dispatch: 
 
+# Force Node 24 at the top level to silence the warnings
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Meets the new June 2026 requirement
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24' # Using the latest stable version
+          node-version: '22' # Using 22 as a stable bridge for 2026 runners
 
       - name: Sync Soro Articles
         env:
           RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
         run: |
-          npm init -y
-          npm install rss-parser
+          npm init -y > /dev/null
+          npm install rss-parser > /dev/null
           node -e "
           const Parser = require('rss-parser');
           const fs = require('fs');
@@ -34,6 +38,11 @@ jobs:
 
           (async () => {
             try {
+              if (!fs.existsSync('blog.html') || !fs.existsSync('post-template.html')) {
+                console.error('CRITICAL ERROR: blog.html or post-template.html not found in root!');
+                process.exit(1);
+              }
+
               const feed = await parser.parseURL(process.env.RSS_URL);
               let blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
               const template = fs.readFileSync('post-template.html', 'utf8');
@@ -44,10 +53,11 @@ jobs:
                 const fileName = slug + '.html';
                 
                 if (!fs.existsSync(fileName)) {
-                  console.log('Creating new post: ' + fileName);
+                  console.log('Syncing: ' + item.title);
                   
                   let postHtml = template
                     .replace(/This is where Soro puts the Main Title/g, item.title)
+                    .replace(/Post Title \| D4Driving Blog/g, item.title + ' | D4Driving')
                     .replace(/Category Name/g, 'Driving Tips')
                     .replace(/March 2026/g, new Date(item.pubDate).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }))
                     .replace('This is where the main body of the blog post goes. Soro should wrap paragraphs in &lt;p&gt; tags and use &lt;h2&gt; for subheadings.', item.content);
@@ -55,12 +65,13 @@ jobs:
                   fs.writeFileSync(fileName, postHtml);
 
                   const newCard = \`
-                  <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
-                      <span class='text-slate-500 text-[10px] font-bold uppercase tracking-widest'>New Post</span>
-                      <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400 transition'>\${item.title}</h3>
-                      <p class='text-slate-400 text-sm mt-2 line-clamp-2'>\${item.contentSnippet || ''}</p>
-                      <a href='\${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
-                  </article>\`;
+          <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
+              <span class='text-slate-500 text-[10px] font-bold uppercase tracking-widest'>New Update</span>
+              <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400 transition'>\${item.title}</h3>
+              <p class='text-slate-400 text-sm mt-2 line-clamp-2'>\${item.contentSnippet || ''}</p>
+              <a href='\${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Article →</a>
+          </article>
+          \`;
                   
                   blogIndexHtml = blogIndexHtml.replace('', '' + newCard);
                   filesCreated = true;
@@ -69,18 +80,21 @@ jobs:
               
               if (filesCreated) {
                 fs.writeFileSync('blog.html', blogIndexHtml);
+                console.log('Success: Site updated with new posts.');
+              } else {
+                console.log('No new posts found to sync.');
               }
             } catch (err) {
-              console.error('Error during sync:', err.message);
+              console.error('Runtime Error:', err.message);
               process.exit(1);
             }
           })();
           "
 
-      - name: Commit and Push Changes
+      - name: Commit and Push
         run: |
           git config --global user.name "D4Driving-Bot"
           git config --global user.email "bot@d4driving.co.uk"
           git add .
-          git commit -m "Automated Blog Update from Soro" || echo "No changes to commit"
+          git commit -m "Automated Blog Update" || echo "Nothing to commit"
           git push

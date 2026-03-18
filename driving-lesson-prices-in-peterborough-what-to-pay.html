@@ -1,68 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Driving lesson prices in Peterborough: what to pay | D4Driving</title>
+    <title id="meta-title">Driving lesson prices in Peterborough: what to pay | D4Driving Peterborough</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; line-height: 1.6; }
-        .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
-        .prose p { margin-bottom: 1.5rem; color: #94a3b8; font-size: 1.1rem; }
-        .prose h2 { color: white; font-weight: 800; font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
-        .prose strong { color: #60a5fa; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0f172a; color: white; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Styles images coming from Soro so they don't break the layout */
+        #post-content img {
+            border-radius: 1.5rem;
+            margin: 2rem 0;
+            width: 100%;
+            height: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        #post-content p { margin-bottom: 1.5rem; line-height: 1.8; color: #cbd5e1; }
+        #post-content h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2rem; margin-bottom: 1rem; color: #60a5fa; }
     </style>
 </head>
-<body class="pb-20">
+<body class="min-h-screen selection:bg-blue-500/30">
 
-    <nav class="p-6 max-w-3xl mx-auto flex justify-between items-center">
-        <a href="blog.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-            <span class="text-xs font-bold uppercase tracking-widest">Back to Journal</span>
-        </a>
-        <img src="400dpiLogoCropped.png" alt="D4Driving" class="h-8 w-auto">
+    <nav class="fixed top-0 w-full z-50 px-6 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center glass-card px-6 py-3 rounded-2xl">
+            <a href="index.html" class="text-xl font-800 tracking-tighter italic">D4<span class="text-blue-500">DRIVING</span></a>
+            <a href="blog.html" class="text-sm font-semibold hover:text-blue-400 transition">← Back to Blog</a>
+        </div>
     </nav>
 
-    <article class="max-w-3xl mx-auto px-6 py-12">
-        <header class="mb-12">
-            <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">Driving Tips</span>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white mt-4 mb-6 leading-tight">
-                Driving lesson prices in Peterborough: what to pay
-            </h1>
-            <div class="flex items-center gap-4 text-slate-500 text-sm">
-                <span class="font-bold text-slate-300">Robert Szatkowski</span>
-                <span>•</span>
-                <span>February 2026</span>
-            </div>
-        </header>
-
-        <div class="glass-card rounded-[2rem] overflow-hidden mb-12 aspect-video">
-            <img src="https://images.unsplash.com/photo-1449960232335-d853132e800c?auto=format&fit=crop&w=1200" alt="Article Header" class="w-full h-full object-cover opacity-80">
-        </div>
-
-        <div class="prose">
-            <p>
-                Driving lessons prices Peterborough explained: what affects cost, manual vs automatic, lesson lengths, blocks, and how to choose value with confidence.
-            </p>
+    <main class="pt-32 pb-20 px-6">
+        <div class="max-w-3xl mx-auto">
             
-            <h2>A Subheading for the Article</h2>
-            <p>
-                Keep the advice practical for Peterborough learners. For example, mention specific landmarks like <strong>The Ortons</strong> or <strong>Hampton Serpentine</strong> to boost your local SEO.
-            </p>
+            <header class="mb-12 text-center">
+                <span class="text-blue-500 text-xs font-bold uppercase tracking-[0.2em]">Driving Journal</span>
+                <h1 id="post-title" class="text-4xl md:text-5xl font-800 mt-4 leading-tight">Driving lesson prices in Peterborough: what to pay</h1>
+                <div class="mt-6 flex items-center justify-center gap-4 text-slate-400 text-sm">
+                    <span id="post-date" class="font-medium">14 February 2026</span>
+                    <span class="w-1 h-1 bg-slate-700 rounded-full"></span>
+                    <span>Peterborough, UK</span>
+                </div>
+            </header>
+
+            <article id="post-content" class="glass-card p-8 md:p-12 rounded-[2.5rem] text-lg">Driving lessons prices Peterborough explained: what affects cost, manual vs automatic, lesson lengths, blocks, and how to choose value with confidence.</article>
+
+            <footer class="mt-12 text-center">
+                <div class="glass-card p-8 rounded-[2rem]">
+                    <h3 class="text-xl font-bold mb-2">Ready to start driving?</h3>
+                    <p class="text-slate-400 mb-6">Book your first lesson in Peterborough today.</p>
+                    <a href="index.html#contact" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-2xl transition transform hover:scale-105">
+                        Get in Touch
+                    </a>
+                </div>
+            </footer>
+
         </div>
+    </main>
 
-        <div class="mt-16 pt-8 border-t border-white/5">
-            <div class="glass-card p-8 rounded-3xl text-center">
-                <h3 class="text-xl font-bold mb-4">Ready to put this into practice?</h3>
-                <a href="index.html#book" class="inline-block bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-xl font-bold transition">Book a Driving Lesson</a>
-            </div>
-        </div>
-    </article>
+    <script>
+        // Register Service Worker for PWA/Offline support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js');
+            });
+        }
+    </script>
 
-    <footer class="text-center text-slate-600 text-sm p-12">
-        © 2026 D4Driving School of Motoring.
-    </footer>
 
-</body>
-</html>
+</body></html>

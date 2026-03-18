@@ -3,18 +3,20 @@ const fs = require('fs');
 const parser = new RSS_PARSER();
 
 // 1. REPLACE THIS WITH YOUR REAL SORO FEED URL
-const SORO_FEED_URL = 'https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032';
+const SORO_FEED_URL = 'https://trysoro.com/feed/YOUR_ID_HERE';
 
 async function sync() {
     try {
         console.log('Fetching feed from Soro...');
         const feed = await parser.parseURL(SORO_FEED_URL);
         
+        // REVERSE THE ORDER: This puts the most recent articles at the top
+        const newestFirst = feed.items.reverse();
+        
         let htmlContent = '';
         
-        feed.items.forEach(item => {
+        newestFirst.forEach(item => {
             console.log(`Processing: ${item.title}`);
-            // Creates a link-friendly version of the title
             const slug = item.title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '') + '.html';
             
             htmlContent += `
@@ -35,8 +37,7 @@ async function sync() {
         if (startIndex !== -1 && endIndex !== -1) {
             const updatedHtml = blogHtml.substring(0, startIndex) + '\n' + htmlContent + blogHtml.substring(endIndex);
             fs.writeFileSync('blog.html', updatedHtml);
-            console.log(`Successfully injected ${htmlContent.length} characters.`);
-            console.log('Sync complete. All articles updated.');
+            console.log(`Successfully injected ${newestFirst.length} articles in newest-first order.`);
         } else {
             console.error('❌ Could not find SORO markers in blog.html');
         }

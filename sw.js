@@ -1,13 +1,15 @@
-const CACHE_NAME = 'd4driving-v1';
+const CACHE_NAME = 'd4driving-v2'; // Changed to v2
 const assets = [
   './',
   './index.html',
   './tips.html',
   './400dpiLogoCropped.png',
+  './robert2.png', // Added the new image here
   './pass1.jpg',
   './pass8.jpg',
   './pass10.jpg'
 ];
+// ... rest of the code stays the same
 
 self.addEventListener('install', e => {
   e.waitUntil(

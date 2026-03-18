@@ -1,16 +1,16 @@
-name: Blog Sync
+name: Soro Blog Sync
 
 on:
   schedule:
     - cron: '0 * * * *' # Runs every hour
-  workflow_dispatch:      # Allows manual trigger
+  workflow_dispatch:      # Allows you to run it manually
 
 jobs:
   build:
     runs-on: ubuntu-latest
     
     env:
-      # Fixes the Node 20 deprecation warning from your logs
+      # Keeps things running smoothly in 2026 on Node 24
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
@@ -22,18 +22,17 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Initialize and Sync
+      - name: Run Soro Sync
         run: |
           npm init -y > /dev/null
           npm install rss-parser
-          node sync-blog.js
-        # The "|" above allows multiple lines without needing extra quotes.
-        # This prevents the "unexpected EOF" error you encountered.
+          node sync-blog.js 
+        # This triggers the "Fetching feed from Soro..." process seen in your logs
 
       - name: Commit and Push Changes
         run: |
-          git config --global user.name "D4Driving Bot"
+          git config --global user.name "D4Driving-Bot"
           git config --global user.email "bot@d4driving.co.uk"
           git add .
-          git diff-index --quiet HEAD || git commit -m "Update blog posts from YouTube/RSS"
-          git push
+          git diff-index --quiet HEAD || git commit -m "Update blog posts from Soro"
+          git push origin main

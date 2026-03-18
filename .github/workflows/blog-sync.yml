@@ -25,7 +25,7 @@ jobs:
       - name: Sync Soro Articles
         env:
           RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
-run: |
+        run: |
           npm init -y > /dev/null
           npm install rss-parser jsdom > /dev/null
           node -e "
@@ -45,61 +45,51 @@ run: |
               console.log('Fetching feed...');
               const feed = await parser.parseURL(process.env.RSS_URL);
               
-              // 1. SORT: Force Newest First based on Date
+              // 1. Sort items so newest is first
               const items = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
               
-              // 2. SAFETY CHECK: Check if files exist before reading
               if (!fs.existsSync('post-template.html') || !fs.existsSync('blog.html')) {
-                throw new Error('Missing blog.html or post-template.html in repository root.');
+                throw new Error('Missing blog.html or post-template.html');
               }
 
               const templateHtml = fs.readFileSync('post-template.html', 'utf8');
               let blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
 
-              // 3. GENERATE CARDS
-              let allNewCards = '';
+              let allCards = '';
               for (const item of items) {
                 const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
                 const fileName = slug + '.html';
                 
-                // Generate Individual Article Page
+                // --- Generate Individual Article Page ---
                 const dom = new JSDOM(templateHtml);
                 const doc = dom.window.document;
                 if (doc.getElementById('post-title')) doc.getElementById('post-title').innerHTML = item.title;
                 const formattedDate = new Date(item.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
                 if (doc.getElementById('post-date')) doc.getElementById('post-date').innerHTML = formattedDate;
                 if (doc.getElementById('post-content')) doc.getElementById('post-content').innerHTML = item.fullContent || item.content || '';
-                
+
                 fs.writeFileSync(fileName, dom.serialize());
 
-                // Build the Card HTML
-                allNewCards += \`
+                // --- Build Card for Grid ---
+                allCards += \`
           <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
               <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>\${item.title}</h3>
               <p class='text-slate-400 text-sm mt-2 line-clamp-2'>\${item.contentSnippet || ''}</p>
               <a href='\${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
-          </article>\n\`;
+          </article>\`;
               }
-              
-              // 4. INJECT INTO GRID (Wipe old items and put all newest at top)
-              // This looks for the markers we talked about earlier
+
+              // --- Inject into Markers ---
               const startMarker = '';
               const endMarker = '';
               
               if (blogIndexHtml.includes(startMarker) && blogIndexHtml.includes(endMarker)) {
                 const startIndex = blogIndexHtml.indexOf(startMarker) + startMarker.length;
                 const endIndex = blogIndexHtml.indexOf(endMarker);
-                blogIndexHtml = blogIndexHtml.substring(0, startIndex) + '\n' + allNewCards + blogIndexHtml.substring(endIndex);
+                blogIndexHtml = blogIndexHtml.substring(0, startIndex) + '\n' + allCards + '\n' + blogIndexHtml.substring(endIndex);
               }
 
               fs.writeFileSync('blog.html', blogIndexHtml);
-              console.log('✅ Sync Successful: Newest posts at top.');
-            } catch (err) {
-              console.error('❌ Error:', err.message);
-              process.exit(1);
-            }
-          })();
-          "
               console.log('Sync Successful.');
             } catch (err) {
               console.error('Error:', err.message);

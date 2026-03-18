@@ -2,7 +2,7 @@ const RSS_PARSER = require('rss-parser');
 const fs = require('fs');
 const parser = new RSS_PARSER();
 
-// 1. YOUR SORO FEED URL
+// 1. YOUR SORO FEED URL (Make sure your ID is in here!)
 const SORO_FEED_URL = 'https://trysoro.com/feed/YOUR_ID_HERE';
 
 async function sync() {
@@ -16,7 +16,6 @@ async function sync() {
         }
 
         // SORT BY DATE (Newest First)
-        // This is more reliable than .reverse()
         const sortedItems = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 
         let htmlContent = '';
@@ -38,6 +37,8 @@ async function sync() {
 
         // READ BLOG.HTML
         let blogHtml = fs.readFileSync('blog.html', 'utf8');
+        
+        // These MUST match the comments in your blog.html exactly
         const startMarker = '';
         const endMarker = '';
 
@@ -45,7 +46,7 @@ async function sync() {
         const endIndex = blogHtml.indexOf(endMarker);
 
         if (startIndex !== -1 && endIndex !== -1) {
-            // We keep the markers themselves so we can run this again later!
+            // This logic keeps the markers and replaces everything between them
             const newHtml = blogHtml.substring(0, startIndex + startMarker.length) + 
                             '\n' + htmlContent + 
                             blogHtml.substring(endIndex);
@@ -54,7 +55,7 @@ async function sync() {
             console.log(`✅ Success! Injected ${sortedItems.length} articles (Newest First).`);
         } else {
             console.error('❌ ERROR: Could not find markers in blog.html.');
-            console.log('Ensure your blog.html contains: and ');
+            console.log(`Found Start: ${startIndex !== -1}, Found End: ${endIndex !== -1}`);
         }
 
     } catch (error) {

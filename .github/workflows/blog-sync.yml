@@ -1,18 +1,18 @@
-name: Soro Blog Sync
+name: Blog Sync
+
 on:
   schedule:
     - cron: '0 * * * *' # Runs every hour
-  workflow_dispatch: # Allows manual triggering
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
-permissions:
-  contents: write
+  workflow_dispatch:      # Allows manual trigger
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    env:
+      # Fixes the Node 20 deprecation warning from your logs
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -22,53 +22,18 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Sync Soro Articles
-        env:
-          RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
+      - name: Initialize and Sync
         run: |
           npm init -y > /dev/null
-          npm install rss-parser jsdom > /dev/null
-          node -e "
-          const Parser = require('rss-parser');
-          const fs = require('fs');
-          const { JSDOM } = require('jsdom');
-          
-          const parser = new Parser({
-            customFields: {
-              item: [['content:encoded', 'fullContent']],
-            },
-            headers: {'User-Agent': 'D4Driving-Bot/4.0'},
-          });
+          npm install rss-parser
+          node sync-blog.js
+        # The "|" above allows multiple lines without needing extra quotes.
+        # This prevents the "unexpected EOF" error you encountered.
 
-          (async () => {
-            try {
-              console.log('Fetching feed...');
-              const feed = await parser.parseURL(process.env.RSS_URL);
-              
-              // 1. Sort items so newest is first
-              const items = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-              
-              const templateHtml = fs.readFileSync('post-template.html', 'utf8');
-              let blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
-
-              for (const item of items) {
-                const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
-                const fileName = slug + '.html';
-                
-                // --- Generate Individual Article Page ---
-                const dom = new JSDOM(templateHtml);
-                const document = dom.window.document;
-                
-                if (document.getElementById('post-title')) document.getElementById('post-title').innerHTML = item.title;
-                if (document.getElementById('meta-title')) document.getElementById('meta-title').innerHTML = item.title + ' | D4Driving Blog';
-                
-                const formattedDate = new Date(item.pubDate).toLocaleDateString('en-GB', { 
-                  day: 'numeric', month: 'long', year: 'numeric' 
-                });
-                if (document.getElementById('post-date')) document.getElementById('post-date').innerHTML = formattedDate;
-
-                // Use fullContent from Soro as Matt suggested
-                const articleBody = item.fullContent || item.content || item.description || 'Content unavailable.';
-                if (document.getElementById('post-content')) document.getElementById('post-content').innerHTML = articleBody;
-
-                fs.writeFileSync(fileName
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "D4Driving Bot"
+          git config --global user.email "bot@d4driving.co.uk"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Update blog posts from YouTube/RSS"
+          git push

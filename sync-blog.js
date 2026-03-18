@@ -2,8 +2,7 @@ const RSS_PARSER = require('rss-parser');
 const fs = require('fs');
 const parser = new RSS_PARSER();
 
-// 1. YOUR SORO FEED URL (Make sure your ID is in here!)
-const SORO_FEED_URL = 'https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032';
+const SORO_FEED_URL = 'https://trysoro.com/feed/YOUR_ID_HERE';
 
 async function sync() {
     try {
@@ -15,12 +14,14 @@ async function sync() {
             return;
         }
 
-        // SORT BY DATE (Newest First)
-        const sortedItems = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+        // --- THE ORDER FIX ---
+        // If your feed currently shows oldest first, .reverse() will fix it.
+        // If your feed was already newest first, remove the .reverse() below.
+        const itemsToProcess = feed.items.reverse(); 
 
         let htmlContent = '';
         
-        sortedItems.forEach(item => {
+        itemsToProcess.forEach(item => {
             console.log(`Processing: ${item.title}`);
             const slug = item.title.toLowerCase().trim()
                 .replace(/[^\w\s-]/g, '')
@@ -35,10 +36,7 @@ async function sync() {
 </article>\n`;
         });
 
-        // READ BLOG.HTML
         let blogHtml = fs.readFileSync('blog.html', 'utf8');
-        
-        // These MUST match the comments in your blog.html exactly
         const startMarker = '';
         const endMarker = '';
 
@@ -46,16 +44,14 @@ async function sync() {
         const endIndex = blogHtml.indexOf(endMarker);
 
         if (startIndex !== -1 && endIndex !== -1) {
-            // This logic keeps the markers and replaces everything between them
             const newHtml = blogHtml.substring(0, startIndex + startMarker.length) + 
                             '\n' + htmlContent + 
                             blogHtml.substring(endIndex);
             
             fs.writeFileSync('blog.html', newHtml);
-            console.log(`✅ Success! Injected ${sortedItems.length} articles (Newest First).`);
+            console.log(`✅ Success! Injected ${itemsToProcess.length} articles.`);
         } else {
             console.error('❌ ERROR: Could not find markers in blog.html.');
-            console.log(`Found Start: ${startIndex !== -1}, Found End: ${endIndex !== -1}`);
         }
 
     } catch (error) {

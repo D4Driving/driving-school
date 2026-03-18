@@ -188,6 +188,81 @@
         </div>
     </section>
 
+<section id="quiz-section" class="max-w-3xl mx-auto px-6 py-12">
+    <div class="glass-card p-8 rounded-[2rem] border-blue-500/20 shadow-2xl shadow-blue-500/5 relative overflow-hidden">
+        <div class="absolute top-0 left-0 h-1 bg-blue-600 transition-all duration-500" id="quiz-progress" style="width: 25%;"></div>
+
+        <div id="quiz-container">
+            <div id="step-1" class="quiz-step">
+                <span class="text-blue-400 font-bold uppercase tracking-widest text-[10px]">Step 1 of 3</span>
+                <h3 class="text-2xl font-extrabold text-white mt-2 mb-6">Have you passed your Theory Test yet?</h3>
+                <div class="grid grid-cols-1 gap-3">
+                    <button onclick="nextStep(2)" class="w-full py-4 bg-slate-800/50 hover:bg-blue-600 rounded-2xl font-bold transition text-left px-6 border border-white/5">Yes, I'm ready for the road!</button>
+                    <button onclick="nextStep(2)" class="w-full py-4 bg-slate-800/50 hover:bg-blue-600 rounded-2xl font-bold transition text-left px-6 border border-white/5">Not yet, I need to book it.</button>
+                </div>
+            </div>
+
+            <div id="step-2" class="quiz-step hidden">
+                <span class="text-blue-400 font-bold uppercase tracking-widest text-[10px]">Step 2 of 3</span>
+                <h3 class="text-2xl font-extrabold text-white mt-2 mb-6">How much driving experience do you have?</h3>
+                <div class="grid grid-cols-1 gap-3">
+                    <button onclick="nextStep(3)" class="w-full py-4 bg-slate-800/50 hover:bg-blue-600 rounded-2xl font-bold transition text-left px-6 border border-white/5">Total Beginner (Zero hours)</button>
+                    <button onclick="nextStep(3)" class="w-full py-4 bg-slate-800/50 hover:bg-blue-600 rounded-2xl font-bold transition text-left px-6 border border-white/5">A Little (5-10 hours)</button>
+                    <button onclick="nextStep(3)" class="w-full py-4 bg-slate-800/50 hover:bg-blue-600 rounded-2xl font-bold transition text-left px-6 border border-white/5">Near Test Ready (20+ hours)</button>
+                </div>
+            </div>
+
+            <div id="step-3" class="quiz-step hidden">
+                <span class="text-blue-400 font-bold uppercase tracking-widest text-[10px]">Step 3 of 3</span>
+                <h3 class="text-2xl font-extrabold text-white mt-2 mb-6">How soon do you want to pass?</h3>
+                <div class="grid grid-cols-1 gap-3">
+                    <button onclick="showResult('intensive')" class="w-full py-4 bg-slate-800/50 hover:bg-blue-600 rounded-2xl font-bold transition text-left px-6 border border-white/5">As fast as possible (Intensive)</button>
+                    <button onclick="showResult('standard')" class="w-full py-4 bg-slate-800/50 hover:bg-blue-600 rounded-2xl font-bold transition text-left px-6 border border-white/5">Weekly lessons (Steady pace)</button>
+                </div>
+            </div>
+
+            <div id="quiz-result" class="quiz-step hidden text-center py-4">
+                <div class="inline-block p-4 bg-green-500/10 rounded-full mb-4">
+                    <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="text-2xl font-extrabold text-white mb-2">We've found your perfect match!</h3>
+                <p id="result-text" class="text-slate-400 mb-8 px-4"></p>
+                <a href="#prices" onclick="resetQuiz()" class="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-2xl transition shadow-lg shadow-blue-600/20">View My Recommended Package</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function nextStep(step) {
+        document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+        document.getElementById('step-' + step).classList.remove('hidden');
+        document.getElementById('quiz-progress').style.width = (step * 33) + '%';
+    }
+
+    function showResult(type) {
+        document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+        const result = document.getElementById('quiz-result');
+        const text = document.getElementById('result-text');
+        result.classList.remove('hidden');
+        document.getElementById('quiz-progress').style.width = '100%';
+
+        if(type === 'intensive') {
+            text.innerText = "Based on your goals, our 15 or 20-Hour Block Bookings are your best route to a fast pass in Peterborough.";
+        } else {
+            text.innerText = "Our 10-Hour Block Booking or Standard Weekly sessions are the perfect way to build your confidence steadily.";
+        }
+    }
+
+    function resetQuiz() {
+        // Optional: Reset quiz if they click the button to go to prices
+        setTimeout(() => {
+            nextStep(1);
+            document.getElementById('quiz-result').classList.add('hidden');
+        }, 1000);
+    }
+</script>
+    
     <section id="prices" class="max-w-5xl mx-auto px-6 py-12">
         <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest">Lesson Packages</h2>
         

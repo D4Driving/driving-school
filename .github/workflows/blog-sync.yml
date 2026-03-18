@@ -22,76 +22,72 @@ jobs:
         with:
           node-version: '22'
 
+     # ... (Keep the top part of your .yml the same) ...
+
       - name: Sync Soro Articles
         env:
           RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
         run: |
           npm init -y > /dev/null
-          npm install rss-parser > /dev/null
+          npm install rss-parser jsdom > /dev/null
           node -e "
           const Parser = require('rss-parser');
           const fs = require('fs');
-          const parser = new Parser({
-            headers: {'User-Agent': 'D4Driving-Bot/1.0'},
-          });
+          const { JSDOM } = require('jsdom');
+          const parser = new Parser();
 
           (async () => {
             try {
-              console.log('Fetching feed from Soro...');
               const feed = await parser.parseURL(process.env.RSS_URL);
-              
-              if (!fs.existsSync('blog.html') || !fs.existsSync('post-template.html')) {
-                console.error('Error: blog.html or post-template.html is missing!');
-                process.exit(1);
-              }
-
+              const templateHtml = fs.readFileSync('post-template.html', 'utf8');
               let blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
-              const template = fs.readFileSync('post-template.html', 'utf8');
-              let filesCreated = false;
 
               for (const item of feed.items) {
                 const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
                 const fileName = slug + '.html';
                 
-                if (!fs.existsSync(fileName)) {
-                  console.log('Adding new post: ' + item.title);
-                  let postHtml = template
-                    .replace(/This is where Soro puts the Main Title/g, item.title)
-                    .replace(/Post Title \| D4Driving Blog/g, item.title + ' | D4Driving')
-                    .replace(/Category Name/g, 'Driving Tips')
-                    .replace(/March 2026/g, new Date(item.pubDate).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }))
-                    .replace('This is where the main body of the blog post goes. Soro should wrap paragraphs in &lt;p&gt; tags and use &lt;h2&gt; for subheadings.', item.content);
-                  
-                  fs.writeFileSync(fileName, postHtml);
+                // Even if file exists, we'll recreate it to fix the blank template issue
+                console.log('Processing: ' + item.title);
+                
+                const dom = new JSDOM(templateHtml);
+                const document = dom.window.document;
 
+                // 1. Inject Title
+                const titleEl = document.getElementById('post-title');
+                if (titleEl) titleEl.innerHTML = item.title;
+
+                // 2. Inject Date
+                const dateEl = document.getElementById('post-date');
+                if (dateEl) dateEl.innerHTML = new Date(item.pubDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+                // 3. Inject Content
+                const contentEl = document.getElementById('post-content');
+                if (contentEl) contentEl.innerHTML = item.content;
+
+                // 4. Update Meta Title for SEO
+                const headTitle = document.querySelector('title');
+                if (headTitle) headTitle.innerHTML = item.title + ' | D4Driving Peterborough';
+
+                fs.writeFileSync(fileName, dom.serialize());
+
+                // Update blog index if not already linked
+                if (!blogIndexHtml.includes(fileName)) {
                   const newCard = \`
-          <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
-              <span class='text-slate-500 text-[10px] font-bold uppercase tracking-widest'>New Update</span>
-              <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400 transition'>\${item.title}</h3>
-              <p class='text-slate-400 text-sm mt-2 line-clamp-2'>\${item.contentSnippet || ''}</p>
-              <a href='\${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Article →</a>
-          </article>
-          \`;
-                  
+                  <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
+                      <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>\${item.title}</h3>
+                      <a href='\${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block'>Read Full Article →</a>
+                  </article>\`;
                   blogIndexHtml = blogIndexHtml.replace('', '' + newCard);
-                  filesCreated = true;
                 }
               }
-              
-              if (filesCreated) fs.writeFileSync('blog.html', blogIndexHtml);
-              console.log('Sync complete.');
-
+              fs.writeFileSync('blog.html', blogIndexHtml);
             } catch (err) {
-              if (err.message.includes('403')) {
-                console.error('ACCESS ERROR: Soro feed is private or blocked (403). Check Soro settings!');
-              } else {
-                console.error('Error:', err.message);
-              }
-              // Don't kill the whole build if the feed is just temporarily down
-              process.exit(0); 
+              console.error('Error:', err.message);
             }
           })();
           "
+
+# ... (Keep the Commit/Push part the same) ...
 
       - name: Commit and Push
         run: |

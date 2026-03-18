@@ -1,28 +1,31 @@
 name: Soro Blog Sync
 on:
   schedule:
-    - cron: '0 * * * *' # Checks every hour
-  workflow_dispatch: # Allows manual run
+    - cron: '0 * * * *' 
+  workflow_dispatch: 
 
 permissions:
-  contents: write # Crucial for the bot to save files
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Meets the new June 2026 requirement
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4 # Updated to v4 (Node 24 compatible)
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4 # Updated to v4
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24' # Using the latest stable version
 
       - name: Sync Soro Articles
         env:
           RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
         run: |
+          npm init -y
           npm install rss-parser
           node -e "
           const Parser = require('rss-parser');
@@ -42,20 +45,21 @@ jobs:
                 
                 if (!fs.existsSync(fileName)) {
                   console.log('Creating new post: ' + fileName);
+                  
                   let postHtml = template
-                    .replace('This is where Soro puts the Main Title', item.title)
-                    .replace('Category Name', 'Driving Tips')
-                    .replace('March 2026', new Date(item.pubDate).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }))
+                    .replace(/This is where Soro puts the Main Title/g, item.title)
+                    .replace(/Category Name/g, 'Driving Tips')
+                    .replace(/March 2026/g, new Date(item.pubDate).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }))
                     .replace('This is where the main body of the blog post goes. Soro should wrap paragraphs in &lt;p&gt; tags and use &lt;h2&gt; for subheadings.', item.content);
                   
                   fs.writeFileSync(fileName, postHtml);
 
                   const newCard = \`
                   <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
-                      <span class='text-slate-500 text-[10px] font-bold uppercase tracking-widest'>Latest Update</span>
+                      <span class='text-slate-500 text-[10px] font-bold uppercase tracking-widest'>New Post</span>
                       <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400 transition'>\${item.title}</h3>
                       <p class='text-slate-400 text-sm mt-2 line-clamp-2'>\${item.contentSnippet || ''}</p>
-                      <a href='\${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read More →</a>
+                      <a href='\${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
                   </article>\`;
                   
                   blogIndexHtml = blogIndexHtml.replace('', '' + newCard);
@@ -65,11 +69,9 @@ jobs:
               
               if (filesCreated) {
                 fs.writeFileSync('blog.html', blogIndexHtml);
-              } else {
-                console.log('No new articles found.');
               }
             } catch (err) {
-              console.error(err);
+              console.error('Error during sync:', err.message);
               process.exit(1);
             }
           })();

@@ -1,11 +1,8 @@
 name: Soro Blog Sync
 on:
   schedule:
-    - cron: '0 * * * *' # Runs every hour
-  workflow_dispatch: # Allows manual triggering
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -22,7 +19,7 @@ jobs:
         with:
           node-version: '24'
 
-- name: Sync Soro Articles
+      - name: Sync Articles
         env:
           RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
         run: |
@@ -32,26 +29,20 @@ jobs:
           const Parser = require('rss-parser');
           const fs = require('fs');
           const { JSDOM } = require('jsdom');
-          
           const parser = new Parser({
             customFields: { item: [['content:encoded', 'fullContent']] },
             headers: {'User-Agent': 'D4Driving-Bot/4.0'},
           });
-
           (async () => {
             try {
-              console.log('Fetching feed...');
               const feed = await parser.parseURL(process.env.RSS_URL);
               const items = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-              
               const templateHtml = fs.readFileSync('post-template.html', 'utf8');
               const blogIndexHtml = fs.readFileSync('blog.html', 'utf8');
-
               let allCards = '';
               for (const item of items) {
                 const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
                 const fileName = slug + '.html';
-                
                 const dom = new JSDOM(templateHtml);
                 const doc = dom.window.document;
                 if (doc.getElementById('post-title')) doc.getElementById('post-title').innerHTML = item.title;
@@ -59,38 +50,31 @@ jobs:
                 if (doc.getElementById('post-date')) doc.getElementById('post-date').innerHTML = formattedDate;
                 if (doc.getElementById('post-content')) doc.getElementById('post-content').innerHTML = item.fullContent || item.content || '';
                 fs.writeFileSync(fileName, dom.serialize());
-
-                allCards += `
-          <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
-              <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>${item.title}</h3>
-              <p class='text-slate-400 text-sm mt-2 line-clamp-2'>${item.contentSnippet || ''}</p>
-              <a href='${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
-          </article>\n`;
+                allCards += '<article class="glass-card p-6 rounded-3xl hover:border-white/20 transition group">';
+                allCards += '<h3 class="text-lg font-bold mt-1 group-hover:text-blue-400">' + item.title + '</h3>';
+                allCards += '<p class="text-slate-400 text-sm mt-2 line-clamp-2">' + (item.contentSnippet || "") + '</p>';
+                allCards += '<a href="' + fileName + '" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>';
+                allCards += '</article>\n';
               }
-
               const startMarker = '';
               const endMarker = '';
-              
               const parts = blogIndexHtml.split(startMarker);
               const head = parts[0];
               const tail = parts[1].split(endMarker)[1];
-              
               const finalHtml = head + startMarker + '\n' + allCards + '\n' + endMarker + tail;
-
               fs.writeFileSync('blog.html', finalHtml, 'utf8');
-              console.log('✅ Success: Inside grid and newest first!');
+              console.log('Done!');
             } catch (err) {
-              console.error('Error:', err.message);
+              console.error(err.message);
               process.exit(1);
             }
           })();
           EOF
-          "
 
       - name: Commit and Push
         run: |
           git config --global user.name "D4Driving-Bot"
           git config --global user.email "bot@d4driving.co.uk"
           git add .
-          git commit -m "Automated Blog Sync: Newest posts at top" || echo "No changes to commit"
+          git commit -m "Blog Update" || echo "No changes"
           git push

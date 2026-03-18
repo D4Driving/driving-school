@@ -2,7 +2,7 @@ const RSS_PARSER = require('rss-parser');
 const fs = require('fs');
 const parser = new RSS_PARSER();
 
-// 1. Double check your ID is in this URL
+// 1. MAKE SURE YOUR ID IS CORRECT HERE
 const SORO_FEED_URL = 'https://trysoro.com/feed/YOUR_ID_HERE';
 
 async function sync() {
@@ -15,26 +15,22 @@ async function sync() {
             return;
         }
 
-        // FIX ORDER: Soro usually lists oldest first in the array. 
-        // .reverse() flips it so NEWEST is index 0.
-        const newestFirst = feed.items.reverse();
+        // FORCE SORT: Newest date at the top
+        const items = feed.items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 
-        let blogCards = '';
-        newestFirst.forEach(item => {
-            const slug = item.title.toLowerCase().trim()
-                .replace(/[^\w\s-]/g, '')
-                .replace(/[\s_-]+/g, '-')
-                .replace(/^-+|-+$/g, '') + '.html';
-            
-            blogCards += `
-<article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
-    <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>${item.title}</h3>
-    <p class='text-slate-400 text-sm mt-2 line-clamp-2'>${item.contentSnippet || ''}</p>
-    <a href='${slug}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
-</article>\n`;
+        let cards = '';
+        items.forEach(item => {
+            const slug = item.title.toLowerCase().replace(/[^\w-]/g, '-') + '.html';
+            cards += `
+        <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
+            <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>${item.title}</h3>
+            <p class='text-slate-400 text-sm mt-2 line-clamp-2'>${item.contentSnippet || ''}</p>
+            <a href='${slug}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
+        </article>`;
         });
 
-        const finalHtml = `<!DOCTYPE html>
+        // This is the COMPLETE page code. 
+        const pageContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -60,15 +56,17 @@ async function sync() {
     </header>
     <main class="max-w-6xl mx-auto px-6">
         <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            ${blogCards}
+            ${cards}
         </div>
     </main>
 </body>
 </html>`;
 
-        // 🚨 NO fs.readFileSync HERE. WE ONLY WRITE.
-        fs.writeFileSync('./blog.html', finalHtml, 'utf8');
-        console.log('✅ Success! blog.html was built from scratch with newest posts first.');
+        // THE FIX: We use writeFile without checking if the file exists first.
+        // This forces the environment to create it.
+        fs.writeFileSync('./blog.html', pageContent, { encoding: 'utf8', flag: 'w' });
+        
+        console.log('✅ Success! blog.html rewritten from scratch (Newest First).');
 
     } catch (error) {
         console.error('❌ Sync failed:', error);

@@ -22,14 +22,14 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Sync Soro Articles
+- name: Sync Soro Articles
         env:
           RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
         run: |
           npm init -y > /dev/null
           npm install rss-parser jsdom > /dev/null
-          node -e "
-const Parser = require('rss-parser');
+          node << 'EOF'
+          const Parser = require('rss-parser');
           const fs = require('fs');
           const { JSDOM } = require('jsdom');
           
@@ -60,34 +60,31 @@ const Parser = require('rss-parser');
                 if (doc.getElementById('post-content')) doc.getElementById('post-content').innerHTML = item.fullContent || item.content || '';
                 fs.writeFileSync(fileName, dom.serialize());
 
-                // Using standard quotes and + to avoid YAML backtick errors
-                allCards += '<article class="glass-card p-6 rounded-3xl hover:border-white/20 transition group">';
-                allCards += '<h3 class="text-lg font-bold mt-1 group-hover:text-blue-400">' + item.title + '</h3>';
-                allCards += '<p class="text-slate-400 text-sm mt-2 line-clamp-2">' + (item.contentSnippet || "") + '</p>';
-                allCards += '<a href="' + fileName + '" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>';
-                allCards += '</article>\n';
+                allCards += `
+          <article class='glass-card p-6 rounded-3xl hover:border-white/20 transition group'>
+              <h3 class='text-lg font-bold mt-1 group-hover:text-blue-400'>${item.title}</h3>
+              <p class='text-slate-400 text-sm mt-2 line-clamp-2'>${item.contentSnippet || ''}</p>
+              <a href='${fileName}' class='text-blue-400 text-xs font-bold mt-4 inline-block hover:underline'>Read Full Article →</a>
+          </article>\n`;
               }
 
               const startMarker = '';
               const endMarker = '';
               
               const parts = blogIndexHtml.split(startMarker);
-              if (parts.length < 2) throw new Error('Could not find start marker');
-              
               const head = parts[0];
-              const tailParts = parts[1].split(endMarker);
-              if (tailParts.length < 2) throw new Error('Could not find end marker');
+              const tail = parts[1].split(endMarker)[1];
               
-              const tail = tailParts[1];
               const finalHtml = head + startMarker + '\n' + allCards + '\n' + endMarker + tail;
 
               fs.writeFileSync('blog.html', finalHtml, 'utf8');
-              console.log('Done!');
+              console.log('✅ Success: Inside grid and newest first!');
             } catch (err) {
               console.error('Error:', err.message);
               process.exit(1);
             }
           })();
+          EOF
           "
 
       - name: Commit and Push

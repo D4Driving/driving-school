@@ -9,8 +9,9 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
         .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
-        .prose img { border-radius: 1.5rem; margin: 2rem 0; width: 100%; height: auto; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .prose p { margin-bottom: 1.5rem; line-height: 1.8; color: #94a3b8; font-size: 1.125rem; }
+        /* Style the article text for readability */
+        .prose p { margin-bottom: 1.5rem; color: #94a3b8; line-height: 1.8; font-size: 1.1rem; }
+        .prose h2 { color: white; font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; }
     </style>
 </head>
 <body class="min-h-screen pb-20">
@@ -23,8 +24,10 @@
     </nav>
 
     <article class="max-w-3xl mx-auto px-6 pt-12">
-        <img src="ARTICLE_IMAGE" alt="ARTICLE_TITLE" class="w-full h-64 md:h-96 object-cover rounded-3xl mb-8 border border-white/10 shadow-2xl">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">ARTICLE_TITLE</h1>
+        <img src="ARTICLE_IMAGE" alt="ARTICLE_TITLE" class="w-full h-64 md:h-96 object-cover rounded-3xl mb-8 border border-white/10">
+        
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6">ARTICLE_TITLE</h1>
+        
         <div class="prose prose-invert max-w-none">
             ARTICLE_CONTENT
         </div>

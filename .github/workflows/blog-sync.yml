@@ -41,13 +41,20 @@ jobs:
                 </article>`;
               }
 
-              // 1. Read the template
+              // 1. Read the Master Template
               const template = fs.readFileSync('blog-template.html', 'utf8');
+              const marker = 'GRID_GOES_HERE';
+
+              // 2. Check if the marker exists
+              if (!template.includes(marker)) {
+                console.error('CRITICAL ERROR: Could not find GRID_GOES_HERE inside blog-template.html');
+                process.exit(1);
+              }
+
+              // 3. Swap the word for the articles
+              const finalHtml = template.replace(marker, cards);
               
-              // 2. Perform the replacement
-              const finalHtml = template.replace('', cards);
-              
-              // 3. Save to blog.html
+              // 4. Save the result to the real blog.html
               fs.writeFileSync('blog.html', finalHtml);
               
               console.log('--- DEBUG: Start of generated blog.html ---');
@@ -55,7 +62,7 @@ jobs:
               console.log('--- DEBUG END ---');
               
             } catch (err) {
-              console.error('Error:', err);
+              console.error('Error during sync:', err);
               process.exit(1);
             }
           })();
@@ -66,5 +73,5 @@ jobs:
           git config --global user.name "D4Driving-Bot"
           git config --global user.email "bot@d4driving.co.uk"
           git add .
-          git commit -m "Force Update Blog Order" || echo "No changes"
+          git commit -m "Force Update Blog Layout" || echo "No changes to commit"
           git push

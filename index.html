@@ -113,6 +113,21 @@
     </div>
 
     <section class="max-w-4xl mx-auto px-6 mb-12">
+        <div class="glass-card rounded-[2rem] overflow-hidden border-blue-500/20 shadow-2xl">
+            <div class="aspect-video w-full">
+                <iframe class="w-full h-full" src="https://www.youtube.com/embed/s6P8XqX7q_0" title="D4Driving Featured Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="p-6 flex justify-between items-center bg-slate-900/40">
+                <div>
+                    <h3 class="font-bold text-white text-sm md:text-base">Featured: Master Every Junction</h3>
+                    <p class="text-xs text-slate-400">Essential tips for Peterborough roads</p>
+                </div>
+                <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="bg-red-600 hover:bg-red-500 text-white text-[10px] font-bold py-2 px-4 rounded-full transition">SUBSCRIBE</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-4xl mx-auto px-6 mb-12">
         <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="block">
             <div class="glass-card p-6 rounded-3xl border-red-500/20 shadow-lg shadow-red-500/5 hover:border-red-500/40 transition-all transform hover:scale-[1.01]">
                 <div class="flex flex-col md:flex-row items-center gap-6">
@@ -245,7 +260,7 @@
             document.getElementById('quiz-progress').style.width = '100%';
 
             if(type === 'intensive') {
-                text.innerText = "Based on your goals, our 15 or 20-Hour Block Bookings are your best route to a fast pass in Peterborough.";
+                text.innerText = "Based on your goals, our Semi-Intensive course or 20-Hour Block Bookings are your best route to a fast pass in Peterborough.";
             } else {
                 text.innerText = "Our 10-Hour Block Booking or Standard Weekly sessions are the perfect way to build your confidence steadily.";
             }
@@ -349,7 +364,7 @@
         </div>
 
         <h3 class="text-center text-slate-500 uppercase tracking-[0.2em] text-[10px] font-bold mb-6">Secure Block Bookings</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             <div class="glass-card p-6 rounded-3xl text-center">
                 <h3 class="text-lg font-bold mb-2">10 Hours</h3>
                 <p class="text-3xl font-extrabold mb-4">£380</p>
@@ -365,6 +380,12 @@
                 <h3 class="text-lg font-bold mb-2">20 Hours</h3>
                 <p class="text-3xl font-extrabold mb-4">£720</p>
                 <a href="https://buy.stripe.com/eVqeVe2vg6V73Im84DbII02" target="_blank" class="block w-full py-3 bg-slate-700 rounded-xl font-bold text-sm hover:bg-slate-600 transition">Buy Package</a>
+            </div>
+            <div class="glass-card p-6 rounded-3xl text-center border-yellow-500/30">
+                <h3 class="text-lg font-bold mb-2 text-yellow-500">Semi-Intensive</h3>
+                <p class="text-3xl font-extrabold mb-1">£800</p>
+                <p class="text-slate-400 text-[10px] font-bold mb-4 uppercase">22 Hours + Test Prep</p>
+                <a href="#book" class="block w-full py-3 bg-slate-800 rounded-xl font-bold text-sm hover:bg-slate-700 transition">Reserve Slot</a>
             </div>
         </div>
 
@@ -458,35 +479,34 @@
                 <p class="text-slate-400">Fill out the form below and Robert will get back to you within 24 hours.</p>
             </div>
 
-<form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
-
-    <input type="hidden" name="access_key" value="d89354e9-4ef6-40cf-aad2-9512312f0999">
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <input type="text" name="name" placeholder="Full Name" required 
-               class="bg-slate-800 border border-white/10 p-4 rounded-2xl text-white">
-        
-        <input type="email" name="email" placeholder="Email Address" required 
-               class="bg-slate-800 border border-white/10 p-4 rounded-2xl text-white">
-    </div>
-
-    <textarea name="message" rows="5" placeholder="How can we help you?" required 
-              class="w-full mt-6 bg-slate-800 border border-white/10 p-4 rounded-2xl text-white"></textarea>
-
-    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-    <button type="submit" 
-            class="w-full mt-8 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-2xl transition">
-        Send Inquiry
-    </button>
-</form>
+            <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+                <input type="hidden" name="access_key" value="d89354e9-4ef6-40cf-aad2-9512312f0999">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Your Name</label>
+                        <input type="text" name="name" required class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="Robert Szatkowski">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Email Address</label>
+                        <input type="email" name="email" required class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="name@email.com">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">How can I help?</label>
+                        <textarea name="message" required rows="4" class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="I'm interested in the Semi-Intensive course..."></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-5 rounded-2xl shadow-xl shadow-blue-600/20 transition transform active:scale-[0.98]">
+                            SEND MESSAGE
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
 
-    <a href="https://wa.me/447872347686?text=Hi%20Robert!%20I'm%20interested%20in%20lessons." 
-       class="fixed bottom-6 right-6 w-16 h-16 bg-[#25d366] text-white rounded-full flex items-center justify-center shadow-2xl z-[999] hover:scale-110 transition-transform active:scale-90" 
-       target="_blank">
-        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446"/></svg>
+    <a href="https://wa.me/447872347686" class="wa-float flex items-center justify-center" target="_blank">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.589.943 3.129 1.417 4.77 1.418 5.4 0 9.791-4.39 9.793-9.792 0-2.618-1.02-5.08-2.871-6.932-1.85-1.85-4.311-2.871-6.93-2.871-5.4 0-9.791 4.391-9.793 9.792-.001 1.777.48 3.504 1.391 5.013l-1.01 3.687 3.778-.991l-.023-.015-.33.2zM17.65 19.235c-.26-.13-1.534-.757-1.771-.842-.236-.085-.408-.13-.579.13-.171.26-.66.842-.808 1.012-.148.17-.296.19-.556.06-.26-.13-1.097-.404-2.09-1.287-.773-.69-1.294-1.543-1.446-1.803-.152-.26-.016-.4.114-.53.117-.117.26-.305.39-.457.13-.153.173-.26.26-.435.087-.175.044-.326-.021-.457-.065-.13-.579-1.391-.794-1.913-.21-.504-.44-.435-.604-.443-.156-.008-.334-.008-.513-.008s-.469.065-.713.326c-.244.26-.931.91-.931 2.213s.953 2.56 1.083 2.735c.13.174 1.876 2.863 4.546 4.014.635.273 1.13.436 1.518.559.638.202 1.22.174 1.679.106.512-.077 1.534-.626 1.75-1.23.217-.604.217-1.121.152-1.23-.065-.11-.239-.174-.499-.304z"/></svg>
     </a>
+
 </body>
 </html>

@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Update Blog
+      - name: Update Blog and Generate Articles
         env:
           RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
         run: |
@@ -28,43 +28,44 @@ jobs:
           const parser = new Parser();
 
           (async () => {
-            try {
-              const feed = await parser.parseURL(process.env.RSS_URL);
-              let cards = '';
-              for (const item of feed.items) {
-                const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
-                cards += `
-                <article class="glass-card p-6 rounded-3xl hover:border-white/20 transition group">
-                  <h3 class="text-lg font-bold mt-1 group-hover:text-blue-400">${item.title}</h3>
+            const feed = await parser.parseURL(process.env.RSS_URL);
+            const blogTemplate = fs.readFileSync('blog-template.html', 'utf8');
+            const articleTemplate = fs.readFileSync('article-template.html', 'utf8');
+            
+            let gridCards = '';
+
+            for (const item of feed.items) {
+              const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
+              const imageUrl = item.enclosure ? item.enclosure.url : 'default-blog-image.jpg';
+              const content = item['content:encoded'] || item.content || item.description || "";
+
+              // 1. Build the Grid Card for blog.html
+              gridCards += `
+              <article class="glass-card overflow-hidden rounded-3xl hover:border-white/20 transition group">
+                <div class="h-48 overflow-hidden">
+                  <img src="${imageUrl}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-6">
+                  <h3 class="text-lg font-bold group-hover:text-blue-400">${item.title}</h3>
                   <p class="text-slate-400 text-sm mt-2 line-clamp-2">${item.contentSnippet || ""}</p>
                   <a href="${slug}.html" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>
-                </article>`;
-              }
+                </div>
+              </article>`;
 
-              // 1. Read the Master Template
-              const template = fs.readFileSync('blog-template.html', 'utf8');
-              const marker = 'GRID_GOES_HERE';
-
-              // 2. Check if the marker exists
-              if (!template.includes(marker)) {
-                console.error('CRITICAL ERROR: Could not find GRID_GOES_HERE inside blog-template.html');
-                process.exit(1);
-              }
-
-              // 3. Swap the word for the articles
-              const finalHtml = template.replace(marker, cards);
+              // 2. Build the Individual Article Page
+              let pageHtml = articleTemplate
+                .replace(/ARTICLE_TITLE/g, item.title)
+                .replace('ARTICLE_IMAGE', imageUrl)
+                .replace('ARTICLE_CONTENT', content);
               
-              // 4. Save the result to the real blog.html
-              fs.writeFileSync('blog.html', finalHtml);
-              
-              console.log('--- DEBUG: Start of generated blog.html ---');
-              console.log(finalHtml.substring(0, 300));
-              console.log('--- DEBUG END ---');
-              
-            } catch (err) {
-              console.error('Error during sync:', err);
-              process.exit(1);
+              fs.writeFileSync(`${slug}.html`, pageHtml);
             }
+
+            // 3. Update the main Blog page
+            const finalBlogHtml = blogTemplate.replace('GRID_GOES_HERE', gridCards);
+            fs.writeFileSync('blog.html', finalBlogHtml);
+            
+            console.log('Successfully updated blog and generated all article pages!');
           })();
           EOF
 
@@ -73,5 +74,5 @@ jobs:
           git config --global user.name "D4Driving-Bot"
           git config --global user.email "bot@d4driving.co.uk"
           git add .
-          git commit -m "Force Update Blog Layout" || echo "No changes to commit"
+          git commit -m "Generate articles with images" || echo "No changes"
           git push

@@ -472,38 +472,40 @@
         </div>
     </section>
 
-    <section id="contact" class="max-w-3xl mx-auto px-6 py-16">
-        <div class="glass-card p-10 rounded-[2.5rem] border-white/10 shadow-2xl">
-            <div class="text-center mb-10">
-                <h3 class="text-3xl font-extrabold text-white mb-2">Got Questions?</h3>
-                <p class="text-slate-400">Fill out the form below and Robert will get back to you within 24 hours.</p>
-            </div>
-
-            <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
-                <input type="hidden" name="access_key" value="d89354e9-4ef6-40cf-aad2-9512312f0999">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Your Name</label>
-                        <input type="text" name="name" required class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="Robert Szatkowski">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Email Address</label>
-                        <input type="email" name="email" required class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="name@email.com">
-                    </div>
-                    <div class="md:col-span-2">
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">How can I help?</label>
-                        <textarea name="message" required rows="4" class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="I'm interested in the Semi-Intensive course..."></textarea>
-                    </div>
-                    <div class="md:col-span-2">
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-5 rounded-2xl shadow-xl shadow-blue-600/20 transition transform active:scale-[0.98]">
-                            SEND MESSAGE
-                        </button>
-                    </div>
-                </div>
-            </form>
+<section id="contact" class="max-w-3xl mx-auto px-6 py-16">
+    <div class="glass-card p-10 rounded-[2.5rem] border-white/10 shadow-2xl">
+        <div class="text-center mb-10">
+            <h3 class="text-3xl font-extrabold text-white mb-2">Got Questions?</h3>
+            <p class="text-slate-400">Fill out the form below and we will get back to you within 24 hours.</p>
         </div>
-    </section>
 
+        <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+            <input type="hidden" name="access_key" value="d89354e9-4ef6-40cf-aad2-9512312f0999">
+            
+            <input type="hidden" name="redirect" value="https://d4driving.co.uk/thank-you.html">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Your Name</label>
+                    <input type="text" name="name" required class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="Robert Szatkowski">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Email Address</label>
+                    <input type="email" name="email" required class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="name@email.com">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">How can I help?</label>
+                    <textarea name="message" required rows="4" class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="I'm interested in the Semi-Intensive course..."></textarea>
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-5 rounded-2xl shadow-xl shadow-blue-600/20 transition transform active:scale-[0.98]">
+                        SEND MESSAGE
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
     <a href="https://wa.me/447872347686" class="wa-float flex items-center justify-center" target="_blank">
         <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.589.943 3.129 1.417 4.77 1.418 5.4 0 9.791-4.39 9.793-9.792 0-2.618-1.02-5.08-2.871-6.932-1.85-1.85-4.311-2.871-6.93-2.871-5.4 0-9.791 4.391-9.793 9.792-.001 1.777.48 3.504 1.391 5.013l-1.01 3.687 3.778-.991l-.023-.015-.33.2zM17.65 19.235c-.26-.13-1.534-.757-1.771-.842-.236-.085-.408-.13-.579.13-.171.26-.66.842-.808 1.012-.148.17-.296.19-.556.06-.26-.13-1.097-.404-2.09-1.287-.773-.69-1.294-1.543-1.446-1.803-.152-.26-.016-.4.114-.53.117-.117.26-.305.39-.457.13-.153.173-.26.26-.435.087-.175.044-.326-.021-.457-.065-.13-.579-1.391-.794-1.913-.21-.504-.44-.435-.604-.443-.156-.008-.334-.008-.513-.008s-.469.065-.713.326c-.244.26-.931.91-.931 2.213s.953 2.56 1.083 2.735c.13.174 1.876 2.863 4.546 4.014.635.273 1.13.436 1.518.559.638.202 1.22.174 1.679.106.512-.077 1.534-.626 1.75-1.23.217-.604.217-1.121.152-1.23-.065-.11-.239-.174-.499-.304z"/></svg>
     </a>

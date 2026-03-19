@@ -1,48 +1,65 @@
-- name: Sync Articles
+name: Soro Blog Sync
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Update Blog
         env:
           RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
         run: |
           npm init -y
-          npm install rss-parser jsdom
+          npm install rss-parser
           node << 'EOF'
           const Parser = require('rss-parser');
           const fs = require('fs');
           const parser = new Parser();
 
           (async () => {
-            try {
-              const feed = await parser.parseURL(process.env.RSS_URL);
-              let allCards = '';
-              for (const item of feed.items) {
-                const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
-                allCards += `
-                <article class="glass-card p-6 rounded-3xl hover:border-white/20 transition group">
-                  <h3 class="text-lg font-bold mt-1 group-hover:text-blue-400">${item.title}</h3>
-                  <p class="text-slate-400 text-sm mt-2 line-clamp-2">${item.contentSnippet || ""}</p>
-                  <a href="${slug}.html" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>
-                </article>`;
-              }
+            const feed = await parser.parseURL(process.env.RSS_URL);
+            let cards = '';
+            for (const item of feed.items) {
+              const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
+              cards += `
+              <article class="glass-card p-6 rounded-3xl hover:border-white/20 transition group">
+                <h3 class="text-lg font-bold mt-1 group-hover:text-blue-400">${item.title}</h3>
+                <p class="text-slate-400 text-sm mt-2 line-clamp-2">${item.contentSnippet || ""}</p>
+                <a href="${slug}.html" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>
+              </article>`;
+            }
 
-              let blogHtml = fs.readFileSync('blog.html', 'utf8');
-              
-              // This is the "Safety Catch"
-              const startMarker = '';
-              const endMarker = '';
+            const blogHtml = fs.readFileSync('blog.html', 'utf8');
+            const start = '';
+            const end = '';
 
-              if (blogHtml.includes(startMarker) && blogHtml.includes(endMarker)) {
-                const parts = blogHtml.split(startMarker);
-                const head = parts[0];
-                const tail = parts[1].split(endMarker)[1];
-                const finalHtml = head + startMarker + "\n" + allCards + "\n" + endMarker + tail;
-                fs.writeFileSync('blog.html', finalHtml);
-                console.log("Successfully injected articles into markers.");
-              } else {
-                console.log("MARKERS NOT FOUND! Check blog.html for and ");
-                process.exit(1); // Stop the script if it's going to break the site
-              }
-            } catch (err) {
-              console.error(err);
+            if (blogHtml.includes(start) && blogHtml.includes(end)) {
+              const head = blogHtml.split(start)[0];
+              const tail = blogHtml.split(end)[1];
+              fs.writeFileSync('blog.html', head + start + '\n' + cards + '\n' + end + tail);
+              console.log('Success');
+            } else {
+              console.error('Markers missing in blog.html');
               process.exit(1);
             }
           })();
           EOF
+
+      - name: Save Changes
+        run: |
+          git config --global user.name "D4Driving-Bot"
+          git config --global user.email "bot@d4driving.co.uk"
+          git add .
+          git commit -m "Update articles" || echo "No changes"
+          git push

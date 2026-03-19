@@ -28,23 +28,29 @@ jobs:
           const parser = new Parser();
 
           (async () => {
-            const feed = await parser.parseURL(process.env.RSS_URL);
-            let cards = '';
-            for (const item of feed.items) {
-              const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
-              cards += `
-              <article class="glass-card p-6 rounded-3xl hover:border-white/20 transition group">
-                <h3 class="text-lg font-bold mt-1 group-hover:text-blue-400">${item.title}</h3>
-                <p class="text-slate-400 text-sm mt-2 line-clamp-2">${item.contentSnippet || ""}</p>
-                <a href="${slug}.html" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>
-              </article>`;
-            }
+            try {
+              const feed = await parser.parseURL(process.env.RSS_URL);
+              let cards = '';
+              for (const item of feed.items) {
+                const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
+                cards += `
+                <article class="glass-card p-6 rounded-3xl hover:border-white/20 transition group">
+                  <h3 class="text-lg font-bold mt-1 group-hover:text-blue-400">${item.title}</h3>
+                  <p class="text-slate-400 text-sm mt-2 line-clamp-2">${item.contentSnippet || ""}</p>
+                  <a href="${slug}.html" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>
+                </article>`;
+              }
 
-            // READ FROM TEMPLATE, WRITE TO BLOG.HTML
-            const template = fs.readFileSync('blog-template.html', 'utf8');
-            const finalHtml = template.replace('', cards);
-            fs.writeFileSync('blog.html', finalHtml);
-            console.log('Blog generated from template!');
+              // This merges your Blue Template with the New Articles
+              const template = fs.readFileSync('blog-template.html', 'utf8');
+              const finalHtml = template.replace('', cards);
+              
+              fs.writeFileSync('blog.html', finalHtml);
+              console.log('Successfully generated blog.html from template');
+            } catch (err) {
+              console.error('Error during sync:', err);
+              process.exit(1);
+            }
           })();
           EOF
 
@@ -53,5 +59,5 @@ jobs:
           git config --global user.name "D4Driving-Bot"
           git config --global user.email "bot@d4driving.co.uk"
           git add .
-          git commit -m "Update articles" || echo "No changes"
+          git commit -m "Update blog from template" || echo "No changes to commit"
           git push

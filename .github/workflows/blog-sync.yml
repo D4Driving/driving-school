@@ -1,25 +1,4 @@
-name: Soro Blog Sync
-on:
-  schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Sync Articles
+- name: Sync Articles
         env:
           RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
         run: |
@@ -28,58 +7,42 @@ jobs:
           node << 'EOF'
           const Parser = require('rss-parser');
           const fs = require('fs');
-          const { JSDOM } = require('jsdom');
-          const parser = new Parser({
-            customFields: { item: [['content:encoded', 'fullContent']] }
-          });
+          const parser = new Parser();
+
           (async () => {
             try {
               const feed = await parser.parseURL(process.env.RSS_URL);
-              console.log(`Found ${feed.items.length} articles.`);
-              
               let allCards = '';
               for (const item of feed.items) {
                 const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
-                const fileName = slug + '.html';
-                
-                // Create individual post pages
-                const postTemplate = fs.readFileSync('post-template.html', 'utf8');
-                const postDom = new JSDOM(postTemplate);
-                const postDoc = postDom.window.document;
-                if (postDoc.getElementById('post-title')) postDoc.getElementById('post-title').innerHTML = item.title;
-                if (postDoc.getElementById('post-content')) postDoc.getElementById('post-content').innerHTML = item.fullContent || item.content || '';
-                fs.writeFileSync(fileName, postDom.serialize());
-
-                // Build the card for the main blog page
                 allCards += `
                 <article class="glass-card p-6 rounded-3xl hover:border-white/20 transition group">
                   <h3 class="text-lg font-bold mt-1 group-hover:text-blue-400">${item.title}</h3>
                   <p class="text-slate-400 text-sm mt-2 line-clamp-2">${item.contentSnippet || ""}</p>
-                  <a href="${fileName}" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>
+                  <a href="${slug}.html" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>
                 </article>`;
               }
 
-              // Inject into blog.html
               let blogHtml = fs.readFileSync('blog.html', 'utf8');
+              
+              // This is the "Safety Catch"
               const startMarker = '';
               const endMarker = '';
-              
-              const regex = new RegExp(`${startMarker}[\\s\\S]*${endMarker}`);
-              const newHtml = blogHtml.replace(regex, `${startMarker}\n${allCards}\n${endMarker}`);
-              
-              fs.writeFileSync('blog.html', newHtml);
-              console.log('Successfully updated blog.html');
+
+              if (blogHtml.includes(startMarker) && blogHtml.includes(endMarker)) {
+                const parts = blogHtml.split(startMarker);
+                const head = parts[0];
+                const tail = parts[1].split(endMarker)[1];
+                const finalHtml = head + startMarker + "\n" + allCards + "\n" + endMarker + tail;
+                fs.writeFileSync('blog.html', finalHtml);
+                console.log("Successfully injected articles into markers.");
+              } else {
+                console.log("MARKERS NOT FOUND! Check blog.html for and ");
+                process.exit(1); // Stop the script if it's going to break the site
+              }
             } catch (err) {
-              console.error('Error:', err.message);
+              console.error(err);
               process.exit(1);
             }
           })();
           EOF
-
-      - name: Commit and Push
-        run: |
-          git config --global user.name "D4Driving-Bot"
-          git config --global user.email "bot@d4driving.co.uk"
-          git add .
-          git commit -m "Update blog articles" || echo "No changes to commit"
-          git push

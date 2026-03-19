@@ -40,19 +40,11 @@ jobs:
               </article>`;
             }
 
-            const blogHtml = fs.readFileSync('blog.html', 'utf8');
-            const start = '';
-            const end = '';
-
-            if (blogHtml.includes(start) && blogHtml.includes(end)) {
-              const head = blogHtml.split(start)[0];
-              const tail = blogHtml.split(end)[1];
-              fs.writeFileSync('blog.html', head + start + '\n' + cards + '\n' + end + tail);
-              console.log('Success');
-            } else {
-              console.error('Markers missing in blog.html');
-              process.exit(1);
-            }
+            // READ FROM TEMPLATE, WRITE TO BLOG.HTML
+            const template = fs.readFileSync('blog-template.html', 'utf8');
+            const finalHtml = template.replace('', cards);
+            fs.writeFileSync('blog.html', finalHtml);
+            console.log('Blog generated from template!');
           })();
           EOF
 

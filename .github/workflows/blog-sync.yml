@@ -41,14 +41,21 @@ jobs:
                 </article>`;
               }
 
-              // This merges your Blue Template with the New Articles
+              // 1. Read the template
               const template = fs.readFileSync('blog-template.html', 'utf8');
+              
+              // 2. Perform the replacement
               const finalHtml = template.replace('', cards);
               
+              // 3. Save to blog.html
               fs.writeFileSync('blog.html', finalHtml);
-              console.log('Successfully generated blog.html from template');
+              
+              console.log('--- DEBUG: Start of generated blog.html ---');
+              console.log(finalHtml.substring(0, 300));
+              console.log('--- DEBUG END ---');
+              
             } catch (err) {
-              console.error('Error during sync:', err);
+              console.error('Error:', err);
               process.exit(1);
             }
           })();
@@ -59,5 +66,5 @@ jobs:
           git config --global user.name "D4Driving-Bot"
           git config --global user.email "bot@d4driving.co.uk"
           git add .
-          git commit -m "Update blog from template" || echo "No changes to commit"
+          git commit -m "Force Update Blog Order" || echo "No changes"
           git push

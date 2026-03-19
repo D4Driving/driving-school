@@ -63,9 +63,6 @@
             font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 100;
         }
         
-        /* The Secret to the Infinite Loop: 
-           The track moves 50% of its total length, which contains the first set of cards.
-        */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); } 
@@ -77,7 +74,7 @@
         }
         .reviews-track {
             display: flex;
-            width: max-content; /* Auto-fit all cards side-by-side */
+            width: max-content;
             animation: scroll 40s linear infinite;
         }
         .reviews-track:hover {
@@ -352,7 +349,7 @@
         </div>
 
         <h3 class="text-center text-slate-500 uppercase tracking-[0.2em] text-[10px] font-bold mb-6">Secure Block Bookings</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             <div class="glass-card p-6 rounded-3xl text-center">
                 <h3 class="text-lg font-bold mb-2">10 Hours</h3>
                 <p class="text-3xl font-extrabold mb-4">£380</p>
@@ -368,6 +365,28 @@
                 <h3 class="text-lg font-bold mb-2">20 Hours</h3>
                 <p class="text-3xl font-extrabold mb-4">£720</p>
                 <a href="https://buy.stripe.com/eVqeVe2vg6V73Im84DbII02" target="_blank" class="block w-full py-3 bg-slate-700 rounded-xl font-bold text-sm hover:bg-slate-600 transition">Buy Package</a>
+            </div>
+        </div>
+
+        <h3 class="text-center text-slate-500 uppercase tracking-[0.2em] text-[10px] font-bold mb-6">Test Preparation</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="glass-card p-6 rounded-3xl text-center border-white/5">
+                <h3 class="text-lg font-bold mb-2 text-slate-300">Peterborough Prep</h3>
+                <p class="text-3xl font-extrabold mb-1">4 Hours</p>
+                <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">Test Ready</p>
+                <a href="#book" class="block w-full py-3 bg-slate-800 rounded-xl font-bold text-sm hover:bg-slate-700 transition">Reserve Your Slot</a>
+            </div>
+            <div class="glass-card p-6 rounded-3xl text-center border-white/5">
+                <h3 class="text-lg font-bold mb-2 text-slate-300">Grantham Prep</h3>
+                <p class="text-3xl font-extrabold mb-1">4 Hours</p>
+                <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">Test Ready</p>
+                <a href="#book" class="block w-full py-3 bg-slate-800 rounded-xl font-bold text-sm hover:bg-slate-700 transition">Reserve Your Slot</a>
+            </div>
+            <div class="glass-card p-6 rounded-3xl text-center border-white/5">
+                <h3 class="text-lg font-bold mb-2 text-slate-300">Kettering Prep</h3>
+                <p class="text-3xl font-extrabold mb-1">4 Hours</p>
+                <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">Test Ready</p>
+                <a href="#book" class="block w-full py-3 bg-slate-800 rounded-xl font-bold text-sm hover:bg-slate-700 transition">Reserve Your Slot</a>
             </div>
         </div>
     </section>
@@ -467,41 +486,7 @@
     <a href="https://wa.me/447872347686?text=Hi%20Robert!%20I'm%20interested%20in%20lessons." 
        class="fixed bottom-6 right-6 w-16 h-16 bg-[#25d366] text-white rounded-full flex items-center justify-center shadow-2xl z-[999] hover:scale-110 transition-transform active:scale-90" 
        target="_blank">
-        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.937 3.659 1.432 5.631 1.433h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446"/></svg>
     </a>
-
-    <footer class="max-w-6xl mx-auto px-6 pt-20 pb-10 border-t border-white/5 mt-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-            <div class="space-y-4">
-                <img src="400dpiLogoCropped.png" alt="D4Driving Logo" class="h-12 w-auto opacity-80">
-                <p class="text-slate-500 text-sm leading-relaxed">
-                    Expert driving tuition in Peterborough, Grantham, and Kettering. Helping students become safe, confident drivers for life.
-                </p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-6">Quick Links</h4>
-                <ul class="space-y-3 text-slate-400 text-sm font-medium">
-                    <li><a href="#book" class="hover:text-blue-400 transition">Book Lessons</a></li>
-                    <li><a href="#prices" class="hover:text-blue-400 transition">Price List</a></li>
-                    <li><a href="blog.html" class="hover:text-blue-400 transition">Driving Tips (Blog)</a></li>
-                    <li><a href="#contact" class="hover:text-blue-400 transition">Contact Robert</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-6">Test Centres</h4>
-                <ul class="space-y-3 text-slate-400 text-sm font-medium">
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Peterborough</li>
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Grantham</li>
-                    <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Kettering</li>
-                </ul>
-            </div>
-        </div>
-        <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-slate-600 text-[10px] font-bold uppercase tracking-widest">
-                © 2026 D4Driving School of Motoring. All rights reserved.
-            </p>
-        </div>
-    </footer>
-
 </body>
 </html>

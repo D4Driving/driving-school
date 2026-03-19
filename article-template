@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTICLE_TITLE | D4Driving Journal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
+        .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .prose img { border-radius: 1.5rem; margin: 2rem 0; width: 100%; height: auto; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .prose p { margin-bottom: 1.5rem; line-height: 1.8; color: #94a3b8; font-size: 1.125rem; }
+    </style>
+</head>
+<body class="min-h-screen pb-20">
+    <nav class="max-w-6xl mx-auto p-6 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="400dpiLogoCropped.png" alt="Logo" class="h-10 w-auto">
+            <span class="font-bold uppercase tracking-wider">D4DRIVING</span>
+        </a>
+        <a href="blog.html" class="text-xs font-bold bg-slate-800 px-4 py-2 rounded-full border border-white/10 hover:bg-slate-700 transition">← Back to Blog</a>
+    </nav>
+
+    <article class="max-w-3xl mx-auto px-6 pt-12">
+        <img src="ARTICLE_IMAGE" alt="ARTICLE_TITLE" class="w-full h-64 md:h-96 object-cover rounded-3xl mb-8 border border-white/10 shadow-2xl">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">ARTICLE_TITLE</h1>
+        <div class="prose prose-invert max-w-none">
+            ARTICLE_CONTENT
+        </div>
+    </article>
+
+    <footer class="max-w-4xl mx-auto mt-20 p-8 text-center border-t border-white/5 text-slate-600 text-sm">
+        © 2026 D4Driving School of Motoring.
+    </footer>
+</body>
+</html>

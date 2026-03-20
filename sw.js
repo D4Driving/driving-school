@@ -1,4 +1,4 @@
-const CACHE_NAME = 'd4driving-v3'; // Increment this whenever you make a big layout change
+const CACHE_NAME = 'd4driving-v3'; // Keep your versioning
 const OFFLINE_URL = 'index.html';
 
 // Initial assets to cache for the "App" to work
@@ -37,20 +37,29 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch Event: The "Soro-Friendly" Strategy
-// It looks for the file online first (so users see new blog posts), 
-// but saves a copy for offline use immediately.
+// NEW SPEED-FIRST FETCH STRATEGY: Stale-While-Revalidate
+// 1. Show the cached version IMMEDIATELY (Instant Load)
+// 2. Fetch the new version in the background (Soro Sync)
+// 3. Update the cache for the next time they visit
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        // If it's a valid response, clone it and put it in the cache
-        const resClone = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, resClone);
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.match(event.request).then((cachedResponse) => {
+        
+        // Always try to fetch from the network in the background
+        const fetchPromise = fetch(event.request).then((networkResponse) => {
+          // If we got a real response, save it to the cache for next time
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(event.request, networkResponse.clone());
+          }
+          return networkResponse;
+        }).catch(() => {
+          // If network fails (completely offline), we just rely on the cache
         });
-        return response;
-      })
-      .catch(() => caches.match(event.request).then((res) => res))
+
+        // Return the cached version if we have it, otherwise wait for the network
+        return cachedResponse || fetchPromise;
+      });
+    })
   );
 });

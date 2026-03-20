@@ -1,4 +1,4 @@
-const CACHE_NAME = 'd4driving-v3'; // Keep your versioning
+const CACHE_NAME = 'd4driving-v4'; // Keep your versioning
 const OFFLINE_URL = 'index.html';
 
 // Initial assets to cache for the "App" to work
@@ -9,6 +9,7 @@ const PRE_CACHE_ASSETS = [
   './tips.html',
   './400dpiLogoCropped.png',
   './robert2.png',
+  './FaviconLogo.jpg',
   './manifest.json'
 ];
 

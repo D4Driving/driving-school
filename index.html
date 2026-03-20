@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="manifest" href="manifest.json">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#0f172a">
-
-<link rel="apple-touch-icon" href="FaviconLogo.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Driving Lessons Peterborough | D4Driving School of Motoring</title>
 
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Expert driving tuition in Peterborough with Robert Szatkowski. Helping you pass with confidence.">
+<meta name="description" content="Expert driving tuition in Peterborough with Robert Szatkowski. Helping you pass with confidence.">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://d4driving.co.uk">
     <meta property="og:title" content="D4Driving Peterborough | Expert Driving Tuition">
     <meta property="og:description" content="Expert tuition with Robert Szatkowski. Book your first lesson today.">
-    <meta property="og:image" content="https://d4driving.co.uk/og-image-personal.png">
+    
+    <meta property="og:image" content="https://d4driving.co.uk/og-image.png">
+    
+    <meta property="og:image:secure_url" content="https://d4driving.co.uk/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="D4Driving founder Robert Szatkowski smiling in his dual-control tuition car with the circular D4Driving logo.">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@D4Driving">
     <meta name="twitter:title" content="D4Driving Peterborough | Expert Driving Tuition">
     <meta name="twitter:description" content="Pass your driving test in Peterborough. Book now!">
+    <meta name="twitter:image" content="https://d4driving.co.uk/og-image.png">
+    ```
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/jpeg" href="FaviconLogo.jpg">
-    <link rel="apple-touch-icon" href="FaviconLogo.jpg">    
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/jpeg" href="FaviconLogo.jpg">
+<link rel="apple-touch-icon" href="FaviconLogo.jpg">    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -58,22 +57,15 @@
     <link rel="manifest" href="manifest.json">
     <script>
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js').then(() => console.log("App Ready Offline"));
-        });
+        navigator.serviceWorker.register('./sw.js').then(() => console.log("App Ready Offline"));
       }
     </script>
     
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
-    <script src="https://cdn.tailwindcss.com" defer></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <style>
-    /* Prevents images from exploding before CSS loads */
-    img, svg { max-width: 100%; height: auto; }
-    .h-12 { height: 3rem !important; } /* Hard-set the logo height */
-</style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; scroll-behavior: smooth; }
         .glass-card {
@@ -86,6 +78,7 @@
             background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center;
             font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 100;
         }
+        
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); } 
@@ -109,10 +102,7 @@
 
     <header class="w-full max-w-4xl mx-auto p-8 text-center">
         <div class="inline-block mb-6">
-           <img src="400dpiLogoCropped.png" 
-     alt="D4Driving Logo" 
-     style="width: auto; height: 48px;" 
-     class="h-12 w-auto brightness-110">
+            <img src="400dpiLogoCropped.png" alt="D4Driving Logo" class="h-24 w-auto drop-shadow-2xl">
         </div>
         <h1 class="text-4xl font-extrabold text-white mb-2 tracking-tight">D4Driving School of Motoring</h1>
         <p class="text-slate-400 text-lg">Your road to success starts here.</p>
@@ -139,21 +129,22 @@
     </div>
 
     <section class="max-w-4xl mx-auto px-6 mb-12">
-        <div class="aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10">
-            <iframe 
-                src="https://www.youtube.com/embed/i404vDomeWw?si=m98HMhijljoTTWHB" 
-                loading="lazy" 
-                title="D4Driving Peterborough Mock Test"
-                class="w-full aspect-video rounded-3xl"
-                allowfullscreen>
-            </iframe>
-        </div>
-        <div class="p-6 flex justify-between items-center bg-slate-900/40 rounded-b-3xl">
-            <div>
-                <h3 class="font-bold text-white text-sm md:text-base">Featured: Brooke's Mock Test</h3>
-                <p class="text-xs text-slate-400">Did she pass? What went well? What went wrong?</p>
+<div class="aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+<iframe 
+  src="https://www.youtube.com/embed/i404vDomeWw?si=m98HMhijljoTTWHB" 
+  loading="lazy" 
+  title="D4Driving Peterborough Mock Test"
+  class="w-full aspect-video rounded-3xl shadow-2xl"
+  allowfullscreen>
+</iframe>
+</div>
+            <div class="p-6 flex justify-between items-center bg-slate-900/40">
+                <div>
+                    <h3 class="font-bold text-white text-sm md:text-base">Featured: Brooke's Mock Test</h3>
+                    <p class="text-xs text-slate-400">Did she pass? What went well? What went wrong?</p>
+                </div>
+                <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="bg-red-600 hover:bg-red-500 text-white text-[10px] font-bold py-2 px-4 rounded-full transition">SUBSCRIBE</a>
             </div>
-            <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="bg-red-600 hover:bg-red-500 text-white text-[10px] font-bold py-2 px-4 rounded-full transition">SUBSCRIBE</a>
         </div>
     </section>
 
@@ -209,7 +200,7 @@
             <div class="glass-card rounded-3xl overflow-hidden hover:border-blue-500/30 transition group">
                 <div class="h-40 bg-slate-800 overflow-hidden relative">
                     <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent"></div>
-                    <img src="blog1.png" alt="Roundabouts tip" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-60" loading="lazy">
+                    <img src="blog1.png" alt="Roundabouts tip" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-60">
                 </div>
                 <div class="p-6">
                     <span class="text-blue-500 text-[10px] font-bold uppercase tracking-widest">Test Prep</span>
@@ -233,6 +224,7 @@
     <section id="quiz-section" class="max-w-3xl mx-auto px-6 py-12">
         <div class="glass-card p-8 rounded-[2rem] border-blue-500/20 shadow-2xl shadow-blue-500/5 relative overflow-hidden">
             <div class="absolute top-0 left-0 h-1 bg-blue-600 transition-all duration-500" id="quiz-progress" style="width: 25%;"></div>
+
             <div id="quiz-container">
                 <div id="step-1" class="quiz-step">
                     <span class="text-blue-400 font-bold uppercase tracking-widest text-[10px]">Step 1 of 3</span>
@@ -274,6 +266,35 @@
         </div>
     </section>
 
+    <script>
+        function nextStep(step) {
+            document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+            document.getElementById('step-' + step).classList.remove('hidden');
+            document.getElementById('quiz-progress').style.width = (step * 33) + '%';
+        }
+
+        function showResult(type) {
+            document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+            const result = document.getElementById('quiz-result');
+            const text = document.getElementById('result-text');
+            result.classList.remove('hidden');
+            document.getElementById('quiz-progress').style.width = '100%';
+
+            if(type === 'intensive') {
+                text.innerText = "Based on your goals, our Semi-Intensive course or 20-Hour Block Bookings are your best route to a fast pass in Peterborough.";
+            } else {
+                text.innerText = "Our 10-Hour Block Booking or Standard Weekly sessions are the perfect way to build your confidence steadily.";
+            }
+        }
+
+        function resetQuiz() {
+            setTimeout(() => {
+                nextStep(1);
+                document.getElementById('quiz-result').classList.add('hidden');
+            }, 1000);
+        }
+    </script>
+
     <section id="success-map" class="max-w-5xl mx-auto px-6 py-16">
         <div class="text-center mb-12">
             <h2 class="text-blue-400 font-bold uppercase tracking-[0.3em] text-[10px] mb-2">Peterborough Coverage</h2>
@@ -289,6 +310,7 @@
                 <h4 class="text-white font-bold text-sm mb-1 uppercase tracking-wider">Hampton</h4>
                 <p class="text-[10px] text-slate-500 font-bold">42+ PASSES</p>
             </div>
+
             <div class="glass-card p-6 rounded-3xl text-center border-white/5 hover:border-blue-500/40 transition-all group">
                 <div class="w-10 h-10 bg-blue-600/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
                     <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
@@ -296,6 +318,7 @@
                 <h4 class="text-white font-bold text-sm mb-1 uppercase tracking-wider">Werrington</h4>
                 <p class="text-[10px] text-slate-500 font-bold">31+ PASSES</p>
             </div>
+
             <div class="glass-card p-6 rounded-3xl text-center border-white/5 hover:border-blue-500/40 transition-all group">
                 <div class="w-10 h-10 bg-blue-600/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
                     <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
@@ -303,6 +326,7 @@
                 <h4 class="text-white font-bold text-sm mb-1 uppercase tracking-wider">The Ortons</h4>
                 <p class="text-[10px] text-slate-500 font-bold">28+ PASSES</p>
             </div>
+
             <div class="glass-card p-6 rounded-3xl text-center border-white/5 hover:border-blue-500/40 transition-all group">
                 <div class="w-10 h-10 bg-blue-600/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition">
                     <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
@@ -329,86 +353,82 @@
             </div>
         </div>
     </section>
-
+    
     <section id="prices" class="max-w-5xl mx-auto px-6 py-12">
         <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest">Lesson Packages</h2>
         
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 text-center items-center">
-        <div class="glass-card p-6 rounded-3xl border-yellow-500/50 bg-yellow-500/5 shadow-[0_0_20px_rgba(234,179,8,0.1)] relative transform lg:scale-110 z-10">
-            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-500 text-slate-900 text-[10px] px-3 py-1 rounded-full font-black uppercase tracking-tighter">Start Here</span>
-            <h3 class="text-lg font-bold mb-2 text-yellow-500">Assessment</h3>
-            <p class="text-3xl font-extrabold mb-1">£55</p>
-            <p class="text-white/60 text-xs font-semibold mb-4 uppercase">1.5 Hours</p>
-            <a href="#book" class="block w-full py-2 bg-yellow-500 hover:bg-yellow-400 text-slate-900 rounded-xl font-bold text-sm transition-colors">Book Assessment</a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div class="glass-card p-6 rounded-3xl text-center border-white/5">
+                <h3 class="text-lg font-bold mb-2 text-slate-300">Single Session</h3>
+                <p class="text-3xl font-extrabold mb-1">£40</p>
+                <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">1 Hour</p>
+                <a href="#book" class="block w-full py-2 bg-slate-800 rounded-xl font-bold text-sm hover:bg-slate-700 transition">Book & Pay</a>
+            </div>
+            <div class="glass-card p-6 rounded-3xl text-center border-white/5">
+                <h3 class="text-lg font-bold mb-2 text-slate-300">Standard Session</h3>
+                <p class="text-3xl font-extrabold mb-1">£55</p>
+                <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">1.5 Hours</p>
+                <a href="#book" class="block w-full py-2 bg-slate-800 rounded-xl font-bold text-sm hover:bg-slate-700 transition">Book & Pay</a>
+            </div>
+            <div class="glass-card p-6 rounded-3xl text-center border-white/5">
+                <h3 class="text-lg font-bold mb-2 text-slate-300">Extended Session</h3>
+                <p class="text-3xl font-extrabold mb-1">£75</p>
+                <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">2 Hours</p>
+                <a href="#book" class="block w-full py-2 bg-slate-800 rounded-xl font-bold text-sm hover:bg-slate-700 transition">Book & Pay</a>
+            </div>
+            <div class="glass-card p-6 rounded-3xl text-center border-white/5">
+                <h3 class="text-lg font-bold mb-2 text-slate-300">Assessment</h3>
+                <p class="text-3xl font-extrabold mb-1">£55</p>
+                <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">1.5 Hours</p>
+                <a href="#book" class="block w-full py-2 bg-slate-800 rounded-xl font-bold text-sm hover:bg-slate-700 transition">Book & Pay</a>
+            </div>
         </div>
-
-        <div class="glass-card p-6 rounded-3xl border-white/5 opacity-80 hover:opacity-100 transition">
-            <h3 class="text-lg font-bold mb-2 text-slate-300">Single Session</h3>
-            <p class="text-3xl font-extrabold mb-1">£40</p>
-            <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">1 Hour</p>
-            <a href="#book" class="block w-full py-2 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold text-sm transition">Book</a>
-        </div>
-
-        <div class="glass-card p-6 rounded-3xl border-white/5 opacity-80 hover:opacity-100 transition">
-            <h3 class="text-lg font-bold mb-2 text-slate-300">Standard Session</h3>
-            <p class="text-3xl font-extrabold mb-1">£55</p>
-            <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">1.5 Hours</p>
-            <a href="#book" class="block w-full py-2 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold text-sm transition">Book</a>
-        </div>
-
-        <div class="glass-card p-6 rounded-3xl border-white/5 opacity-80 hover:opacity-100 transition">
-            <h3 class="text-lg font-bold mb-2 text-slate-300">Extended Session</h3>
-            <p class="text-3xl font-extrabold mb-1">£75</p>
-            <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">2 Hours</p>
-            <a href="#book" class="block w-full py-2 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold text-sm transition">Book</a>
-        </div>
-    </div>
 
         <h3 class="text-center text-slate-500 uppercase tracking-[0.2em] text-[10px] font-bold mb-6">Secure Block Bookings</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 text-center">
-            <div class="glass-card p-6 rounded-3xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div class="glass-card p-6 rounded-3xl text-center">
                 <h3 class="text-lg font-bold mb-2">10 Hours</h3>
                 <p class="text-3xl font-extrabold mb-4">£380</p>
-                <a href="https://buy.stripe.com/9B6dRa5Hsenz1Ae70zbII00" target="_blank" class="block w-full py-3 bg-slate-700 rounded-xl font-bold text-sm">Buy Package</a>
+                <a href="https://buy.stripe.com/9B6dRa5Hsenz1Ae70zbII00" target="_blank" class="block w-full py-3 bg-slate-700 rounded-xl font-bold text-sm hover:bg-slate-600 transition">Buy Package</a>
             </div>
-            <div class="glass-card p-6 rounded-3xl border-blue-500/40 relative scale-105 shadow-xl shadow-blue-500/5">
+            <div class="glass-card p-6 rounded-3xl text-center border-blue-500/40 relative scale-105 shadow-xl shadow-blue-500/5">
                 <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-[10px] px-3 py-1 rounded-full font-bold uppercase tracking-tighter text-white">Best Value</span>
                 <h3 class="text-lg font-bold mb-2">15 Hours</h3>
                 <p class="text-3xl font-extrabold mb-4">£540</p>
-                <a href="https://buy.stripe.com/eVq7sM1rc2ERgv8doXbII01" target="_blank" class="block w-full py-3 bg-blue-600 rounded-xl font-bold text-sm text-white">Buy Package</a>
+                <a href="https://buy.stripe.com/eVq7sM1rc2ERgv8doXbII01" target="_blank" class="block w-full py-3 bg-blue-600 rounded-xl font-bold text-sm hover:bg-blue-500 transition text-white">Buy Package</a>
             </div>
-            <div class="glass-card p-6 rounded-3xl">
+            <div class="glass-card p-6 rounded-3xl text-center">
                 <h3 class="text-lg font-bold mb-2">20 Hours</h3>
                 <p class="text-3xl font-extrabold mb-4">£720</p>
-                <a href="https://buy.stripe.com/eVqeVe2vg6V73Im84DbII02" target="_blank" class="block w-full py-3 bg-slate-700 rounded-xl font-bold text-sm">Buy Package</a>
+                <a href="https://buy.stripe.com/eVqeVe2vg6V73Im84DbII02" target="_blank" class="block w-full py-3 bg-slate-700 rounded-xl font-bold text-sm hover:bg-slate-600 transition">Buy Package</a>
             </div>
-            <div class="glass-card p-6 rounded-3xl border-yellow-500/30">
+            <div class="glass-card p-6 rounded-3xl text-center border-yellow-500/30">
                 <h3 class="text-lg font-bold mb-2 text-yellow-500">Semi-Intensive</h3>
                 <p class="text-3xl font-extrabold mb-1">£800</p>
                 <p class="text-slate-400 text-[10px] font-bold mb-4 uppercase">21.5 Hours + Test Prep</p>
-                <a href="https://buy.stripe.com/cNi5kE9XI3IVfr484DbII03" target="_blank" class="block w-full py-3 bg-slate-700 rounded-xl font-bold text-sm">Buy Package</a>
+                <a href="https://buy.stripe.com/cNi5kE9XI3IVfr484DbII03" target="_blank" class="block w-full py-3 bg-slate-700 rounded-xl font-bold text-sm hover:bg-slate-600 transition">Buy Package</a>
             </div>
         </div>
 
         <h3 class="text-center text-slate-500 uppercase tracking-[0.2em] text-[10px] font-bold mb-6">Test Preparation</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-center">
-            <div class="glass-card p-6 rounded-3xl border-white/5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="glass-card p-6 rounded-3xl text-center border-white/5">
                 <h3 class="text-lg font-bold mb-2 text-slate-300">Peterborough Prep</h3>
                 <p class="text-3xl font-extrabold mb-1">4 Hours</p>
                 <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">Test Ready</p>
-                <a href="#book" class="block w-full py-3 bg-slate-800 rounded-xl font-bold text-sm">Reserve Slot</a>
+                <a href="#book" class="block w-full py-3 bg-slate-800 rounded-xl font-bold text-sm hover:bg-slate-700 transition">Reserve Your Slot</a>
             </div>
-            <div class="glass-card p-6 rounded-3xl border-white/5">
+            <div class="glass-card p-6 rounded-3xl text-center border-white/5">
                 <h3 class="text-lg font-bold mb-2 text-slate-300">Grantham Prep</h3>
                 <p class="text-3xl font-extrabold mb-1">4 Hours</p>
                 <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">Test Ready</p>
-                <a href="#book" class="block w-full py-3 bg-slate-800 rounded-xl font-bold text-sm">Reserve Slot</a>
+                <a href="#book" class="block w-full py-3 bg-slate-800 rounded-xl font-bold text-sm hover:bg-slate-700 transition">Reserve Your Slot</a>
             </div>
-            <div class="glass-card p-6 rounded-3xl border-white/5">
+            <div class="glass-card p-6 rounded-3xl text-center border-white/5">
                 <h3 class="text-lg font-bold mb-2 text-slate-300">Kettering Prep</h3>
                 <p class="text-3xl font-extrabold mb-1">4 Hours</p>
                 <p class="text-blue-400 text-xs font-semibold mb-4 uppercase">Test Ready</p>
-                <a href="#book" class="block w-full py-3 bg-slate-800 rounded-xl font-bold text-sm">Reserve Slot</a>
+                <a href="#book" class="block w-full py-3 bg-slate-800 rounded-xl font-bold text-sm hover:bg-slate-700 transition">Reserve Your Slot</a>
             </div>
         </div>
     </section>
@@ -422,68 +442,100 @@
 
     <section class="max-w-6xl mx-auto py-12">
         <h2 class="text-center text-blue-400 font-bold mb-8 uppercase tracking-widest text-xs">Student Success Stories</h2>
+        
         <div class="reviews-container">
             <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0f172a] to-transparent z-10"></div>
             <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0f172a] to-transparent z-10"></div>
+
             <div class="reviews-track">
                 <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
                     <div class="flex text-yellow-500 mb-3">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-4">"Passed first time with Robert! His YouTube videos helped so much."</p>
+                    <p class="text-slate-300 text-sm italic mb-4">"Passed first time with Robert! His YouTube videos helped so much with my nerves."</p>
                     <p class="text-white font-bold text-xs">— Sarah J., Peterborough</p>
                 </div>
                 <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
                     <div class="flex text-yellow-500 mb-3">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-4">"Mastered the Eye Roundabout thanks to the course."</p>
+                    <p class="text-slate-300 text-sm italic mb-4">"Mastered the Eye Roundabout thanks to the intensive course. Best in the area."</p>
                     <p class="text-white font-bold text-xs">— Michael T., Hampton</p>
                 </div>
                 <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
                     <div class="flex text-yellow-500 mb-3">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-4">"Robert knows the Grantham routes inside out."</p>
+                    <p class="text-slate-300 text-sm italic mb-4">"Robert knows the Grantham routes inside out. Worth every penny."</p>
                     <p class="text-white font-bold text-xs">— David L., Werrington</p>
                 </div>
                 <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
                     <div class="flex text-yellow-500 mb-3">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-4">"Passed first time with Robert!"</p>
+                    <p class="text-slate-300 text-sm italic mb-4">"Knowledgeable, helpful and I passed my test with full confidence."</p>
+                    <p class="text-white font-bold text-xs">— Chris G., Peterborough</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4">"Passed first time with Robert! His YouTube videos helped so much with my nerves."</p>
                     <p class="text-white font-bold text-xs">— Sarah J., Peterborough</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4">"Mastered the Eye Roundabout thanks to the intensive course. Best in the area."</p>
+                    <p class="text-white font-bold text-xs">— Michael T., Hampton</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4">"Robert knows the Grantham routes inside out. Worth every penny."</p>
+                    <p class="text-white font-bold text-xs">— David L., Werrington</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl w-[300px] mx-3 shrink-0">
+                    <div class="flex text-yellow-500 mb-3">★★★★★</div>
+                    <p class="text-slate-300 text-sm italic mb-4">"Knowledgeable, helpful and I passed my test with full confidence."</p>
+                    <p class="text-white font-bold text-xs">— Chris G., Peterborough</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <script>
-        function nextStep(step) {
-            document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
-            document.getElementById('step-' + step).classList.remove('hidden');
-            document.getElementById('quiz-progress').style.width = (step * 33) + '%';
-        }
+<section id="contact" class="max-w-3xl mx-auto px-6 py-16">
+    <div class="glass-card p-10 rounded-[2.5rem] border-white/10 shadow-2xl">
+        <div class="text-center mb-10">
+            <h3 class="text-3xl font-extrabold text-white mb-2">Got Questions?</h3>
+            <p class="text-slate-400">Fill out the form below and we will get back to you within 24 hours.</p>
+        </div>
 
-        function showResult(type) {
-            document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
-            const result = document.getElementById('quiz-result');
-            const text = document.getElementById('result-text');
-            result.classList.remove('hidden');
-            document.getElementById('quiz-progress').style.width = '100%';
+        <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
+            <input type="hidden" name="access_key" value="d89354e9-4ef6-40cf-aad2-9512312f0999">
+            
+            <input type="hidden" name="redirect" value="https://d4driving.co.uk/thank-you.html">
 
-            if(type === 'intensive') {
-                text.innerText = "Our Semi-Intensive course or 20-Hour Block Bookings are your best route to a fast pass.";
-            } else {
-                text.innerText = "Our 10-Hour Block Booking or Standard Weekly sessions are perfect for steady building.";
-            }
-        }
-
-        function resetQuiz() {
-            setTimeout(() => {
-                nextStep(1);
-                document.getElementById('quiz-result').classList.add('hidden');
-            }, 1000);
-        }
-    </script>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Your Name</label>
+                    <input type="text" name="name" required class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="Robert Szatkowski">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Email Address</label>
+                    <input type="email" name="email" required class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="name@email.com">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">How can I help?</label>
+                    <textarea name="message" required rows="4" class="w-full bg-slate-900/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:border-blue-500 transition" placeholder="I'm interested in the Semi-Intensive course..."></textarea>
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-extrabold py-5 rounded-2xl shadow-xl shadow-blue-600/20 transition transform active:scale-[0.98]">
+                        SEND MESSAGE
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+    <a href="https://wa.me/447872347686" class="wa-float flex items-center justify-center" target="_blank">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.589.943 3.129 1.417 4.77 1.418 5.4 0 9.791-4.39 9.793-9.792 0-2.618-1.02-5.08-2.871-6.932-1.85-1.85-4.311-2.871-6.93-2.871-5.4 0-9.791 4.391-9.793 9.792-.001 1.777.48 3.504 1.391 5.013l-1.01 3.687 3.778-.991l-.023-.015-.33.2zM17.65 19.235c-.26-.13-1.534-.757-1.771-.842-.236-.085-.408-.13-.579.13-.171.26-.66.842-.808 1.012-.148.17-.296.19-.556.06-.26-.13-1.097-.404-2.09-1.287-.773-.69-1.294-1.543-1.446-1.803-.152-.26-.016-.4.114-.53.117-.117.26-.305.39-.457.13-.153.173-.26.26-.435.087-.175.044-.326-.021-.457-.065-.13-.579-1.391-.794-1.913-.21-.504-.44-.435-.604-.443-.156-.008-.334-.008-.513-.008s-.469.065-.713.326c-.244.26-.931.91-.931 2.213s.953 2.56 1.083 2.735c.13.174 1.876 2.863 4.546 4.014.635.273 1.13.436 1.518.559.638.202 1.22.174 1.679.106.512-.077 1.534-.626 1.75-1.23.217-.604.217-1.121.152-1.23-.065-.11-.239-.174-.499-.304z"/></svg>
+    </a>
 
 <footer class="mt-20 py-12 border-t border-white/10 bg-slate-900/50 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
         
         <div>
-            <img src="400dpiLogoCropped.png" alt="D4Driving Logo" class="h-12 mb-4 mx-auto md:mx-0 brightness-110" loading="lazy">
+            <img src="400dpiLogoCropped.png" alt="D4Driving Logo" class="h-12 mb-4 mx-auto md:mx-0 brightness-110">
             <p class="text-slate-400 text-sm leading-relaxed">
                 Expert driving tuition with Robert Szatkowski. Helping students pass their test with confidence across Peterborough and surrounding areas.
             </p>
@@ -494,7 +546,7 @@
             <ul class="space-y-3 text-slate-400 text-sm">
                 <li><a href="#prices" class="hover:text-blue-400 transition">Lesson Prices</a></li>
                 <li><a href="blog.html" class="hover:text-blue-400 transition">Driving Tips & Blog</a></li>
-                <li><a href="#book" class="hover:text-blue-400 transition">Book a Lesson</a></li>
+                <li><a href="#contact" class="hover:text-blue-400 transition">Book a Lesson</a></li>
             </ul>
         </div>
 
@@ -504,10 +556,10 @@
             <p class="text-blue-400 font-bold mb-6">07872 347686</p>
             
             <div class="flex justify-center md:justify-start gap-4">
-                <a href="https://wa.me/447872347686" class="text-slate-400 hover:text-[#25D366] transition" aria-label="WhatsApp">
+                <a href="https://wa.me/447872347686" class="text-slate-400 hover:text-[#25D366] transition">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 </a>
-                <a href="https://www.youtube.com/@d4drivingSOM" class="text-slate-400 hover:text-red-500 transition" aria-label="YouTube">
+                <a href="#" class="text-slate-400 hover:text-red-500 transition">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 </a>
             </div>
@@ -519,40 +571,26 @@
             &copy; 2026 D4DRIVING SCHOOL OF MOTORING. ALL RIGHTS RESERVED.
         </p>
     </div>
+<button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
+    class="fixed bottom-8 right-8 z-50 p-4 rounded-2xl bg-blue-600/20 border border-blue-500/30 backdrop-blur-lg text-blue-400 shadow-2xl transition-all duration-300 opacity-0 translate-y-10 pointer-events-none hover:bg-blue-600 hover:text-white group">
+    <svg class="w-6 h-6 transform group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+</button>
 
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
-        <a href="https://wa.me/447872347686" 
-           class="p-4 rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group" 
-           target="_blank" 
-           aria-label="Chat on WhatsApp">
-            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        </a>
-
-        <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" 
-            class="p-4 rounded-2xl bg-blue-600/20 border border-blue-500/30 backdrop-blur-lg text-blue-400 shadow-2xl transition-all duration-300 opacity-0 translate-y-10 pointer-events-none hover:bg-blue-600 hover:text-white group">
-            <svg class="w-6 h-6 transform group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-            </svg>
-        </button>
-    </div>
-
-    <script>
-        const backToTopBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
-                backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
-                backToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
-            } else {
-                backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
-                backToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-            }
-        });
-    </script>
-</footer>
-    <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
+<script>
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            backToTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            backToTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        } else {
+            backToTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            backToTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        }
+    });
 </script>
+</footer>
+    
 </body>
 </html>

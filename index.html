@@ -69,7 +69,11 @@
     
     <script src="https://cdn.tailwindcss.com" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    
+    <style>
+    /* Prevents images from exploding before CSS loads */
+    img, svg { max-width: 100%; height: auto; }
+    .h-12 { height: 3rem !important; } /* Hard-set the logo height */
+</style>
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; scroll-behavior: smooth; }
         .glass-card {
@@ -105,7 +109,10 @@
 
     <header class="w-full max-w-4xl mx-auto p-8 text-center">
         <div class="inline-block mb-6">
-            <img src="400dpiLogoCropped.png" alt="D4Driving Logo" class="h-24 w-auto drop-shadow-2xl" fetchpriority="high">
+           <img src="400dpiLogoCropped.png" 
+     alt="D4Driving Logo" 
+     style="width: auto; height: 48px;" 
+     class="h-12 w-auto brightness-110">
         </div>
         <h1 class="text-4xl font-extrabold text-white mb-2 tracking-tight">D4Driving School of Motoring</h1>
         <p class="text-slate-400 text-lg">Your road to success starts here.</p>
@@ -542,5 +549,10 @@
         });
     </script>
 </footer>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
 </body>
 </html>

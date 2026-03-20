@@ -1,11 +1,11 @@
 {
-  "name": "D4Driving School",
+  "name": "D4Driving Peterborough",
   "short_name": "D4Driving",
-  "description": "Professional Driving Lessons in Peterborough with Robert Szatkowski",
+  "description": "Expert driving tuition in Peterborough with Robert Szatkowski.",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0f172a",
-  "theme_color": "#0f172a",
+  "theme_color": "#2563eb",
   "orientation": "portrait",
   "icons": [
     {
@@ -17,7 +17,15 @@
     {
       "src": "400dpiLogoCropped.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+    // You should also include a standard icon for iOS (optional but recommended)
+    ,{
+      "src": "400dpiLogoCropped.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

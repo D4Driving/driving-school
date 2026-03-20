@@ -9,22 +9,21 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "400dpiLogoCropped.png",
+      "src": "FaviconLogo.jpg",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
-      "src": "400dpiLogoCropped.png",
+      "src": "FaviconLogo.jpg",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any maskable"
-    }
-    // You should also include a standard icon for iOS (optional but recommended)
-    ,{
-      "src": "400dpiLogoCropped.png",
+    },
+    {
+      "src": "FaviconLogo.jpg",
       "sizes": "180x180",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any"
     }
   ]

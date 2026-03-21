@@ -485,13 +485,12 @@
                 <p class="text-slate-500 text-[10px] uppercase font-bold tracking-widest">Securing Connection...</p>
             </div>
 
-            <iframe 
-                src="https://cal.com/d4driving?embed=true&theme=dark" 
-                id="booking-iframe"
-                style="width: 100%; height: 100%; border: none; filter: contrast(1.05) brightness(1.05);" 
-                onload="document.getElementById('cal-loader').style.opacity='0'; setTimeout(()=>{document.getElementById('cal-loader').style.display='none'}, 500)"
-                allowfullscreen>
-            </iframe>
+        <iframe 
+    src="https://cal.com/d4driving/embed?theme=dark" 
+    id="booking-iframe"
+    style="width: 100%; height: 100%; border: none;" 
+    allowfullscreen>
+</iframe>
             
             <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#0f172a] to-transparent pointer-events-none"></div>
         </div>
@@ -668,28 +667,31 @@
 </script> 
 
 <script type="text/javascript">
-  // This is a "silent observer" that waits for the iFrame to finish
+  // 1. Listen for the 'Success' message from Cal.com
   window.addEventListener("message", function (event) {
-    // Only trigger if the message looks like a Cal.com success
-    const isSuccess = event.data?.action === "bookingSuccessful" || 
-                      event.data?.type === "v1/bookingSuccessful";
+    if (event.origin === "https://cal.com") {
+      const isSuccess = event.data?.action === "bookingSuccessful" || 
+                        event.data?.type === "v1/bookingSuccessful";
 
-    if (isSuccess) {
-      console.log("Booking Caught!");
-      
-      // Try to get name, default to 'Driver'
-      let name = "Driver";
-      if (event.data?.data?.attendee?.name) {
-          name = event.data.data.attendee.name.split(' ')[0];
+      if (isSuccess) {
+        let name = "Driver";
+        if (event.data?.data?.attendee?.name) {
+            name = event.data.data.attendee.name.split(' ')[0];
+        }
+
+        setTimeout(() => {
+          // FORCE the top window to move
+          window.top.location.href = `success.html?name=${encodeURIComponent(name)}`;
+        }, 1500);
       }
-
-      // Small delay for the "Premium" feel
-      setTimeout(() => {
-        // CHANGED BELOW: Added .top to break out of the iFrame
-        window.top.location.href = `success.html?name=${encodeURIComponent(name)}`;
-      }, 1500);
     }
   });
+
+  // 2. SAFETY: If the iFrame tries to load your index.html inside itself, 
+  // this tiny line detects it and forces a full-page refresh.
+  if (window.top !== window.self) {
+      window.top.location.href = window.self.location.href;
+  }
 </script>
     
 </body>

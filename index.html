@@ -111,6 +111,10 @@
     .reviews-track:hover {
         animation-play-state: paused;
     }
+       /* Subtle glow for the review button */
+.review-btn-glow:hover {
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.2);
+}
 </style>
 </head>
 <body class="pb-20">
@@ -547,6 +551,16 @@
                 </div>
             </div>
         </div>
+        <div class="text-center mt-12 mb-16">
+    <p class="text-slate-500 text-[10px] uppercase tracking-[0.2em] mb-4">Are you a current student?</p>
+    
+    <a href="https://g.page/r/Ca0Y46BYPxNMEBM/review" 
+       target="_blank" 
+       class="inline-flex items-center px-8 py-3 rounded-full border border-blue-500/30 bg-blue-500/5 text-blue-400 font-bold uppercase tracking-tighter text-sm hover:bg-blue-500 hover:text-white transition-all duration-300 group">
+        <span class="mr-2 text-yellow-500 group-hover:text-white">★</span> 
+        Leave a Google Review
+    </a>
+</div>
     </section>
 
 <section id="contact" class="max-w-3xl mx-auto px-6 py-16">

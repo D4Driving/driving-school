@@ -38,19 +38,24 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Only handle GET requests (prevents errors with some browser extensions)
+  // 1. SKIP non-GET requests
   if (event.request.method !== 'GET') return;
+
+  // 2. SKIP Chrome Extensions and other non-web schemes (The Fix)
+  if (!event.request.url.startsWith('http')) return;
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
       const fetchPromise = fetch(event.request).then((networkResponse) => {
-        if (networkResponse && networkResponse.status === 200) {
+        // Only cache successful, valid web responses
+        if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
           const cacheCopy = networkResponse.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, cacheCopy));
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, cacheCopy);
+          });
         }
         return networkResponse;
       }).catch(() => {
-        // Fallback if network fails and no cache
         return cachedResponse;
       });
 

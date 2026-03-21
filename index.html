@@ -453,7 +453,9 @@
 <section id="book" class="max-w-4xl mx-auto px-4 py-12">
     <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest text-sm">Reserve Your Slot</h2>
     <div class="glass-card rounded-3xl border border-white/10 overflow-hidden relative" style="min-height: 700px;">
-        <div id="my-cal-inline" style="width:100%; height:700px; overflow:auto;"></div>
+        <div id="my-cal-inline" style="width:100%; height:700px; overflow:auto;">
+            <p class="text-slate-500 text-center py-20 animate-pulse">Connecting to booking system...</p>
+        </div>
     </div>
 </section>
 
@@ -632,28 +634,29 @@
     x.parentNode.insertBefore(s, x); 
   })(window, "cal", "init");
 
-  cal("init", { origin: "https://cal.com" });
+  // Wait for the page to be ready
+  document.addEventListener("DOMContentLoaded", function() {
+    cal("init", { origin: "https://cal.com" });
 
-  // This tells Cal.com to load into your glass-card div
-  cal("inline", {
-    elementOrSelector: "#my-cal-inline",
-    calLink: "d4driving", // Your specific link
-    layout: "month_view",
-    config: {
-      theme: "dark",
-      styles: {
-        branding: {
-          brandColor: "#2563eb" // Matches your blue-600 buttons
+    cal("inline", {
+      elementOrSelector: "#my-cal-inline",
+      calLink: "d4driving", 
+      layout: "month_view",
+      config: {
+        theme: "dark",
+        styles: {
+          branding: {
+            brandColor: "#2563eb" 
+          }
         }
       }
-    }
-  });
+    });
 
-  // Optional: Pre-load the calendar for speed
-  cal("ui", { 
-    styles: { branding: { brandColor: "#2563eb" } }, 
-    hideEventTypeDetails: false, 
-    layout: "month_view" 
+    cal("ui", { 
+      styles: { branding: { brandColor: "#2563eb" } }, 
+      hideEventTypeDetails: false, 
+      layout: "month_view" 
+    });
   });
 </script>
     

@@ -2,7 +2,7 @@ const CACHE_NAME = 'd4driving-v5'; // Bumped version
 const PRE_CACHE_ASSETS = [
   './',
   './index.html',
-  '/success.html',
+  './success.html',
   './400dpiLogoCropped.png',
   './FaviconLogo.jpg',
   './manifest.json'

@@ -27,9 +27,40 @@
         <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             GRID_GOES_HERE
         </div>
+        <div class="flex justify-center my-8">
+    <button id="shareBtn" class="flex items-center gap-2 px-6 py-3 bg-blue-600/10 border border-blue-500/30 text-blue-400 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-blue-600 hover:text-white transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+        </svg>
+        Share Article
+    </button>
+</div>
     </main>
     <footer class="max-w-4xl mx-auto mt-20 p-8 text-center border-t border-white/5 text-slate-600 text-sm">
         © 2026 D4Driving School of Motoring.
     </footer>
+
+    <script>
+document.getElementById('shareBtn').addEventListener('click', async () => {
+    const shareData = {
+        title: document.title,
+        text: 'Check out this driving tip from D4Driving Peterborough!',
+        url: window.location.href
+    };
+
+    try {
+        if (navigator.share) {
+            // This opens the native phone share menu (WhatsApp, SMS, Socials)
+            await navigator.share(shareData);
+        } else {
+            // Fallback: Copy to clipboard if native share isn't supported
+            await navigator.clipboard.writeText(window.location.href);
+            alert('Link copied to clipboard!');
+        }
+    } catch (err) {
+        console.log('Share cancelled or failed');
+    }
+});
+</script>
 </body>
 </html>

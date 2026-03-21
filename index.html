@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-16541664392"></script>
+<script defer src="https://www.googletagmanager.com/gtag/js?id=AW-16541664392"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -15,12 +15,12 @@
     <title>Driving Lessons Peterborough | D4Driving School of Motoring</title>
 
     <meta name="robots" content="index, follow">
-<meta name="description" content="Expert driving tuition in Peterborough with Robert Szatkowski. Helping you pass with confidence.">
+    <meta name="description" content="Pass your test with D4Driving, Peterborough’s #1 DVSA Approved School. Expert lessons on local test routes & intensive courses. Book your assessment today!">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://d4driving.co.uk">
-    <meta property="og:title" content="D4Driving Peterborough | Expert Driving Tuition">
-    <meta property="og:description" content="Expert tuition with Robert Szatkowski. Book your first lesson today.">
+    <meta property="og:title" content="D4Driving Peterborough | #1 Rated Driving Lessons">
+    <meta property="og:description" content="Expert driving tuition with D4Driving SOM. Master the Peterborough test routes and pass with confidence. View prices and book online!">
     
     <meta property="og:image" content="https://d4driving.co.uk/og-image.png">
     
@@ -38,6 +38,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" type="image/jpeg" href="FaviconLogo.jpg">
+<link rel="preconnect" href="https://cal.com">
+<link rel="dns-prefetch" href="https://cal.com">
+<link rel="preconnect" href="https://www.youtube.com">    
 <link rel="apple-touch-icon" href="FaviconLogo.jpg">    
     <script type="application/ld+json">
     {
@@ -72,14 +75,16 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; scroll-behavior: smooth; }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Better Safari Support */
+    transform: translateZ(0); /* Hardware Acceleration */
         }
         .wa-float {
             position: fixed; width: 60px; height: 60px; bottom: 20px; right: 20px;
@@ -96,18 +101,20 @@
             overflow: hidden;
             position: relative;
         }
-        .reviews-track {
-            display: flex;
-            width: max-content;
-            animation: scroll 40s linear infinite;
+.reviews-track {
+    display: flex;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+    will-change: transform; /* Tells browser to prepare for movement */
         }
-        .reviews-track:hover {
-            animation-play-state: paused;
-        }
+.reviews-track:hover {
+    animation-play-state: paused;
+    cursor: grab; /* Visual cue for the user */
+}
     </style>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FPTMP7SN8H">
+<script defer src="https://www.googletagmanager.com/gtag/js?id=G-FPTMP7SN8H">
 </script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -122,7 +129,7 @@
 
     <header class="w-full max-w-4xl mx-auto p-8 text-center">
         <div class="inline-block mb-6">
-            <img src="400dpiLogoCropped.png" alt="D4Driving Logo" class="h-24 w-auto drop-shadow-2xl">
+           <img src="400dpiLogoCropped.png" alt="D4Driving School of Motoring Peterborough Logo" width="400" height="auto" class="h-24 w-auto drop-shadow-2xl">
         </div>
         <h1 class="text-4xl font-extrabold text-white mb-2 tracking-tight">D4Driving School of Motoring</h1>
         <p class="text-slate-400 text-lg">Your road to success starts here.</p>
@@ -138,11 +145,11 @@
     </header>
 
     <div class="max-w-4xl mx-auto px-6 mb-12 flex flex-row gap-4">
-        <a href="#book" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-4 rounded-2xl font-extrabold shadow-lg shadow-blue-600/20 transition transform active:scale-95 flex items-center justify-center gap-2">
+        <a href="#book" aria-label="Book your driving lesson now" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-4 rounded-2xl font-extrabold shadow-lg shadow-blue-600/20 transition transform active:scale-95 flex items-center justify-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
             BOOK NOW
         </a>
-        <a href="#prices" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white text-center py-4 rounded-2xl font-extrabold border border-white/5 transition transform active:scale-95 flex items-center justify-center gap-2">
+        <a href="#prices" aria-label="View driving lesson prices" class="flex-1 bg-slate-800 hover:bg-slate-700 text-white text-center py-4 rounded-2xl font-extrabold border border-white/5 transition transform active:scale-95 flex items-center justify-center gap-2">
             <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             PRICES
         </a>
@@ -152,6 +159,7 @@
 <div class="aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10">
 <iframe 
   src="https://www.youtube.com/embed/i404vDomeWw?si=m98HMhijljoTTWHB" 
+  srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/i404vDomeWw?autoplay=1><img src=https://img.youtube.com/vi/i404vDomeWw/hqdefault.jpg alt='D4Driving Peterborough Mock Test'><span>▶</span></a>"
   loading="lazy" 
   title="D4Driving Peterborough Mock Test"
   class="w-full aspect-video rounded-3xl shadow-2xl"
@@ -186,7 +194,7 @@
     </section>
 
     <section class="max-w-4xl mx-auto px-6 mb-12">
-        <h3 class="text-blue-400 font-bold mb-4 text-center uppercase tracking-widest text-xs">Hall of Fame: Recent Passes</h3>
+        <h2 class="text-blue-400 font-bold mb-4 text-center uppercase tracking-widest text-xs">Hall of Fame: Recent Passes</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div class="glass-card aspect-square rounded-2xl overflow-hidden relative group">
                 <img src="pass1.jpg" alt="Successful Student" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition" loading="lazy">
@@ -225,7 +233,7 @@
                 <div class="p-6">
                     <span class="text-blue-500 text-[10px] font-bold uppercase tracking-widest">Test Prep</span>
                     <h3 class="text-lg font-bold text-white mt-1 mb-2 leading-tight">Mastering Peterborough's Toughest Roundabouts</h3>
-                    <p class="text-slate-400 text-sm line-clamp-2 mb-4">Orton and Hampton junctions can be tricky. Here's my guide to lane discipline...</p>
+                    <p class="text-slate-400 text-sm line-clamp-2 mb-4">As a DVSA Approved Driving Instructor in Peterborough, I’ve designed these tips to help you master the most challenging local driving test routes, from the busy A1139 Fletton Parkway merges to the complex Eye Roundabout. With the new 2026 driving test booking rules now in effect at the Second Drove (Fengate) test center, being fully prepared for your first attempt is more important than ever. Whether you're looking for a semi-intensive course or weekly lessons, these expert insights will give you the confidence to pass your test in Peterborough with ease.</p>
                     <a href="blog.html" class="text-white text-xs font-bold flex items-center gap-2 hover:gap-3 transition-all">
                         READ FULL GUIDE <span class="text-blue-400">→</span>
                     </a>
@@ -474,7 +482,7 @@
     <section id="book" class="max-w-4xl mx-auto px-4 py-12">
         <h2 class="text-2xl font-bold mb-8 text-center text-blue-400 uppercase tracking-widest">Reserve Your Slot</h2>
         <div class="glass-card rounded-3xl border border-white/10 overflow-hidden" style="height: 700px;">
-            <iframe src="https://cal.com/d4driving?embed=true" style="width: 100%; height: 100%; border: none;" scrolling="yes" allowfullscreen loading="lazy"></iframe>
+            <iframe src="https://cal.com/d4driving?embed=true" style="width: 100%; height: 100%; border: none;" scrolling="no" allowfullscreen loading="lazy"></iframe>
         </div>
     </section>
 

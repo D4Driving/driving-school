@@ -669,42 +669,27 @@
 
 <script src="https://app.cal.com/embed/embed.js" async></script>
 
-<script src="https://app.cal.com/embed/embed.js" async></script>
-
 <script type="text/javascript">
-  window.addEventListener('load', function() {
-    if (typeof Cal !== "undefined") {
-      const cal = Cal.init({ origin: "https://cal.com" });
+  // We listen for the "Success" message coming out of the iFrame
+  window.addEventListener("message", function (event) {
+    // Only pay attention to messages from Cal.com
+    if (event.origin === "https://cal.com") {
       
-      cal("inline", {
-        elementOrSelector: "#my-cal-inline",
-        calLink: "d4driving",
-        config: {
-            theme: "dark",
-            styles: { branding: { brandColor: "#2563eb" } }
-        }
-      });
+      // Cal.com sends 'bookingSuccessful' or 'v1/bookingSuccessful'
+      if (event.data && (event.data.type === "v1/bookingSuccessful" || event.data.action === "bookingSuccessful")) {
+        console.log("Booking confirmed! Redirecting...");
 
-      // THE FREE REDIRECT WORKAROUND
-      // This "listens" for the successful booking event
-      cal("on", {
-        action: "bookingSuccessful",
-        callback: (e) => {
-          // Grabs the name from the booking data
-          const name = e.detail?.data?.attendee?.name || "Driver";
-          
-          // Wait 1.5 seconds so they see the Cal.com success checkmark first
-          setTimeout(() => {
-            window.location.href = `success.html?name=${encodeURIComponent(name)}`;
-          }, 1500);
+        // Try to grab the name if Cal.com sends it in the message
+        let attendeeName = "Driver";
+        if (event.data.data && event.data.data.attendee) {
+           attendeeName = event.data.data.attendee.name || "Driver";
         }
-      });
 
-    } else {
-        // Fallback: If JS fails, show the iFrame
-        console.warn("Cal.com script blocked. Falling back to iFrame.");
-        document.getElementById('my-cal-inline').innerHTML = 
-        `<iframe src="https://cal.com/d4driving?embed=true&theme=dark" style="width: 100%; height: 700px; border: none;" allowfullscreen></iframe>`;
+        // Wait 1.5s so the user sees the 'Success' checkmark in the calendar first
+        setTimeout(() => {
+          window.location.href = `success.html?name=${encodeURIComponent(attendeeName)}`;
+        }, 1500);
+      }
     }
   });
 </script>

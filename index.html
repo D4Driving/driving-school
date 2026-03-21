@@ -685,7 +685,8 @@
 
       // Small delay for the "Premium" feel
       setTimeout(() => {
-        window.location.href = `success.html?name=${encodeURIComponent(name)}`;
+        // CHANGED BELOW: Added .top to break out of the iFrame
+        window.top.location.href = `success.html?name=${encodeURIComponent(name)}`;
       }, 1500);
     }
   });

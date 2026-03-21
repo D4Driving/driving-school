@@ -667,7 +667,14 @@
 </script> 
 
 <script type="text/javascript">
-  // 1. Listen for the 'Success' message from Cal.com
+  // 1. THE INCEPTION KILLER:
+  // If this page is ever loaded inside an iFrame, force it to the top level.
+  if (window.top !== window.self) {
+      window.top.location.href = window.self.location.href;
+  }
+
+  // 2. THE SUCCESS LISTENER:
+  // Watches for the 'Success' signal to go to success.html
   window.addEventListener("message", function (event) {
     if (event.origin === "https://cal.com") {
       const isSuccess = event.data?.action === "bookingSuccessful" || 
@@ -680,18 +687,12 @@
         }
 
         setTimeout(() => {
-          // FORCE the top window to move
+          // Break out of the iFrame to show the success page full-screen
           window.top.location.href = `success.html?name=${encodeURIComponent(name)}`;
         }, 1500);
       }
     }
   });
-
-  // 2. SAFETY: If the iFrame tries to load your index.html inside itself, 
-  // this tiny line detects it and forces a full-page refresh.
-  if (window.top !== window.self) {
-      window.top.location.href = window.self.location.href;
-  }
 </script>
     
 </body>

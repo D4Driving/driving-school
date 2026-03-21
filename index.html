@@ -667,29 +667,26 @@
   }
 </script> 
 
-<script src="https://app.cal.com/embed/embed.js" async></script>
-
 <script type="text/javascript">
-  // We listen for the "Success" message coming out of the iFrame
+  // This is a "silent observer" that waits for the iFrame to finish
   window.addEventListener("message", function (event) {
-    // Only pay attention to messages from Cal.com
-    if (event.origin === "https://cal.com") {
+    // Only trigger if the message looks like a Cal.com success
+    const isSuccess = event.data?.action === "bookingSuccessful" || 
+                      event.data?.type === "v1/bookingSuccessful";
+
+    if (isSuccess) {
+      console.log("Booking Caught!");
       
-      // Cal.com sends 'bookingSuccessful' or 'v1/bookingSuccessful'
-      if (event.data && (event.data.type === "v1/bookingSuccessful" || event.data.action === "bookingSuccessful")) {
-        console.log("Booking confirmed! Redirecting...");
-
-        // Try to grab the name if Cal.com sends it in the message
-        let attendeeName = "Driver";
-        if (event.data.data && event.data.data.attendee) {
-           attendeeName = event.data.data.attendee.name || "Driver";
-        }
-
-        // Wait 1.5s so the user sees the 'Success' checkmark in the calendar first
-        setTimeout(() => {
-          window.location.href = `success.html?name=${encodeURIComponent(attendeeName)}`;
-        }, 1500);
+      // Try to get name, default to 'Driver'
+      let name = "Driver";
+      if (event.data?.data?.attendee?.name) {
+          name = event.data.data.attendee.name.split(' ')[0];
       }
+
+      // Small delay for the "Premium" feel
+      setTimeout(() => {
+        window.location.href = `success.html?name=${encodeURIComponent(name)}`;
+      }, 1500);
     }
   });
 </script>

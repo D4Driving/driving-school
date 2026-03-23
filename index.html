@@ -135,6 +135,33 @@ button, a { touch-action: manipulation; }
     animation-play-state: paused;
     cursor: grab; /* Visual cue for the user */
 }
+
+  /* Paste this inside your <style> tag, right after the 'body' rule */
+
+#main-logo {
+    display: block;
+    max-width: 64px; /* Matches your 'w-16' mobile size */
+    width: 64px;
+    height: 64px;
+    visibility: visible;
+}
+
+#logo-text {
+    font-size: 1.5rem; /* Matches 'text-2xl' */
+    display: inline;
+}
+
+/* Adjust for Desktop so it doesn't look small there either */
+@media (min-width: 768px) {
+    #main-logo {
+        max-width: 96px; /* Matches 'md:w-24' */
+        width: 96px;
+        height: 96px;
+    }
+    #logo-text {
+        font-size: 1.875rem; /* Matches 'md:text-3xl' */
+    }
+}      
     </style>
 
 <!-- Google tag (gtag.js) -->
@@ -151,22 +178,35 @@ button, a { touch-action: manipulation; }
 </head>
 <body class="pb-20">
 
-    <header class="w-full max-w-4xl mx-auto p-8 text-center">
-        <div class="inline-block mb-6">
-           <img src="400dpiLogoCropped.png" alt="D4Driving School of Motoring Peterborough Logo" width="400" height="auto" class="h-24 w-auto drop-shadow-2xl">
-        </div>
-        <h1 class="text-4xl font-extrabold text-white mb-2 tracking-tight">D4Driving School of Motoring</h1>
-        <p class="text-slate-400 text-lg">Your road to success starts here.</p>
-        <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-slate-900/50 rounded-full border border-white/10">
-            <span class="relative flex h-3 w-3">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-            <span class="text-xs font-bold uppercase tracking-widest text-slate-200">
-                Current Status: <span class="text-green-400">Accepting New Students</span>
-            </span>
-        </div>
-    </header>
+<header class="w-full max-w-4xl mx-auto p-8 text-center">
+    <div class="inline-block mb-6">
+        <img 
+            src="400dpiLogoCropped.png" 
+            id="main-logo" 
+            alt="D4Driving School of Motoring Peterborough Logo" 
+            width="400" 
+            height="120" 
+            class="h-24 w-auto drop-shadow-2xl"
+            loading="eager"
+            fetchpriority="high">
+    </div>
+    
+    <h1 id="logo-text" class="text-4xl font-extrabold text-white mb-2 tracking-tight">
+        D4Driving School of Motoring
+    </h1>
+    
+    <p class="text-slate-400 text-lg">Your road to success starts here.</p>
+    
+    <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-slate-900/50 rounded-full border border-white/10">
+        <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+        </span>
+        <span class="text-xs font-bold uppercase tracking-widest text-slate-200">
+            Current Status: <span class="text-green-400">Accepting New Students</span>
+        </span>
+    </div>
+</header>
 
 <section id="vehicles" class="max-w-4xl mx-auto px-6 mb-24 w-full h-auto">
         <h2 class="text-3xl font-black mb-8 text-center tracking-tight">Our Modern Tuition Vehicles</h2>

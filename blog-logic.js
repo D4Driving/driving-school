@@ -25,13 +25,13 @@ const posts = [
     { "id": "mock-test-lessons-that-actually-boost-pass-rates", "title": "Mock Test Lessons That Actually Boost Pass Rates" },
     { "id": "your-first-driving-lesson-what-to-expect", "title": "Your First Driving Lesson: What to Expect" },
     { "id": "driving-lessons-for-nervous-drivers-what-works", "title": "Driving Lessons for Nervous Drivers: What Works" },
-    { "id": "manual-or-automatic-lessons-which-is-better", "title": "Manual or Automatic Lessons: Which Is Better?" },
+    { "id": "manual-or-automatic-lessons-which-is-better", "title": "Manual or Automatic Lessons: Which Is Better?", "desc": "Struggling to choose between manual or automatic driving lessons in Peterborough? Discover the pros, cons, and which one helps you pass faster." },
     { "id": "how-many-driving-lessons-do-you-really-need", "title": "How Many Driving Lessons Do You Really Need?" },
     { "id": "intensive-driving-test-prep-session-what-works", "title": "Intensive Driving Test Prep Session: What Works" },
     { "id": "is-a-1hour-automatic-lesson-enough", "title": "Is a 1-Hour Automatic Lesson Enough?" },
     { "id": "grantham-driving-test-prep-that-actually-works", "title": "Grantham Driving Test Prep That Actually Works" },
     { "id": "kettering-driving-test-prep-that-actually-works", "title": "Kettering Driving Test Prep That Actually Works" },
-    { "id": "peterborough-driving-test-prep-that-works", "title": "Peterborough Driving Test Prep That Works" }
+    { "id": "peterborough-driving-test-prep-that-works", "title": "Peterborough Driving Test Prep That Works", "desc": "Get test-ready fast with our local Peterborough driving test prep. Master the hardest junctions and roundabouts with expert tips." }
 ];
 
 // 2. PWA & SHARE LOGIC
@@ -76,6 +76,19 @@ function loadBlogNavigation() {
 
         // Update Page Titles
         document.title = `${currentPost.title} | D4Driving Peterborough`;
+        
+        // SEO: Update Meta Description if it exists in the data
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc && currentPost.desc) {
+            metaDesc.setAttribute('content', currentPost.desc);
+        }
+
+        // SEO: Update Social Media (Open Graph) Tags
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const twTitle = document.querySelector('meta[name="twitter:title"]');
+        if (ogTitle) ogTitle.setAttribute('content', currentPost.title);
+        if (twTitle) twTitle.setAttribute('content', currentPost.title);
+
         const h1 = document.getElementById('post-title');
         // Only update if the H1 is still the placeholder "ARTICLE_TITLE"
         if (h1 && (h1.innerText === "ARTICLE_TITLE" || h1.innerText === "")) {

@@ -9,9 +9,10 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
         .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
-        /* Style the article text for readability */
         .prose p { margin-bottom: 1.5rem; color: #94a3b8; line-height: 1.8; font-size: 1.1rem; }
         .prose h2 { color: white; font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; }
+        .nav-btn { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
+        .nav-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
     </style>
 </head>
 <body class="min-h-screen pb-20">
@@ -26,9 +27,9 @@
     <article class="max-w-3xl mx-auto px-6 pt-12">
         <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/5360d6d5-8a66-4f33-9295-f672a601adb7.webp" alt="Best Ways to Reduce Driving Lesson Anxiety" class="w-full h-64 md:h-96 object-cover rounded-3xl mb-8 border border-white/10">
         
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Best Ways to Reduce Driving Lesson Anxiety</h1>
+        <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold mb-6">Best Ways to Reduce Driving Lesson Anxiety</h1>
         
-        <div class="prose prose-invert max-w-none">
+        <div class="prose prose-invert max-w-none mb-12">
             <p>That tight feeling before a lesson is more common than most learners realise. If you are searching for the best ways to reduce driving lesson anxiety, the first thing to know is this - nerves do not mean you are bad at driving. They usually mean you care, you want to do well, and you are stepping outside your comfort zone.</p>
 <p>A lot of learners arrive expecting themselves to feel calm straight away. When that does not happen, they assume something is wrong. It is not. Confidence behind the wheel is built through the right support, the right pace, and lessons that match how you learn.</p>
 <h2>Why driving lesson anxiety happens</h2>
@@ -71,7 +72,7 @@
 <p>If lessons have been making you anxious, be kind to yourself and keep it simple. The right support, the right pace, and the right teaching approach can turn nerves into steady progress - and steady progress is what leads to real confidence on the road.</p>
         </div>
 
-<button id="shareBtn" class="w-full py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 font-bold transition flex items-center justify-center gap-2 mb-16">
+        <button id="shareBtn" class="w-full py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 font-bold transition flex items-center justify-center gap-2 mb-16">
             <span>Share this Guide</span>
         </button>
 
@@ -86,14 +87,105 @@
                 <span id="next-post-title" class="font-bold text-lg text-white">Loading...</span>
             </a>
         </div>
-        
     </article>
 
     <footer class="max-w-4xl mx-auto mt-20 p-8 text-center border-t border-white/5 text-slate-600 text-sm">
         © 2026 D4Driving School of Motoring.
     </footer>
 
-<script src="blog-logic.js"></script>
-    
+    <script>
+        // MASTER DATA: Your 32 Peterborough Driving Guides
+        const posts = [
+            { "id": "manual-driving-lesson-hill-start-practice-tips", "title": "Manual Driving Lesson Hill Start Practice Tips" },
+            { "id": "best-ways-to-reduce-driving-lesson-anxiety", "title": "Best Ways to Reduce Driving Lesson Anxiety" },
+            { "id": "theory-test-pass-tips-that-actually-help", "title": "Theory Test Pass Tips That Actually Help" },
+            { "id": "one-to-one-driving-tuition-benefits-explained", "title": "One to One Driving Tuition Benefits Explained" },
+            { "id": "how-to-pass-the-driving-test-first-time", "title": "How to Pass the Driving Test First Time" },
+            { "id": "female-instructor-or-male-instructor", "title": "Female Instructor or Male Instructor?" },
+            { "id": "best-driving-practice-routes-in-peterborough", "title": "Best Driving Practice Routes in Peterborough" },
+            { "id": "most-common-driving-test-faults", "title": "Most Common Driving Test Faults" },
+            { "id": "starting-driving-lessons-with-confidence", "title": "Starting Driving Lessons With Confidence" },
+            { "id": "automatic-or-manual-lessons-in-peterborough", "title": "Automatic or Manual Lessons in Peterborough?" },
+            { "id": "can-you-pass-with-4-hours-of-test-prep", "title": "Can You Pass With 4 Hours of Test Prep?" },
+            { "id": "10-driving-test-day-tips-that-really-help", "title": "10 Driving Test Day Tips That Really Help" },
+            { "id": "7-smart-ways-to-practise-hazard-perception", "title": "7 Smart Ways to Practise Hazard Perception" },
+            { "id": "how-many-driving-lessons-do-you-need", "title": "How Many Driving Lessons Do You Need?" },
+            { "id": "7-ways-to-feel-confident-behind-the-wheel", "title": "7 Ways to Feel Confident Behind the Wheel" },
+            { "id": "book-driving-lessons-online-in-peterborough", "title": "Book Driving Lessons Online in Peterborough" },
+            { "id": "warmup-lesson-before-your-peterborough-test", "title": "Warm-Up Lesson Before Your Peterborough Test" },
+            { "id": "driving-lessons-for-anxious-adults-in-peterborough", "title": "Driving Lessons for Anxious Adults in Peterborough" },
+            { "id": "how-long-should-your-driving-lessons-be", "title": "How Long Should Your Driving Lessons Be?" },
+            { "id": "automatic-cars-what-new-drivers-can-expect", "title": "Automatic cars: what new drivers can expect" },
+            { "id": "choosing-an-approved-driving-instructor-in-peterborough", "title": "Choosing an Approved Driving Instructor in Peterborough" },
+            { "id": "driving-test-manoeuvres-practice-that-works", "title": "Driving test manoeuvres practice that works" },
+            { "id": "mock-test-lessons-that-actually-boost-pass-rates", "title": "Mock Test Lessons That Actually Boost Pass Rates" },
+            { "id": "your-first-driving-lesson-what-to-expect", "title": "Your First Driving Lesson: What to Expect" },
+            { "id": "driving-lessons-for-nervous-drivers-what-works", "title": "Driving Lessons for Nervous Drivers: What Works" },
+            { "id": "manual-or-automatic-lessons-which-is-better", "title": "Manual or Automatic Lessons: Which Is Better?" },
+            { "id": "how-many-driving-lessons-do-you-really-need", "title": "How Many Driving Lessons Do You Really Need?" },
+            { "id": "intensive-driving-test-prep-session-what-works", "title": "Intensive Driving Test Prep Session: What Works" },
+            { "id": "is-a-1hour-automatic-lesson-enough", "title": "Is a 1-Hour Automatic Lesson Enough?" },
+            { "id": "grantham-driving-test-prep-that-actually-works", "title": "Grantham Driving Test Prep That Actually Works" },
+            { "id": "kettering-driving-test-prep-that-actually-works", "title": "Kettering Driving Test Prep That Actually Works" },
+            { "id": "peterborough-driving-test-prep-that-works", "title": "Peterborough Driving Test Prep That Works" }
+        ];
+
+        // LOGIC: PWA & Share
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => {}); });
+        }
+
+        const shareBtn = document.getElementById('shareBtn');
+        if (shareBtn) {
+            shareBtn.addEventListener('click', async () => {
+                const shareData = {
+                    title: document.title,
+                    text: 'Check out this driving guide from D4Driving Peterborough!',
+                    url: window.location.href
+                };
+                try {
+                    if (navigator.share) { await navigator.share(shareData); } 
+                    else {
+                        await navigator.clipboard.writeText(window.location.href);
+                        const span = shareBtn.querySelector('span');
+                        const originalText = span.innerText;
+                        span.innerText = 'Link Copied!';
+                        setTimeout(() => span.innerText = originalText, 2000);
+                    }
+                } catch (err) { console.log('Share error'); }
+            });
+        }
+
+        // LOGIC: Auto-Navigation
+        function loadBlogNavigation() {
+            const path = window.location.pathname;
+            const currentFilename = path.split('/').pop().replace('.html', '');
+            const currentIndex = posts.findIndex(p => p.id === currentFilename);
+            
+            if (currentIndex !== -1) {
+                const currentPost = posts[currentIndex];
+                const prevPost = posts[currentIndex - 1];
+                const nextPost = posts[currentIndex + 1];
+
+                document.title = `${currentPost.title} | D4Driving Journal`;
+                const h1 = document.getElementById('post-title');
+                if (h1 && h1.innerText === "Best Ways to Reduce Driving Lesson Anxiety") h1.innerText = currentPost.title;
+
+                const prevLink = document.getElementById('prev-post-link');
+                const nextLink = document.getElementById('next-post-link');
+
+                if (prevPost) {
+                    document.getElementById('prev-post-title').innerText = prevPost.title;
+                    prevLink.href = `${prevPost.id}.html`;
+                } else if (prevLink) { prevLink.style.display = 'none'; }
+
+                if (nextPost) {
+                    document.getElementById('next-post-title').innerText = nextPost.title;
+                    nextLink.href = `${nextPost.id}.html`;
+                } else if (nextLink) { nextLink.style.display = 'none'; }
+            }
+        }
+        loadBlogNavigation();
+    </script>
 </body>
 </html>

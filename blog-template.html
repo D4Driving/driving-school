@@ -68,27 +68,7 @@
         </div>
     </footer>
 
-    <script>
-document.getElementById('shareBtn').addEventListener('click', async () => {
-    const shareData = {
-        title: document.title,
-        text: 'Check out this driving tip from D4Driving Peterborough!',
-        url: window.location.href
-    };
 
-    try {
-        if (navigator.share) {
-            // This opens the native phone share menu (WhatsApp, SMS, Socials)
-            await navigator.share(shareData);
-        } else {
-            // Fallback: Copy to clipboard if native share isn't supported
-            await navigator.clipboard.writeText(window.location.href);
-            alert('Link copied to clipboard!');
-        }
-    } catch (err) {
-        console.log('Share cancelled or failed');
-    }
-});
 </script>
 </body>
 </html>

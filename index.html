@@ -82,11 +82,17 @@
 button, a { touch-action: manipulation; }
         
 .glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* Better Safari Support */
-    transform: translateZ(0); /* Hardware Acceleration */
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            /* --- ADD THESE THREE LINES --- */
+            max-width: 768px; /* Stops the box from stretching too wide */
+            width: 100%;       /* Allows it to shrink on mobile */
+            margin-left: auto;  /* Centers the box when browser is wide */
+            margin-right: auto;
+            /* ---------------------------- */
         }
         .wa-float {
             position: fixed; width: 60px; height: 60px; bottom: 20px; right: 20px;

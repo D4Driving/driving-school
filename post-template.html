@@ -135,23 +135,60 @@
             });
         }
 
-        // Navigation Logic (To be called when post data is loaded)
-        function updateNavigation(prevPost, nextPost) {
+// 2. Automated Navigation & Meta Logic
+        async function loadBlogData() {
+            try {
+                const response = await fetch('posts.json');
+                const posts = await response.json();
+                
+                // Get ID from URL (e.g., post.html?id=2)
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentId = urlParams.get('id');
+                
+                const currentIndex = posts.findIndex(p => p.id === currentId);
+                
+                if (currentIndex !== -1) {
+                    const currentPost = posts[currentIndex];
+                    const prevPost = posts[currentIndex - 1];
+                    const nextPost = posts[currentIndex + 1];
+
+                    // UPDATE THE TITLES
+                    // This changes the browser tab name
+                    document.title = `${currentPost.title} | D4Driving Peterborough`;
+                    
+                    // This changes the big title on the page
+                    const pageTitleHeading = document.getElementById('post-title');
+                    if (pageTitleHeading) pageTitleHeading.innerText = currentPost.title;
+
+                    // Update Navigation Buttons
+                    updateNavigationUI(prevPost, nextPost);
+                }
+            } catch (err) { console.error('Error loading blog data:', err); }
+        }
+
+        function updateNavigationUI(prev, next) {
             const prevLink = document.getElementById('prev-post-link');
             const nextLink = document.getElementById('next-post-link');
-            if (prevPost) {
-                document.getElementById('prev-post-title').innerText = prevPost.title;
-                prevLink.href = `post.html?id=${prevPost.id}`;
-            } else {
-                prevLink.classList.add('opacity-30', 'pointer-events-none');
+
+            if (prev) {
+                document.getElementById('prev-post-title').innerText = prev.title;
+                prevLink.href = `post.html?id=${prev.id}`;
+                prevLink.style.display = 'flex';
+            } else if (prevLink) {
+                prevLink.style.display = 'none';
             }
-            if (nextPost) {
-                document.getElementById('next-post-title').innerText = nextPost.title;
-                nextLink.href = `post.html?id=${nextPost.id}`;
-            } else {
-                nextLink.classList.add('opacity-30', 'pointer-events-none');
+
+            if (next) {
+                document.getElementById('next-post-title').innerText = next.title;
+                nextLink.href = `post.html?id=${next.id}`;
+                nextLink.style.display = 'flex';
+            } else if (nextLink) {
+                nextLink.style.display = 'none';
             }
         }
+
+        // Run on load
+        loadBlogData();
     </script>
 </body>
 </html>

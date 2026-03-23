@@ -140,10 +140,11 @@ button, a { touch-action: manipulation; }
 
 #main-logo {
     display: block;
-    max-width: 96px; /* Matches your 'h-24' header height */
-    width: 96px;
+    width: 96px; 
     height: 96px;
-    margin: 0 auto 1.5rem auto; /* Centers the logo and adds space below */
+    aspect-ratio: 1 / 1; /* Forces a square container */
+    object-fit: contain; /* Prevents squeezing/stretching */
+    margin: 0 auto 1.5rem auto; 
     visibility: visible;
 }
 
@@ -167,22 +168,21 @@ button, a { touch-action: manipulation; }
 }       
         
 #logo-text {
-    display: block; /* Changed from 'inline' to 'block' to allow centering */
+    display: block;
     text-align: center;
     width: 100%;
-    font-size: 1.5rem; /* Mobile size */
+    font-size: 1.875rem; /* Standard mobile size */
     margin: 0 auto;
 }
 
 /* Adjust for Desktop so it doesn't look small there either */
 @media (min-width: 768px) {
     #main-logo {
-        max-width: 96px;
-        width: 96px;
-        height: 96px;
+        width: 120px; /* Slightly larger for desktop balance */
+        height: 120px;
     }
     #logo-text {
-        font-size: 2.25rem; /* Matches 'text-4xl' desktop size */
+        font-size: 2.25rem; /* Matches text-4xl */
     }
 }     
     </style>
@@ -203,15 +203,15 @@ button, a { touch-action: manipulation; }
 
 <header class="w-full max-w-4xl mx-auto p-8 text-center">
     <div class="inline-block mb-6">
-        <img 
-            src="400dpiLogoCropped.png" 
-            id="main-logo" 
-            alt="D4Driving School of Motoring Peterborough Logo" 
-            width="400" 
-            height="120" 
-            class="h-24 w-auto drop-shadow-2xl"
-            loading="eager"
-            fetchpriority="high">
+<img 
+    src="400dpiLogoCropped.png" 
+    id="main-logo" 
+    alt="D4Driving School of Motoring Peterborough Logo" 
+    width="120" 
+    height="120" 
+    class="drop-shadow-2xl"
+    loading="eager"
+    fetchpriority="high">
     </div>
     
     <h1 id="logo-text" class="text-4xl font-extrabold text-white mb-2 tracking-tight">

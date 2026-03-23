@@ -146,6 +146,25 @@ button, a { touch-action: manipulation; }
     visibility: visible;
 }
 
+ /* Critical Hero Image Fix */
+#hero-car-container {
+    display: block;
+    width: 100%;
+    max-width: 960px; /* Matches our unified width */
+    aspect-ratio: 16 / 9;
+    background: rgba(15, 23, 42, 0.5); /* Pre-fills with a dark color */
+    border-radius: 1.5rem;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+#hero-car-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    visibility: visible;
+}       
+        
 #logo-text {
     font-size: 1.5rem; /* Matches 'text-2xl' */
     display: inline;
@@ -209,14 +228,23 @@ button, a { touch-action: manipulation; }
 </header>
 
 <section id="vehicles" class="max-w-4xl mx-auto px-6 mb-24 w-full h-auto">
-        <h2 class="text-3xl font-black mb-8 text-center tracking-tight">Our Modern Tuition Vehicles</h2>
+    <h2 class="text-3xl font-black mb-8 text-center tracking-tight">Our Modern Tuition Vehicles</h2>
 
-        <div class="glass-card p-6 rounded-[2.5rem] border border-white/10" style="width: 100%; max-width: 960px; margin-left: auto; margin-right: auto;">
-            <img src="d4driving-car-peterborough.webp" alt="D4Driving School tuition cars - White Toyota Yaris Cross and Grey Aygo X" width="1200" height="675" class="w-full h-auto rounded-3xl" style="aspect-ratio: 16/9; min-height: 400px; object-cover: cover;">
-            
-            <p class="text-slate-400 text-sm mt-6 text-center">We use modern, dual-control, fuel-efficient vehicles (Toyota Yaris Cross & Aygo X) to provide a safe and comfortable learning environment.</p>
-        </div>
-    </section>
+    <div id="hero-car-container" class="glass-card p-2 md:p-4 rounded-[2.5rem] border border-white/10 shadow-2xl">
+        <img 
+            src="d4driving-car-peterborough.webp" 
+            id="hero-car-img"
+            alt="D4Driving School tuition cars - White Toyota Yaris Cross and Grey Aygo X" 
+            width="960" 
+            height="540" 
+            loading="eager"
+            fetchpriority="high">
+    </div>
+    
+    <p class="text-slate-400 text-sm mt-6 text-center">
+        Learn in comfort with our modern, dual-control Toyota fleet.
+    </p>
+</section>
     
     <div class="max-w-4xl mx-auto px-6 mb-12 flex flex-row gap-4">
         <a href="#book" aria-label="Book your driving lesson now" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-center py-4 rounded-2xl font-extrabold shadow-lg shadow-blue-600/20 transition transform active:scale-95 flex items-center justify-center gap-2">

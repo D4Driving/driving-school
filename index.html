@@ -140,9 +140,10 @@ button, a { touch-action: manipulation; }
 
 #main-logo {
     display: block;
-    max-width: 64px; /* Matches your 'w-16' mobile size */
-    width: 64px;
-    height: 64px;
+    max-width: 96px; /* Matches your 'h-24' header height */
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 1.5rem auto; /* Centers the logo and adds space below */
     visibility: visible;
 }
 
@@ -166,21 +167,24 @@ button, a { touch-action: manipulation; }
 }       
         
 #logo-text {
-    font-size: 1.5rem; /* Matches 'text-2xl' */
-    display: inline;
+    display: block; /* Changed from 'inline' to 'block' to allow centering */
+    text-align: center;
+    width: 100%;
+    font-size: 1.5rem; /* Mobile size */
+    margin: 0 auto;
 }
 
 /* Adjust for Desktop so it doesn't look small there either */
 @media (min-width: 768px) {
     #main-logo {
-        max-width: 96px; /* Matches 'md:w-24' */
+        max-width: 96px;
         width: 96px;
         height: 96px;
     }
     #logo-text {
-        font-size: 1.875rem; /* Matches 'md:text-3xl' */
+        font-size: 2.25rem; /* Matches 'text-4xl' desktop size */
     }
-}      
+}     
     </style>
 
 <!-- Google tag (gtag.js) -->

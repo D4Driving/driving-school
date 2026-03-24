@@ -2,6 +2,12 @@
 // Updated with Images and Descriptions from your HTML
 const posts = [
     { 
+        "id": "how-to-pass-the-driving-test-first-time", 
+        "title": "How to Pass the Driving Test First Time?",
+        "img": "https://your-image-link.jpg",
+        "desc": "Step-by-step instructions on mastering the parallel park manoeuvre specifically for the Peterborough test routes."
+    },
+    { 
         "id": "manual-driving-lesson-hill-start-practice-tips", 
         "title": "Manual Driving Lesson Hill Start Practice Tips",
         "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/ddafdd61-f8cf-498d-9831-27335fc3b0c0.webp",

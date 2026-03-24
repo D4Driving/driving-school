@@ -93,7 +93,7 @@
         © 2026 D4Driving School of Motoring.
     </footer>
 
-   <script>
+    <script>
         // MASTER DATA: Your 32 Peterborough Driving Guides
         const posts = [
             { "id": "how-to-pass-the-driving-test-first-time", "title": "How To Pass The Driving Test First Time" },
@@ -170,7 +170,7 @@
 
                 document.title = `${currentPost.title} | D4Driving Journal`;
                 const h1 = document.getElementById('post-title');
-                if (h1 && h1.innerText === "ARTICLE_TITLE") h1.innerText = currentPost.title;
+                if (h1 && h1.innerText === "How to Pass the Driving Test First Time") h1.innerText = currentPost.title;
 
                 const prevLink = document.getElementById('prev-post-link');
                 const nextLink = document.getElementById('next-post-link');

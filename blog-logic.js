@@ -4,8 +4,8 @@ const posts = [
     { 
         "id": "how-to-pass-the-driving-test-first-time", 
         "title": "How to Pass the Driving Test First Time?",
-        "img": "https://your-image-link.jpg",
-        "desc": "Step-by-step instructions on mastering the parallel park manoeuvre specifically for the Peterborough test routes."
+        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c52a2089-8379-41a7-9437-fa8ab3cf5ceb.webp",
+        "desc": "How to pass the Practical Driving Test first time - with these easy steps, you will pass it for sure."
     },
     { 
         "id": "manual-driving-lesson-hill-start-practice-tips", 

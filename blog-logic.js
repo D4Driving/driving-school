@@ -260,7 +260,11 @@ window.addEventListener('DOMContentLoaded', () => {
     initSearch();
 });
 
-// DO NOT put these at the top. Keep them here at the very end:
-window.posts = posts;
+// This ensures the functions are available to the browser console
 window.pingZapier = pingZapier;
 window.generateRSS = generateRSS;
+
+window.addEventListener('DOMContentLoaded', () => {
+    generateBlogGrid();
+    initSearch();
+});

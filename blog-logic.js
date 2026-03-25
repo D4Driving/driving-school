@@ -94,12 +94,6 @@ const posts = [
     }
 ];
 
-// Add these right after the closing ] of your posts array
-window.posts = posts;
-window.generateBlogGrid = generateBlogGrid;
-window.pingZapier = pingZapier;
-window.generateRSS = generateRSS;
-
 // 2. PWA & SHARE LOGIC
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -258,7 +252,14 @@ window.addEventListener('DOMContentLoaded', () => {
     generateBlogGrid();
     initSearch();
 });
-// Add these to the very end of blog-logic.js
+// Initialize on load
+window.addEventListener('DOMContentLoaded', () => {
+    loadBlogNavigation();
+    generateBlogGrid(); // This will "take over" the static HTML so search works
+    initSearch();
+});
+
+// DO NOT put these at the top. Keep them here at the very end:
 window.posts = posts;
 window.pingZapier = pingZapier;
 window.generateRSS = generateRSS;

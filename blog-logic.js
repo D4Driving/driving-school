@@ -1,5 +1,4 @@
 // 1. MASTER DATA: All 33 Actual Peterborough Driving Guides
-// Updated with Images and Descriptions from your HTML
 const posts = [
     { 
         "id": "how-to-pass-the-driving-test-first-time", 
@@ -30,12 +29,6 @@ const posts = [
         "title": "One to One Driving Tuition Benefits Explained",
         "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/de874b02-2e69-4c4d-8d09-0acf3b8abbf9.webp",
         "desc": "Learn the one to one driving tuition benefits that help learners build confidence, improve safety and make steady progress toward test success."
-    },
-    { 
-        "id": "how-to-pass-the-driving-test-first-time", 
-        "title": "How to Pass the Driving Test First Time",
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c52a2089-8379-41a7-9437-fa8ab3cf5ceb.webp",
-        "desc": "Learn how to pass the driving test first time with calm, practical tips on lessons, manoeuvres, test nerves and smart preparation."
     },
     { 
         "id": "female-instructor-or-male-instructor", 
@@ -181,32 +174,30 @@ function loadBlogNavigation() {
     }
 }
 
-// 4. GENERATE BLOG GRID (Automatic Page Builder)
-function generateBlogGrid() {
+// 4. GENERATE BLOG GRID (Updated for Search)
+function generateBlogGrid(filteredPosts = posts) {
     const grid = document.getElementById('blog-grid');
-    if (!grid) return; // Only runs on blog.html
+    if (!grid) return; 
 
-    grid.innerHTML = ''; // Clear existing content
+    grid.innerHTML = ''; 
 
-    posts.forEach(post => {
+    if (filteredPosts.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-20 text-slate-400">No articles found matching your search.</div>`;
+        return;
+    }
+
+    filteredPosts.forEach(post => {
         const article = document.createElement('article');
         article.className = "glass-card overflow-hidden rounded-3xl hover:border-white/20 transition group";
-        
-        // Image logic: use the specific URL or a default if missing
         const imageSrc = post.img || "400dpiLogoCropped.png";
 
         article.innerHTML = `
             <div class="h-48 overflow-hidden">
-                <img src="${imageSrc}" 
-                     class="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
-                     alt="${post.title}"
-                     loading="lazy">
+                <img src="${imageSrc}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="${post.title}" loading="lazy">
             </div>
             <div class="p-6">
                 <h3 class="text-lg font-bold group-hover:text-blue-400 transition">${post.title}</h3>
-                <p class="text-slate-400 text-sm mt-2 line-clamp-2">
-                    ${post.desc || "Expert driving advice from D4Driving Peterborough to help you pass your test with confidence."}
-                </p>
+                <p class="text-slate-400 text-sm mt-2 line-clamp-2">${post.desc || "Expert driving advice from D4Driving Peterborough."}</p>
                 <a href="${post.id}.html" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>
             </div>
         `;
@@ -214,8 +205,50 @@ function generateBlogGrid() {
     });
 }
 
+// 5. SEARCH LOGIC
+function initSearch() {
+    const searchInput = document.getElementById('blog-search');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        const results = posts.filter(post => 
+            post.title.toLowerCase().includes(searchTerm) || 
+            (post.desc && post.desc.toLowerCase().includes(searchTerm))
+        );
+        generateBlogGrid(results);
+    });
+}
+
+// 6. RSS & AUTOMATION TOOLS (For Browser Console)
+function generateRSS() {
+    let rss = `<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"><channel>
+<title>D4Driving Peterborough Guides</title>
+<link>https://d4driving.co.uk/blog.html</link>
+<description>Latest driving test tips.</description>`;
+    posts.forEach(post => {
+        rss += `\n<item><title>${post.title}</title><link>https://d4driving.co.uk/${post.id}.html</link><description>${post.desc || ""}</description></item>`;
+    });
+    rss += `\n</channel></rss>`;
+    console.log(rss);
+    alert("RSS generated in console. Copy it to feed.xml");
+}
+
+async function pingZapier(postId) {
+    const post = posts.find(p => p.id === postId);
+    if (!post) return alert("Post ID not found!");
+    const webhookURL = "YOUR_ZAPIER_WEBHOOK_URL_HERE"; 
+    const data = { title: post.title, link: `https://d4driving.co.uk/${post.id}.html`, desc: post.desc, img: post.img };
+    try {
+        await fetch(webhookURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
+        alert("Post sent to Zapier!");
+    } catch (err) { console.error(err); }
+}
+
 // Initialize on load
 window.addEventListener('DOMContentLoaded', () => {
     loadBlogNavigation();
     generateBlogGrid();
+    initSearch();
 });

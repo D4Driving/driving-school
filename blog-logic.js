@@ -252,3 +252,7 @@ window.addEventListener('DOMContentLoaded', () => {
     generateBlogGrid();
     initSearch();
 });
+// Add these to the very end of blog-logic.js
+window.posts = posts;
+window.pingZapier = pingZapier;
+window.generateRSS = generateRSS;

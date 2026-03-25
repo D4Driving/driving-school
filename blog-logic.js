@@ -235,7 +235,8 @@ function generateRSS() {
     alert("RSS generated in console. Copy it to feed.xml");
 }
 
-async function pingZapier(postId) {
+// Change this line in your blog-logic.js
+window.pingZapier = async function(postId) {
     const post = posts.find(p => p.id === postId);
     if (!post) return alert("Post ID not found!");
     const webhookURL = "https://hooks.zapier.com/hooks/catch/26971882/un3uyhr/"; 
@@ -244,7 +245,7 @@ async function pingZapier(postId) {
         await fetch(webhookURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
         alert("Post sent to Zapier!");
     } catch (err) { console.error(err); }
-}
+};
 
 // Initialize on load
 window.addEventListener('DOMContentLoaded', () => {

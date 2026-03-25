@@ -94,6 +94,12 @@ const posts = [
     }
 ];
 
+// Add these right after the closing ] of your posts array
+window.posts = posts;
+window.generateBlogGrid = generateBlogGrid;
+window.pingZapier = pingZapier;
+window.generateRSS = generateRSS;
+
 // 2. PWA & SHARE LOGIC
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

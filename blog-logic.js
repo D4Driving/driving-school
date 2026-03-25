@@ -238,7 +238,7 @@ function generateRSS() {
 async function pingZapier(postId) {
     const post = posts.find(p => p.id === postId);
     if (!post) return alert("Post ID not found!");
-    const webhookURL = "YOUR_ZAPIER_WEBHOOK_URL_HERE"; 
+    const webhookURL = "https://hooks.zapier.com/hooks/catch/26971882/un3uyhr/"; 
     const data = { title: post.title, link: `https://d4driving.co.uk/${post.id}.html`, desc: post.desc, img: post.img };
     try {
         await fetch(webhookURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });

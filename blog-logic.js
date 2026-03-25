@@ -174,7 +174,7 @@ function loadBlogNavigation() {
     }
 }
 
-// 4. GENERATE BLOG GRID (Updated for Search)
+// 4. GENERATE BLOG GRID
 function generateBlogGrid(filteredPosts = posts) {
     const grid = document.getElementById('blog-grid');
     if (!grid) return; 
@@ -220,51 +220,31 @@ function initSearch() {
     });
 }
 
-// 6. RSS & AUTOMATION TOOLS (For Browser Console)
-function generateRSS() {
-    let rss = `<?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0"><channel>
-<title>D4Driving Peterborough Guides</title>
-<link>https://d4driving.co.uk/blog.html</link>
-<description>Latest driving test tips.</description>`;
+// 6. GLOBAL FUNCTIONS (Defined directly on window for reliability)
+window.generateRSS = function() {
+    let rss = `<?xml version="1.0" encoding="UTF-8" ?>\n<rss version="2.0"><channel>\n<title>D4Driving Peterborough Guides</title>\n<link>https://d4driving.co.uk/blog.html</link>`;
     posts.forEach(post => {
         rss += `\n<item><title>${post.title}</title><link>https://d4driving.co.uk/${post.id}.html</link><description>${post.desc || ""}</description></item>`;
     });
     rss += `\n</channel></rss>`;
     console.log(rss);
-    alert("RSS generated in console. Copy it to feed.xml");
-}
+    alert("RSS generated in console.");
+};
 
-// Change this line in your blog-logic.js
 window.pingZapier = async function(postId) {
     const post = posts.find(p => p.id === postId);
-    if (!post) return alert("Post ID not found!");
+    if (!post) return alert("Post ID not found: " + postId);
     const webhookURL = "https://hooks.zapier.com/hooks/catch/26971882/un3uyhr/"; 
     const data = { title: post.title, link: `https://d4driving.co.uk/${post.id}.html`, desc: post.desc, img: post.img };
     try {
         await fetch(webhookURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
-        alert("Post sent to Zapier!");
+        alert("Post sent to Zapier: " + post.title);
     } catch (err) { console.error(err); }
 };
 
-// Initialize on load
+// 7. INITIALIZE
 window.addEventListener('DOMContentLoaded', () => {
     loadBlogNavigation();
-    generateBlogGrid();
-    initSearch();
-});
-// Initialize on load
-window.addEventListener('DOMContentLoaded', () => {
-    loadBlogNavigation();
-    generateBlogGrid(); // This will "take over" the static HTML so search works
-    initSearch();
-});
-
-// This ensures the functions are available to the browser console
-window.pingZapier = pingZapier;
-window.generateRSS = generateRSS;
-
-window.addEventListener('DOMContentLoaded', () => {
     generateBlogGrid();
     initSearch();
 });

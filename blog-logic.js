@@ -248,3 +248,53 @@ window.addEventListener('DOMContentLoaded', () => {
     generateBlogGrid();
     initSearch();
 });
+
+// 8. DYNAMIC UI INJECTION (Nav & Footer)
+function injectSharedUI() {
+    const navHTML = `
+        <nav class="max-w-6xl mx-auto p-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="400dpiLogoCropped.png" alt="Logo" class="h-10 w-auto">
+                <span class="font-bold uppercase tracking-wider">D4DRIVING</span>
+            </a>
+            <div class="flex gap-3">
+                <button id="shareBtn" class="text-xs font-bold bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full border border-blue-500/20 hover:bg-blue-600/40 transition">
+                    <span>Share Guide</span>
+                </button>
+                <a href="blog.html" class="text-xs font-bold bg-slate-800 px-4 py-2 rounded-full border border-white/10 hover:bg-slate-700 transition">All Guides</a>
+            </div>
+        </nav>`;
+
+    const footerHTML = `
+        <footer class="mt-20 py-12 border-t border-white/10 bg-slate-900/50 backdrop-blur-md">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <img src="400dpiLogoCropped.png" alt="D4Driving Logo" class="h-12 mb-4 mx-auto brightness-110">
+                <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                    Expert driving tuition with Robert Szatkowski. Helping students pass their test with confidence across Peterborough and surrounding areas.
+                </p>
+                <div class="flex justify-center gap-6 text-xs font-bold uppercase tracking-widest text-slate-500">
+                    <a href="index.html#prices" class="hover:text-blue-400 transition">Prices</a>
+                    <a href="blog.html" class="hover:text-blue-400 transition">Blog</a>
+                    <a href="index.html#contact" class="hover:text-blue-400 transition">Contact</a>
+                </div>
+            </div>
+        </footer>`;
+
+    // Inject Nav at the top of the body
+    const navContainer = document.getElementById('dynamic-nav');
+    if (navContainer) navContainer.innerHTML = navHTML;
+
+    // Inject Footer at the bottom
+    const footerContainer = document.getElementById('dynamic-footer');
+    if (footerContainer) footerContainer.innerHTML = footerHTML;
+}
+
+// UPDATE INITIALIZE SECTION (Step 7) to include injectSharedUI
+window.addEventListener('DOMContentLoaded', () => {
+    injectSharedUI(); // Run this first!
+    if (document.getElementById('prev-post-link')) loadBlogNavigation();
+    if (document.getElementById('blog-grid')) {
+        generateBlogGrid();
+        initSearch();
+    }
+});

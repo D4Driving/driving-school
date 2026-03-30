@@ -5,210 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How Long Should Your Driving Lessons Be? | D4Driving Journal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
-        .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
-        .prose p { margin-bottom: 1.5rem; color: #94a3b8; line-height: 1.8; font-size: 1.1rem; }
-        .prose h2 { color: white; font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; }
-        .nav-btn { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
-        .nav-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+        body { font-family: 'Inter', sans-serif; background-color: #FDF9F3; color: #3E3835; }
+        .glass-card { background: white; border: 1px solid #EADDD0; box-shadow: 0 10px 30px rgba(177, 30, 36, 0.03); }
+        .prose p { margin-bottom: 1.5rem; color: #4A4542; line-height: 1.8; font-size: 1.1rem; }
+        .prose h2 { color: #1A365D; font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: bold; margin-top: 2.5rem; margin-bottom: 1.2rem; }
+        .prose h3 { color: #B11E24; font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: bold; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .prose ul { list-style-type: none; padding-left: 0; margin-bottom: 1.5rem; }
+        .prose li { position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem; color: #4A4542; }
+        .prose li::before { content: "•"; color: #B11E24; font-weight: bold; position: absolute; left: 0; }
+        .nav-btn { transition: all 0.3s ease; border: 1px solid #EADDD0; background: white; }
+        .nav-btn:hover { background: #FFF5F5; border-color: #B11E24; transform: translateY(-2px); }
     </style>
 </head>
 <body class="min-h-screen pb-20">
-    <nav class="max-w-6xl mx-auto p-6 flex justify-between items-center">
-        <a href="index.html" class="flex items-center gap-3">
-            <img src="400dpiLogoCropped.png" alt="Logo" class="h-10 w-auto">
-            <span class="font-bold uppercase tracking-wider">D4DRIVING</span>
-        </a>
-        <a href="blog.html" class="text-xs font-bold bg-slate-800 px-4 py-2 rounded-full border border-white/10 hover:bg-slate-700 transition">← Back to Blog</a>
-    </nav>
+
+    <div id="dynamic-nav"></div>
 
     <article class="max-w-3xl mx-auto px-6 pt-12">
-        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/0d2dff51-fe10-4dda-ac53-9522550cc7db.webp" alt="How Long Should Your Driving Lessons Be?" class="w-full h-64 md:h-96 object-cover rounded-3xl mb-8 border border-white/10">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/0d2dff51-fe10-4dda-ac53-9522550cc7db.webp" alt="How Long Should Your Driving Lessons Be?" class="w-full h-64 md:h-96 object-cover rounded-[40px] mb-8 border-4 border-white shadow-lg">
         
-        <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold mb-6">How Long Should Your Driving Lessons Be?</h1>
+        <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold mb-6 text-[#1A365D] font-[Outfit]">How Long Should Your Driving Lessons Be?</h1>
         
-        <div class="prose prose-invert max-w-none mb-12">
+        <div class="prose max-w-none mb-12">
             <p>You finish a lesson and think, “That went well… but it ended just as I was getting the hang of it.” Or the opposite: “My brain checked out halfway through.”</p>
-<p>Lesson length is one of the quickest ways to make driving feel either calm and manageable or rushed and overwhelming. There is no magic number that suits everyone, but there is a right fit for you - and it often changes as you progress.</p>
-<p>This guide will help you choose right lesson length for driving by looking at your starting point, how you learn, what you are practising, and what you need from each session.</p>
-<h2>Why lesson length matters more than most learners expect</h2>
-<p>Driving is a mix of decision-making, coordination, and confidence. In the early stages you are processing a lot at once: mirrors, signals, steering control, timing, road positioning, speed awareness, other road users, and instructor feedback. The more mentally demanding the task, the more carefully your lesson length should be chosen.</p>
-<p>A lesson that is too short can leave you stuck in warm-up mode. You spend the first part settling your nerves, adjusting your seat and mirrors, and re-finding your rhythm - then time is up before you have built momentum.</p>
-<p>A lesson that is too long can create fatigue. When concentration drops, mistakes creep in. That can knock confidence, especially for nervous learners, even if the first part of the lesson was strong.</p>
-<p>The right length is the one that gives you enough time to practise properly, take feedback on board, and finish feeling clearer than when you started.</p>
-<h2>The three lesson lengths most learners choose</h2>
-<p>Most driving schools offer sessions in simple time blocks because it keeps planning straightforward and helps you build consistency. You will usually see 1 hour, 1.5 hours, and 2 hours - and each has a best use.</p>
-<h3>1 hour driving lessons: best for bite-sized progress</h3>
-<p>A one hour lesson can be ideal if you are very busy, if you are building confidence gradually, or if you are practising a focused skill close to home.</p>
-<p>One hour works well when your goals are specific and achievable in a short window. For example, you might spend a session working only on clutch control and moving off safely, or only on observations and positioning at a familiar set of mini-roundabouts.</p>
-<p>The trade-off is that the first 10-15 minutes can disappear quickly, particularly if you need a longer warm-up. If your pick-up point is far from the practice area, a one hour slot may feel tight.</p>
-<p>One hour lessons suit learners who:</p>
-<ul><li><a href="https://www.d4driving.co.uk/service-page/1-hour-lesson-anxiety-busting">feel anxious</a> and do better with shorter bursts</li><li>have limited availability and want to keep momentum with frequent sessions</li><li>are doing a refresher after a break</li><li>need targeted practice rather than wide-ranging driving</li></ul>
-<h3>1.5 hour driving lessons: the sweet spot for most learners</h3>
-<p>A 90-minute lesson is often the most flexible option because it gives you time to warm up, learn something new, practise it, and still finish with a calm debrief.</p>
-<p>This length is long enough to move beyond “getting settled” and into meaningful repetition. Repetition is what turns a skill from something you can do once into something you can do consistently, under pressure, and with less instructor support.</p>
-<p>It is also a good length for mixing tasks without feeling rushed. You might spend part of the session on junction routine and the rest on meeting traffic or roundabouts, and still have time to tidy up any rough edges.</p>
-<p>If you are not sure where to start, 1.5 hours is usually a <a href="https://www.d4driving.co.uk/service-page/1-5-hour-lesson-more-time-more-progress">safe, effective choice</a>.</p>
-<h3>2 hour driving lessons: best for depth, routes, and test prep</h3>
-<p>Two hour lessons give you the space to practise more complex driving and build stamina. They can be brilliant when used for the right purpose, especially once basic control is steadier.</p>
-<p>Longer lessons are particularly useful for:</p>
-<ul><li>building confidence on busier roads</li><li>practising multiple roundabouts and varied junctions in one outing</li><li>independent driving practice and sat nav work</li><li>mock tests and test-route familiarity</li><li>fixing a recurring issue with enough repetition to make it stick</li></ul>
-<p>The trade-off is mental load. Two hours is a long time to stay sharp when you are still learning, and some people find the final third becomes less productive. A good instructor will pace the session, vary the tasks, and build in moments to reset - but it still needs to suit your concentration.</p>
-<h2>How to choose right lesson length for driving based on your stage</h2>
-<p>Your “best” lesson length is not fixed. It should match what your brain and body can cope with at that point in training.</p>
-<h3>If you are a complete beginner</h3>
-<p>In the first few lessons, you are learning the basics and you are also learning how you learn. Many beginners do well with 1 to 1.5 hours, depending on nerves and how quickly you fatigue.</p>
-<p>If you feel tense before lessons or you find your shoulders creeping up to your ears while you drive, shorter sessions can help you build trust in the process. Confidence grows when lessons feel manageable.</p>
-<p>If you already feel calm behind the wheel and you want to progress efficiently, 1.5 hours can give you enough time to repeat the fundamentals without feeling hurried.</p>
-<h3>If you are building consistency and moving into busier roads</h3>
-<p>This is where 1.5 hours often shines. You can practise core routines - mirrors, signals, speed, position, judgement - across a range of situations without stretching your concentration too far.</p>
-<p>Two hours can also work well at this stage if you recover quickly after mistakes and you stay focused. If you tend to “spiral” after one error, a slightly shorter session may be kinder and more productive.</p>
-<h3>If your <a href="https://www.d4driving.co.uk/post/top-tips-and-driving-test-strategies-to-ace-your-driving-test">test is coming</a> up</h3>
-<p>As the test approaches, lesson length becomes about realism. The practical test is under an hour, but the skills required include staying calm while being assessed, handling independent driving, and recovering from small errors.</p>
-<p>Two hour sessions are useful for mock tests and for practising routes in and around test areas, because you can run a full mock and still have time to correct what went wrong straight away.</p>
-<p>If you are polishing manoeuvres or sharpening specific weaknesses, 1.5 hours is often enough to practise properly without overdoing it.</p>
-<h2>Match the length to what you are practising</h2>
-<p>Not all driving tasks need the same amount of time.</p>
-<p>Manoeuvres, for example, are intense and detailed. You need clear explanations, demonstrations, and repetition. Too short and you rush. Too long and you can start overthinking. Many learners find 1.5 hours ideal for manoeuvre work because it allows several attempts with time to reset.</p>
-<p>Roundabouts and complex junctions often benefit from longer sessions, especially if you need to travel to areas with the right road layout. A two hour lesson can give you the time to experience different types of roundabouts and traffic conditions, which is where real confidence comes from.</p>
-<p>Independent driving practice also tends to work better in longer sessions. It takes time to settle into driving with less instructor input, and the learning often happens after the first few routes when you start spotting patterns and anticipating hazards.</p>
-<h2>Consider your schedule and how often you can practise</h2>
-<p>Lesson frequency matters alongside length. Two hours once a fortnight might feel productive on the day, but you can lose rhythm between sessions. One hour twice a week may build faster progress because skills stay fresh.</p>
-<p>Be realistic about your week. If you are juggling college, work, family commitments, or shift patterns, a shorter lesson you can keep consistent often beats a longer lesson you keep cancelling.</p>
-<p>If you can only book weekly, consider 1.5 or 2 hours to maintain momentum. If you can book more frequently, one hour sessions can work well, particularly in the early stages.</p>
-<h2>Manual vs automatic: does it change the best lesson length?</h2>
-<p>It can.</p>
-<p>Manual lessons sometimes benefit from a little more time early on because clutch control and gear changes add an extra layer of coordination. If you are stalling or finding hill starts stressful, 1.5 hours can give you enough repetition to move past that “stop-start” feeling.</p>
-<p>Automatic learners may progress faster through basic vehicle control, which can make one hour sessions feel productive sooner. That said, the decision-making side of driving is the same for everyone, and busy road practice can still be mentally tiring. Your ideal lesson length still depends on confidence and concentration, not just the gearbox.</p>
-<h2>Signs your lessons are the wrong length</h2>
-<p>If you are unsure whether to switch, pay attention to how you feel at two points: about 15 minutes in, and in the last 15 minutes.</p>
-<p>If you only start driving smoothly near the end, your lessons may be too short or your warm-up routine may need adjusting.</p>
-<p>If you regularly make avoidable mistakes at the end, feel irritable, or struggle to absorb feedback in the final part, the lesson may be too long for your current stage.</p>
-<p>If your progress feels “patchy” - great one week, shaky the next - it may be a frequency issue rather than a length issue. Sometimes the fix is not a longer lesson, but a slightly shorter one more often.</p>
-<h2>A practical way to decide without overthinking</h2>
-<p>Start with 1.5 hours if you can. It gives you enough time to learn properly and enough flexibility to adjust.</p>
-<p>Then review after three sessions. Are you finishing focused and confident? You may be ready for the occasional two hour lesson for deeper practice or test preparation. Are you finishing drained or tense? Drop to one hour for a few weeks, build steadiness, then step up again.</p>
-<p>A patient instructor-led approach makes this easy because you are not locked into one format. Your lesson plan should change as your driving changes. At <a href="https://Www.d4driving.co.uk">D4Driving School of Motoring</a>, lessons are offered in clear 1 hour, 1.5 hour, and 2 hour blocks precisely so your training can match your goals, your nerves, and your schedule.</p>
-<p>The most reassuring thing to remember is this: choosing the right lesson length is not a test of commitment or bravery. It is a smart way to learn safely, build confidence steadily, and turn each session into progress you can feel when you get out of the car.</p>
+            <p>Lesson length is one of the quickest ways to make driving feel either calm and manageable or rushed and overwhelming. There is no magic number that suits everyone, but there is a right fit for you - and it often changes as you progress.</p>
+            <p>This guide will help you choose right lesson length for driving by looking at your starting point, how you learn, what you are practising, and what you need from each session.</p>
+
+            <h2>Why lesson length matters more than most learners expect</h2>
+            <p>Driving is a mix of decision-making, coordination, and confidence. In the early stages you are processing a lot at once: mirrors, signals, steering control, timing, road positioning, speed awareness, other road users, and instructor feedback. The more mentally demanding the task, the more carefully your lesson length should be chosen.</p>
+            <p>A lesson that is too short can leave you stuck in warm-up mode. You spend the first part settling your nerves, adjusting your seat and mirrors, and re-finding your rhythm - then time is up before you have built momentum.</p>
+            <p>A lesson that is too long can create fatigue. When concentration drops, mistakes creep in. That can knock confidence, especially for nervous learners, even if the first part of the lesson was strong.</p>
+            <p>The right length is the one that gives you enough time to practise properly, take feedback on board, and finish feeling clearer than when you started.</p>
+
+            <h2>The three lesson lengths most learners choose</h2>
+            <p>Most driving schools offer sessions in simple time blocks because it keeps planning straightforward and helps you build consistency. You will usually see 1 hour, 1.5 hours, and 2 hours - and each has a best use.</p>
+
+            <h3>1 hour driving lessons: best for bite-sized progress</h3>
+            <p>A one hour lesson can be ideal if you are very busy, if you are building confidence gradually, or if you are practising a focused skill close to home.</p>
+            <p>One hour works well when your goals are specific and achievable in a short window. For example, you might spend a session working only on clutch control and moving off safely, or only on observations and positioning at a familiar set of mini-roundabouts.</p>
+            <p>The trade-off is that the first 10-15 minutes can disappear quickly, particularly if you need a longer warm-up. If your pick-up point is far from the practice area, a one hour slot may feel tight.</p>
+            <p>One hour lessons suit learners who:</p>
+            <ul>
+                <li><a href="https://www.d4driving.co.uk/service-page/1-hour-lesson-anxiety-busting">feel anxious</a> and do better with shorter bursts</li>
+                <li>have limited availability and want to keep momentum with frequent sessions</li>
+                <li>are doing a refresher after a break</li>
+                <li>need targeted practice rather than wide-ranging driving</li>
+            </ul>
+
+            <h3>1.5 hour driving lessons: the sweet spot for most learners</h3>
+            <p>A 90-minute lesson is often the most flexible option because it gives you time to warm up, learn something new, practise it, and still finish with a calm debrief.</p>
+            <p>This length is long enough to move beyond “getting settled” and into meaningful repetition. Repetition is what turns a skill from something you can do once into something you can do consistently, under pressure, and with less instructor support.</p>
+            <p>It is also a good length for mixing tasks without feeling rushed. You might spend part of the session on junction routine and the rest on meeting traffic or roundabouts, and still have time to tidy up any rough edges.</p>
+            <p>If you are not sure where to start, 1.5 hours is usually a <a href="https://www.d4driving.co.uk/service-page/1-5-hour-lesson-more-time-more-progress">safe, effective choice</a>.</p>
+
+            <h3>2 hour driving lessons: best for depth, routes, and test prep</h3>
+            <p>Two hour lessons give you the space to practise more complex driving and build stamina. They can be brilliant when used for the right purpose, especially once basic control is steadier.</p>
+            <p>Longer lessons are particularly useful for:</p>
+            <ul>
+                <li>building confidence on busier roads</li>
+                <li>practising multiple roundabouts and varied junctions in one outing</li>
+                <li>independent driving practice and sat nav work</li>
+                <li>mock tests and test-route familiarity</li>
+                <li>fixing a recurring issue with enough repetition to make it stick</li>
+            </ul>
+            <p>The trade-off is mental load. Two hours is a long time to stay sharp when you are still learning, and some people find the final third becomes less productive. A good instructor will pace the session, vary the tasks, and build in moments to reset - but it still needs to suit your concentration.</p>
+
+            <h2>How to choose right lesson length for driving based on your stage</h2>
+            <p>Your “best” lesson length is not fixed. It should match what your brain and body can cope with at that point in training.</p>
+
+            <h3>If you are a complete beginner</h3>
+            <p>In the first few lessons, you are learning the basics and you are also learning how you learn. Many beginners do well with 1 to 1.5 hours, depending on nerves and how quickly you fatigue.</p>
+            <p>If you feel tense before lessons or you find your shoulders creeping up to your ears while you drive, shorter sessions can help you build trust in the process. Confidence grows when lessons feel manageable.</p>
+            <p>If you already feel calm behind the wheel and you want to progress efficiently, 1.5 hours can give you enough time to repeat the fundamentals without feeling hurried.</p>
+
+            <h3>If you are building consistency and moving into busier roads</h3>
+            <p>This is where 1.5 hours often shines. You can practise core routines - mirrors, signals, speed, position, judgement - across a range of situations without stretching your concentration too far.</p>
+            <p>Two hours can also work well at this stage if you recover quickly after mistakes and you stay focused. If you tend to “spiral” after one error, a slightly shorter session may be kinder and more productive.</p>
+
+            <h3>If your <a href="https://www.d4driving.co.uk/post/top-tips-and-driving-test-strategies-to-ace-your-driving-test">test is coming</a> up</h3>
+            <p>As the test approaches, lesson length becomes about realism. The practical test is under an hour, but the skills required include staying calm while being assessed, handling independent driving, and recovering from small errors.</p>
+            <p>Two hour sessions are useful for mock tests and for practising routes in and around test areas, because you can run a full mock and still have time to correct what went wrong straight away.</p>
+            <p>If you are polishing manoeuvres or sharpening specific weaknesses, 1.5 hours is often enough to practise properly without overdoing it.</p>
+
+            <h2>Match the length to what you are practising</h2>
+            <p>Not all driving tasks need the same amount of time.</p>
+            <p>Manoeuvres, for example, are intense and detailed. You need clear explanations, demonstrations, and repetition. Too short and you rush. Too long and you can start overthinking. Many learners find 1.5 hours ideal for manoeuvre work because it allows several attempts with time to reset.</p>
+            <p>Roundabouts and complex junctions often benefit from longer sessions, especially if you need to travel to areas with the right road layout. A two hour lesson can give you the time to experience different types of roundabouts and traffic conditions, which is where real confidence comes from.</p>
+            <p>Independent driving practice also tends to work better in longer sessions. It takes time to settle into driving with less instructor input, and the learning often happens after the first few routes when you start spotting patterns and anticipating hazards.</p>
+
+            <h2>Consider your schedule and how often you can practise</h2>
+            <p>Lesson frequency matters alongside length. Two hours once a fortnight might feel productive on the day, but you can lose rhythm between sessions. One hour twice a week may build faster progress because skills stay fresh.</p>
+            <p>Be realistic about your week. If you are juggling college, work, family commitments, or shift patterns, a shorter lesson you can keep consistent often beats a longer lesson you keep cancelling.</p>
+            <p>If you can only book weekly, consider 1.5 or 2 hours to maintain momentum. If you can book more frequently, one hour sessions can work well, particularly in the early stages.</p>
+
+            <h2>Manual vs automatic: does it change the best lesson length?</h2>
+            <p>It can.</p>
+            <p>Manual lessons sometimes benefit from a little more time early on because clutch control and gear changes add an extra layer of coordination. If you are stalling or finding hill starts stressful, 1.5 hours can give you enough repetition to move past that “stop-start” feeling.</p>
+            <p>Automatic learners may progress faster through basic vehicle control, which can make one hour sessions feel productive sooner. That said, the decision-making side of driving is the same for everyone, and busy road practice can still be mentally tiring. Your ideal lesson length still depends on confidence and concentration, not just the gearbox.</p>
+
+            <h2>Signs your lessons are the wrong length</h2>
+            <p>If you are unsure whether to switch, pay attention to how you feel at two points: about 15 minutes in, and in the last 15 minutes.</p>
+            <p>If you only start driving smoothly near the end, your lessons may be too short or your warm-up routine may need adjusting.</p>
+            <p>If you regularly make avoidable mistakes at the end, feel irritable, or struggle to absorb feedback in the final part, the lesson may be too long for your current stage.</p>
+            <p>If your progress feels “patchy” - great one week, shaky the next - it may be a frequency issue rather than a length issue. Sometimes the fix is not a longer lesson, but a slightly shorter one more often.</p>
+
+            <h2>A practical way to decide without overthinking</h2>
+            <p>Start with 1.5 hours if you can. It gives you enough time to learn properly and enough flexibility to adjust.</p>
+            <p>Then review after three sessions. Are you finishing focused and confident? You may be ready for the occasional two hour lesson for deeper practice or test preparation. Are you finishing drained or tense? Drop to one hour for a few weeks, build steadiness, then step up again.</p>
+            <p>A patient instructor-led approach makes this easy because you are not locked into one format. Your lesson plan should change as your driving changes. At <a href="https://Www.d4driving.co.uk">D4Driving School of Motoring</a>, lessons are offered in clear 1 hour, 1.5 hour, and 2 hour blocks precisely so your training can match your goals, your nerves, and your schedule.</p>
+            <p>The most reassuring thing to remember is this: choosing the right lesson length is not a test of commitment or bravery. It is a smart way to learn safely, build confidence steadily, and turn each session into progress you can feel when you get out of the car.</p>
         </div>
 
-        <button id="shareBtn" class="w-full py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 font-bold transition flex items-center justify-center gap-2 mb-16">
+        <button id="shareBtn" class="w-full py-4 rounded-2xl bg-[#B11E24] hover:bg-[#8C181D] font-bold text-white transition flex items-center justify-center gap-2 mb-16">
             <span>Share this Guide</span>
         </button>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-white/10 pt-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-stone-200 pt-12">
             <a href="#" id="prev-post-link" class="nav-btn glass-card p-6 rounded-2xl flex flex-col items-start gap-2">
-                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">← Previous</span>
-                <span id="prev-post-title" class="font-bold text-lg text-white">Loading...</span>
+                <span class="text-[#B11E24] text-xs font-bold uppercase tracking-widest">← Previous</span>
+                <span id="prev-post-title" class="font-bold text-lg text-[#1A365D]">Loading...</span>
             </a>
             
             <a href="#" id="next-post-link" class="nav-btn glass-card p-6 rounded-2xl flex flex-col items-end text-right gap-2">
-                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">Next →</span>
-                <span id="next-post-title" class="font-bold text-lg text-white">Loading...</span>
+                <span class="text-[#B11E24] text-xs font-bold uppercase tracking-widest">Next →</span>
+                <span id="next-post-title" class="font-bold text-lg text-[#1A365D]">Loading...</span>
             </a>
         </div>
     </article>
 
-    <footer class="max-w-4xl mx-auto mt-20 p-8 text-center border-t border-white/5 text-slate-600 text-sm">
-        © 2026 D4Driving School of Motoring.
-    </footer>
+    <div id="dynamic-footer"></div>
 
-    <script>
-        // MASTER DATA: Your 32 Peterborough Driving Guides
-        const posts = [
-            { "id": "how-to-pass-the-driving-test-first-time", "title": "How To Pass The Driving Test First Time" },
-            { "id": "manual-driving-lesson-hill-start-practice-tips", "title": "Manual Driving Lesson Hill Start Practice Tips" },
-            { "id": "best-ways-to-reduce-driving-lesson-anxiety", "title": "Best Ways to Reduce Driving Lesson Anxiety" },
-            { "id": "theory-test-pass-tips-that-actually-help", "title": "Theory Test Pass Tips That Actually Help" },
-            { "id": "one-to-one-driving-tuition-benefits-explained", "title": "One to One Driving Tuition Benefits Explained" },
-            { "id": "how-to-pass-the-driving-test-first-time", "title": "How to Pass the Driving Test First Time" },
-            { "id": "female-instructor-or-male-instructor", "title": "Female Instructor or Male Instructor?" },
-            { "id": "best-driving-practice-routes-in-peterborough", "title": "Best Driving Practice Routes in Peterborough" },
-            { "id": "most-common-driving-test-faults", "title": "Most Common Driving Test Faults" },
-            { "id": "starting-driving-lessons-with-confidence", "title": "Starting Driving Lessons With Confidence" },
-            { "id": "automatic-or-manual-lessons-in-peterborough", "title": "Automatic or Manual Lessons in Peterborough?" },
-            { "id": "can-you-pass-with-4-hours-of-test-prep", "title": "Can You Pass With 4 Hours of Test Prep?" },
-            { "id": "10-driving-test-day-tips-that-really-help", "title": "10 Driving Test Day Tips That Really Help" },
-            { "id": "7-smart-ways-to-practise-hazard-perception", "title": "7 Smart Ways to Practise Hazard Perception" },
-            { "id": "how-many-driving-lessons-do-you-need", "title": "How Many Driving Lessons Do You Need?" },
-            { "id": "7-ways-to-feel-confident-behind-the-wheel", "title": "7 Ways to Feel Confident Behind the Wheel" },
-            { "id": "book-driving-lessons-online-in-peterborough", "title": "Book Driving Lessons Online in Peterborough" },
-            { "id": "warmup-lesson-before-your-peterborough-test", "title": "Warm-Up Lesson Before Your Peterborough Test" },
-            { "id": "driving-lessons-for-anxious-adults-in-peterborough", "title": "Driving Lessons for Anxious Adults in Peterborough" },
-            { "id": "how-long-should-your-driving-lessons-be", "title": "How Long Should Your Driving Lessons Be?" },
-            { "id": "automatic-cars-what-new-drivers-can-expect", "title": "Automatic cars: what new drivers can expect" },
-            { "id": "choosing-an-approved-driving-instructor-in-peterborough", "title": "Choosing an Approved Driving Instructor in Peterborough" },
-            { "id": "driving-test-manoeuvres-practice-that-works", "title": "Driving test manoeuvres practice that works" },
-            { "id": "mock-test-lessons-that-actually-boost-pass-rates", "title": "Mock Test Lessons That Actually Boost Pass Rates" },
-            { "id": "your-first-driving-lesson-what-to-expect", "title": "Your First Driving Lesson: What to Expect" },
-            { "id": "driving-lessons-for-nervous-drivers-what-works", "title": "Driving Lessons for Nervous Drivers: What Works" },
-            { "id": "manual-or-automatic-lessons-which-is-better", "title": "Manual or Automatic Lessons: Which Is Better?" },
-            { "id": "how-many-driving-lessons-do-you-really-need", "title": "How Many Driving Lessons Do You Really Need?" },
-            { "id": "intensive-driving-test-prep-session-what-works", "title": "Intensive Driving Test Prep Session: What Works" },
-            { "id": "is-a-1hour-automatic-lesson-enough", "title": "Is a 1-Hour Automatic Lesson Enough?" },
-            { "id": "grantham-driving-test-prep-that-actually-works", "title": "Grantham Driving Test Prep That Actually Works" },
-            { "id": "kettering-driving-test-prep-that-actually-works", "title": "Kettering Driving Test Prep That Actually Works" },
-            { "id": "peterborough-driving-test-prep-that-works", "title": "Peterborough Driving Test Prep That Works" }
-        ];
-
-        // LOGIC: PWA & Share
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => {}); });
-        }
-
-        const shareBtn = document.getElementById('shareBtn');
-        if (shareBtn) {
-            shareBtn.addEventListener('click', async () => {
-                const shareData = {
-                    title: document.title,
-                    text: 'Check out this driving guide from D4Driving Peterborough!',
-                    url: window.location.href
-                };
-                try {
-                    if (navigator.share) { await navigator.share(shareData); } 
-                    else {
-                        await navigator.clipboard.writeText(window.location.href);
-                        const span = shareBtn.querySelector('span');
-                        const originalText = span.innerText;
-                        span.innerText = 'Link Copied!';
-                        setTimeout(() => span.innerText = originalText, 2000);
-                    }
-                } catch (err) { console.log('Share error'); }
-            });
-        }
-
-        // LOGIC: Auto-Navigation
-        function loadBlogNavigation() {
-            const path = window.location.pathname;
-            const currentFilename = path.split('/').pop().replace('.html', '');
-            const currentIndex = posts.findIndex(p => p.id === currentFilename);
-            
-            if (currentIndex !== -1) {
-                const currentPost = posts[currentIndex];
-                const prevPost = posts[currentIndex - 1];
-                const nextPost = posts[currentIndex + 1];
-
-                document.title = `${currentPost.title} | D4Driving Journal`;
-                const h1 = document.getElementById('post-title');
-                if (h1 && h1.innerText === "How Long Should Your Driving Lessons Be?") h1.innerText = currentPost.title;
-
-                const prevLink = document.getElementById('prev-post-link');
-                const nextLink = document.getElementById('next-post-link');
-
-                if (prevPost) {
-                    document.getElementById('prev-post-title').innerText = prevPost.title;
-                    prevLink.href = `${prevPost.id}.html`;
-                } else if (prevLink) { prevLink.style.display = 'none'; }
-
-                if (nextPost) {
-                    document.getElementById('next-post-title').innerText = nextPost.title;
-                    nextLink.href = `${nextPost.id}.html`;
-                } else if (nextLink) { nextLink.style.display = 'none'; }
-            }
-        }
-        loadBlogNavigation();
-    </script>
+    <script src="blog-logic.js"></script>
 </body>
 </html>

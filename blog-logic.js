@@ -1,255 +1,51 @@
-// 1. MASTER DATA: All 33 Actual Peterborough Driving Guides
+/**
+ * D4DRIVING PETERBOROUGH - MASTER BLOG LOGIC
+ * Includes: Auto-UI Injection, Smart Navigation, and Facebook Footer
+ */
+
+// 1. THE MASTER LIST (Update this when you add a new Soro post!)
 const posts = [
-    { 
-        "id": "how-to-pass-the-driving-test-first-time", 
-        "title": "How to Pass the Driving Test First Time?",
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c52a2089-8379-41a7-9437-fa8ab3cf5ceb.webp",
-        "desc": "How to pass the Practical Driving Test first time - with these easy steps, you will pass it for sure."
-    },
-    { 
-        "id": "manual-driving-lesson-hill-start-practice-tips", 
-        "title": "Manual Driving Lesson Hill Start Practice Tips",
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/ddafdd61-f8cf-498d-9831-27335fc3b0c0.webp",
-        "desc": "Manual driving lesson hill start practice tips to help you control clutch, bite point and handbrake with calm, safe practice and more confidence."
-    },
-    { 
-        "id": "best-ways-to-reduce-driving-lesson-anxiety", 
-        "title": "Best Ways to Reduce Driving Lesson Anxiety",
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/5360d6d5-8a66-4f33-9295-f672a601adb7.webp",
-        "desc": "Discover the best ways to reduce driving lesson anxiety with calm, practical tips that build confidence, improve focus, and help you progress."
-    },
-    { 
-        "id": "theory-test-pass-tips-that-actually-help", 
-        "title": "Theory Test Pass Tips That Actually Help",
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/01eb4e98-9fab-4f2c-b8c4-7fc45f99a027-1774133615684.webp",
-        "desc": "Want a theory test pass without last-minute panic? Learn what to study, how to practise hazard perception, and how to feel ready on test day."
-    },
-    { 
-        "id": "one-to-one-driving-tuition-benefits-explained", 
-        "title": "One to One Driving Tuition Benefits Explained",
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/de874b02-2e69-4c4d-8d09-0acf3b8abbf9.webp",
-        "desc": "Learn the one to one driving tuition benefits that help learners build confidence, improve safety and make steady progress toward test success."
-    },
-    { 
-        "id": "female-instructor-or-male-instructor", 
-        "title": "Female Instructor or Male Instructor?",
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c7358890-3f02-4305-98d6-523664671da6.webp",
-        "desc": "Choosing a female instructor or male instructor? Learn what really matters for confidence, progress and the right fit for driving lessons."
-    },
-    { 
-        "id": "best-driving-practice-routes-in-peterborough", 
-        "title": "Best Driving Practice Routes in Peterborough",
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/e4428b5a-81e3-448f-8848-3c5b2d173549.webp",
-        "desc": "Looking for the best routes to practise driving Peterborough? Try calm local roads, roundabouts and test-style routes that build confidence."
-    },
-    { 
-        "id": "most-common-driving-test-faults", 
-        "title": "Most Common Driving Test Faults",
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/398660c4-25c4-4365-a56b-c31cc79058c9.webp",
-        "desc": "What are the most common driving test faults? Learn where learners lose marks most often and how to fix them before test day."
-    },
-    { 
-        "id": "starting-driving-lessons-with-confidence", 
-        "title": "Starting Driving Lessons With Confidence",
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/88fa1a49-65a4-48c1-807c-57a3bd277e10.webp",
-        "desc": "Learn how to start driving lessons as a beginner with calm, practical advice on choosing lessons, building confidence and making steady progress."
-    },
-    { 
-        "id": "automatic-or-manual-lessons-in-peterborough", 
-        "title": "Automatic or Manual Lessons in Peterborough?",
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3d1d0c30-e25b-42ec-9fe4-69b865c427e0.webp",
-        "desc": "Comparing automatic lessons vs manual lessons Peterborough learners choose, with clear advice on cost, confidence, test prep and goals."
-    },
-    { "id": "can-you-pass-with-4-hours-of-test-prep", "title": "Can You Pass With 4 Hours of Test Prep?", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/f76f4ada-52e9-4b76-9102-bd56a6e2e423.webp", "desc": "Can you prepare for driving test in four hours? Learn what to focus on and how to use a short session wisely." },
-    { "id": "10-driving-test-day-tips-that-really-help", "title": "10 Driving Test Day Tips That Really Help", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/981f83f1-7710-4369-a0d6-17a2c90a221c.webp" },
-    { "id": "7-smart-ways-to-practise-hazard-perception", "title": "7 Smart Ways to Practise Hazard Perception", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/20329cf6-cd92-4f01-8770-6a1df4bd6446.webp" },
-    { "id": "how-many-driving-lessons-do-you-need", "title": "How Many Driving Lessons Do You Need?", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/243bab8f-ae65-42b6-87ba-03b8d86d4988.webp" },
-    { "id": "7-ways-to-feel-confident-behind-the-wheel", "title": "7 Ways to Feel Confident Behind the Wheel", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c5b370ab-2d57-453d-8b54-c81be79a176b.webp" },
-    { "id": "book-driving-lessons-online-in-peterborough", "title": "Book Driving Lessons Online in Peterborough", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4c65d2e9-76f7-4925-90ac-6ed123acdbb2.webp" },
-    { "id": "warmup-lesson-before-your-peterborough-test", "title": "Warm-Up Lesson Before Your Peterborough Test", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4186cc1c-22df-4317-ad21-72cb5900e022.webp" },
-    { "id": "driving-lessons-for-anxious-adults-in-peterborough", "title": "Driving Lessons for Anxious Adults in Peterborough", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/95b738e9-e8da-42ec-914c-b53f49d853a4.webp" },
-    { "id": "how-long-should-your-driving-lessons-be", "title": "How Long Should Your Driving Lessons Be?", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/0d2dff51-fe10-4dda-ac53-9522550cc7db.webp" },
-    { "id": "automatic-cars-what-new-drivers-can-expect", "title": "Automatic cars: what new drivers can expect", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/61ee5947-3cdb-444e-81b9-caa9fcffc47f.webp" },
-    { "id": "choosing-an-approved-driving-instructor-in-peterborough", "title": "Choosing an Approved Driving Instructor in Peterborough", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/a23d2e10-0b09-4b10-9878-784d26e69b91.webp" },
-    { "id": "driving-test-manoeuvres-practice-that-works", "title": "Driving test manoeuvres practice that works", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/9b999ef2-f1a2-4e2c-b612-cfff25f0bfff.webp" },
-    { "id": "mock-test-lessons-that-actually-boost-pass-rates", "title": "Mock Test Lessons That Actually Boost Pass Rates", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3b9688f6-8e9f-4ee0-bec6-9c5bcdac4514.webp" },
-    { "id": "your-first-driving-lesson-what-to-expect", "title": "Your First Driving Lesson: What to Expect", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4df99afd-2cdd-43dd-8d4f-da60ecbf33e8.webp" },
-    { "id": "driving-lessons-for-nervous-drivers-what-works", "title": "Driving Lessons for Nervous Drivers: What Works", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/6936aba2-c087-447d-a348-737de1236b7f.webp" },
-    { 
-        "id": "manual-or-automatic-lessons-which-is-better", 
-        "title": "Manual or Automatic Lessons: Which Is Better?", 
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/1b351dfa-492d-46e9-84c4-2a654cd5321c.webp",
-        "desc": "Struggling to choose between manual or automatic driving lessons in Peterborough? Discover the pros, cons, and which one helps you pass faster." 
-    },
-    { "id": "how-many-driving-lessons-do-you-really-need", "title": "How Many Driving Lessons Do You Really Need?", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/aae05aca-60c1-49fc-9a4a-b00729204f7d.webp" },
-    { "id": "intensive-driving-test-prep-session-what-works", "title": "Intensive Driving Test Prep Session: What Works", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c84bfb1d-6e58-4030-b9ba-372bd9b8e211.webp" },
-    { "id": "is-a-1hour-automatic-lesson-enough", "title": "Is a 1-Hour Automatic Lesson Enough?", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/405a5964-0650-4348-94ae-7dbf50b7052a.webp" },
-    { "id": "grantham-driving-test-prep-that-actually-works", "title": "Grantham Driving Test Prep That Actually Works", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/ff46bd7b-85f0-45f5-9d31-b92808440549.webp" },
-    { "id": "kettering-driving-test-prep-that-actually-works", "title": "Kettering Driving Test Prep That Actually Works", "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4d9d2dcc-164c-45bb-8662-d7d52c03836d.webp" },
-    { 
-        "id": "peterborough-driving-test-prep-that-works", 
-        "title": "Peterborough Driving Test Prep That Works", 
-        "img": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/dd344118-ceaa-4f41-ad3d-15ed09629d8d-1774274206198.webp",
-        "desc": "Get test-ready fast with our local Peterborough driving test prep. Master the hardest junctions and roundabouts with expert tips." 
-    }
+    { "id": "a-guide-to-learning-clutch-control-smoothly", "title": "A Guide to Learning Clutch Control Smoothly" },
+    { "id": "manual-vs-automatic-driving-lessons-for-beginners", "title": "Manual vs Automatic Driving Lessons for Beginners" },
+    { "id": "parallel-parking-lesson-step-by-step", "title": "Parallel Parking Lesson Step by Step" },
+    { "id": "mistakes-on-driving-test-and-how-to-avoid-them", "title": "Mistakes on Driving Test and How to Avoid Them" },
+    { "id": "is-automatic-licence-valid-for-all-cars", "title": "Is Automatic Licence Valid for All Cars?" },
+    { "id": "driving-test-preparation-session-kettering-4-hours", "title": "Driving Test Preparation Session Kettering 4 Hours" },
+    { "id": "driving-instructor-vs-driving-school-differences", "title": "Driving instructor vs driving school differences" },
+    { "id": "manual-driving-lesson-hill-start-practice-tips", "title": "Manual Driving Lesson Hill Start Practice Tips" },
+    { "id": "best-ways-to-reduce-driving-lesson-anxiety", "title": "Best Ways to Reduce Driving Lesson Anxiety" },
+    { "id": "theory-test-pass-tips-that-actually-help", "title": "Theory Test Pass Tips That Actually Help" },
+    { "id": "one-to-one-driving-tuition-benefits-explained", "title": "One to One Driving Tuition Benefits Explained" },
+    { "id": "how-to-pass-the-driving-test-first-time", "title": "How to Pass the Driving Test First Time" },
+    { "id": "female-instructor-or-male-instructor", "title": "Female Instructor or Male Instructor?" },
+    { "id": "best-driving-practice-routes-in-peterborough", "title": "Best Driving Practice Routes in Peterborough" },
+    { "id": "most-common-driving-test-faults", "title": "Most Common Driving Test Faults" },
+    { "id": "starting-driving-lessons-with-confidence", "title": "Starting Driving Lessons With Confidence" },
+    { "id": "automatic-or-manual-lessons-in-peterborough", "title": "Automatic or Manual Lessons in Peterborough?" },
+    { "id": "can-you-pass-with-4-hours-of-test-prep", "title": "Can You Pass With 4 Hours of Test Prep?" },
+    { "id": "10-driving-test-day-tips-that-really-help", "title": "10 Driving Test Day Tips That Really Help" },
+    { "id": "7-smart-ways-to-practise-hazard-perception", "title": "7 Smart Ways to Practise Hazard Perception" },
+    { "id": "how-many-driving-lessons-do-you-need", "title": "How Many Driving Lessons Do You Need?" },
+    { "id": "7-ways-to-feel-confident-behind-the-wheel", "title": "7 Ways to Feel Confident Behind the Wheel" },
+    { "id": "book-driving-lessons-online-in-peterborough", "title": "Book Driving Lessons Online in Peterborough" },
+    { "id": "warmup-lesson-before-your-peterborough-test", "title": "Warm-Up Lesson Before Your Peterborough Test" },
+    { "id": "driving-lessons-for-anxious-adults-in-peterborough", "title": "Driving Lessons for Anxious Adults in Peterborough" },
+    { "id": "how-long-should-your-driving-lessons-be", "title": "How Long Should Your Driving Lessons Be?" },
+    { "id": "automatic-cars-what-new-drivers-can-expect", "title": "Automatic cars: what new drivers can expect" },
+    { "id": "choosing-an-approved-driving-instructor-in-peterborough", "title": "Choosing an Approved Driving Instructor in Peterborough" },
+    { "id": "driving-test-manoeuvres-practice-that-works", "title": "Driving test manoeuvres practice that works" },
+    { "id": "mock-test-lessons-that-actually-boost-pass-rates", "title": "Mock Test Lessons That Actually Boost Pass Rates" },
+    { "id": "your-first-driving-lesson-what-to-expect", "title": "Your First Driving Lesson: What to Expect" },
+    { "id": "driving-lessons-for-nervous-drivers-what-works", "title": "Driving Lessons for Nervous Drivers: What Works" },
+    { "id": "manual-or-automatic-lessons-which-is-better", "title": "Manual or Automatic Lessons: Which Is Better?" },
+    { "id": "how-many-driving-lessons-do-you-really-need", "title": "How Many Driving Lessons Do You Really Need?" },
+    { "id": "intensive-driving-test-prep-session-what-works", "title": "Intensive Driving Test Prep Session: What Works" },
+    { "id": "is-a-1hour-automatic-lesson-enough", "title": "Is a 1-Hour Automatic Lesson Enough?" },
+    { "id": "grantham-driving-test-prep-that-actually-works", "title": "Grantham Driving Test Prep That Actually Works" },
+    { "id": "kettering-driving-test-prep-that-actually-works", "title": "Kettering Driving Test Prep That Actually Works" },
+    { "id": "peterborough-driving-test-prep-that-works", "title": "Peterborough Driving Test Prep That Works" }
 ];
-
-// 2. PWA & SHARE LOGIC
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(() => {});
-    });
-}
-
-const shareBtn = document.getElementById('shareBtn');
-if (shareBtn) {
-    shareBtn.addEventListener('click', async () => {
-        const shareData = {
-            title: document.title,
-            text: 'Check out this driving guide from D4Driving Peterborough!',
-            url: window.location.href
-        };
-        try {
-            if (navigator.share) {
-                await navigator.share(shareData);
-            } else {
-                await navigator.clipboard.writeText(window.location.href);
-                const span = shareBtn.querySelector('span');
-                const originalText = span ? span.innerText : 'Share';
-                if(span) span.innerText = 'Link Copied!';
-                setTimeout(() => { if(span) span.innerText = originalText; }, 2000);
-            }
-        } catch (err) { console.log('Share error'); }
-    });
-}
-
-// 3. NAVIGATION & TITLE LOGIC
-function loadBlogNavigation() {
-    const path = window.location.pathname;
-    const currentFilename = path.split('/').pop().replace('.html', '');
-    const currentIndex = posts.findIndex(p => p.id === currentFilename);
-    
-    if (currentIndex !== -1) {
-        const currentPost = posts[currentIndex];
-        const prevPost = posts[currentIndex - 1];
-        const nextPost = posts[currentIndex + 1];
-
-        document.title = `${currentPost.title} | D4Driving Peterborough`;
-        
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc && currentPost.desc) {
-            metaDesc.setAttribute('content', currentPost.desc);
-        }
-
-        const ogTitle = document.querySelector('meta[property="og:title"]');
-        const twTitle = document.querySelector('meta[name="twitter:title"]');
-        if (ogTitle) ogTitle.setAttribute('content', currentPost.title);
-        if (twTitle) twTitle.setAttribute('content', currentPost.title);
-
-        const h1 = document.getElementById('post-title');
-        if (h1 && (h1.innerText === "ARTICLE_TITLE" || h1.innerText === "")) {
-            h1.innerText = currentPost.title;
-        }
-
-        const prevLink = document.getElementById('prev-post-link');
-        const nextLink = document.getElementById('next-post-link');
-
-        if (prevPost && prevLink) {
-            const prevTitle = document.getElementById('prev-post-title');
-            if (prevTitle) prevTitle.innerText = prevPost.title;
-            prevLink.href = `${prevPost.id}.html`;
-            prevLink.style.display = 'flex';
-        } else if (prevLink) {
-            prevLink.style.display = 'none';
-        }
-
-        if (nextPost && nextLink) {
-            const nextTitle = document.getElementById('next-post-title');
-            if (nextTitle) nextTitle.innerText = nextPost.title;
-            nextLink.href = `${nextPost.id}.html`;
-            nextLink.style.display = 'flex';
-        } else if (nextLink) {
-            nextLink.style.display = 'none';
-        }
-    }
-}
-
-// 4. GENERATE BLOG GRID
-function generateBlogGrid(filteredPosts = posts) {
-    const grid = document.getElementById('blog-grid');
-    if (!grid) return; 
-
-    grid.innerHTML = ''; 
-
-    if (filteredPosts.length === 0) {
-        grid.innerHTML = `<div class="col-span-full text-center py-20 text-slate-400">No articles found matching your search.</div>`;
-        return;
-    }
-
-    filteredPosts.forEach(post => {
-        const article = document.createElement('article');
-        article.className = "glass-card overflow-hidden rounded-3xl hover:border-white/20 transition group";
-        const imageSrc = post.img || "400dpiLogoCropped.png";
-
-        article.innerHTML = `
-            <div class="h-48 overflow-hidden">
-                <img src="${imageSrc}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" alt="${post.title}" loading="lazy">
-            </div>
-            <div class="p-6">
-                <h3 class="text-lg font-bold group-hover:text-blue-400 transition">${post.title}</h3>
-                <p class="text-slate-400 text-sm mt-2 line-clamp-2">${post.desc || "Expert driving advice from D4Driving Peterborough."}</p>
-                <a href="${post.id}.html" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>
-            </div>
-        `;
-        grid.appendChild(article);
-    });
-}
-
-// 5. SEARCH LOGIC
-function initSearch() {
-    const searchInput = document.getElementById('blog-search');
-    if (!searchInput) return;
-
-    searchInput.addEventListener('input', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const results = posts.filter(post => 
-            post.title.toLowerCase().includes(searchTerm) || 
-            (post.desc && post.desc.toLowerCase().includes(searchTerm))
-        );
-        generateBlogGrid(results);
-    });
-}
-
-// 6. GLOBAL FUNCTIONS (Defined directly on window for reliability)
-window.generateRSS = function() {
-    let rss = `<?xml version="1.0" encoding="UTF-8" ?>\n<rss version="2.0"><channel>\n<title>D4Driving Peterborough Guides</title>\n<link>https://d4driving.co.uk/blog.html</link>`;
-    posts.forEach(post => {
-        rss += `\n<item><title>${post.title}</title><link>https://d4driving.co.uk/${post.id}.html</link><description>${post.desc || ""}</description></item>`;
-    });
-    rss += `\n</channel></rss>`;
-    console.log(rss);
-    alert("RSS generated in console.");
-};
-
-window.pingZapier = async function(postId) {
-    const post = posts.find(p => p.id === postId);
-    if (!post) return alert("Post ID not found: " + postId);
-    const webhookURL = "https://hooks.zapier.com/hooks/catch/26971882/un3uyhr/"; 
-    const data = { title: post.title, link: `https://d4driving.co.uk/${post.id}.html`, desc: post.desc, img: post.img };
-    try {
-        await fetch(webhookURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
-        alert("Post sent to Zapier: " + post.title);
-    } catch (err) { console.error(err); }
-};
-
-// 7. INITIALIZE
-window.addEventListener('DOMContentLoaded', () => {
-    loadBlogNavigation();
-    generateBlogGrid();
-    initSearch();
-});
-
-// 8. DYNAMIC UI INJECTION (Nav & Footer)
+// 2. INJECT NAVIGATION & FOOTER (WITH FACEBOOK)
 function injectSharedUI() {
     const navHTML = `
         <nav class="max-w-6xl mx-auto p-6 flex justify-between items-center">
@@ -258,9 +54,6 @@ function injectSharedUI() {
                 <span class="font-bold uppercase tracking-wider">D4DRIVING</span>
             </a>
             <div class="flex gap-3">
-                <button id="shareBtn" class="text-xs font-bold bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full border border-blue-500/20 hover:bg-blue-600/40 transition">
-                    <span>Share Guide</span>
-                </button>
                 <a href="blog.html" class="text-xs font-bold bg-slate-800 px-4 py-2 rounded-full border border-white/10 hover:bg-slate-700 transition">All Guides</a>
             </div>
         </nav>`;
@@ -270,31 +63,111 @@ function injectSharedUI() {
             <div class="max-w-4xl mx-auto px-6 text-center">
                 <img src="400dpiLogoCropped.png" alt="D4Driving Logo" class="h-12 mb-4 mx-auto brightness-110">
                 <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                    Expert driving tuition with Robert Szatkowski. Helping students pass their test with confidence across Peterborough and surrounding areas.
+                    Expert driving tuition with Robert Szatkowski across Peterborough.
                 </p>
+                
+                <div class="mb-8 flex justify-center">
+                    <a href="https://www.facebook.com/D4DrivingPeterborough" target="_blank" class="flex items-center gap-2 text-blue-400 hover:text-white transition bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        <span class="text-xs font-bold uppercase tracking-wider">Follow on Facebook</span>
+                    </a>
+                </div>
+
                 <div class="flex justify-center gap-6 text-xs font-bold uppercase tracking-widest text-slate-500">
                     <a href="index.html#prices" class="hover:text-blue-400 transition">Prices</a>
                     <a href="blog.html" class="hover:text-blue-400 transition">Blog</a>
                     <a href="index.html#contact" class="hover:text-blue-400 transition">Contact</a>
                 </div>
+                <p class="mt-8 text-[10px] text-slate-600 uppercase tracking-widest">© 2026 D4Driving School of Motoring</p>
             </div>
         </footer>`;
 
-    // Inject Nav at the top of the body
-    const navContainer = document.getElementById('dynamic-nav');
-    if (navContainer) navContainer.innerHTML = navHTML;
-
-    // Inject Footer at the bottom
-    const footerContainer = document.getElementById('dynamic-footer');
-    if (footerContainer) footerContainer.innerHTML = footerHTML;
+    if (document.getElementById('dynamic-nav')) document.getElementById('dynamic-nav').innerHTML = navHTML;
+    if (document.getElementById('dynamic-footer')) document.getElementById('dynamic-footer').innerHTML = footerHTML;
 }
 
-// UPDATE INITIALIZE SECTION (Step 7) to include injectSharedUI
-window.addEventListener('DOMContentLoaded', () => {
-    injectSharedUI(); // Run this first!
-    if (document.getElementById('prev-post-link')) loadBlogNavigation();
-    if (document.getElementById('blog-grid')) {
-        generateBlogGrid();
-        initSearch();
+// 3. SMART NAVIGATION (The Self-Healing Fix)
+function loadBlogNavigation() {
+    const path = window.location.pathname;
+    const currentFilename = path.split('/').pop().replace('.html', '');
+    const currentIndex = posts.findIndex(p => p.id === currentFilename);
+
+    const prevLink = document.getElementById('prev-post-link');
+    const nextLink = document.getElementById('next-post-link');
+    const prevTitle = document.getElementById('prev-post-title');
+    const nextTitle = document.getElementById('next-post-title');
+
+    // FIX: If post is NOT in the master list (common with new Soro posts)
+    if (currentIndex === -1) {
+        console.warn("New article detected. Showing default navigation.");
+        if (prevTitle) prevTitle.innerText = "Back to All Guides";
+        if (prevLink) prevLink.href = "blog.html";
+        if (nextLink) nextLink.style.display = 'none';
+        
+        // Try to set a title based on the filename if h1 is empty
+        const h1 = document.getElementById('post-title');
+        if (h1 && (h1.innerText === "" || h1.innerText.includes("Loading"))) {
+            h1.innerText = currentFilename.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        }
+        return;
     }
+
+    // Normal Navigation Logic
+    const currentPost = posts[currentIndex];
+    const prevPost = posts[currentIndex - 1];
+    const nextPost = posts[currentIndex + 1];
+
+    document.title = `${currentPost.title} | D4Driving Journal`;
+    const h1 = document.getElementById('post-title');
+    if (h1) h1.innerText = currentPost.title;
+
+    if (prevPost) {
+        if (prevTitle) prevTitle.innerText = prevPost.title;
+        if (prevLink) prevLink.href = `${prevPost.id}.html`;
+    } else if (prevLink) {
+        prevLink.style.opacity = "0.3";
+        prevLink.style.pointerEvents = "none";
+        if (prevTitle) prevTitle.innerText = "First Article";
+    }
+
+    if (nextPost) {
+        if (nextTitle) nextTitle.innerText = nextPost.title;
+        if (nextLink) nextLink.href = `${nextPost.id}.html`;
+    } else if (nextLink) {
+        nextLink.style.opacity = "0.3";
+        nextLink.style.pointerEvents = "none";
+        if (nextTitle) nextTitle.innerText = "End of Journal";
+    }
+}
+
+// 4. SHARE BUTTON LOGIC
+function initShare() {
+    const shareBtn = document.getElementById('shareBtn');
+    if (!shareBtn) return;
+
+    shareBtn.addEventListener('click', async () => {
+        const shareData = {
+            title: document.title,
+            text: 'Expert driving advice from D4Driving Peterborough!',
+            url: window.location.href
+        };
+        try {
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                await navigator.clipboard.writeText(window.location.href);
+                const span = shareBtn.querySelector('span');
+                const originalText = span.innerText;
+                span.innerText = 'Link Copied!';
+                setTimeout(() => span.innerText = originalText, 2000);
+            }
+        } catch (err) { console.error('Share failed', err); }
+    });
+}
+
+// 5. INITIALIZE EVERYTHING
+document.addEventListener('DOMContentLoaded', () => {
+    injectSharedUI();
+    loadBlogNavigation();
+    initShare();
 });

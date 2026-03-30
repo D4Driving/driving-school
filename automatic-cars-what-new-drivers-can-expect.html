@@ -5,187 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automatic cars: what new drivers can expect | D4Driving Journal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
-        .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
-        .prose p { margin-bottom: 1.5rem; color: #94a3b8; line-height: 1.8; font-size: 1.1rem; }
-        .prose h2 { color: white; font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; }
-        .nav-btn { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
-        .nav-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+        body { font-family: 'Inter', sans-serif; background-color: #FDF9F3; color: #3E3835; }
+        .glass-card { background: white; border: 1px solid #EADDD0; box-shadow: 0 10px 30px rgba(177, 30, 36, 0.03); }
+        .prose p { margin-bottom: 1.5rem; color: #4A4542; line-height: 1.8; font-size: 1.1rem; }
+        .prose h2 { color: #1A365D; font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: bold; margin-top: 2.5rem; margin-bottom: 1.2rem; }
+        .nav-btn { transition: all 0.3s ease; border: 1px solid #EADDD0; background: white; }
+        .nav-btn:hover { background: #FFF5F5; border-color: #B11E24; transform: translateY(-2px); }
     </style>
 </head>
 <body class="min-h-screen pb-20">
-    <nav class="max-w-6xl mx-auto p-6 flex justify-between items-center">
-        <a href="index.html" class="flex items-center gap-3">
-            <img src="400dpiLogoCropped.png" alt="Logo" class="h-10 w-auto">
-            <span class="font-bold uppercase tracking-wider">D4DRIVING</span>
-        </a>
-        <a href="blog.html" class="text-xs font-bold bg-slate-800 px-4 py-2 rounded-full border border-white/10 hover:bg-slate-700 transition">← Back to Blog</a>
-    </nav>
+
+    <div id="dynamic-nav"></div>
 
     <article class="max-w-3xl mx-auto px-6 pt-12">
-        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/61ee5947-3cdb-444e-81b9-caa9fcffc47f.webp" alt="Automatic cars: what new drivers can expect" class="w-full h-64 md:h-96 object-cover rounded-3xl mb-8 border border-white/10">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/61ee5947-3cdb-444e-81b9-caa9fcffc47f.webp" alt="Automatic cars: what new drivers can expect" class="w-full h-64 md:h-96 object-cover rounded-[40px] mb-8 border-4 border-white shadow-lg">
         
-        <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold mb-6">Automatic cars: what new drivers can expect</h1>
+        <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold mb-6 text-[#1A365D] font-[Outfit]">Automatic cars: what new drivers can expect</h1>
         
-        <div class="prose prose-invert max-w-none mb-12">
+        <div class="prose max-w-none mb-12">
             <p>You have probably noticed it already on local roads - more cars pulling away smoothly at junctions, fewer stalled starts on hills, and a lot more vehicles with no gearstick at all. For a new driver, that shift changes what feels “normal” to learn in, what you will see in your first car, and what skills will matter most once you pass.</p>
-<p>The future of automatic cars for new drivers is not just about convenience. It is about how modern cars are being built, how powertrains are changing with electric vehicles, and how driver-assistance technology is quietly reshaping what we practise in lessons. If you are choosing between <a href="https://www.d4driving.co.uk/post/manual-or-automatic-lessons-which-is-better">manual and automatic</a> now, it helps to understand where the direction of travel is - so you can pick the route that fits your life, your confidence, and your plans.</p>
-<h2>Why automatics are becoming the default</h2>
-<p>Automatics used to be “the easy option” and, for some learners, that label felt unfair. The reality is simpler: the car market is changing. More hybrids and electric cars are arriving each year, and most of them are automatic by design. Electric cars do not need gears in the same way a petrol or diesel manual does, and many hybrids pair their petrol engine with an automatic system.</p>
-<p>That means new drivers are increasingly surrounded by automatics - family cars, company cars, car-share vehicles, and even many newer small cars. When the vehicles around you change, driving lessons and test choices naturally follow.</p>
-<h2>The biggest difference for learners: where your attention goes</h2>
-<p>With a manual car, a lot of your early mental effort goes into clutch control, gear changes, finding the bite, and coordinating hands and feet. This can be a good thing for some learners - it forces a rhythm and can build strong mechanical sympathy.</p>
-<p>With an automatic, that workload shifts. You still need excellent control and judgement, but your attention can sit more on observation, planning, lane discipline, speed control, and calm decision-making at roundabouts. Many nervous beginners find they can make steadier progress because there is one less moving part to manage under pressure.</p>
-<p>The trade-off is that you cannot rely on “being busy with the gears” to slow you down mentally. In an automatic, you can creep forward easily, and you can build speed quickly without noticing. Good teaching focuses on making you deliberate - using the brake properly, keeping safe gaps, reading hazards early, and staying in control rather than letting the car do the thinking.</p>
-<h2>Electric cars will push automatics even further</h2>
-<p>If you are thinking a few years ahead, electric vehicles are the biggest reason automatics are likely to become even more common. EVs deliver power instantly and smoothly, and they often have strong regenerative braking (the car slows as you lift off the accelerator). That changes how the car feels at low speed and how you manage your approach to junctions.</p>
-<p>For new drivers, EV-style driving can be very intuitive, but it needs practice. You learn to be gentle with acceleration, to judge the car’s slowing effect when you ease off, and to keep passengers comfortable. It is less about gear choice and more about finesse.</p>
-<p>EVs also tend to be heavier than similar petrol cars because of the battery. That affects stopping distances and tyre grip in wet weather. Again, the car might feel easy to operate, but safe driving still depends on planning ahead and reading the road well.</p>
-<h2>Driver assistance is helping - but it can also hide bad habits</h2>
-<p>More automatics come with technology that supports the driver: parking sensors and cameras, lane-keeping assistance, adaptive cruise control, automatic emergency braking, and blind-spot warnings. These features can genuinely improve safety, especially when paired with good habits.</p>
-<p>But there is a “it depends” here. If you learn to depend on the car to catch mistakes, you can drift into lazy observation. You might stop checking mirrors as thoroughly because there is a warning light. You might follow too closely because adaptive cruise will slow you down. You might become less confident parking because you always wait for the sensors to tell you what to do.</p>
-<p>The better mindset is: use assistance as a back-up, not a replacement. The driving test still expects you to demonstrate full control, proper mirror checks, safe positioning, and correct judgement. Tech helps, but you remain responsible.</p>
-<h2>What this means for the driving test and your licence choice</h2>
-<p>In the UK, if you pass your test in an automatic, you can only drive automatics. If you pass in a manual, you can drive both manual and automatic.</p>
-<p>So the question is not “which is better?” It is “what do you need?” If your household already has an automatic, if you expect your first car to be automatic, or if you want to get on the road with less stress, an automatic licence can be a sensible, confident choice.</p>
-<p>If you want maximum flexibility for work, borrowing cars, or buying a cheaper second-hand car where manuals are still common, a manual licence keeps more doors open. Manuals have not vanished, and in some budgets they are still easier to find.</p>
-<p>Your personal situation matters. A learner with <a href="https://www.d4driving.co.uk/post/driving-lessons-designed-for-anxious-learners-driving-lessons-for-anxiety">anxiety at roundabouts</a> may benefit from removing gear changes so they can focus on timing and observation. Another learner may feel more in control with manual engine braking and a stronger sense of “doing” the driving. Both approaches can produce safe, skilled drivers when the learning is structured properly.</p>
-<h2>The cost question: will automatics always be more expensive?</h2>
-<p>Historically, automatic cars have cost more to buy and sometimes more to insure, especially for younger drivers. That gap is narrowing in places because the market is shifting, but it has not disappeared.</p>
-<p>For first-car planning, it is worth thinking in layers: the <a href="https://www.d4driving.co.uk/post/understanding-the-cost-of-driving-lessons-1">cost of lessons</a>, the cost of buying the car, insurance group, fuel or charging, and maintenance. An older automatic can be a brilliant first car if it has been looked after, but repairs on certain gearboxes can be costly. With EVs, servicing can be different, but tyres can wear faster due to weight and instant torque.</p>
-<p>This is one reason personalised advice helps. Your best option is not just about “automatic vs manual”, but about the specific car you are likely to drive after you pass and the type of driving you will do around Peterborough, Kettering, or Grantham - short urban trips, A-road commuting, or longer motorway journeys.</p>
-<h2>Skills that matter more in the future - even in an automatic</h2>
-<p>As automatics become more common, the definition of a “good driver” keeps moving away from mechanical skill and towards judgement. That is not a loss. It is a refocus.</p>
-<p>Expect future cars to be easier to operate and harder to excuse mistakes in. When a car accelerates smoothly and holds speed easily, you have no reason to rush. When a car assists with lane position, you have no reason to stop checking mirrors. When a car is quiet, you have to be even more alert to what is happening outside it.</p>
-<p>The core skills that will keep you safe and confident are timeless: scanning ahead, reading developing hazards, choosing safe gaps, using speed appropriately, and staying calm when other road users behave unpredictably. Automatic cars support those skills best when you treat the car as a tool, not a tutor.</p>
-<h2>Choosing automatic lessons now with confidence</h2>
-<p>If you are leaning towards automatic lessons, the best approach is to make sure your learning is not just “drive and see what happens”. You want structured progress: moving off and stopping smoothly, accurate steering at low speed, confident junction routines, roundabout planning, and smart use of mirrors and signals. You also want practice in the situations that actually raise your heart rate - busy multi-lane roundabouts, meeting traffic on narrow roads, and joining faster roads safely.</p>
-<p>A calm instructor who adapts to your learning style can make a bigger difference than the transmission type. When lessons are paced to you, you avoid the common pattern of feeling fine on quiet roads, then feeling overwhelmed the moment traffic builds.</p>
-<p>If you are in Peterborough or preparing for a test in Kettering or Grantham, you can explore automatic or manual options through <a href="https://Www.d4driving.co.uk">D4Driving School of Motoring</a> and choose lesson blocks that fit your schedule while keeping progress measurable.</p>
-<h2>Looking ahead: will manuals disappear?</h2>
-<p>Manuals will likely become less common over time, especially as electric vehicles take a bigger share of new car sales. But “less common” is not “gone”, and the timeline depends on budget and local availability. The second-hand market moves more slowly than new car showrooms.</p>
-<p>For new drivers, that means you do not need to predict the entire future. You just need to be realistic about the next few years. If your first and second cars are likely to be automatics, an automatic licence can be a calm, practical decision. If you want the broadest choice and do not mind the extra coordination, manual still has value.</p>
-<p>The most important part is that you learn properly for the roads you will drive on, not the gearstick you think you “should” use.</p>
-<p>A helpful way to think about it is this: the car will keep getting easier to operate. Your job is to keep getting better at judgement. When you focus on that, whichever licence you choose becomes a platform for real freedom - the kind that comes from feeling genuinely ready, not just legally allowed.</p>
+            <p>The future of automatic cars for new drivers is not just about convenience. It is about how modern cars are being built, how powertrains are changing with electric vehicles, and how driver-assistance technology is quietly reshaping what we practise in lessons. If you are choosing between <a href="https://www.d4driving.co.uk/post/manual-or-automatic-lessons-which-is-better">manual and automatic</a> now, it helps to understand where the direction of travel is - so you can pick the route that fits your life, your confidence, and your plans.</p>
+            <h2>Why automatics are becoming the default</h2>
+            <p>Automatics used to be “the easy option” and, for some learners, that label felt unfair. The reality is simpler: the car market is changing. More hybrids and electric cars are arriving each year, and most of them are automatic by design. Electric cars do not need gears in the same way a petrol or diesel manual does, and many hybrids pair their petrol engine with an automatic system.</p>
+            <p>That means new drivers are increasingly surrounded by automatics - family cars, company cars, car-share vehicles, and even many newer small cars. When the vehicles around you change, driving lessons and test choices naturally follow.</p>
+            <h2>The biggest difference for learners: where your attention goes</h2>
+            <p>With a manual car, a lot of your early mental effort goes into clutch control, gear changes, finding the bite, and coordinating hands and feet. This can be a good thing for some learners - it forces a rhythm and can build strong mechanical sympathy.</p>
+            <p>With an automatic, that workload shifts. You still need excellent control and judgement, but your attention can sit more on observation, planning, lane discipline, speed control, and calm decision-making at roundabouts. Many nervous beginners find they can make steadier progress because there is one less moving part to manage under pressure.</p>
+            <p>The trade-off is that you cannot rely on “being busy with the gears” to slow you down mentally. In an automatic, you can creep forward easily, and you can build speed quickly without noticing. Good teaching focuses on making you deliberate - using the brake properly, keeping safe gaps, reading hazards early, and staying in control rather than letting the car do the thinking.</p>
+            <h2>Electric cars will push automatics even further</h2>
+            <p>If you are thinking a few years ahead, electric vehicles are the biggest reason automatics are likely to become even more common. EVs deliver power instantly and smoothly, and they often have strong regenerative braking (the car slows as you lift off the accelerator). That changes how the car feels at low speed and how you manage your approach to junctions.</p>
+            <p>For new drivers, EV-style driving can be very intuitive, but it needs practice. You learn to be gentle with acceleration, to judge the car’s slowing effect when you ease off, and to keep passengers comfortable. It is less about gear choice and more about finesse.</p>
+            <p>EVs also tend to be heavier than similar petrol cars because of the battery. That affects stopping distances and tyre grip in wet weather. Again, the car might feel easy to operate, but safe driving still depends on planning ahead and reading the road well.</p>
+            <h2>Driver assistance is helping - but it can also hide bad habits</h2>
+            <p>More automatics come with technology that supports the driver: parking sensors and cameras, lane-keeping assistance, adaptive cruise control, automatic emergency braking, and blind-spot warnings. These features can genuinely improve safety, especially when paired with good habits.</p>
+            <p>But there is a “it depends” here. If you learn to depend on the car to catch mistakes, you can drift into lazy observation. You might stop checking mirrors as thoroughly because there is a warning light. You might follow too closely because adaptive cruise will slow you down. You might become less confident parking because you always wait for the sensors to tell you what to do.</p>
+            <p>The better mindset is: use assistance as a back-up, not a replacement. The driving test still expects you to demonstrate full control, proper mirror checks, safe positioning, and correct judgement. Tech helps, but you remain responsible.</p>
+            <h2>What this means for the driving test and your licence choice</h2>
+            <p>In the UK, if you pass your test in an automatic, you can only drive automatics. If you pass in a manual, you can drive both manual and automatic.</p>
+            <p>So the question is not “which is better?” It is “what do you need?” If your household already has an automatic, if you expect your first car to be automatic, or if you want to get on the road with less stress, an automatic licence can be a sensible, confident choice.</p>
+            <p>If you want maximum flexibility for work, borrowing cars, or buying a cheaper second-hand car where manuals are still common, a manual licence keeps more doors open. Manuals have not vanished, and in some budgets they are still easier to find.</p>
+            <p>Your personal situation matters. A learner with <a href="https://www.d4driving.co.uk/post/driving-lessons-designed-for-anxious-learners-driving-lessons-for-anxiety">anxiety at roundabouts</a> may benefit from removing gear changes so they can focus on timing and observation. Another learner may feel more in control with manual engine braking and a stronger sense of “doing” the driving. Both approaches can produce safe, skilled drivers when the learning is structured properly.</p>
+            <h2>The cost question: will automatics always be more expensive?</h2>
+            <p>Historically, automatic cars have cost more to buy and sometimes more to insure, especially for younger drivers. That gap is narrowing in places because the market is shifting, but it has not disappeared.</p>
+            <p>For first-car planning, it is worth thinking in layers: the <a href="https://www.d4driving.co.uk/post/understanding-the-cost-of-driving-lessons-1">cost of lessons</a>, the cost of buying the car, insurance group, fuel or charging, and maintenance. An older automatic can be a brilliant first car if it has been looked after, but repairs on certain gearboxes can be costly. With EVs, servicing can be different, but tyres can wear faster due to weight and instant torque.</p>
+            <p>This is one reason personalised advice helps. Your best option is not just about “automatic vs manual”, but about the specific car you are likely to drive after you pass and the type of driving you will do around Peterborough, Kettering, or Grantham - short urban trips, A-road commuting, or longer motorway journeys.</p>
+            <h2>Skills that matter more in the future - even in an automatic</h2>
+            <p>As automatics become more common, the definition of a “good driver” keeps moving away from mechanical skill and towards judgement. That is not a loss. It is a refocus.</p>
+            <p>Expect future cars to be easier to operate and harder to excuse mistakes in. When a car accelerates smoothly and holds speed easily, you have no reason to rush. When a car assists with lane position, you have no reason to stop checking mirrors. When a car is quiet, you have to be even more alert to what is happening outside it.</p>
+            <p>The core skills that will keep you safe and confident are timeless: scanning ahead, reading developing hazards, choosing safe gaps, using speed appropriately, and staying calm when other road users behave unpredictably. Automatic cars support those skills best when you treat the car as a tool, not a tutor.</p>
+            <h2>Choosing automatic lessons now with confidence</h2>
+            <p>If you are leaning towards automatic lessons, the best approach is to make sure your learning is not just “drive and see what happens”. You want structured progress: moving off and stopping smoothly, accurate steering at low speed, confident junction routines, roundabout planning, and smart use of mirrors and signals. You also want practice in the situations that actually raise your heart rate - busy multi-lane roundabouts, meeting traffic on narrow roads, and joining faster roads safely.</p>
+            <p>A calm instructor who adapts to your learning style can make a bigger difference than the transmission type. When lessons are paced to you, you avoid the common pattern of feeling fine on quiet roads, then feeling overwhelmed the moment traffic builds.</p>
+            <p>If you are in Peterborough or preparing for a test in Kettering or Grantham, you can explore automatic or manual options through <a href="https://Www.d4driving.co.uk">D4Driving School of Motoring</a> and choose lesson blocks that fit your schedule while keeping progress measurable.</p>
+            <h2>Looking ahead: will manuals disappear?</h2>
+            <p>Manuals will likely become less common over time, especially as electric vehicles take a bigger share of new car sales. But “less common” is not “gone”, and the timeline depends on budget and local availability. The second-hand market moves more slowly than new car showrooms.</p>
+            <p>For new drivers, that means you do not need to predict the entire future. You just need to be realistic about the next few years. If your first and second cars are likely to be automatics, an automatic licence can be a calm, practical decision. If you want the broadest choice and do not mind the extra coordination, manual still has value.</p>
+            <p>The most important part is that you learn properly for the roads you will drive on, not the gearstick you think you “should” use.</p>
+            <p>A helpful way to think about it is this: the car will keep getting easier to operate. Your job is to keep getting better at judgement. When you focus on that, whichever licence you choose becomes a platform for real freedom - the kind that comes from feeling genuinely ready, not just legally allowed.</p>
         </div>
 
-        <button id="shareBtn" class="w-full py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 font-bold transition flex items-center justify-center gap-2 mb-16">
+        <button id="shareBtn" class="w-full py-4 rounded-2xl bg-[#B11E24] hover:bg-[#8C181D] font-bold text-white transition flex items-center justify-center gap-2 mb-16">
             <span>Share this Guide</span>
         </button>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-white/10 pt-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-stone-200 pt-12">
             <a href="#" id="prev-post-link" class="nav-btn glass-card p-6 rounded-2xl flex flex-col items-start gap-2">
-                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">← Previous</span>
-                <span id="prev-post-title" class="font-bold text-lg text-white">Loading...</span>
+                <span class="text-[#B11E24] text-xs font-bold uppercase tracking-widest">← Previous</span>
+                <span id="prev-post-title" class="font-bold text-lg text-[#1A365D]">Loading...</span>
             </a>
             
             <a href="#" id="next-post-link" class="nav-btn glass-card p-6 rounded-2xl flex flex-col items-end text-right gap-2">
-                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">Next →</span>
-                <span id="next-post-title" class="font-bold text-lg text-white">Loading...</span>
+                <span class="text-[#B11E24] text-xs font-bold uppercase tracking-widest">Next →</span>
+                <span id="next-post-title" class="font-bold text-lg text-[#1A365D]">Loading...</span>
             </a>
         </div>
     </article>
 
-    <footer class="max-w-4xl mx-auto mt-20 p-8 text-center border-t border-white/5 text-slate-600 text-sm">
-        © 2026 D4Driving School of Motoring.
-    </footer>
+    <div id="dynamic-footer"></div>
 
-    <script>
-        // MASTER DATA: Your 32 Peterborough Driving Guides
-        const posts = [
-            { "id": "how-to-pass-the-driving-test-first-time", "title": "How To Pass The Driving Test First Time" },
-            { "id": "manual-driving-lesson-hill-start-practice-tips", "title": "Manual Driving Lesson Hill Start Practice Tips" },
-            { "id": "best-ways-to-reduce-driving-lesson-anxiety", "title": "Best Ways to Reduce Driving Lesson Anxiety" },
-            { "id": "theory-test-pass-tips-that-actually-help", "title": "Theory Test Pass Tips That Actually Help" },
-            { "id": "one-to-one-driving-tuition-benefits-explained", "title": "One to One Driving Tuition Benefits Explained" },
-            { "id": "how-to-pass-the-driving-test-first-time", "title": "How to Pass the Driving Test First Time" },
-            { "id": "female-instructor-or-male-instructor", "title": "Female Instructor or Male Instructor?" },
-            { "id": "best-driving-practice-routes-in-peterborough", "title": "Best Driving Practice Routes in Peterborough" },
-            { "id": "most-common-driving-test-faults", "title": "Most Common Driving Test Faults" },
-            { "id": "starting-driving-lessons-with-confidence", "title": "Starting Driving Lessons With Confidence" },
-            { "id": "automatic-or-manual-lessons-in-peterborough", "title": "Automatic or Manual Lessons in Peterborough?" },
-            { "id": "can-you-pass-with-4-hours-of-test-prep", "title": "Can You Pass With 4 Hours of Test Prep?" },
-            { "id": "10-driving-test-day-tips-that-really-help", "title": "10 Driving Test Day Tips That Really Help" },
-            { "id": "7-smart-ways-to-practise-hazard-perception", "title": "7 Smart Ways to Practise Hazard Perception" },
-            { "id": "how-many-driving-lessons-do-you-need", "title": "How Many Driving Lessons Do You Need?" },
-            { "id": "7-ways-to-feel-confident-behind-the-wheel", "title": "7 Ways to Feel Confident Behind the Wheel" },
-            { "id": "book-driving-lessons-online-in-peterborough", "title": "Book Driving Lessons Online in Peterborough" },
-            { "id": "warmup-lesson-before-your-peterborough-test", "title": "Warm-Up Lesson Before Your Peterborough Test" },
-            { "id": "driving-lessons-for-anxious-adults-in-peterborough", "title": "Driving Lessons for Anxious Adults in Peterborough" },
-            { "id": "how-long-should-your-driving-lessons-be", "title": "How Long Should Your Driving Lessons Be?" },
-            { "id": "automatic-cars-what-new-drivers-can-expect", "title": "Automatic cars: what new drivers can expect" },
-            { "id": "choosing-an-approved-driving-instructor-in-peterborough", "title": "Choosing an Approved Driving Instructor in Peterborough" },
-            { "id": "driving-test-manoeuvres-practice-that-works", "title": "Driving test manoeuvres practice that works" },
-            { "id": "mock-test-lessons-that-actually-boost-pass-rates", "title": "Mock Test Lessons That Actually Boost Pass Rates" },
-            { "id": "your-first-driving-lesson-what-to-expect", "title": "Your First Driving Lesson: What to Expect" },
-            { "id": "driving-lessons-for-nervous-drivers-what-works", "title": "Driving Lessons for Nervous Drivers: What Works" },
-            { "id": "manual-or-automatic-lessons-which-is-better", "title": "Manual or Automatic Lessons: Which Is Better?" },
-            { "id": "how-many-driving-lessons-do-you-really-need", "title": "How Many Driving Lessons Do You Really Need?" },
-            { "id": "intensive-driving-test-prep-session-what-works", "title": "Intensive Driving Test Prep Session: What Works" },
-            { "id": "is-a-1hour-automatic-lesson-enough", "title": "Is a 1-Hour Automatic Lesson Enough?" },
-            { "id": "grantham-driving-test-prep-that-actually-works", "title": "Grantham Driving Test Prep That Actually Works" },
-            { "id": "kettering-driving-test-prep-that-actually-works", "title": "Kettering Driving Test Prep That Actually Works" },
-            { "id": "peterborough-driving-test-prep-that-works", "title": "Peterborough Driving Test Prep That Works" }
-        ];
-
-        // LOGIC: PWA & Share
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => {}); });
-        }
-
-        const shareBtn = document.getElementById('shareBtn');
-        if (shareBtn) {
-            shareBtn.addEventListener('click', async () => {
-                const shareData = {
-                    title: document.title,
-                    text: 'Check out this driving guide from D4Driving Peterborough!',
-                    url: window.location.href
-                };
-                try {
-                    if (navigator.share) { await navigator.share(shareData); } 
-                    else {
-                        await navigator.clipboard.writeText(window.location.href);
-                        const span = shareBtn.querySelector('span');
-                        const originalText = span.innerText;
-                        span.innerText = 'Link Copied!';
-                        setTimeout(() => span.innerText = originalText, 2000);
-                    }
-                } catch (err) { console.log('Share error'); }
-            });
-        }
-
-        // LOGIC: Auto-Navigation
-        function loadBlogNavigation() {
-            const path = window.location.pathname;
-            const currentFilename = path.split('/').pop().replace('.html', '');
-            const currentIndex = posts.findIndex(p => p.id === currentFilename);
-            
-            if (currentIndex !== -1) {
-                const currentPost = posts[currentIndex];
-                const prevPost = posts[currentIndex - 1];
-                const nextPost = posts[currentIndex + 1];
-
-                document.title = `${currentPost.title} | D4Driving Journal`;
-                const h1 = document.getElementById('post-title');
-                if (h1 && h1.innerText === "Automatic cars: what new drivers can expect") h1.innerText = currentPost.title;
-
-                const prevLink = document.getElementById('prev-post-link');
-                const nextLink = document.getElementById('next-post-link');
-
-                if (prevPost) {
-                    document.getElementById('prev-post-title').innerText = prevPost.title;
-                    prevLink.href = `${prevPost.id}.html`;
-                } else if (prevLink) { prevLink.style.display = 'none'; }
-
-                if (nextPost) {
-                    document.getElementById('next-post-title').innerText = nextPost.title;
-                    nextLink.href = `${nextPost.id}.html`;
-                } else if (nextLink) { nextLink.style.display = 'none'; }
-            }
-        }
-        loadBlogNavigation();
-    </script>
+    <script src="blog-logic.js"></script>
 </body>
 </html>

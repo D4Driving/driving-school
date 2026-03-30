@@ -5,96 +5,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best Driving Practice Routes in Peterborough | D4Driving Journal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FDF9F3; color: #3E3835; }
-        .glass-card { background: white; border: 1px solid #EADDD0; box-shadow: 0 10px 30px rgba(177, 30, 36, 0.03); }
-        .prose p { margin-bottom: 1.5rem; color: #4A4542; line-height: 1.8; font-size: 1.1rem; }
-        .prose h2 { color: #1A365D; font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: bold; margin-top: 2.5rem; margin-bottom: 1.2rem; }
-        .nav-btn { transition: all 0.3s ease; border: 1px solid #EADDD0; background: white; }
-        .nav-btn:hover { background: #FFF5F5; border-color: #B11E24; transform: translateY(-2px); }
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
+        .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .prose p { margin-bottom: 1.5rem; color: #94a3b8; line-height: 1.8; font-size: 1.1rem; }
+        .prose h2 { color: white; font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; }
+        .nav-btn { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
+        .nav-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
     </style>
 </head>
 <body class="min-h-screen pb-20">
-
-    <div id="dynamic-nav"></div>
+    <nav class="max-w-6xl mx-auto p-6 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="400dpiLogoCropped.png" alt="Logo" class="h-10 w-auto">
+            <span class="font-bold uppercase tracking-wider">D4DRIVING</span>
+        </a>
+        <a href="blog.html" class="text-xs font-bold bg-slate-800 px-4 py-2 rounded-full border border-white/10 hover:bg-slate-700 transition">← Back to Blog</a>
+    </nav>
 
     <article class="max-w-3xl mx-auto px-6 pt-12">
-        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/e4428b5a-81e3-448f-8848-3c5b2d173549.webp" alt="Best Driving Practice Routes in Peterborough" class="w-full h-64 md:h-96 object-cover rounded-[40px] mb-8 border-4 border-white shadow-lg">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/e4428b5a-81e3-448f-8848-3c5b2d173549.webp" alt="Best Driving Practice Routes in Peterborough" class="w-full h-64 md:h-96 object-cover rounded-3xl mb-8 border border-white/10">
         
-        <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold mb-6 text-[#1A365D] font-[Outfit]">Best Driving Practice Routes in Peterborough</h1>
+        <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold mb-6">Best Driving Practice Routes in Peterborough</h1>
         
-        <div class="prose max-w-none mb-12">
+        <div class="prose prose-invert max-w-none mb-12">
             <p>If you are learning in Peterborough, where you practise matters almost as much as how often you practise. The right route can help you settle your nerves, repeat key skills without feeling overwhelmed, and build confidence step by step. The wrong one can leave you flustered before you have even had chance to think.</p>
-            <p>That is why the best approach is not chasing the busiest roads straight away. It is choosing routes that match your current level, then adding more challenge when you are ready. For some learners, that means quiet residential roads first. For others, it means roundabouts, dual carriageways and the sort of decision-making you will need on test day.</p>
-            
-            <h2>How to choose the best routes to practise driving Peterborough</h2>
-            <p>The best routes to practise driving Peterborough are not always the most obvious ones. A useful practice route should give you enough repetition to improve, but not so much pressure that every mistake feels bigger than it is.</p>
-            <p>As a general rule, beginners do better on roads with lower speeds, simpler junctions and plenty of places to pull up safely. Once your moving off, clutch control, steering and observation are more consistent, it makes sense to add busier roads, multi-lane roundabouts and independent driving practice.</p>
-            <p>It also depends on what you are working on. If parallel parking is your weak point, a calm residential area is far more useful than a long stretch of open road. If roundabouts make you hesitate, you need routes that let you approach them several times in one lesson. Good practice is specific.</p>
-
-            <h2>Start with quieter residential roads</h2>
-            <p>For complete beginners, quieter neighbourhoods around Hampton Vale, Hampton Gardens or Yaxley can be a sensible starting point. These areas often give learners the space to focus on the basics without constant pressure from fast-moving traffic. You can practise moving off, stopping smoothly, meeting oncoming vehicles, turning left and right, and judging road position.</p>
-            <p>Residential roads are also ideal for learning how to read what is happening around you. Parked cars, delivery vans, pedestrians stepping out, and vehicles emerging from side roads all teach awareness in a manageable way. That matters because confidence does not come from avoiding situations forever. It comes from learning how to deal with them calmly.</p>
-            <p>There is a trade-off, though. If you stay on very quiet roads for too long, your progress can stall. You may feel comfortable there, but then feel a sharp jump in pressure when you move onto faster or more complex roads. A good lesson plan builds that challenge gradually.</p>
-
-            <h2>Routes that help with junctions and roundabouts</h2>
-            <p>One of the biggest steps in learning to drive is getting comfortable with decision-making at junctions and roundabouts. Peterborough has plenty of places where you can practise this properly, from smaller mini roundabouts to larger, busier layouts.</p>
-            <p>Areas around Orton and Bretton can be useful because they often offer a mix of standard junctions, controlled junctions and roundabouts within a short distance. That gives you repeated practice in mirror checks, speed adjustment, lane choice and timing. Repetition is what turns a stressful manoeuvre into a familiar routine.</p>
-            <p>If roundabouts make you anxious, do not assume you need to throw yourself into the busiest one straight away. Start with smaller roundabouts where lane choice is straightforward, then build up to larger ones once your observations and planning improve. A patient, structured approach nearly always works better than trying to force confidence in one go.</p>
-
-            <h2>Practising higher-speed roads without rushing it</h2>
-            <p>At some point, every learner needs practice on roads where traffic moves more quickly. This is where many people tense up, especially if they have only driven in quiet estates and side streets.</p>
-            <p>Routes that include wider roads near Fengate or towards Eye can help you get used to higher speeds, better forward planning and keeping a safe following distance. These roads teach a different kind of concentration. Instead of focusing only on clutch and steering, you start thinking further ahead - reading signs earlier, anticipating lane changes and spotting developing hazards in good time.</p>
-            <p>The key is not speed for the sake of it. The real skill is staying calm and making safe, measured decisions while traffic is moving at a faster pace. If a learner goes onto these roads too early, they often feel rushed and lose confidence. If they avoid them for too long, they may feel unprepared later. Getting the timing right matters.</p>
-
-            <h2>Best routes for manoeuvre practice</h2>
-            <p>Not every lesson needs to be a full loop around Peterborough. Some of the most productive sessions come from using one or two suitable streets to repeat a specific skill until it feels natural.</p>
-            <p>Quiet roads with good visibility are ideal for pulling up on the left, bay parking, parallel parking and reversing practice. Residential parts of Werrington or Dogsthorpe can work well for this, depending on traffic levels and time of day. The best area is usually one with enough parked cars to make the exercise realistic, but not so much activity that the learner feels under pressure.</p>
-            <p>This is where personalised instruction really helps. One learner may need more time with clutch control before reversing accurately. Another may understand the car well, but need help with reference points and all-round observation. The route should support the skill, not distract from it.</p>
-
-            <h2>Test-style driving routes around Peterborough</h2>
-            <p>For learners getting closer to test standard, it helps to practise routes that feel more like real driving test conditions. That means a varied drive rather than a comfortable circuit you know too well.</p>
-            <p>A useful test-style route will include residential roads, different speed limits, roundabouts, meeting traffic, traffic lights, hill starts where possible, and chances to follow signs independently. Areas linking places such as Fletton, Bretton, Gunthorpe and central road networks can create that variety well. You are not just practising car control at this stage. You are practising consistency under pressure.</p>
-            <p>This is also the point where mistakes should be treated carefully. Learners often think a wrong lane or missed turn means the whole drive has gone badly. It usually does not. What matters is how safely you respond. Test-style practice should teach recovery as well as accuracy.</p>
-
-            <h2>Time of day changes the route</h2>
-            <p>The same road can feel completely different depending on when you use it. A route that is calm mid-morning may be far busier during the school run or evening traffic. That is not a reason to avoid it. It just means you should use timing to your advantage.</p>
-            <p>If you are nervous or still early in your lessons, quieter off-peak times can help you learn without too much pressure. If you are preparing for your test, you will need experience in a wider range of traffic conditions. Practising only when roads are empty can leave gaps in your readiness.</p>
-            <p>Weather matters too. Wet roads, lower light in winter, and reduced visibility all change how a route feels. Safe practice includes learning how conditions affect stopping distance, observations and speed choice.</p>
-
-            <h2>Why the best practice route is different for every learner</h2>
-            <p>Some learners need calm repetition to settle anxiety. Others progress faster when they are challenged a little more. Age does not always predict it, and neither does whether you are learning manual or automatic. What matters is how you respond behind the wheel.</p>
-            <p>That is why a fixed route is rarely the answer. The best routes to practise driving Peterborough depend on your current skill level, your confidence, and what you need to improve next. A route that is perfect for one learner could be too easy or too demanding for another.</p>
-            <p>At D4Driving School of Motoring, that is exactly why lessons are planned around the individual rather than a one-size-fits-all route. The aim is steady, measurable progress - building skills in the right order so that confidence grows from doing things properly, not from being pushed too far too soon.</p>
-
-            <h2>Getting the most from each practice session</h2>
-            <p>A good route works best when you give it a clear purpose. Before setting off, decide what success looks like for that drive. It might be smoother gear changes, earlier mirror checks, better judgement at roundabouts, or completing a manoeuvre with less prompting.</p>
-            <p>Afterwards, think about what improved and what still needs work. Learners often focus only on mistakes, but progress is usually found in smaller changes - reacting earlier, staying calmer, or needing fewer reminders. Those details matter because they show real development.</p>
-            <p>If you are not sure which roads will help you most, an instructor-led plan can save a lot of <a href="https://Www.d4driving.co.uk/tips.html">wasted time</a>. The right route should challenge you enough to grow, while still leaving you feeling capable at the end of the lesson.</p>
-            <p>Confidence on the road is built one decision at a time, and the best route is the one that helps your next decision feel a little steadier than the last.</p>
+<p>That is why the best approach is not chasing the busiest roads straight away. It is choosing routes that match your current level, then adding more challenge when you are ready. For some learners, that means quiet residential roads first. For others, it means roundabouts, dual carriageways and the sort of decision-making you will need on test day.</p>
+<h2>How to choose the best routes to practise driving Peterborough</h2>
+<p>The best routes to practise driving Peterborough are not always the most obvious ones. A useful practice route should give you enough repetition to improve, but not so much pressure that every mistake feels bigger than it is.</p>
+<p>As a general rule, beginners do better on roads with lower speeds, simpler junctions and plenty of places to pull up safely. Once your moving off, clutch control, steering and observation are more consistent, it makes sense to add busier roads, multi-lane roundabouts and independent driving practice.</p>
+<p>It also depends on what you are working on. If parallel parking is your weak point, a calm residential area is far more useful than a long stretch of open road. If roundabouts make you hesitate, you need routes that let you approach them several times in one lesson. Good practice is specific.</p>
+<h2>Start with quieter residential roads</h2>
+<p>For complete beginners, quieter neighbourhoods around Hampton Vale, Hampton Gardens or Yaxley can be a sensible starting point. These areas often give learners the space to focus on the basics without constant pressure from fast-moving traffic. You can practise moving off, stopping smoothly, meeting oncoming vehicles, turning left and right, and judging road position.</p>
+<p>Residential roads are also ideal for learning how to read what is happening around you. Parked cars, delivery vans, pedestrians stepping out, and vehicles emerging from side roads all teach awareness in a manageable way. That matters because confidence does not come from avoiding situations forever. It comes from learning how to deal with them calmly.</p>
+<p>There is a trade-off, though. If you stay on very quiet roads for too long, your progress can stall. You may feel comfortable there, but then feel a sharp jump in pressure when you move onto faster or more complex roads. A good lesson plan builds that challenge gradually.</p>
+<h2>Routes that help with junctions and roundabouts</h2>
+<p>One of the biggest steps in learning to drive is getting comfortable with decision-making at junctions and roundabouts. Peterborough has plenty of places where you can practise this properly, from smaller mini roundabouts to larger, busier layouts.</p>
+<p>Areas around Orton and Bretton can be useful because they often offer a mix of standard junctions, controlled junctions and roundabouts within a short distance. That gives you repeated practice in mirror checks, speed adjustment, lane choice and timing. Repetition is what turns a stressful manoeuvre into a familiar routine.</p>
+<p>If roundabouts make you anxious, do not assume you need to throw yourself into the busiest one straight away. Start with smaller roundabouts where lane choice is straightforward, then build up to larger ones once your observations and planning improve. A patient, structured approach nearly always works better than trying to force confidence in one go.</p>
+<h2>Practising higher-speed roads without rushing it</h2>
+<p>At some point, every learner needs practice on roads where traffic moves more quickly. This is where many people tense up, especially if they have only driven in quiet estates and side streets.</p>
+<p>Routes that include wider roads near Fengate or towards Eye can help you get used to higher speeds, better forward planning and keeping a safe following distance. These roads teach a different kind of concentration. Instead of focusing only on clutch and steering, you start thinking further ahead - reading signs earlier, anticipating lane changes and spotting developing hazards in good time.</p>
+<p>The key is not speed for the sake of it. The real skill is staying calm and making safe, measured decisions while traffic is moving at a faster pace. If a learner goes onto these roads too early, they often feel rushed and lose confidence. If they avoid them for too long, they may feel unprepared later. Getting the timing right matters.</p>
+<h2>Best routes for manoeuvre practice</h2>
+<p>Not every lesson needs to be a full loop around Peterborough. Some of the most productive sessions come from using one or two suitable streets to repeat a specific skill until it feels natural.</p>
+<p>Quiet roads with good visibility are ideal for pulling up on the left, bay parking, parallel parking and reversing practice. Residential parts of Werrington or Dogsthorpe can work well for this, depending on traffic levels and time of day. The best area is usually one with enough parked cars to make the exercise realistic, but not so much activity that the learner feels under pressure.</p>
+<p>This is where personalised instruction really helps. One learner may need more time with clutch control before reversing accurately. Another may understand the car well, but need help with reference points and all-round observation. The route should support the skill, not distract from it.</p>
+<h2>Test-style driving routes around Peterborough</h2>
+<p>For learners getting closer to test standard, it helps to practise routes that feel more like real driving test conditions. That means a varied drive rather than a comfortable circuit you know too well.</p>
+<p>A useful test-style route will include residential roads, different speed limits, roundabouts, meeting traffic, traffic lights, hill starts where possible, and chances to follow signs independently. Areas linking places such as Fletton, Bretton, Gunthorpe and central road networks can create that variety well. You are not just practising car control at this stage. You are practising consistency under pressure.</p>
+<p>This is also the point where mistakes should be treated carefully. Learners often think a wrong lane or missed turn means the whole drive has gone badly. It usually does not. What matters is how safely you respond. Test-style practice should teach recovery as well as accuracy.</p>
+<h2>Time of day changes the route</h2>
+<p>The same road can feel completely different depending on when you use it. A route that is calm mid-morning may be far busier during the school run or evening traffic. That is not a reason to avoid it. It just means you should use timing to your advantage.</p>
+<p>If you are nervous or still early in your lessons, quieter off-peak times can help you learn without too much pressure. If you are preparing for your test, you will need experience in a wider range of traffic conditions. Practising only when roads are empty can leave gaps in your readiness.</p>
+<p>Weather matters too. Wet roads, lower light in winter, and reduced visibility all change how a route feels. Safe practice includes learning how conditions affect stopping distance, observations and speed choice.</p>
+<h2>Why the best practice route is different for every learner</h2>
+<p>Some learners need calm repetition to settle anxiety. Others progress faster when they are challenged a little more. Age does not always predict it, and neither does whether you are learning manual or automatic. What matters is how you respond behind the wheel.</p>
+<p>That is why a fixed route is rarely the answer. The best routes to practise driving Peterborough depend on your current skill level, your confidence, and what you need to improve next. A route that is perfect for one learner could be too easy or too demanding for another.</p>
+<p>At D4Driving School of Motoring, that is exactly why lessons are planned around the individual rather than a one-size-fits-all route. The aim is steady, measurable progress - building skills in the right order so that confidence grows from doing things properly, not from being pushed too far too soon.</p>
+<h2>Getting the most from each practice session</h2>
+<p>A good route works best when you give it a clear purpose. Before setting off, decide what success looks like for that drive. It might be smoother gear changes, earlier mirror checks, better judgement at roundabouts, or completing a manoeuvre with less prompting.</p>
+<p>Afterwards, think about what improved and what still needs work. Learners often focus only on mistakes, but progress is usually found in smaller changes - reacting earlier, staying calmer, or needing fewer reminders. Those details matter because they show real development.</p>
+<p>If you are not sure which roads will help you most, an instructor-led plan can save a lot of <a href="https://Www.d4driving.co.uk/tips.html">wasted time</a>. The right route should challenge you enough to grow, while still leaving you feeling capable at the end of the lesson.</p>
+<p>Confidence on the road is built one decision at a time, and the best route is the one that helps your next decision feel a little steadier than the last.</p>
         </div>
 
-        <button id="shareBtn" class="w-full py-4 rounded-2xl bg-[#B11E24] hover:bg-[#8C181D] font-bold text-white transition flex items-center justify-center gap-2 mb-16">
+        <button id="shareBtn" class="w-full py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 font-bold transition flex items-center justify-center gap-2 mb-16">
             <span>Share this Guide</span>
         </button>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-stone-200 pt-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-white/10 pt-12">
             <a href="#" id="prev-post-link" class="nav-btn glass-card p-6 rounded-2xl flex flex-col items-start gap-2">
-                <span class="text-[#B11E24] text-xs font-bold uppercase tracking-widest">← Previous</span>
-                <span id="prev-post-title" class="font-bold text-lg text-[#1A365D]">Loading...</span>
+                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">← Previous</span>
+                <span id="prev-post-title" class="font-bold text-lg text-white">Loading...</span>
             </a>
             
             <a href="#" id="next-post-link" class="nav-btn glass-card p-6 rounded-2xl flex flex-col items-end text-right gap-2">
-                <span class="text-[#B11E24] text-xs font-bold uppercase tracking-widest">Next →</span>
-                <span id="next-post-title" class="font-bold text-lg text-[#1A365D]">Loading...</span>
+                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">Next →</span>
+                <span id="next-post-title" class="font-bold text-lg text-white">Loading...</span>
             </a>
         </div>
     </article>
 
-    <div id="dynamic-footer"></div>
+    <footer class="max-w-4xl mx-auto mt-20 p-8 text-center border-t border-white/5 text-slate-600 text-sm">
+        © 2026 D4Driving School of Motoring.
+    </footer>
 
-    <script src="blog-logic.js"></script>
+    <script>
+        // MASTER DATA: Your 32 Peterborough Driving Guides
+        const posts = [
+            { "id": "how-to-pass-the-driving-test-first-time", "title": "How To Pass The Driving Test First Time" },
+            { "id": "manual-driving-lesson-hill-start-practice-tips", "title": "Manual Driving Lesson Hill Start Practice Tips" },
+            { "id": "best-ways-to-reduce-driving-lesson-anxiety", "title": "Best Ways to Reduce Driving Lesson Anxiety" },
+            { "id": "theory-test-pass-tips-that-actually-help", "title": "Theory Test Pass Tips That Actually Help" },
+            { "id": "one-to-one-driving-tuition-benefits-explained", "title": "One to One Driving Tuition Benefits Explained" },
+            { "id": "how-to-pass-the-driving-test-first-time", "title": "How to Pass the Driving Test First Time" },
+            { "id": "female-instructor-or-male-instructor", "title": "Female Instructor or Male Instructor?" },
+            { "id": "best-driving-practice-routes-in-peterborough", "title": "Best Driving Practice Routes in Peterborough" },
+            { "id": "most-common-driving-test-faults", "title": "Most Common Driving Test Faults" },
+            { "id": "starting-driving-lessons-with-confidence", "title": "Starting Driving Lessons With Confidence" },
+            { "id": "automatic-or-manual-lessons-in-peterborough", "title": "Automatic or Manual Lessons in Peterborough?" },
+            { "id": "can-you-pass-with-4-hours-of-test-prep", "title": "Can You Pass With 4 Hours of Test Prep?" },
+            { "id": "10-driving-test-day-tips-that-really-help", "title": "10 Driving Test Day Tips That Really Help" },
+            { "id": "7-smart-ways-to-practise-hazard-perception", "title": "7 Smart Ways to Practise Hazard Perception" },
+            { "id": "how-many-driving-lessons-do-you-need", "title": "How Many Driving Lessons Do You Need?" },
+            { "id": "7-ways-to-feel-confident-behind-the-wheel", "title": "7 Ways to Feel Confident Behind the Wheel" },
+            { "id": "book-driving-lessons-online-in-peterborough", "title": "Book Driving Lessons Online in Peterborough" },
+            { "id": "warmup-lesson-before-your-peterborough-test", "title": "Warm-Up Lesson Before Your Peterborough Test" },
+            { "id": "driving-lessons-for-anxious-adults-in-peterborough", "title": "Driving Lessons for Anxious Adults in Peterborough" },
+            { "id": "how-long-should-your-driving-lessons-be", "title": "How Long Should Your Driving Lessons Be?" },
+            { "id": "automatic-cars-what-new-drivers-can-expect", "title": "Automatic cars: what new drivers can expect" },
+            { "id": "choosing-an-approved-driving-instructor-in-peterborough", "title": "Choosing an Approved Driving Instructor in Peterborough" },
+            { "id": "driving-test-manoeuvres-practice-that-works", "title": "Driving test manoeuvres practice that works" },
+            { "id": "mock-test-lessons-that-actually-boost-pass-rates", "title": "Mock Test Lessons That Actually Boost Pass Rates" },
+            { "id": "your-first-driving-lesson-what-to-expect", "title": "Your First Driving Lesson: What to Expect" },
+            { "id": "driving-lessons-for-nervous-drivers-what-works", "title": "Driving Lessons for Nervous Drivers: What Works" },
+            { "id": "manual-or-automatic-lessons-which-is-better", "title": "Manual or Automatic Lessons: Which Is Better?" },
+            { "id": "how-many-driving-lessons-do-you-really-need", "title": "How Many Driving Lessons Do You Really Need?" },
+            { "id": "intensive-driving-test-prep-session-what-works", "title": "Intensive Driving Test Prep Session: What Works" },
+            { "id": "is-a-1hour-automatic-lesson-enough", "title": "Is a 1-Hour Automatic Lesson Enough?" },
+            { "id": "grantham-driving-test-prep-that-actually-works", "title": "Grantham Driving Test Prep That Actually Works" },
+            { "id": "kettering-driving-test-prep-that-actually-works", "title": "Kettering Driving Test Prep That Actually Works" },
+            { "id": "peterborough-driving-test-prep-that-works", "title": "Peterborough Driving Test Prep That Works" }
+        ];
+
+        // LOGIC: PWA & Share
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => {}); });
+        }
+
+        const shareBtn = document.getElementById('shareBtn');
+        if (shareBtn) {
+            shareBtn.addEventListener('click', async () => {
+                const shareData = {
+                    title: document.title,
+                    text: 'Check out this driving guide from D4Driving Peterborough!',
+                    url: window.location.href
+                };
+                try {
+                    if (navigator.share) { await navigator.share(shareData); } 
+                    else {
+                        await navigator.clipboard.writeText(window.location.href);
+                        const span = shareBtn.querySelector('span');
+                        const originalText = span.innerText;
+                        span.innerText = 'Link Copied!';
+                        setTimeout(() => span.innerText = originalText, 2000);
+                    }
+                } catch (err) { console.log('Share error'); }
+            });
+        }
+
+        // LOGIC: Auto-Navigation
+        function loadBlogNavigation() {
+            const path = window.location.pathname;
+            const currentFilename = path.split('/').pop().replace('.html', '');
+            const currentIndex = posts.findIndex(p => p.id === currentFilename);
+            
+            if (currentIndex !== -1) {
+                const currentPost = posts[currentIndex];
+                const prevPost = posts[currentIndex - 1];
+                const nextPost = posts[currentIndex + 1];
+
+                document.title = `${currentPost.title} | D4Driving Journal`;
+                const h1 = document.getElementById('post-title');
+                if (h1 && h1.innerText === "Best Driving Practice Routes in Peterborough") h1.innerText = currentPost.title;
+
+                const prevLink = document.getElementById('prev-post-link');
+                const nextLink = document.getElementById('next-post-link');
+
+                if (prevPost) {
+                    document.getElementById('prev-post-title').innerText = prevPost.title;
+                    prevLink.href = `${prevPost.id}.html`;
+                } else if (prevLink) { prevLink.style.display = 'none'; }
+
+                if (nextPost) {
+                    document.getElementById('next-post-title').innerText = nextPost.title;
+                    nextLink.href = `${nextPost.id}.html`;
+                } else if (nextLink) { nextLink.style.display = 'none'; }
+            }
+        }
+        loadBlogNavigation();
+    </script>
 </body>
 </html>

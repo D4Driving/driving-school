@@ -5,119 +5,197 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How Many Driving Lessons Do You Really Need? | D4Driving Journal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #FDF9F3; color: #3E3835; }
-        .glass-card { background: white; border: 1px solid #EADDD0; box-shadow: 0 10px 30px rgba(177, 30, 36, 0.03); }
-        .prose p { margin-bottom: 1.5rem; color: #4A4542; line-height: 1.8; font-size: 1.1rem; }
-        .prose h2 { color: #1A365D; font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: bold; margin-top: 2.5rem; margin-bottom: 1.2rem; }
-        .prose h3 { color: #B11E24; font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: bold; margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        .prose ul { list-style-type: none; padding-left: 0; margin-bottom: 1.5rem; }
-        .prose li { position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem; color: #4A4542; }
-        .prose li::before { content: "•"; color: #B11E24; font-weight: bold; position: absolute; left: 0; }
-        .nav-btn { transition: all 0.3s ease; border: 1px solid #EADDD0; background: white; }
-        .nav-btn:hover { background: #FFF5F5; border-color: #B11E24; transform: translateY(-2px); }
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
+        .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .prose p { margin-bottom: 1.5rem; color: #94a3b8; line-height: 1.8; font-size: 1.1rem; }
+        .prose h2 { color: white; font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; }
+        .nav-btn { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
+        .nav-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
     </style>
 </head>
 <body class="min-h-screen pb-20">
-
-    <div id="dynamic-nav"></div>
+    <nav class="max-w-6xl mx-auto p-6 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-3">
+            <img src="400dpiLogoCropped.png" alt="Logo" class="h-10 w-auto">
+            <span class="font-bold uppercase tracking-wider">D4DRIVING</span>
+        </a>
+        <a href="blog.html" class="text-xs font-bold bg-slate-800 px-4 py-2 rounded-full border border-white/10 hover:bg-slate-700 transition">← Back to Blog</a>
+    </nav>
 
     <article class="max-w-3xl mx-auto px-6 pt-12">
-        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/aae05aca-60c1-49fc-9a4a-b00729204f7d.webp" alt="How Many Driving Lessons Do You Really Need?" class="w-full h-64 md:h-96 object-cover rounded-[40px] mb-8 border-4 border-white shadow-lg">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/aae05aca-60c1-49fc-9a4a-b00729204f7d.webp" alt="How Many Driving Lessons Do You Really Need?" class="w-full h-64 md:h-96 object-cover rounded-3xl mb-8 border border-white/10">
         
-        <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold mb-6 text-[#1A365D] font-[Outfit]">How Many Driving Lessons Do You Really Need?</h1>
+        <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold mb-6">How Many Driving Lessons Do You Really Need?</h1>
         
-        <div class="prose max-w-none mb-12">
+        <div class="prose prose-invert max-w-none mb-12">
             <p>If you have ever caught yourself thinking, “I’m weeks in - why don’t I feel ready yet?” you are not alone. Most learners aren’t worried about driving itself. They are worried about <a href="https://www.d4driving.co.uk/post/driving-lesson-prices-in-peterborough-what-to-pay">time, cost</a>, and that uncomfortable uncertainty of not knowing when it will finally click.</p>
-            <p>The honest answer to “how many driving lessons do i need” is: enough to drive safely, independently, and consistently - not just enough to scrape through a test. That number is different for everyone, but it is not a mystery. Once you understand what affects progress and what “test ready” really looks like, you can plan lessons with far more confidence.</p>
-
-            <h2>How many driving lessons do I need in the UK?</h2>
-            <p>In the UK, the commonly quoted average is around 45 hours of professional instruction, often alongside plenty of private practice. Some people need fewer, some need more, and both can be completely normal.</p>
-            <p>Averages can be helpful for setting expectations, but they can also be misleading if you treat them like a target. If you learn quickly but practise rarely, you may still need more lessons. If you’re nervous at the start but practise regularly in between, you may progress faster than you think.</p>
-            <p>What matters most is not the count of lessons. It’s whether you can repeat safe decisions under real driving pressure: busy roundabouts, changing speed limits, tight meeting situations on parked-up streets, and that moment when someone does something unpredictable and you have to respond calmly.</p>
-
-            <h2>The biggest factors that change how many lessons you’ll need</h2>
-            <h3>1) Your starting point (complete beginner vs some experience)</h3>
-            <p><a href="https://www.d4driving.co.uk/post/beginner-driving-lessons-your-guide-to-confident-driving">A complete beginner</a> usually needs time just to make the basics automatic: moving off smoothly, clutch control in a manual, steering with accuracy, and understanding how your observations fit into every decision.</p>
-            <p>If you have had a few lessons before, or you have driven on private land, you might pick up the physical controls faster - but you may still need time on the judgement side of driving, which is what most tests and real-world situations rely on.</p>
-
-            <h3>2) Manual or automatic: it changes workload, not standards</h3>
-            <p>Automatic lessons remove gear changes and clutch work, which can reduce early overload for many learners. That often means you can spend more lesson time on positioning, planning, roundabouts, and hazard response.</p>
-            <p>Manual can take longer at the start, especially if you are learning clutch control from scratch, but plenty of learners become excellent manual drivers without needing an extreme number of lessons. The standard for safe driving is the same either way - what changes is how quickly you can free up mental space for the road.</p>
-
-            <h3>3) How often you do lessons (and whether you practise between)</h3>
-            <p>Two learners might each do 20 hours of lessons, but the one who spreads them out with long gaps often needs extra time re-learning what was already covered. Consistency matters.</p>
-            <p>If you can do regular lessons and add private practice with a suitable supervising driver, progress usually feels smoother. The key is that private practice should reinforce what you are being taught, not create bad habits that have to be undone later.</p>
-
-            <h3>4) Confidence and nerves: real, normal, and workable</h3>
-            <p>Nerves don’t mean you are a “bad driver”. They simply mean your brain is busy. When you feel anxious, your attention narrows and your reactions can become rushed.</p>
-            <p>The good news is that confidence is built through repeatable wins: the same roundabout done well several times, a tricky junction handled calmly, or a lesson where you recover from a mistake safely. A patient, structured approach matters here because confidence comes from evidence, not pep talks.</p>
-
-            <h3>5) Where you’re learning (local roads and test routes)</h3>
-            <p>Learning in and around Peterborough, Kettering, or Grantham gives you different local challenges - from multilane roundabouts and heavier peak traffic to narrower residential streets and variable road layouts.</p>
-            <p>If your area has more complex traffic systems, you may need more practice time to feel truly settled. That is not wasted time. It is what makes you independent after you pass.</p>
-
-            <h2>What “test-ready” looks like (and why it takes time)</h2>
-            <p>Learners often assume they are close to test standard when they can drive for 30-40 minutes without a major intervention. That is a great sign, but test readiness is more specific.</p>
-            <p>You are usually near test standard when:</p>
-            <ul>
-                <li>You can plan ahead rather than react late.</li>
-                <li>Your observations are consistent, not occasional.</li>
-                <li>You make safe decisions at junctions and roundabouts even when other drivers pressure you.</li>
-                <li>Your speed choice is sensible for the conditions, not just the limit.</li>
-                <li>You can handle the manoeuvres calmly without your general driving falling apart straight afterwards.</li>
-            </ul>
-            <p>That last point is important. Many learners can do a parallel park in isolation, but the test checks whether you can do it and then re-join traffic with the same level of judgement.</p>
-
-            <h2>A realistic lesson timeline (what tends to happen when)</h2>
-            <p>Everyone progresses differently, but most learners go through similar phases.</p>
-            <p>In the early lessons, you are building control and routines: moving off, stopping, steering accuracy, and the habit of checking mirrors and blind spots at the right times. In a manual, clutch control and gear choice take up a lot of attention initially.</p>
-            <p>In the middle stage, you start to drive “properly” in a wider range of places: busier junctions, roundabouts, meeting traffic, independent driving practice, and handling mistakes without panic. This is often where learners feel like they have hit a plateau - not because they are failing, but because the driving environment is getting more realistic.</p>
-            <p>Later lessons are about consistency and polish: fewer repeated faults, better anticipation, smoother speed control, and feeling comfortable on the kinds of roads you might see on test. You also build the skill of driving under observation, because the test can make even good drivers tighten up.</p>
-
-            <h2>How to reduce the number of lessons without rushing</h2>
-            <p>The goal is not to cram. The goal is to make each hour count.</p>
-            <p>Regular lesson frequency helps more than occasional long gaps. If your schedule allows, a steady rhythm keeps your skills fresh and gives you less time to build anxiety between sessions.</p>
-            <p>Private practice can be a real advantage if it is done carefully: same routines, same standards, and a focus on calm repetition rather than “let’s just go for a drive”. A short practice focused on junction approach and observations often beats a long aimless drive.</p>
-            <p>Finally, ask for measurable progress. You should know what you are practising, why it matters, and what “better” looks like next time. That turns lessons from a vague experience into a plan.</p>
-
-            <h2>Intensive courses vs weekly lessons: which needs fewer hours?</h2>
-            <p>An intensive approach can work well for some learners, especially if you already have a base level of control and you can cope with several hours of driving close together. It can also suit people who have a deadline.</p>
-            <p>But intensive learning can feel overwhelming if you are very nervous or if you are still struggling with the basics. Fatigue matters. A tired learner makes more mistakes, and mistakes can knock confidence.</p>
-            <p>Weekly lessons are often better for building calm, long-term independence, especially if you can do small amounts of practice between sessions. The trade-off is that it can take longer in calendar time, even if the total hours are similar.</p>
-
-            <h2>The quickest way to know your number: an assessment lesson</h2>
-            <p>If you want a realistic estimate, book an assessment and ask for a clear plan: what stage you are at, what needs to improve, and what timeframe makes sense for your availability.</p>
-            <p>A good instructor will not promise you an unrealistically low number just to win your booking. They will also not inflate it to keep you paying for longer. You should come away knowing what to work on next, and how you will build towards test standard step by step.</p>
-            <p>If you are looking for one-to-one manual or automatic tuition around Peterborough, with dedicated test preparation sessions also available in Kettering and Grantham, you can see lesson lengths and booking options at <a href="https://Www.d4driving.co.uk">D4Driving School of Motoring</a>.</p>
-
-            <h2>The most helpful way to think about cost and confidence</h2>
-            <p>It is tempting to aim for the minimum number of lessons. But passing your test is only the start of driving on your own - with no dual controls, no instructor prompt, and no safety net.</p>
-            <p>Needing extra lessons is not failure. Often, those “extra” hours are where drivers become genuinely relaxed: they stop gripping the wheel, stop second-guessing every decision, and start driving with that quiet, capable feeling you actually want for the rest of your life.</p>
-            <p>If you keep your focus on safe independence, the number of lessons becomes far less stressful - because each session is no longer a countdown, it’s a step forward.</p>
+<p>The honest answer to “how many driving lessons do i need” is: enough to drive safely, independently, and consistently - not just enough to scrape through a test. That number is different for everyone, but it is not a mystery. Once you understand what affects progress and what “test ready” really looks like, you can plan lessons with far more confidence.</p>
+<h2>How many driving lessons do I need in the UK?</h2>
+<p>In the UK, the commonly quoted average is around 45 hours of professional instruction, often alongside plenty of private practice. Some people need fewer, some need more, and both can be completely normal.</p>
+<p>Averages can be helpful for setting expectations, but they can also be misleading if you treat them like a target. If you learn quickly but practise rarely, you may still need more lessons. If you’re nervous at the start but practise regularly in between, you may progress faster than you think.</p>
+<p>What matters most is not the count of lessons. It’s whether you can repeat safe decisions under real driving pressure: busy roundabouts, changing speed limits, tight meeting situations on parked-up streets, and that moment when someone does something unpredictable and you have to respond calmly.</p>
+<h2>The biggest factors that change how many lessons you’ll need</h2>
+<h3>1) Your starting point (complete beginner vs some experience)</h3>
+<p><a href="https://www.d4driving.co.uk/post/beginner-driving-lessons-your-guide-to-confident-driving">A complete beginner</a> usually needs time just to make the basics automatic: moving off smoothly, clutch control in a manual, steering with accuracy, and understanding how your observations fit into every decision.</p>
+<p>If you have had a few lessons before, or you have driven on private land, you might pick up the physical controls faster - but you may still need time on the judgement side of driving, which is what most tests and real-world situations rely on.</p>
+<h3>2) Manual or automatic: it changes workload, not standards</h3>
+<p>Automatic lessons remove gear changes and clutch work, which can reduce early overload for many learners. That often means you can spend more lesson time on positioning, planning, roundabouts, and hazard response.</p>
+<p>Manual can take longer at the start, especially if you are learning clutch control from scratch, but plenty of learners become excellent manual drivers without needing an extreme number of lessons. The standard for safe driving is the same either way - what changes is how quickly you can free up mental space for the road.</p>
+<h3>3) How often you do lessons (and whether you practise between)</h3>
+<p>Two learners might each do 20 hours of lessons, but the one who spreads them out with long gaps often needs extra time re-learning what was already covered. Consistency matters.</p>
+<p>If you can do regular lessons and add private practice with a suitable supervising driver, progress usually feels smoother. The key is that private practice should reinforce what you are being taught, not create bad habits that have to be undone later.</p>
+<h3>4) Confidence and nerves: real, normal, and workable</h3>
+<p>Nerves don’t mean you are a “bad driver”. They simply mean your brain is busy. When you feel anxious, your attention narrows and your reactions can become rushed.</p>
+<p>The good news is that confidence is built through repeatable wins: the same roundabout done well several times, a tricky junction handled calmly, or a lesson where you recover from a mistake safely. A patient, structured approach matters here because confidence comes from evidence, not pep talks.</p>
+<h3>5) Where you’re learning (local roads and test routes)</h3>
+<p>Learning in and around Peterborough, Kettering, or Grantham gives you different local challenges - from multilane roundabouts and heavier peak traffic to narrower residential streets and variable road layouts.</p>
+<p>If your area has more complex traffic systems, you may need more practice time to feel truly settled. That is not wasted time. It is what makes you independent after you pass.</p>
+<h2>What “test-ready” looks like (and why it takes time)</h2>
+<p>Learners often assume they are close to test standard when they can drive for 30-40 minutes without a major intervention. That is a great sign, but test readiness is more specific.</p>
+<p>You are usually near test standard when:</p>
+<ul><li>You can plan ahead rather than react late.</li><li>Your observations are consistent, not occasional.</li><li>You make safe decisions at junctions and roundabouts even when other drivers pressure you.</li><li>Your speed choice is sensible for the conditions, not just the limit.</li><li>You can handle the manoeuvres calmly without your general driving falling apart straight afterwards.</li></ul>
+<p>That last point is important. Many learners can do a parallel park in isolation, but the test checks whether you can do it and then re-join traffic with the same level of judgement.</p>
+<h2>A realistic lesson timeline (what tends to happen when)</h2>
+<p>Everyone progresses differently, but most learners go through similar phases.</p>
+<p>In the early lessons, you are building control and routines: moving off, stopping, steering accuracy, and the habit of checking mirrors and blind spots at the right times. In a manual, clutch control and gear choice take up a lot of attention initially.</p>
+<p>In the middle stage, you start to drive “properly” in a wider range of places: busier junctions, roundabouts, meeting traffic, independent driving practice, and handling mistakes without panic. This is often where learners feel like they have hit a plateau - not because they are failing, but because the driving environment is getting more realistic.</p>
+<p>Later lessons are about consistency and polish: fewer repeated faults, better anticipation, smoother speed control, and feeling comfortable on the kinds of roads you might see on test. You also build the skill of driving under observation, because the test can make even good drivers tighten up.</p>
+<h2>How to reduce the number of lessons without rushing</h2>
+<p>The goal is not to cram. The goal is to make each hour count.</p>
+<p>Regular lesson frequency helps more than occasional long gaps. If your schedule allows, a steady rhythm keeps your skills fresh and gives you less time to build anxiety between sessions.</p>
+<p>Private practice can be a real advantage if it is done carefully: same routines, same standards, and a focus on calm repetition rather than “let’s just go for a drive”. A short practice focused on junction approach and observations often beats a long aimless drive.</p>
+<p>Finally, ask for measurable progress. You should know what you are practising, why it matters, and what “better” looks like next time. That turns lessons from a vague experience into a plan.</p>
+<h2>Intensive courses vs weekly lessons: which needs fewer hours?</h2>
+<p>An intensive approach can work well for some learners, especially if you already have a base level of control and you can cope with several hours of driving close together. It can also suit people who have a deadline.</p>
+<p>But intensive learning can feel overwhelming if you are very nervous or if you are still struggling with the basics. Fatigue matters. A tired learner makes more mistakes, and mistakes can knock confidence.</p>
+<p>Weekly lessons are often better for building calm, long-term independence, especially if you can do small amounts of practice between sessions. The trade-off is that it can take longer in calendar time, even if the total hours are similar.</p>
+<h2>The quickest way to know your number: an assessment lesson</h2>
+<p>If you want a realistic estimate, book an assessment and ask for a clear plan: what stage you are at, what needs to improve, and what timeframe makes sense for your availability.</p>
+<p>A good instructor will not promise you an unrealistically low number just to win your booking. They will also not inflate it to keep you paying for longer. You should come away knowing what to work on next, and how you will build towards test standard step by step.</p>
+<p>If you are looking for one-to-one manual or automatic tuition around Peterborough, with dedicated test preparation sessions also available in Kettering and Grantham, you can see lesson lengths and booking options at <a href="https://Www.d4driving.co.uk">D4Driving School of Motoring</a>.</p>
+<h2>A helpful way to think about cost and confidence</h2>
+<p>It is tempting to aim for the minimum number of lessons. But passing your test is only the start of driving on your own - with no dual controls, no instructor prompt, and no safety net.</p>
+<p>Needing extra lessons is not failure. Often, those “extra” hours are where drivers become genuinely relaxed: they stop gripping the wheel, stop second-guessing every decision, and start driving with that quiet, capable feeling you actually want for the rest of your life.</p>
+<p>If you keep your focus on safe independence, the number of lessons becomes far less stressful - because each session is no longer a countdown, it’s a step forward.</p>
         </div>
 
-        <button id="shareBtn" class="w-full py-4 rounded-2xl bg-[#B11E24] hover:bg-[#8C181D] font-bold text-white transition flex items-center justify-center gap-2 mb-16">
+        <button id="shareBtn" class="w-full py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 font-bold transition flex items-center justify-center gap-2 mb-16">
             <span>Share this Guide</span>
         </button>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-stone-200 pt-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-white/10 pt-12">
             <a href="#" id="prev-post-link" class="nav-btn glass-card p-6 rounded-2xl flex flex-col items-start gap-2">
-                <span class="text-[#B11E24] text-xs font-bold uppercase tracking-widest">← Previous</span>
-                <span id="prev-post-title" class="font-bold text-lg text-[#1A365D]">Loading...</span>
+                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">← Previous</span>
+                <span id="prev-post-title" class="font-bold text-lg text-white">Loading...</span>
             </a>
             
             <a href="#" id="next-post-link" class="nav-btn glass-card p-6 rounded-2xl flex flex-col items-end text-right gap-2">
-                <span class="text-[#B11E24] text-xs font-bold uppercase tracking-widest">Next →</span>
-                <span id="next-post-title" class="font-bold text-lg text-[#1A365D]">Loading...</span>
+                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">Next →</span>
+                <span id="next-post-title" class="font-bold text-lg text-white">Loading...</span>
             </a>
         </div>
     </article>
 
-    <div id="dynamic-footer"></div>
+    <footer class="max-w-4xl mx-auto mt-20 p-8 text-center border-t border-white/5 text-slate-600 text-sm">
+        © 2026 D4Driving School of Motoring.
+    </footer>
 
-    <script src="blog-logic.js"></script>
+    <script>
+        // MASTER DATA: Your 32 Peterborough Driving Guides
+        const posts = [
+            { "id": "how-to-pass-the-driving-test-first-time", "title": "How To Pass The Driving Test First Time" },
+            { "id": "manual-driving-lesson-hill-start-practice-tips", "title": "Manual Driving Lesson Hill Start Practice Tips" },
+            { "id": "best-ways-to-reduce-driving-lesson-anxiety", "title": "Best Ways to Reduce Driving Lesson Anxiety" },
+            { "id": "theory-test-pass-tips-that-actually-help", "title": "Theory Test Pass Tips That Actually Help" },
+            { "id": "one-to-one-driving-tuition-benefits-explained", "title": "One to One Driving Tuition Benefits Explained" },
+            { "id": "how-to-pass-the-driving-test-first-time", "title": "How to Pass the Driving Test First Time" },
+            { "id": "female-instructor-or-male-instructor", "title": "Female Instructor or Male Instructor?" },
+            { "id": "best-driving-practice-routes-in-peterborough", "title": "Best Driving Practice Routes in Peterborough" },
+            { "id": "most-common-driving-test-faults", "title": "Most Common Driving Test Faults" },
+            { "id": "starting-driving-lessons-with-confidence", "title": "Starting Driving Lessons With Confidence" },
+            { "id": "automatic-or-manual-lessons-in-peterborough", "title": "Automatic or Manual Lessons in Peterborough?" },
+            { "id": "can-you-pass-with-4-hours-of-test-prep", "title": "Can You Pass With 4 Hours of Test Prep?" },
+            { "id": "10-driving-test-day-tips-that-really-help", "title": "10 Driving Test Day Tips That Really Help" },
+            { "id": "7-smart-ways-to-practise-hazard-perception", "title": "7 Smart Ways to Practise Hazard Perception" },
+            { "id": "how-many-driving-lessons-do-you-need", "title": "How Many Driving Lessons Do You Need?" },
+            { "id": "7-ways-to-feel-confident-behind-the-wheel", "title": "7 Ways to Feel Confident Behind the Wheel" },
+            { "id": "book-driving-lessons-online-in-peterborough", "title": "Book Driving Lessons Online in Peterborough" },
+            { "id": "warmup-lesson-before-your-peterborough-test", "title": "Warm-Up Lesson Before Your Peterborough Test" },
+            { "id": "driving-lessons-for-anxious-adults-in-peterborough", "title": "Driving Lessons for Anxious Adults in Peterborough" },
+            { "id": "how-long-should-your-driving-lessons-be", "title": "How Long Should Your Driving Lessons Be?" },
+            { "id": "automatic-cars-what-new-drivers-can-expect", "title": "Automatic cars: what new drivers can expect" },
+            { "id": "choosing-an-approved-driving-instructor-in-peterborough", "title": "Choosing an Approved Driving Instructor in Peterborough" },
+            { "id": "driving-test-manoeuvres-practice-that-works", "title": "Driving test manoeuvres practice that works" },
+            { "id": "mock-test-lessons-that-actually-boost-pass-rates", "title": "Mock Test Lessons That Actually Boost Pass Rates" },
+            { "id": "your-first-driving-lesson-what-to-expect", "title": "Your First Driving Lesson: What to Expect" },
+            { "id": "driving-lessons-for-nervous-drivers-what-works", "title": "Driving Lessons for Nervous Drivers: What Works" },
+            { "id": "manual-or-automatic-lessons-which-is-better", "title": "Manual or Automatic Lessons: Which Is Better?" },
+            { "id": "how-many-driving-lessons-do-you-really-need", "title": "How Many Driving Lessons Do You Really Need?" },
+            { "id": "intensive-driving-test-prep-session-what-works", "title": "Intensive Driving Test Prep Session: What Works" },
+            { "id": "is-a-1hour-automatic-lesson-enough", "title": "Is a 1-Hour Automatic Lesson Enough?" },
+            { "id": "grantham-driving-test-prep-that-actually-works", "title": "Grantham Driving Test Prep That Actually Works" },
+            { "id": "kettering-driving-test-prep-that-actually-works", "title": "Kettering Driving Test Prep That Actually Works" },
+            { "id": "peterborough-driving-test-prep-that-works", "title": "Peterborough Driving Test Prep That Works" }
+        ];
+
+        // LOGIC: PWA & Share
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => {}); });
+        }
+
+        const shareBtn = document.getElementById('shareBtn');
+        if (shareBtn) {
+            shareBtn.addEventListener('click', async () => {
+                const shareData = {
+                    title: document.title,
+                    text: 'Check out this driving guide from D4Driving Peterborough!',
+                    url: window.location.href
+                };
+                try {
+                    if (navigator.share) { await navigator.share(shareData); } 
+                    else {
+                        await navigator.clipboard.writeText(window.location.href);
+                        const span = shareBtn.querySelector('span');
+                        const originalText = span.innerText;
+                        span.innerText = 'Link Copied!';
+                        setTimeout(() => span.innerText = originalText, 2000);
+                    }
+                } catch (err) { console.log('Share error'); }
+            });
+        }
+
+        // LOGIC: Auto-Navigation
+        function loadBlogNavigation() {
+            const path = window.location.pathname;
+            const currentFilename = path.split('/').pop().replace('.html', '');
+            const currentIndex = posts.findIndex(p => p.id === currentFilename);
+            
+            if (currentIndex !== -1) {
+                const currentPost = posts[currentIndex];
+                const prevPost = posts[currentIndex - 1];
+                const nextPost = posts[currentIndex + 1];
+
+                document.title = `${currentPost.title} | D4Driving Journal`;
+                const h1 = document.getElementById('post-title');
+                if (h1 && h1.innerText === "How Many Driving Lessons Do You Really Need?") h1.innerText = currentPost.title;
+
+                const prevLink = document.getElementById('prev-post-link');
+                const nextLink = document.getElementById('next-post-link');
+
+                if (prevPost) {
+                    document.getElementById('prev-post-title').innerText = prevPost.title;
+                    prevLink.href = `${prevPost.id}.html`;
+                } else if (prevLink) { prevLink.style.display = 'none'; }
+
+                if (nextPost) {
+                    document.getElementById('next-post-title').innerText = nextPost.title;
+                    nextLink.href = `${nextPost.id}.html`;
+                } else if (nextLink) { nextLink.style.display = 'none'; }
+            }
+        }
+        loadBlogNavigation();
+    </script>
 </body>
 </html>

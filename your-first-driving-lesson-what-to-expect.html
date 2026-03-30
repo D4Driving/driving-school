@@ -5,197 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your First Driving Lesson: What to Expect | D4Driving Journal</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; }
-        .glass-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
-        .prose p { margin-bottom: 1.5rem; color: #94a3b8; line-height: 1.8; font-size: 1.1rem; }
-        .prose h2 { color: white; font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; }
-        .nav-btn { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
-        .nav-btn:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.3); transform: translateY(-2px); }
+        body { font-family: 'Inter', sans-serif; background-color: #FDF9F3; color: #3E3835; }
+        .glass-card { background: white; border: 1px solid #EADDD0; box-shadow: 0 10px 30px rgba(177, 30, 36, 0.03); }
+        .prose p { margin-bottom: 1.5rem; color: #4A4542; line-height: 1.8; font-size: 1.1rem; }
+        .prose h2 { color: #1A365D; font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: bold; margin-top: 2.5rem; margin-bottom: 1.2rem; }
+        .prose h3 { color: #1A365D; font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem; }
+        .prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1.5rem; color: #4A4542; }
+        .prose li { margin-bottom: 0.5rem; line-height: 1.6; }
+        .prose a { color: #B11E24; font-weight: 600; text-decoration: underline; }
+        .nav-btn { transition: all 0.3s ease; border: 1px solid #EADDD0; background: white; }
+        .nav-btn:hover { background: #FFF5F5; border-color: #B11E24; transform: translateY(-2px); }
     </style>
 </head>
 <body class="min-h-screen pb-20">
-    <nav class="max-w-6xl mx-auto p-6 flex justify-between items-center">
-        <a href="index.html" class="flex items-center gap-3">
-            <img src="400dpiLogoCropped.png" alt="Logo" class="h-10 w-auto">
-            <span class="font-bold uppercase tracking-wider">D4DRIVING</span>
-        </a>
-        <a href="blog.html" class="text-xs font-bold bg-slate-800 px-4 py-2 rounded-full border border-white/10 hover:bg-slate-700 transition">← Back to Blog</a>
-    </nav>
+
+    <div id="dynamic-nav"></div>
 
     <article class="max-w-3xl mx-auto px-6 pt-12">
-        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4df99afd-2cdd-43dd-8d4f-da60ecbf33e8.webp" alt="Your First Driving Lesson: What to Expect" class="w-full h-64 md:h-96 object-cover rounded-3xl mb-8 border border-white/10">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4df99afd-2cdd-43dd-8d4f-da60ecbf33e8.webp" alt="Your First Driving Lesson: What to Expect" class="w-full h-64 md:h-96 object-cover rounded-[40px] mb-8 border-4 border-white shadow-lg">
         
-        <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold mb-6">Your First Driving Lesson: What to Expect</h1>
+        <h1 id="post-title" class="text-4xl md:text-5xl font-extrabold mb-6 text-[#1A365D] font-[Outfit]">Your First Driving Lesson: What to Expect</h1>
         
-        <div class="prose prose-invert max-w-none mb-12">
+        <div class="prose max-w-none mb-12">
             <p>You’re sat in the passenger seat with your seatbelt on, hands a little clammy, wondering whether you’re about to drive straight into a roundabout by accident. That first lesson feeling is completely normal. The good news is your first driving lesson is designed to be calm, controlled, and far more doable than your nerves suggest.</p>
-<p>If you’ve been searching “first driving lesson what to expect”, you’re probably hoping for two things: fewer surprises and a clear sense of what success looks like. Let’s walk through exactly how most first lessons go in Peterborough (and what may vary depending on your experience), so you can turn up prepared and leave feeling like you’ve genuinely started.</p>
-<h2>First driving lesson what to expect when the instructor arrives</h2>
-<p>Your instructor will usually start by checking they’ve got the right person and the right plan. If you’re brand new, expect a few minutes of friendly questions: have you driven before (even on private land), how confident do you feel, and what are you hoping to achieve?</p>
-<p>You’ll also cover the basics that keep everything safe and legal. That normally includes a quick look at your provisional licence, a reminder about glasses or contact lenses if you need them, and a simple explanation of how the lesson will run. If you’re nervous, say so. A good instructor will adjust the pace and the starting location to match you - there’s no prize for jumping into busy roads too soon.</p>
-<p>A common worry is “Will I be thrown straight into traffic?” For most beginners, no. The first lesson often begins somewhere quiet: a calm residential street or an empty car park area where you can focus on the pedals and steering without pressure.</p>
-<h2>Getting comfortable in the driving seat (it matters more than people realise)</h2>
-<p>Before the engine even goes on, you’ll set yourself up properly. This is where a lot of confidence comes from, because the car stops feeling like a machine you’re borrowing and starts feeling like something you can control.</p>
-<p>Your instructor will talk you through the cockpit drill, which is simply the routine of setting the seat position, head restraint, mirrors, and seatbelt. You’ll learn how to sit so you can fully press the clutch (in a manual) without stretching, and how to place your hands on the steering wheel so turning feels smooth rather than frantic.</p>
-<p>You’ll also be introduced to the main controls: indicators, wipers, lights, the handbrake, gears (if manual), and the pedals. If you’re learning automatic, you’ll cover the selector positions (P, R, N, D) and how the car “creeps” when you lift the brake.</p>
-<p>This part can feel slow, but it pays off. When your seat and mirrors are right, you see more, react sooner, and feel less rushed.</p>
-<h2>What you’ll actually do on your first lesson</h2>
-<p>It depends on your starting point. Some learners have never touched the pedals; others have practised with family on private land. Your instructor’s job is to meet you where you are.</p>
-<p>For complete beginners, the first lesson often focuses on moving off, stopping, and steering control. In a manual, you’ll spend time understanding the clutch’s biting point and how to coordinate clutch and accelerator. In an automatic, you’ll likely progress a little quicker at first because there’s no clutch control, so you can put more attention into observation and positioning.</p>
-<p>You’ll probably practise:</p>
-<ul><li>Moving off safely and coming to a controlled stop</li><li>Steering accurately at low speeds</li><li>Basic observation routines, including mirror checks</li><li>Simple junction approaches if you’re settling quickly</li></ul>
-<p>Don’t be surprised if you repeat the same action several times. Repetition is how your brain turns “thinking steps” into instinct.</p>
-<h2><a href="https://www.d4driving.co.uk/post/manual-or-automatic-lessons-which-is-better">Manual vs automatic</a>: what feels different in lesson one</h2>
-<p>Many learners in Peterborough ask which is easier at the start. The honest answer is: automatic usually feels simpler early on, because you’re not learning clutch control at the same time as road awareness. That can be a big confidence boost if you’re anxious.</p>
-<p>Manual, though, gives you more flexibility long-term and can sometimes be cheaper when you buy and insure a car (although not always - it depends). Manual learners often find the first lesson a bit more mentally busy, because stalling is a normal part of learning and the clutch takes practise.</p>
-<p>Whichever you choose, your instructor should pace the lesson so you’re not overloaded. If you’re doing manual and you stall, that’s not a failure - it’s feedback. You learn what the car needs, and it gets smoother surprisingly quickly.</p>
-<h2>The safety structure you might not notice (but should appreciate)</h2>
-<p>Your instructor has dual controls, which means they can brake if needed. That’s not because they expect you to make a dangerous mistake - it’s simply a safety net while you learn. Knowing it’s there helps you relax enough to focus.</p>
-<p>They’ll also use clear coaching language: what you’re doing well, what to adjust, and what to try next. If something isn’t clicking, they’ll change the explanation or the exercise. Learning styles vary. Some people need a visual reference, others need a simple rule, and some need to feel it through repetition.</p>
-<p>You’ll also learn early habits that reduce risk later: mirror checks before changing speed or direction, scanning for hazards, and leaving space. These are the foundations of driving test success, but more importantly, they’re how you stay safe when you start driving independently.</p>
-<h2><a href="https://www.d4driving.co.uk/post/driving-lessons-for-nervous-drivers-what-works">Common nerves</a> (and how a good lesson handles them)</h2>
-<p>Most first-time learners worry about judgement. They don’t want to look silly, stall, roll too fast, or “hold people up”. The truth is that every confident driver you see has been a learner, and the road is full of people who understand what L plates mean.</p>
-<p>If you feel anxious, the key is to keep the goal realistic. Your first lesson is not about being polished. It’s about being introduced to the car and beginning to build control.</p>
-<p>Your instructor should help by choosing a suitable area, keeping instructions calm and timed well, and giving you space to process. If you notice your shoulders creeping up towards your ears, tell them. A short pause, a few breaths, and a quick reset can make the next ten minutes far more productive.</p>
-<h2>What to bring and how to prepare (without overthinking it)</h2>
-<p>Bring your provisional licence. If you need glasses or contact lenses for driving, make sure you’ve got them. Wear comfortable shoes with a thin sole - chunky boots and very soft trainers can make pedal control harder, especially in a manual.</p>
-<p>Try to arrive a few minutes early so you’re not rushing. If you’ve had a stressful day, mention it. Lessons can still go well, but it helps your instructor pitch the session correctly.</p>
-<p>One helpful mindset shift: you’re not there to “perform”. You’re there to practise. Practise includes mistakes, questions, and repeating things until they feel natural.</p>
-<h2><a href="https://www.d4driving.co.uk/post/how-many-driving-lessons-do-you-really-need">How long</a> should your first lesson be?</h2>
-<p>Lesson length is personal. A one-hour lesson can be ideal if you’re very nervous or you’re squeezing it around college, work, or family commitments. Ninety minutes can give you more time to settle in, practise a skill, and finish without feeling rushed. Two hours is great once you’ve got some stamina and you want momentum.</p>
-<p>If you’re unsure, start with what feels manageable. It’s better to finish a lesson feeling focused than to push too long and leave mentally drained.</p>
-<h2>What progress looks like after lesson one</h2>
-<p>Progress isn’t only “I drove down a main road”. Often, real progress looks quieter: you understood the clutch a bit more, you remembered to check mirrors more consistently, or you managed a smooth stop without jolting.</p>
-<p>You may also find you’re tired afterwards. That’s normal. Driving is a new skill, and your brain is working hard to coordinate your eyes, hands, feet, and decision-making.</p>
-<p>A supportive instructor will finish by telling you what you did well, what to work on next time, and roughly what your next few lessons might involve. That plan matters. It turns anxiety into steps.</p>
-<p>If you’re looking for one-to-one tuition in Peterborough with lesson blocks that fit around real life, <a href="https://Www.d4driving.co.uk">D4Driving School of Motoring</a> builds personalised lesson plans around your current ability and your goals - whether you’re starting from scratch, switching to automatic, or working towards a focused test preparation session.</p>
-<h2>Questions learners ask before their first driving lesson</h2>
-<h3>Will I drive on the main roads straight away?</h3>
-<p>It depends on how quickly you settle and where you start. Many beginners begin on quiet roads first, then build up gradually. If you’ve had some prior practise, you might reach busier roads sooner, but only when you’re ready.</p>
-<h3>What if I stall (manual)?</h3>
-<p>You’ll probably stall at some point, and that’s fine. Your instructor will show you how to recover safely and how to prevent it next time. Stalling is part of learning clutch control, not a sign you’re “bad at driving”.</p>
-<h3>What if I’m scared?</h3>
-<p>Say it. Nervous learners often do brilliantly when the lesson is paced properly. A calm start, clear instructions, and small wins build confidence faster than pushing through fear.</p>
-<p>You don’t need to feel fearless before your first lesson. You just need to show up, be honest about how you’re feeling, and give yourself permission to learn one step at a time - confidence is something you build, not something you either have or don’t.</p>
+            <p>If you’ve been searching “first driving lesson what to expect”, you’re probably hoping for two things: fewer surprises and a clear sense of what success looks like. Let’s walk through exactly how most first lessons go in Peterborough (and what may vary depending on your experience), so you can turn up prepared and leave feeling like you’ve genuinely started.</p>
+
+            <h2>First driving lesson what to expect when the instructor arrives</h2>
+            <p>Your instructor will usually start by checking they’ve got the right person and the right plan. If you’re brand new, expect a few minutes of friendly questions: have you driven before (even on private land), how confident do you feel, and what are you hoping to achieve?</p>
+            <p>You’ll also cover the basics that keep everything safe and legal. That normally includes a quick look at your provisional licence, a reminder about glasses or contact lenses if you need them, and a simple explanation of how the lesson will run. If you’re nervous, say so. A good instructor will adjust the pace and the starting location to match you - there’s no prize for jumping into busy roads too soon.</p>
+            <p>A common worry is “Will I be thrown straight into traffic?” For most beginners, no. The first lesson often begins somewhere quiet: a calm residential street or an empty car park area where you can focus on the pedals and steering without pressure.</p>
+
+            <h2>Getting comfortable in the driving seat (it matters more than people realise)</h2>
+            <p>Before the engine even goes on, you’ll set yourself up properly. This is where a lot of confidence comes from, because the car stops feeling like a machine you’re borrowing and starts feeling like something you can control.</p>
+            <p>Your instructor will talk you through the cockpit drill, which is simply the routine of setting the seat position, head restraint, mirrors, and seatbelt. You’ll learn how to sit so you can fully press the clutch (in a manual) without stretching, and how to place your hands on the steering wheel so turning feels smooth rather than frantic.</p>
+            <p>You’ll also be introduced to the main controls: indicators, wipers, lights, the handbrake, gears (if manual), and the pedals. If you’re learning automatic, you’ll cover the selector positions (P, R, N, D) and how the car “creeps” when you lift the brake.</p>
+
+            <h2>What you’ll actually do on your first lesson</h2>
+            <p>It depends on your starting point. Some learners have never touched the pedals; others have practised with family on private land. Your instructor’s job is to meet you where you are.</p>
+            <p>For complete beginners, the first lesson often focuses on moving off, stopping, and steering control. In a manual, you’ll spend time understanding the clutch’s biting point and how to coordinate clutch and accelerator. In an automatic, you’ll likely progress a little quicker at first because there’s no clutch control, so you can put more attention into observation and positioning.</p>
+            <p>You’ll probably practise:</p>
+            <ul>
+                <li>Moving off safely and coming to a controlled stop</li>
+                <li>Steering accurately at low speeds</li>
+                <li>Basic observation routines, including mirror checks</li>
+                <li>Simple junction approaches if you’re settling quickly</li>
+            </ul>
+
+            <h2><a href="https://www.d4driving.co.uk/post/manual-or-automatic-lessons-which-is-better">Manual vs automatic</a>: what feels different in lesson one</h2>
+            <p>Many learners in Peterborough ask which is easier at the start. The honest answer is: automatic usually feels simpler early on, because you’re not learning clutch control at the same time as road awareness. That can be a big confidence boost if you’re anxious.</p>
+            <p>Manual, though, gives you more flexibility long-term and can sometimes be cheaper when you buy and insure a car. Whichever you choose, your instructor should pace the lesson so you’re not overloaded. If you’re doing manual and you stall, that’s not a failure - it’s feedback.</p>
+
+            <h2>The safety structure you might not notice (but should appreciate)</h2>
+            <p>Your instructor has dual controls, which means they can brake if needed. That’s not because they expect you to make a dangerous mistake - it’s simply a safety net while you learn. Knowing it’s there helps you relax enough to focus.</p>
+
+            <h2><a href="https://www.d4driving.co.uk/post/driving-lessons-for-nervous-drivers-what-works">Common nerves</a> (and how a good lesson handles them)</h2>
+            <p>Most first-time learners worry about judgement. They don’t want to look silly, stall, roll too fast, or “hold people up”. The truth is that every confident driver you see has been a learner, and the road is full of people who understand what L plates mean.</p>
+
+            <h2>What to bring and how to prepare (without overthinking it)</h2>
+            <p>Bring your provisional licence. If you need glasses or contact lenses for driving, make sure you’ve got them. Wear comfortable shoes with a thin sole - chunky boots and very soft trainers can make pedal control harder, especially in a manual.</p>
+
+            <h2><a href="https://www.d4driving.co.uk/post/how-many-driving-lessons-do-you-really-need">How long</a> should your first lesson be?</h2>
+            <p>Lesson length is personal. A one-hour lesson can be ideal if you’re very nervous. Ninety minutes can give you more time to settle in and finish without feeling rushed. Two hours is great once you’ve got some stamina and you want momentum.</p>
+
+            <h2>What progress looks like after lesson one</h2>
+            <p>Progress isn’t only “I drove down a main road”. Often, real progress looks quieter: you understood the clutch a bit more, you remembered to check mirrors more consistently, or you managed a smooth stop without jolting.</p>
+            <p>If you’re looking for one-to-one tuition in Peterborough, <a href="https://Www.d4driving.co.uk">D4Driving School of Motoring</a> builds personalised lesson plans around your current ability and your goals.</p>
+
+            <h2>Questions learners ask before their first driving lesson</h2>
+            <h3>Will I drive on the main roads straight away?</h3>
+            <p>It depends on how quickly you settle and where you start. Many beginners begin on quiet roads first, then build up gradually. If you’ve had some prior practise, you might reach busier roads sooner, but only when you’re ready.</p>
+            <h3>What if I stall (manual)?</h3>
+            <p>You’ll probably stall at some point, and that’s fine. Your instructor will show you how to recover safely and how to prevent it next time. Stalling is part of learning clutch control, not a sign you’re “bad at driving”.</p>
+            <h3>What if I’m scared?</h3>
+            <p>Say it. Nervous learners often do brilliantly when the lesson is paced properly. A calm start, clear instructions, and small wins build confidence faster than pushing through fear.</p>
         </div>
 
-        <button id="shareBtn" class="w-full py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 font-bold transition flex items-center justify-center gap-2 mb-16">
+        <button id="shareBtn" class="w-full py-4 rounded-2xl bg-[#B11E24] hover:bg-[#8C181D] font-bold text-white transition flex items-center justify-center gap-2 mb-16 shadow-lg">
             <span>Share this Guide</span>
         </button>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-white/10 pt-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-stone-200 pt-12">
             <a href="#" id="prev-post-link" class="nav-btn glass-card p-6 rounded-2xl flex flex-col items-start gap-2">
-                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">← Previous</span>
-                <span id="prev-post-title" class="font-bold text-lg text-white">Loading...</span>
+                <span class="text-[#B11E24] text-xs font-bold uppercase tracking-widest">← Previous</span>
+                <span id="prev-post-title" class="font-bold text-lg text-[#1A365D]">Loading...</span>
             </a>
             
             <a href="#" id="next-post-link" class="nav-btn glass-card p-6 rounded-2xl flex flex-col items-end text-right gap-2">
-                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest">Next →</span>
-                <span id="next-post-title" class="font-bold text-lg text-white">Loading...</span>
+                <span class="text-[#B11E24] text-xs font-bold uppercase tracking-widest">Next →</span>
+                <span id="next-post-title" class="font-bold text-lg text-[#1A365D]">Loading...</span>
             </a>
         </div>
     </article>
 
-    <footer class="max-w-4xl mx-auto mt-20 p-8 text-center border-t border-white/5 text-slate-600 text-sm">
-        © 2026 D4Driving School of Motoring.
-    </footer>
+    <div id="dynamic-footer"></div>
 
-    <script>
-        // MASTER DATA: Your 32 Peterborough Driving Guides
-        const posts = [
-            { "id": "how-to-pass-the-driving-test-first-time", "title": "How To Pass The Driving Test First Time" },
-            { "id": "manual-driving-lesson-hill-start-practice-tips", "title": "Manual Driving Lesson Hill Start Practice Tips" },
-            { "id": "best-ways-to-reduce-driving-lesson-anxiety", "title": "Best Ways to Reduce Driving Lesson Anxiety" },
-            { "id": "theory-test-pass-tips-that-actually-help", "title": "Theory Test Pass Tips That Actually Help" },
-            { "id": "one-to-one-driving-tuition-benefits-explained", "title": "One to One Driving Tuition Benefits Explained" },
-            { "id": "how-to-pass-the-driving-test-first-time", "title": "How to Pass the Driving Test First Time" },
-            { "id": "female-instructor-or-male-instructor", "title": "Female Instructor or Male Instructor?" },
-            { "id": "best-driving-practice-routes-in-peterborough", "title": "Best Driving Practice Routes in Peterborough" },
-            { "id": "most-common-driving-test-faults", "title": "Most Common Driving Test Faults" },
-            { "id": "starting-driving-lessons-with-confidence", "title": "Starting Driving Lessons With Confidence" },
-            { "id": "automatic-or-manual-lessons-in-peterborough", "title": "Automatic or Manual Lessons in Peterborough?" },
-            { "id": "can-you-pass-with-4-hours-of-test-prep", "title": "Can You Pass With 4 Hours of Test Prep?" },
-            { "id": "10-driving-test-day-tips-that-really-help", "title": "10 Driving Test Day Tips That Really Help" },
-            { "id": "7-smart-ways-to-practise-hazard-perception", "title": "7 Smart Ways to Practise Hazard Perception" },
-            { "id": "how-many-driving-lessons-do-you-need", "title": "How Many Driving Lessons Do You Need?" },
-            { "id": "7-ways-to-feel-confident-behind-the-wheel", "title": "7 Ways to Feel Confident Behind the Wheel" },
-            { "id": "book-driving-lessons-online-in-peterborough", "title": "Book Driving Lessons Online in Peterborough" },
-            { "id": "warmup-lesson-before-your-peterborough-test", "title": "Warm-Up Lesson Before Your Peterborough Test" },
-            { "id": "driving-lessons-for-anxious-adults-in-peterborough", "title": "Driving Lessons for Anxious Adults in Peterborough" },
-            { "id": "how-long-should-your-driving-lessons-be", "title": "How Long Should Your Driving Lessons Be?" },
-            { "id": "automatic-cars-what-new-drivers-can-expect", "title": "Automatic cars: what new drivers can expect" },
-            { "id": "choosing-an-approved-driving-instructor-in-peterborough", "title": "Choosing an Approved Driving Instructor in Peterborough" },
-            { "id": "driving-test-manoeuvres-practice-that-works", "title": "Driving test manoeuvres practice that works" },
-            { "id": "mock-test-lessons-that-actually-boost-pass-rates", "title": "Mock Test Lessons That Actually Boost Pass Rates" },
-            { "id": "your-first-driving-lesson-what-to-expect", "title": "Your First Driving Lesson: What to Expect" },
-            { "id": "driving-lessons-for-nervous-drivers-what-works", "title": "Driving Lessons for Nervous Drivers: What Works" },
-            { "id": "manual-or-automatic-lessons-which-is-better", "title": "Manual or Automatic Lessons: Which Is Better?" },
-            { "id": "how-many-driving-lessons-do-you-really-need", "title": "How Many Driving Lessons Do You Really Need?" },
-            { "id": "intensive-driving-test-prep-session-what-works", "title": "Intensive Driving Test Prep Session: What Works" },
-            { "id": "is-a-1hour-automatic-lesson-enough", "title": "Is a 1-Hour Automatic Lesson Enough?" },
-            { "id": "grantham-driving-test-prep-that-actually-works", "title": "Grantham Driving Test Prep That Actually Works" },
-            { "id": "kettering-driving-test-prep-that-actually-works", "title": "Kettering Driving Test Prep That Actually Works" },
-            { "id": "peterborough-driving-test-prep-that-works", "title": "Peterborough Driving Test Prep That Works" }
-        ];
-
-        // LOGIC: PWA & Share
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(() => {}); });
-        }
-
-        const shareBtn = document.getElementById('shareBtn');
-        if (shareBtn) {
-            shareBtn.addEventListener('click', async () => {
-                const shareData = {
-                    title: document.title,
-                    text: 'Check out this driving guide from D4Driving Peterborough!',
-                    url: window.location.href
-                };
-                try {
-                    if (navigator.share) { await navigator.share(shareData); } 
-                    else {
-                        await navigator.clipboard.writeText(window.location.href);
-                        const span = shareBtn.querySelector('span');
-                        const originalText = span.innerText;
-                        span.innerText = 'Link Copied!';
-                        setTimeout(() => span.innerText = originalText, 2000);
-                    }
-                } catch (err) { console.log('Share error'); }
-            });
-        }
-
-        // LOGIC: Auto-Navigation
-        function loadBlogNavigation() {
-            const path = window.location.pathname;
-            const currentFilename = path.split('/').pop().replace('.html', '');
-            const currentIndex = posts.findIndex(p => p.id === currentFilename);
-            
-            if (currentIndex !== -1) {
-                const currentPost = posts[currentIndex];
-                const prevPost = posts[currentIndex - 1];
-                const nextPost = posts[currentIndex + 1];
-
-                document.title = `${currentPost.title} | D4Driving Journal`;
-                const h1 = document.getElementById('post-title');
-                if (h1 && h1.innerText === "Your First Driving Lesson: What to Expect") h1.innerText = currentPost.title;
-
-                const prevLink = document.getElementById('prev-post-link');
-                const nextLink = document.getElementById('next-post-link');
-
-                if (prevPost) {
-                    document.getElementById('prev-post-title').innerText = prevPost.title;
-                    prevLink.href = `${prevPost.id}.html`;
-                } else if (prevLink) { prevLink.style.display = 'none'; }
-
-                if (nextPost) {
-                    document.getElementById('next-post-title').innerText = nextPost.title;
-                    nextLink.href = `${nextPost.id}.html`;
-                } else if (nextLink) { nextLink.style.display = 'none'; }
-            }
-        }
-        loadBlogNavigation();
-    </script>
+    <script src="blog-logic.js"></script>
 </body>
 </html>

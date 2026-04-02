@@ -342,8 +342,57 @@ async function init() {
 
   const a = articles[idx];
 
-  /* Update page title & meta */
+  /* Update page title & meta dynamically */
   document.title = `${a.title} | D4Driving Peterborough`;
+
+  /* Open Graph & meta description */
+  const setMeta = (sel, attr, val) => {
+    let el = document.querySelector(sel);
+    if (!el) { el = document.createElement('meta'); document.head.appendChild(el); }
+    el.setAttribute(attr, val);
+  };
+  const pageUrl = `https://www.d4driving.co.uk/article.html?i=${idx}`;
+  setMeta('meta[name="description"]',      'content', a.excerpt);
+  setMeta('meta[property="og:title"]',     'content', `${a.title} | D4Driving Peterborough`);
+  setMeta('meta[property="og:description"]','content', a.excerpt);
+  setMeta('meta[property="og:url"]',       'content', pageUrl);
+  setMeta('meta[property="og:image"]',     'content', a.image || 'https://www.d4driving.co.uk/yaris-cross.webp');
+  setMeta('meta[property="og:type"]',      'content', 'article');
+  setMeta('meta[name="robots"]',           'content', 'index, follow, max-image-preview:large');
+
+  /* Canonical */
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
+  canonical.href = pageUrl;
+
+  /* Article schema */
+  const schema = document.createElement('script');
+  schema.type = 'application/ld+json';
+  schema.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": a.title,
+    "description": a.excerpt,
+    "image": a.image || 'https://www.d4driving.co.uk/yaris-cross.webp',
+    "datePublished": a.date,
+    "author": {
+      "@type": "Person",
+      "name": "Robert",
+      "jobTitle": "DVSA Approved Driving Instructor",
+      "url": "https://www.d4driving.co.uk"
+    },
+    "publisher": {
+      "@type": "DrivingSchool",
+      "name": "D4Driving School of Motoring",
+      "url": "https://www.d4driving.co.uk",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.d4driving.co.uk/400dpiLogoCropped.png"
+      }
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": pageUrl }
+  });
+  document.head.appendChild(schema);
 
   /* Hero */
   document.getElementById('article-cat').textContent  = a.cat;

@@ -8,7 +8,9 @@
 <script>document.documentElement.classList.add('js-ready')</script>
 <meta name="description" content="D4Driving School of Motoring — DVSA Approved driving lessons in Peterborough. Brand-new Toyota fleet. Covering Peterborough, Grantham & Kettering. Book online instantly.">
 
-<!-- ═══ PWA ═══ -->
+<!-- Preload hero background — largest above-fold image -->
+<link rel="preload" as="image" href="yaris-cross.webp" fetchpriority="high">
+
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#BD2026">
 <meta name="mobile-web-app-capable" content="yes">
@@ -617,7 +619,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
-        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving School of Motoring">
+        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving School of Motoring" width="180" height="44" decoding="async">
       </a>
       <ul class="nav-links">
         <li><a href="#fleet">Our Cars</a></li>
@@ -698,7 +700,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     </div>
     <div class="fleet-grid reveal">
       <div class="fleet-card glass-card">
-        <div class="fleet-img"><img src="aygo-x.webp" alt="Toyota Aygo X — Manual, D4Driving Peterborough"></div>
+        <div class="fleet-img"><img src="aygo-x.webp" alt="Toyota Aygo X — Manual, D4Driving Peterborough" loading="lazy" decoding="async" width="800" height="600"></div>
         <div class="fleet-body">
           <span class="fleet-badge badge-manual">Manual</span>
           <h3>Toyota Aygo X</h3>
@@ -711,7 +713,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         </div>
       </div>
       <div class="fleet-card glass-card">
-        <div class="fleet-img"><img src="yaris-cross.webp" alt="Toyota Yaris Cross — Automatic, D4Driving Peterborough"></div>
+        <div class="fleet-img"><img src="yaris-cross.webp" alt="Toyota Yaris Cross — Automatic, D4Driving Peterborough" loading="lazy" decoding="async" width="800" height="550"></div>
         <div class="fleet-body">
           <span class="fleet-badge badge-auto">Automatic</span>
           <h3>Toyota Yaris Cross</h3>
@@ -732,7 +734,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="about-grid">
       <div class="about-img-wrap reveal">
-        <img src="robert.webp" alt="Robert — DVSA Approved Driving Instructor, D4Driving Peterborough" class="about-photo">
+        <img src="robert.webp" alt="Robert — DVSA Approved Driving Instructor, D4Driving Peterborough" class="about-photo" loading="lazy" decoding="async" width="800" height="1000">
         <div class="about-badge">
           <span class="num">7+</span>
           <span class="lbl">Years<br>Teaching</span>
@@ -952,17 +954,17 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     </div>
     <div class="passes-grid reveal">
       <div class="pass-card">
-        <img src="Sonia.webp" alt="Sonia — passed her driving test with D4Driving">
+        <img src="Sonia.webp" alt="Sonia — passed her driving test with D4Driving" loading="lazy" decoding="async" width="700" height="534">
         <div class="pass-label">Passed ✓</div>
         <div class="pass-name">Sonia</div>
       </div>
       <div class="pass-card">
-        <img src="Buddhika.webp" alt="Buddhika — passed his driving test with D4Driving">
+        <img src="Buddhika.webp" alt="Buddhika — passed his driving test with D4Driving" loading="lazy" decoding="async" width="700" height="552">
         <div class="pass-label">Passed ✓</div>
         <div class="pass-name">Regan</div>
       </div>
       <div class="pass-card">
-        <img src="Sienna.webp" alt="Sienna — passed her driving test with D4Driving">
+        <img src="Sienna.webp" alt="Sienna — passed her driving test with D4Driving" loading="lazy" decoding="async" width="700" height="515">
         <div class="pass-label">Passed ✓</div>
         <div class="pass-name">Sienna</div>
       </div>
@@ -1045,7 +1047,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving" class="logo">
+        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving" class="logo" loading="lazy" decoding="async" width="180" height="46">
         <p class="footer-tag">Expert driving tuition with D4Driving School of Motoring. Helping learners pass with confidence across Peterborough and surrounding areas since 2017.</p>
       </div>
       <div>

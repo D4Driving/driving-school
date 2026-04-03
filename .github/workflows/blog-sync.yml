@@ -3,19 +3,18 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 * * * *'
-
 permissions:
   contents: write
-
 jobs:
   sync:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-
+          node-version: '24'
       - name: Update Blog and Generate Articles
         env:
           RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
@@ -26,41 +25,45 @@ jobs:
           const Parser = require('rss-parser');
           const fs = require('fs');
           const parser = new Parser();
-
           (async () => {
             const feed = await parser.parseURL(process.env.RSS_URL);
             const blogTemplate = fs.readFileSync('blog-template.html', 'utf8');
             const articleTemplate = fs.readFileSync('article-template.html', 'utf8');
             
             let gridCards = '';
-
             for (const item of feed.items) {
               const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
-              const imageUrl = item.enclosure ? item.enclosure.url : 'default-blog-image.jpg';
+              const imageUrl = item.enclosure ? item.enclosure.url : 'yaris-cross.webp';
               const content = item['content:encoded'] || item.content || item.description || "";
-
               // 1. Build the Grid Card for blog.html
               gridCards += `
-              <article class="glass-card overflow-hidden rounded-3xl hover:border-white/20 transition group">
-                <div class="h-48 overflow-hidden">
-                  <img src="${imageUrl}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+              <a href="${slug}.html" class="blog-card glass-card">
+                <div class="blog-img">
+                  <img src="${imageUrl}" alt="${item.title}" loading="lazy">
                 </div>
-                <div class="p-6">
-                  <h3 class="text-lg font-bold group-hover:text-blue-400">${item.title}</h3>
-                  <p class="text-slate-400 text-sm mt-2 line-clamp-2">${item.contentSnippet || ""}</p>
-                  <a href="${slug}.html" class="text-blue-400 text-xs font-bold mt-4 inline-block hover:underline">Read Full Article →</a>
+                <div class="blog-body">
+                  <div class="blog-cat">${(item.categories && item.categories[0]) || 'Driving Tips'}</div>
+                  <div class="blog-title">${item.title}</div>
+                  <div class="blog-excerpt">${(item.contentSnippet || "").slice(0,160)}…</div>
+                  <div class="blog-footer">
+                    <span class="blog-date">${item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : ''}</span>
+                    <span class="blog-arrow">→</span>
+                  </div>
                 </div>
-              </article>`;
-
+              </a>`;
               // 2. Build the Individual Article Page
               let pageHtml = articleTemplate
                 .replace(/ARTICLE_TITLE/g, item.title)
-                .replace('ARTICLE_IMAGE', imageUrl)
-                .replace('ARTICLE_CONTENT', content);
+                .replace(/ARTICLE_IMAGE/g, imageUrl)
+                .replace(/ARTICLE_SLUG/g, slug)
+                .replace('ARTICLE_CONTENT', content)
+                .replace(/ARTICLE_DATE/g, item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}) : '')
+                .replace(/ARTICLE_CATEGORY/g, (item.categories && item.categories[0]) || 'Driving Tips')
+                .replace(/ARTICLE_EXCERPT/g, (item.contentSnippet || "").slice(0,160));
               
               fs.writeFileSync(`${slug}.html`, pageHtml);
+              console.log(`Generated: ${slug}.html`);
             }
-
             // 3. Update the main Blog page
             const finalBlogHtml = blogTemplate.replace('GRID_GOES_HERE', gridCards);
             fs.writeFileSync('blog.html', finalBlogHtml);
@@ -68,11 +71,10 @@ jobs:
             console.log('Successfully updated blog and generated all article pages!');
           })();
           EOF
-
       - name: Save Changes
         run: |
           git config --global user.name "D4Driving-Bot"
           git config --global user.email "bot@d4driving.co.uk"
           git add .
-          git commit -m "Generate articles with images" || echo "No changes"
+          git commit -m "Sync Soro articles" || echo "No changes to commit"
           git push

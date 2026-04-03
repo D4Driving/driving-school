@@ -306,16 +306,17 @@ p  { line-height: 1.75; }
 
 /* ─── ABOUT ──────────────────────────────── */
 #about { background: var(--bg); }
-.about-grid { display: grid; grid-template-columns: 400px 1fr; gap: 72px; align-items: center; }
+.about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: start; }
 .about-img-wrap { position: relative; }
 .about-photo {
   width: 100%; border-radius: 20px;
-  box-shadow: 0 30px 60px rgba(44,62,80,0.18);
-  object-fit: cover; aspect-ratio: 4/5;
+  box-shadow: 0 20px 40px rgba(44,62,80,0.18);
+  object-fit: cover; object-position: top center;
+  aspect-ratio: 3/4; max-height: 380px;
 }
 .about-badge {
-  position: absolute; bottom: -16px; right: -16px;
-  padding: 16px 20px; border-radius: 16px; text-align: center;
+  position: absolute; bottom: -12px; right: -12px;
+  padding: 14px 18px; border-radius: 16px; text-align: center;
   background: var(--red); color: #fff;
 }
 .about-badge .num { font-size: 28px; font-weight: 800; line-height: 1; display: block; }
@@ -1056,7 +1057,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="yt-grid">
       <div class="yt-embed reveal">
-        <iframe src="https://www.youtube.com/embed/wrGwDyOoGz4"
+        <iframe src="https://www.youtube-nocookie.com/embed/wrGwDyOoGz4"
           title="D4Driving — Driving Lesson Video"
           allowfullscreen loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">

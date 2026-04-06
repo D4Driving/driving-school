@@ -1994,11 +1994,9 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   const PROXY    = `https://api.allorigins.win/get?url=${encodeURIComponent(ICAL_URL)}`;
   const WA_BASE  = 'https://wa.me/447872347686?text=';
 
-  /* Working hours Mon–Sat 08:00–19:00 */
-  const WORK_START = 8;
-  const WORK_END   = 19;
-  const LESSON_MIN = 90; /* minimum slot gap in minutes */
-  const DAYS_AHEAD = 14; /* how many days to look ahead */
+  /* Working hours: Mon–Fri 09:00–19:00 · Saturday 10:00–17:00 · Sunday off */
+  const LESSON_MIN = 60; /* minimum slot gap in minutes */
+  const DAYS_AHEAD = 30; /* how many days to look ahead */
   const MAX_SLOTS  = 12;
 
   const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -2053,11 +2051,16 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       /* Skip Sundays */
       if (date.getDay() === 0) continue;
 
+      /* Working hours: Mon–Fri 09:00–19:00, Saturday 10:00–17:00 */
+      const isSat    = date.getDay() === 6;
+      const dayStartH = isSat ? 10 : 9;
+      const dayEndH   = isSat ? 17 : 19;
+
       /* Day boundaries in local time */
       const dayStart = new Date(date);
-      dayStart.setHours(WORK_START, 0, 0, 0);
+      dayStart.setHours(dayStartH, 0, 0, 0);
       const dayEnd = new Date(date);
-      dayEnd.setHours(WORK_END, 0, 0, 0);
+      dayEnd.setHours(dayEndH, 0, 0, 0);
 
       /* Busy blocks for this day */
       const busy = events

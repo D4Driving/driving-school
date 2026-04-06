@@ -1077,27 +1077,286 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   </div>
 </section>
 
-<!-- ════ COVERAGE ════ -->
+<!-- ════ COVERAGE + MAP ════ -->
+<!-- Replace your existing COVERAGE section with this entire block -->
 <section id="coverage" class="sec" style="background:var(--bg2);">
   <div class="wrap">
     <div class="reveal">
       <div class="eyebrow">Where My Students Pass</div>
       <h2>Peterborough &amp; Beyond.</h2>
-      <p style="color:var(--ink-mid);margin-top:14px;max-width:480px;">Expert knowledge of every route, junction, and roundabout — so you walk into your test knowing exactly what to expect.</p>
+      <p style="color:var(--ink-mid);margin-top:14px;max-width:520px;">
+        I cover three DVSA test centres across the region. Expert knowledge of every route, junction and roundabout — so you walk in knowing exactly what to expect.
+      </p>
     </div>
+
+    <!-- Pass counts -->
     <div class="cov-grid reveal">
       <div class="cov-card glass-card"><div class="cov-n">142+</div><div class="cov-place">Hampton</div><div class="cov-sub">passes &amp; counting</div></div>
       <div class="cov-card glass-card"><div class="cov-n">131+</div><div class="cov-place">Werrington</div><div class="cov-sub">passes &amp; counting</div></div>
       <div class="cov-card glass-card"><div class="cov-n">78+</div><div class="cov-place">The Ortons</div><div class="cov-sub">passes &amp; counting</div></div>
       <div class="cov-card glass-card"><div class="cov-n">69+</div><div class="cov-place">Stanground</div><div class="cov-sub">passes &amp; counting</div></div>
     </div>
-    <div class="centres-grid reveal">
-      <div class="centre-card"><div class="centre-icon">🏁</div><h4>Peterborough</h4><p>Full route prep for Peterborough DTC — the Eye Roundabout, A15/A47 merges and beyond.</p></div>
-      <div class="centre-card"><div class="centre-icon">🛣️</div><h4>Grantham</h4><p>Rural route expert. Tailored prep for Grantham's country roads and dual-carriageway (A1) sections.</p></div>
-      <div class="centre-card"><div class="centre-icon">⚡</div><h4>Kettering</h4><p>High-capacity test centre with shorter wait times — fast-track your test date.</p></div>
+
+    <!-- Map + centre cards -->
+    <div class="map-layout reveal">
+
+      <!-- Interactive map -->
+      <div class="map-wrap glass-card">
+        <div id="d4-map"></div>
+        <div class="map-legend">
+          <span class="legend-dot" style="background:#BD2026;"></span> Test Centres
+          <span class="legend-dot" style="background:#2C3E50;margin-left:14px;"></span> D4Driving Base
+        </div>
+      </div>
+
+      <!-- Centre cards -->
+      <div class="centres-col">
+
+        <div class="centre-card2 glass-card" data-lat="52.569499" data-lng="-0.2177162">
+          <div class="centre-head">
+            <div class="centre-icon2">🏁</div>
+            <div>
+              <div class="centre-name">Peterborough</div>
+              <div class="centre-addr">Second Drove, Fengate PE1 5XA</div>
+            </div>
+            <a href="https://maps.google.com/?cid=18148296618064240560" target="_blank" class="centre-dir" title="Get directions">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+              </svg>
+            </a>
+          </div>
+          <p class="centre-desc">Full route prep for every exit — the Eye Roundabout, A1139 Fletton Parkway and A15/A47 merges.</p>
+          <div class="centre-meta">
+            <span class="centre-phone">📞 01733 552939</span>
+            <a href="https://www.gov.uk/book-driving-test" target="_blank" class="centre-book">Book test →</a>
+          </div>
+        </div>
+
+        <div class="centre-card2 glass-card" data-lat="52.9003979" data-lng="-0.5895864">
+          <div class="centre-head">
+            <div class="centre-icon2">🛣️</div>
+            <div>
+              <div class="centre-name">Grantham</div>
+              <div class="centre-addr">102 High Dike, Grantham NG31 7TX</div>
+            </div>
+            <a href="https://maps.google.com/?cid=17924789948928229649" target="_blank" class="centre-dir" title="Get directions">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+              </svg>
+            </a>
+          </div>
+          <p class="centre-desc">Rural route specialist. Country roads, A1 dual-carriageway and village junctions fully covered.</p>
+          <div class="centre-meta">
+            <span class="centre-phone">📞 01476 563961</span>
+            <a href="https://www.gov.uk/book-driving-test" target="_blank" class="centre-book">Book test →</a>
+          </div>
+        </div>
+
+        <div class="centre-card2 glass-card" data-lat="52.3779265" data-lng="-0.7252361">
+          <div class="centre-head">
+            <div class="centre-icon2">⚡</div>
+            <div>
+              <div class="centre-name">Kettering</div>
+              <div class="centre-addr">Orion Way, Kettering NN15 6NL</div>
+            </div>
+            <a href="https://maps.google.com/?cid=18112543342220960405" target="_blank" class="centre-dir" title="Get directions">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+              </svg>
+            </a>
+          </div>
+          <p class="centre-desc">High-capacity centre with shorter wait times — fast-track your test date. Open 7 days.</p>
+          <div class="centre-meta">
+            <span class="centre-phone">📞 01536 412837</span>
+            <a href="https://www.gov.uk/book-driving-test" target="_blank" class="centre-book">Book test →</a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+/* ── Map layout ── */
+.map-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 20px;
+  margin-top: 20px;
+  align-items: start;
+}
+@media(max-width:900px){ .map-layout { grid-template-columns: 1fr; } }
+
+.map-wrap {
+  overflow: hidden;
+  position: relative;
+}
+#d4-map {
+  width: 100%; height: 360px;
+  border-radius: 15px 15px 0 0;
+}
+.map-legend {
+  padding: 10px 16px;
+  font-size: 12px; font-weight: 600;
+  color: var(--ink-low);
+  display: flex; align-items: center; gap: 6px;
+  border-top: 1px solid var(--border);
+  background: var(--glass-bg);
+}
+.legend-dot {
+  width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex-shrink: 0;
+}
+
+/* ── Centre cards ── */
+.centres-col { display: flex; flex-direction: column; gap: 14px; }
+
+.centre-card2 {
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+  border: 1px solid var(--glass-border);
+}
+.centre-card2:hover,
+.centre-card2.active {
+  transform: translateY(-3px);
+  border-color: var(--red-border);
+  box-shadow: 0 12px 28px rgba(189,32,38,0.1) !important;
+}
+.centre-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+}
+.centre-icon2 { font-size: 20px; flex-shrink: 0; }
+.centre-name {
+  font-size: 15px; font-weight: 700; color: var(--slate);
+  line-height: 1.2;
+}
+.centre-addr { font-size: 11px; color: var(--ink-low); margin-top: 2px; }
+.centre-dir {
+  margin-left: auto; flex-shrink: 0;
+  width: 30px; height: 30px; border-radius: 8px;
+  background: var(--red-lo); border: 1px solid var(--red-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--red); transition: background .2s;
+  text-decoration: none;
+}
+.centre-dir:hover { background: var(--red); color: #fff; }
+.centre-desc { font-size: 12.5px; color: var(--ink-mid); line-height: 1.6; margin-bottom: 10px; }
+.centre-meta {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 10px; border-top: 1px solid var(--border);
+}
+.centre-phone { font-size: 11px; font-weight: 600; color: var(--ink-low); }
+.centre-book {
+  font-size: 11px; font-weight: 700; color: var(--red);
+  text-decoration: none; transition: color .2s;
+}
+.centre-book:hover { color: var(--red-hi); }
+</style>
+
+<script>
+/* ── Leaflet map (no API key needed) ── */
+(function() {
+  /* Only load when section is visible */
+  const section = document.getElementById('coverage');
+  if (!section) return;
+
+  let mapLoaded = false;
+
+  function loadMap() {
+    if (mapLoaded) return;
+    mapLoaded = true;
+
+    /* Load Leaflet CSS */
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(css);
+
+    /* Load Leaflet JS */
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.onload = initMap;
+    document.head.appendChild(script);
+  }
+
+  function initMap() {
+    const centres = [
+      { lat: 52.569499, lng: -0.2177162, name: 'Peterborough DTC',  label: '🏁 Peterborough', info: 'Second Drove, Fengate PE1 5XA<br><small>Eye Roundabout · A1139 · A15/A47</small>' },
+      { lat: 52.9003979, lng: -0.5895864, name: 'Grantham DTC',     label: '🛣️ Grantham',     info: 'Castlegate NG31 6SH<br><small>Rural routes · A1 dual-carriageway</small>' },
+      { lat: 52.3779265, lng: -0.7252361, name: 'Kettering DTC',    label: '⚡ Kettering',     info: 'Orion Way NN15 6NL<br><small>High-capacity · 7 days a week</small>' },
+    ];
+
+    /* Centre map on Peterborough */
+    const map = L.map('d4-map', {
+      center: [52.57, -0.45],
+      zoom: 9,
+      zoomControl: true,
+      scrollWheelZoom: false
+    });
+
+    /* Clean light tile layer */
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      subdomains: 'abcd', maxZoom: 19
+    }).addTo(map);
+
+    /* Custom red marker */
+    const redIcon = L.divIcon({
+      html: `<div style="
+        width:32px;height:32px;border-radius:50% 50% 50% 0;
+        background:#BD2026;border:3px solid #fff;
+        box-shadow:0 3px 10px rgba(189,32,38,0.4);
+        transform:rotate(-45deg);
+      "></div>`,
+      iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -34],
+      className: ''
+    });
+
+    /* D4Driving base marker — slate */
+    const baseIcon = L.divIcon({
+      html: `<div style="
+        width:20px;height:20px;border-radius:50%;
+        background:#2C3E50;border:3px solid #fff;
+        box-shadow:0 2px 8px rgba(44,62,80,0.4);
+      "></div>`,
+      iconSize: [20, 20], iconAnchor: [10, 10], popupAnchor: [0, -14],
+      className: ''
+    });
+
+    /* D4Driving base */
+    L.marker([52.5736, -0.2408], { icon: baseIcon })
+      .addTo(map)
+      .bindPopup('<b>D4Driving</b><br>Peterborough — Based here 🚗');
+
+    /* Test centre markers */
+    const markers = [];
+    centres.forEach((c, i) => {
+      const m = L.marker([c.lat, c.lng], { icon: redIcon })
+        .addTo(map)
+        .bindPopup(`<b>${c.label}</b><br>${c.info}<br><br><a href="https://www.gov.uk/book-driving-test" target="_blank" style="color:#BD2026;font-weight:700;font-size:12px;">Book your test →</a>`);
+      markers.push(m);
+
+      /* Click card → open popup on map */
+      const cards = document.querySelectorAll('.centre-card2');
+      if (cards[i]) {
+        cards[i].addEventListener('click', () => {
+          map.setView([c.lat, c.lng], 12, { animate: true });
+          m.openPopup();
+          cards.forEach(c2 => c2.classList.remove('active'));
+          cards[i].classList.add('active');
+        });
+      }
+    });
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { loadMap(); obs.disconnect(); }
+  }, { rootMargin: '200px' });
+  obs.observe(section);
+})();
+</script>
+
 <section id="prices" class="sec" style="background:var(--bg2);">
   <div class="wrap">
     <div class="reveal">

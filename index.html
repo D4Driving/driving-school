@@ -2332,6 +2332,145 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   </div>
 </footer>
 
+<!-- ElevenLabs Conversational AI — CDN widget -->
+<script src="https://elevenlabs.io/convai-widget/index.js" async></script>
+
+<!-- AI Voice Assistant float button -->
+<div class="ai-float-wrap" id="ai-float-wrap">
+  <!-- Tooltip -->
+  <div class="ai-tooltip">Ask me anything!</div>
+  <!-- Trigger button -->
+  <button class="ai-float" id="ai-float-btn" aria-label="Talk to AI assistant" onclick="toggleAiWidget()">
+    <!-- Microphone icon -->
+    <svg id="ai-mic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+      <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+      <line x1="12" y1="19" x2="12" y2="23"/>
+      <line x1="8" y1="23" x2="16" y2="23"/>
+    </svg>
+    <!-- Close icon (hidden by default) -->
+    <svg id="ai-close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none;">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <!-- ElevenLabs widget (hidden until button clicked) -->
+  <div class="ai-widget-container" id="ai-widget-container" style="display:none;">
+    <elevenlabs-convai
+      agent-id="agent_1901knwr6453et2ab174n22dv063"
+      id="el-widget">
+    </elevenlabs-convai>
+  </div>
+</div>
+
+<style>
+/* ── AI Float Button ── */
+.ai-float-wrap {
+  position: fixed;
+  bottom: 102px; /* sits above the WhatsApp button */
+  right: 28px;
+  z-index: 850;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.ai-float {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--red);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(189,32,38,0.35);
+  transition: transform .3s, box-shadow .3s, background .2s;
+  position: relative;
+}
+.ai-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 32px rgba(189,32,38,0.45);
+}
+.ai-float.active {
+  background: var(--slate);
+  box-shadow: 0 8px 24px rgba(44,62,80,0.4);
+}
+
+/* Pulse ring */
+.ai-float::before {
+  content: '';
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(189,32,38,0.4);
+  animation: ai-pulse 2s ease-in-out infinite;
+}
+.ai-float.active::before { display: none; }
+@keyframes ai-pulse {
+  0%,100% { transform: scale(1);   opacity: 1; }
+  50%      { transform: scale(1.2); opacity: 0; }
+}
+
+/* Tooltip */
+.ai-tooltip {
+  background: var(--slate);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 12px; font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity .25s, transform .25s;
+  pointer-events: none;
+}
+.ai-tooltip::after {
+  content: '';
+  position: absolute;
+  right: -5px; top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: var(--slate);
+}
+.ai-float-wrap:hover .ai-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Widget container */
+.ai-widget-container {
+  position: absolute;
+  bottom: 68px; right: 0;
+  width: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(44,62,80,0.2);
+  animation: ai-slide-up .3s ease both;
+}
+@keyframes ai-slide-up {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+@media(max-width:400px) {
+  .ai-widget-container { width: calc(100vw - 40px); right: 0; }
+}
+</style>
+
+<script>
+function toggleAiWidget() {
+  const wrap = document.getElementById('ai-widget-container');
+  const btn  = document.getElementById('ai-float-btn');
+  const mic  = document.getElementById('ai-mic-icon');
+  const close= document.getElementById('ai-close-icon');
+  const open = wrap.style.display === 'none' || wrap.style.display === '';
+
+  wrap.style.display  = open ? 'block' : 'none';
+  btn.classList.toggle('active', open);
+  mic.style.display   = open ? 'none'  : '';
+  close.style.display = open ? ''      : 'none';
+}
+</script>
+
 <!-- WhatsApp Float -->
 <a href="https://wa.me/447872347686" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

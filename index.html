@@ -1872,6 +1872,16 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       <div class="eyebrow" style="justify-content:center;">Live Availability</div>
       <h2>Next Available Slots.</h2>
       <p style="color:var(--ink-mid);margin-top:12px;">Updated live from Robert's calendar. Tap any slot to book instantly via WhatsApp or the online calendar.</p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:20px;flex-wrap:wrap;">
+        <span id="avail-updated" style="font-size:12px;font-weight:600;color:var(--ink-low);"></span>
+        <button id="avail-refresh-btn"
+          onclick="refreshAvailability()"
+          class="btn btn-outline"
+          style="font-size:12px;padding:8px 16px;gap:7px;border-radius:8px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.22-8.56"/></svg>
+          Refresh
+        </button>
+      </div>
     </div>
     <div class="avail-wrap reveal">
       <div id="avail-grid" class="avail-grid">
@@ -1970,6 +1980,10 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 }
 .avail-footer a:hover { text-decoration: underline; }
 
+/* Refresh button spin */
+@keyframes avail-rotate { to { transform: rotate(360deg); } }
+.avail-spin { animation: avail-rotate .8s linear infinite; display:inline-block; }
+
 /* Date group header */
 .avail-day-group {
   grid-column: 1/-1;
@@ -1990,84 +2004,98 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 <script>
 (function() {
   const WA_BASE = 'https://wa.me/447872347686?text=';
+  const DAYS    = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const MONTHS  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-  const DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-
-    function fmt12(date) {
+  function fmt12(date) {
     let h = date.getHours(), m = date.getMinutes();
     const ampm = h >= 12 ? 'pm' : 'am';
     h = h % 12 || 12;
     return `${h}:${m.toString().padStart(2,'0')}${ampm}`;
   }
 
+  function setRefreshState(loading) {
+    const btn = document.getElementById('avail-refresh-btn');
+    if (!btn) return;
+    if (loading) {
+      btn.disabled = true;
+      btn.innerHTML = `<svg class="avail-spin" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-6.22-8.56"/></svg> Refreshing…`;
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.22-8.56"/></svg> Refresh`;
+    }
+  }
+
   function renderSlots(slots) {
     const grid = document.getElementById('avail-grid');
     if (!slots.length) {
-      grid.innerHTML = '<div class="avail-empty">No availability found in the next 14 days — please <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert</a> directly.</div>';
+      grid.innerHTML = '<div class="avail-empty">No availability found in the next 30 days — please <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert</a> directly.</div>';
       return;
     }
-
     let html = '';
     let lastDay = '';
-
     slots.forEach(slot => {
-      const dayName  = DAYS[slot.date.getDay()];
-      const dateStr  = `${slot.date.getDate()} ${MONTHS[slot.date.getMonth()]}`;
-      const timeStr  = `${fmt12(slot.start)} – ${fmt12(slot.end)}`;
-      const isToday  = slot.date.toDateString() === new Date().toDateString();
+      const dayName    = DAYS[slot.date.getDay()];
+      const dateStr    = `${slot.date.getDate()} ${MONTHS[slot.date.getMonth()]}`;
+      const timeStr    = `${fmt12(slot.start)} – ${fmt12(slot.end)}`;
+      const isToday    = slot.date.toDateString() === new Date().toDateString();
       const isTomorrow = (() => { const t = new Date(); t.setDate(t.getDate()+1); return slot.date.toDateString()===t.toDateString(); })();
-      const label    = isToday ? 'Today' : isTomorrow ? 'Tomorrow' : dayName;
-
+      const label      = isToday ? 'Today' : isTomorrow ? 'Tomorrow' : dayName;
       if (dayName !== lastDay) {
         html += `<div class="avail-day-group">${label}, ${dateStr}</div>`;
         lastDay = dayName;
       }
-
       const waMsg = encodeURIComponent(`Hi Robert, I'd like to book a driving lesson on ${label} ${dateStr} around ${fmt12(slot.start)}. Is that available?`);
-      const waUrl = `${WA_BASE}${waMsg}`;
-
       html += `
-        <a href="${waUrl}" target="_blank" rel="noopener" class="avail-slot">
+        <a href="${WA_BASE}${waMsg}" target="_blank" rel="noopener" class="avail-slot">
           <div class="avail-day">${label}</div>
           <div class="avail-date">${dateStr}</div>
           <div class="avail-time">${timeStr}</div>
           <div class="avail-badge">Available</div>
         </a>`;
     });
-
     grid.innerHTML = html;
   }
 
   async function loadAvailability() {
+    const grid = document.getElementById('avail-grid');
+    grid.innerHTML = '<div class="avail-loading"><div class="spinner"></div><span>Checking availability…</span></div>';
+    setRefreshState(true);
     try {
-      /* Fetches availability.json written hourly by GitHub Actions — no CORS issues */
-      const r = await fetch('availability.json', { cache: 'no-store' });
+      /* Cache-bust with timestamp — bypasses both browser cache and service worker */
+      const r = await fetch(`availability.json?t=${Date.now()}`, { cache: 'no-store' });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const data = await r.json();
 
-      if (!data.slots || !data.slots.length) {
-        document.getElementById('avail-grid').innerHTML =
-          `<div class="avail-empty">No availability found in the next 30 days — <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to arrange a time.</div>`;
-        return;
+      /* Show when data was last generated */
+      const updEl = document.getElementById('avail-updated');
+      if (updEl && data.generated) {
+        const ago = Math.round((Date.now() - new Date(data.generated)) / 60000);
+        updEl.textContent = ago < 2 ? 'Updated just now' : `Updated ${ago} min ago`;
       }
 
-      /* Convert ISO strings back to Date objects */
+      if (!data.slots || !data.slots.length) {
+        grid.innerHTML = `<div class="avail-empty">No availability found in the next 30 days — <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to arrange a time.</div>`;
+        return;
+      }
       const slots = data.slots.map(s => ({
         date:  new Date(s.date + 'T00:00:00'),
         start: new Date(s.start),
         end:   new Date(s.end)
       }));
-
       renderSlots(slots);
     } catch(e) {
-      console.warn('D4Driving availability: could not load availability.json —', e.message);
-      document.getElementById('avail-grid').innerHTML =
-        `<div class="avail-empty">Couldn't load availability right now — <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to check availability.</div>`;
+      console.warn('D4Driving availability:', e.message);
+      grid.innerHTML = `<div class="avail-empty">Couldn't load availability right now — <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to check availability.</div>`;
+    } finally {
+      setRefreshState(false);
     }
   }
 
-  /* Lazy-load when section is visible */
+  /* Expose globally so the refresh button can call it */
+  window.refreshAvailability = loadAvailability;
+
+  /* Lazy-load when section first scrolls into view */
   const section = document.getElementById('availability');
   const obs = new IntersectionObserver(entries => {
     if (entries[0].isIntersecting) { loadAvailability(); obs.disconnect(); }

@@ -44,6 +44,8 @@ self.addEventListener('fetch', event => {
   /* Skip non-GET and browser-extension requests */
   if (event.request.method !== 'GET') return;
   if (!event.request.url.startsWith('http')) return;
+  /* Never cache availability.json — always fetch fresh */
+  if (event.request.url.includes('availability.json')) return;
 
   /* For navigation (HTML pages) — network first */
   if (event.request.mode === 'navigate') {

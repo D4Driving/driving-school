@@ -2367,8 +2367,8 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 /* ── AI Float Button ── */
 .ai-float-wrap {
   position: fixed;
-  bottom: 102px; /* sits above the WhatsApp button */
-  right: 28px;
+  bottom: 28px;
+  right: 94px; /* sits to the left of the WhatsApp button (56px + 10px gap + padding) */
   z-index: 850;
   display: flex;
   flex-direction: column;
@@ -2451,8 +2451,9 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   from { opacity: 0; transform: translateY(12px) scale(0.97); }
   to   { opacity: 1; transform: translateY(0)    scale(1); }
 }
-@media(max-width:400px) {
-  .ai-widget-container { width: calc(100vw - 40px); right: 0; }
+@media(max-width:480px) {
+  .ai-float-wrap { right: 84px; }
+  .ai-widget-container { width: calc(100vw - 40px); right: auto; left: 0; }
 }
 </style>
 
